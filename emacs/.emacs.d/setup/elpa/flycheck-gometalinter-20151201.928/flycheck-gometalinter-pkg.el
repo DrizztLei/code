@@ -1,0 +1,1 @@
+(define-package "flycheck-gometalinter" "20151201.928" "flycheck checker for gometalinter" '((emacs "24") (flycheck "0.22")) :url "https://github.com/favadi/flycheck-gometalinter" :keywords '("convenience" "tools" "go"))

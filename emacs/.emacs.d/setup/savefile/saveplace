@@ -1,0 +1,59 @@
+;;; -*- coding: utf-8 -*-
+(("/home/elvis/.emacs.d/setup/savefile/recentf" . 10182)
+ ("/home/elvis/work/project/"
+  (dired-filename . "/home/elvis/work/project/PatternRecognition"))
+ ("/home/elvis/work/project/PatternRecognition/svm/try-2/"
+  (dired-filename . "/home/elvis/work/project/PatternRecognition/svm/try-2/.."))
+ ("/home/elvis/work/project/PatternRecognition/temp/"
+  (dired-filename . "/home/elvis/work/project/PatternRecognition/temp/.."))
+ ("/home/elvis/work/project/PatternRecognition/weight/"
+  (dired-filename . "/home/elvis/work/project/PatternRecognition/weight/.."))
+ ("/home/elvis/work/project/PatternRecognition/"
+  (dired-filename . "/home/elvis/work/project/PatternRecognition/svm"))
+ ("/home/elvis/work/project/PatternRecognition/svm/"
+  (dired-filename . "/home/elvis/work/project/PatternRecognition/svm/Expriment"))
+ ("/home/elvis/work/project/PatternRecognition/svm/Expriment/"
+  (dired-filename . "/home/elvis/work/project/PatternRecognition/svm/Expriment/pure"))
+ ("/home/elvis/work/project/PatternRecognition/svm/Expriment/pure/"
+  (dired-filename . "/home/elvis/work/project/PatternRecognition/svm/Expriment/pure/Ann.cpp"))
+ ("/home/"
+  (dired-filename . "/home/elvis"))
+ ("/home/elvis/"
+  (dired-filename . "/home/elvis/work"))
+ ("/home/elvis/work/"
+  (dired-filename . "/home/elvis/work/project"))
+ ("/home/elvis/work/project/PatternRecognition/LeiNet/"
+  (dired-filename . "/home/elvis/work/project/PatternRecognition/LeiNet/LeiNet1.py"))
+ ("/home/elvis/work/project/PatternRecognition/Ann.cpp" . 18688)
+ ("/home/elvis/work/project/PatternRecognition/svm/Train.cpp" . 4511)
+ ("/home/elvis/work/project/PatternRecognition/svm/Ann.cpp" . 16014)
+ ("/home/elvis/work/project/PatternRecognition/svm/Makefile" . 79)
+ ("/home/elvis/work/project/PatternRecognition/svm.py" . 773)
+ ("/home/elvis/work/project/PatternRecognition/Train.cpp" . 4552)
+ ("/home/elvis/work/project/PatternRecognition/TEST.cpp" . 1253)
+ ("/home/elvis/work/project/PatternRecognition/Makefile" . 56)
+ ("/home/elvis/work/project/PatternRecognition/Experiment.cpp" . 3964)
+ ("/home/elvis/work/project/PatternRecognition/ppt.org" . 123)
+ ("/home/elvis/work/project/PatternRecognition/train.txt" . 1308976)
+ ("/sudo:root@localhost:/home/eva/data/MNISTNet7.py" . 131)
+ ("/sudo:root@localhost:/home/eva/work/algorithms/calco.cpp" . 56)
+ ("/mnt/1.c" . 295)
+ ("/home/eva/"
+  (dired-filename . "/home/eva/work"))
+ ("/usr/src/"
+  (dired-filename . "/usr/src/.."))
+ ("/usr/"
+  (dired-filename . "/usr/.."))
+ ("/"
+  (dired-filename . "/.."))
+ ("/../"
+  (dired-filename . "/../home"))
+ ("/../home/"
+  (dired-filename . "/../home/eva"))
+ ("/../home/eva/"
+  (dired-filename . "/../home/eva/work"))
+ ("/sudo:root@localhost:/home/eva/work/linux/Makefile" . 14)
+ ("/sudo:root@localhost:/usr/include/qt4/Qt3Support/Q3CanvasSprite" . 23)
+ ("/usr/share/emacs/24.5/lisp/startup.el" . 34454)
+ ("/usr/share/emacs/24.5/lisp/international/mule.el" . 10442)
+ ("/sudo:root@localhost:/usr/share/emacs/24.5/lisp/international/mule.el" . 12914))
