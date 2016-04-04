@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/ARM
+END
+arm-array.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/ARM/arm-array.lisp
+END
+arm-def.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/ARM/arm-def.lisp
+END
+arm-clos.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/ARM/arm-clos.lisp
+END
+arm-utils.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/ARM/arm-utils.lisp
+END
+arm-bignum.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/ARM/arm-bignum.lisp
+END
+arm-hash.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/ARM/arm-hash.lisp
+END
+arm-float.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/ARM/arm-float.lisp
+END
+arm-symbol.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/ARM/arm-symbol.lisp
+END
+arm-io.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/ARM/arm-io.lisp
+END
+arm-pred.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/ARM/arm-pred.lisp
+END
+arm-misc.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/ARM/arm-misc.lisp
+END
+arm-numbers.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/ARM/arm-numbers.lisp
+END

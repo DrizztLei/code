@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/elf
+END
+functions.cdb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/elf/functions.cdb
+END
+objc-classes.cdb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/elf/objc-classes.cdb
+END
+vars.cdb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/elf/vars.cdb
+END
+constants.cdb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/elf/constants.cdb
+END
+objc-methods.cdb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/elf/objc-methods.cdb
+END
+records.cdb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/elf/records.cdb
+END
+types.cdb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/elf/types.cdb
+END

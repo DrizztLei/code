@@ -1,0 +1,15 @@
+# include <cstring>
+# include <iostream>
+# include <climits>
+using namespace std;
+int main(){
+	float temp = 2342.321;
+	short xx;
+	int dd;
+	char ch;
+	cout << "int is\t" << sizeof(int)<<"\tof Inter here"<<endl;
+	dd = 65535;
+	cout << "Over the limit of int "<< ++dd<<endl;
+	return 0 ;
+	
+}

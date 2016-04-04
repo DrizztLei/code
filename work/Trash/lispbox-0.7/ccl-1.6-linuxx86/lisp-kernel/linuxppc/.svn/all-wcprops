@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/publicsvn/openmcl/!svn/ver/14393/release/1.6/source/lisp-kernel/linuxppc
+END
+elf32ppclinux.x
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/lisp-kernel/linuxppc/elf32ppclinux.x
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/publicsvn/openmcl/!svn/ver/14393/release/1.6/source/lisp-kernel/linuxppc/Makefile
+END
+.gdbinit
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/lisp-kernel/linuxppc/.gdbinit
+END

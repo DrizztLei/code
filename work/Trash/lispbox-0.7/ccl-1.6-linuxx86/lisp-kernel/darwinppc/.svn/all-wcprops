@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/publicsvn/openmcl/!svn/ver/14393/release/1.6/source/lisp-kernel/darwinppc
+END
+retain
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/lisp-kernel/darwinppc/retain
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/publicsvn/openmcl/!svn/ver/14393/release/1.6/source/lisp-kernel/darwinppc/Makefile
+END
+.gdbinit
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/lisp-kernel/darwinppc/.gdbinit
+END

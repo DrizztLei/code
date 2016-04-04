@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/publicsvn/openmcl/!svn/ver/14405/release/1.6/source/doc/src
+END
+schemas.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/schemas.xml
+END
+modifying.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/modifying.xml
+END
+implementation.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/implementation.xml
+END
+using.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/publicsvn/openmcl/!svn/ver/14405/release/1.6/source/doc/src/using.xml
+END
+gc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/gc.xml
+END
+threads.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/threads.xml
+END
+mop.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/mop.xml
+END
+external-process.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/external-process.xml
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/build.xml
+END
+Makefile.debian
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/Makefile.debian
+END
+profile.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/profile.xml
+END
+ide.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/ide.xml
+END
+glossary.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/glossary.xml
+END
+makefile-common
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/makefile-common
+END
+ffi.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/ffi.xml
+END
+Makefile.macports
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/Makefile.macports
+END
+install.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/install.xml
+END
+objc-bridge.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/objc-bridge.xml
+END
+ccl-documentation.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/ccl-documentation.xml
+END
+about.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/about.xml
+END
+platform-notes.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/platform-notes.xml
+END
+sockets.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/sockets.xml
+END
+Makefile.fedora
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/Makefile.fedora
+END
+q-and-a.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/q-and-a.xml
+END
+streams.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/src/streams.xml
+END

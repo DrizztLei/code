@@ -1,0 +1,161 @@
+template <> class SortedArray<char * >
+{
+	//....
+}
+
+;;Just to initalize some of all
+
+template <class T1 , class T2 > class Pair{...};
+
+template <class T1> class Pair<T1 , int> {...};
+
+template <> class Pair<int , int>{...};
+
+Pair<int , double> p1;
+Pair<double ,int> p2;
+Pair<int , int> p3;
+
+template <class T>
+
+class Feeb{...};
+template <class T*>
+
+
+//general template
+template <class T1 , class T2 , class T3> class Trio{...};
+
+//specialization with T3 set to T2
+template <class T1 , class T2> class Trio<T1 , T2 ,T2>{...};
+
+//specialization with T3 and T2 set to T1*
+template <T1> class <T1 , T1* , T1*>{...};
+
+Trio<int , short , char * > t1;
+Trio<int , short> t2;
+Trio<char , char * , char *> t3;
+
+;;core of tempmemb.cpp
+
+template <typenae T>
+class bate
+{
+public:
+Ttemplate <typename V>;
+class test{
+private:
+V;
+public:
+};
+test<int> ha1;
+test<double> temporary;
+};
+
+;;Regard the template as the argument .
+template <template <typenae T> class Thing>
+
+
+//inner class
+
+Ting<int> al;
+Ting<double> al2;
+
+friend and template
+
+template <class T>
+class HasFriend
+{
+	friend void couts();
+}
+
+class HasFriend<int>
+{
+	friend void report (HasFriend<int> &);//bound template
+//	..
+}
+
+template<typename T>
+class HasFriend
+{
+public:
+friend void reports(HasFriend<T> & s);
+}
+
+//So many c++ complier doesn't support the friend of
+template .
+
+
+try{
+
+}
+catch(std::exception &e){
+	cout << e.what() << endl;
+	}
+	//stdexcept
+	class logic_srror : public exception{
+	public:
+	explicit logic_error(const string & what_arg);
+	...
+	};
+
+class domain_error : public logic_error{
+public:
+explicit domain_error : (const string & what_arg);
+...
+
+};
+/**
+domain_error
+invalid_argument
+length_error
+out_of_bounds
+*/
+/**
+runtime_error:
+range_error
+overflow_error
+underflow_error
+*/
+
+bad_alloc and new
+
+#include <new>
+#include <cstdlib>
+
+catch(bad_molloc & ba){
+    exit(EXIT_FAILURE);
+	}
+
+
+#include <stdexcept>
+#include <cstring>
+class bad_index{
+enum{MONTHS = 12};
+explicit bad_index (){}
+
+}
+
+class bd_index : public std::logic_error
+{
+//...
+}
+
+Sale::bad_index :: bad_index(int ix ,const char * s ) :
+std::logic_error(s) , bi(ix){
+
+}
+
+catch(LabeledSales :: nbad_index & bad)
+{
+	cout << "bad index :" << bad.bi_val() << endl;
+	}
+
+terminate() exit() abort()
+
+RTTI
+
+dynamic_cast
+typeid type_info
+
+const_cast
+static_cast
+reinterpret_cast

@@ -1,0 +1,30 @@
+K 13
+svn:externals
+V 1247
+compiler        http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/compiler
+contrib         http://svn.clozure.com/publicsvn/openmcl/release/1.6/contrib
+doc             http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/doc
+examples        http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/examples
+level-0         http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/level-0
+level-1         http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/level-1
+lib             http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/lib
+library         http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/library
+lisp-kernel     http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/lisp-kernel
+objc-bridge     http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/objc-bridge
+scripts         http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/scripts
+tools           http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/tools
+xdump           http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/xdump
+x86-headers   http://svn.clozure.com/publicsvn/openmcl/release/1.6/x86-headers
+x86-headers64   http://svn.clozure.com/publicsvn/openmcl/release/1.6/x86-headers64
+
+
+
+K 10
+svn:ignore
+V 28
+bin
+l1-fasls
+*fsl
+x86-boot*
+
+END

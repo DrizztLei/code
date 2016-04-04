@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/gnome2/C
+END
+populate.sh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/gnome2/C/populate.sh
+END
+.cvsignore
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/gnome2/C/.cvsignore
+END

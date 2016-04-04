@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/contrib/garret
+END
+test
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/contrib/garret/test
+END
+combination-hook.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/contrib/garret/combination-hook.lisp
+END

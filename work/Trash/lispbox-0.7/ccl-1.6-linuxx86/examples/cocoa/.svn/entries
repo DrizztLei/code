@@ -1,0 +1,117 @@
+9
+
+dir
+14471
+http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/examples/cocoa
+http://svn.clozure.com/publicsvn/openmcl
+
+
+
+2010-10-29T15:53:56.790280Z
+14381
+rme
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+8bdb8f1d-59ce-db11-9e41-0016172a54ae
+
+currency-converter
+dir
+
+nib-loading
+dir
+
+interface-databases
+dir
+
+easygui
+dir
+
+ui-elements
+dir
+
+tiny.lisp
+file
+
+
+
+
+2010-12-07T21:01:20.000000Z
+ea17fc18de59edb174cb1455fe338f24
+2009-08-11T19:32:18.669637Z
+12566
+palter
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3316
+
+qtvidcapture
+dir
+
+easygui.lisp
+file
+
+
+
+
+2010-12-07T21:01:20.000000Z
+bb6839539862abf7e8c96b1bd13f0e13
+2010-09-22T18:36:40.058022Z
+14298
+gz
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+180
+
+progress-view-controller
+dir
+

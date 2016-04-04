@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/publicsvn/openmcl/!svn/ver/14458/release/1.6/source/compiler/X86
+END
+x86-backend.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/compiler/X86/x86-backend.lisp
+END
+x86-disassemble.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/compiler/X86/x86-disassemble.lisp
+END
+x86-lap.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/compiler/X86/x86-lap.lisp
+END
+x86-arch.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/compiler/X86/x86-arch.lisp
+END
+x86-asm.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/compiler/X86/x86-asm.lisp
+END
+x86-lapmacros.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/compiler/X86/x86-lapmacros.lisp
+END
+x862.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/publicsvn/openmcl/!svn/ver/14381/release/1.6/source/compiler/X86/x862.lisp
+END

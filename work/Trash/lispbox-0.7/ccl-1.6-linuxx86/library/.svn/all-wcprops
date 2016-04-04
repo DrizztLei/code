@@ -1,0 +1,209 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library
+END
+pty.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/pty.lisp
+END
+parse-ffi.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/parse-ffi.lisp
+END
+cover.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/cover.lisp
+END
+intel-io.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/intel-io.lisp
+END
+mac-file-io.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/mac-file-io.lisp
+END
+oprofile.txt
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/oprofile.txt
+END
+core-files.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/core-files.lisp
+END
+openmcl-gtk-support.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/openmcl-gtk-support.lisp
+END
+darwinx8632-syscalls.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/darwinx8632-syscalls.lisp
+END
+serial-streams.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/serial-streams.lisp
+END
+chud-metering.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/chud-metering.lisp
+END
+leaks.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/leaks.lisp
+END
+x8664-freebsd-syscalls.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/x8664-freebsd-syscalls.lisp
+END
+chud-metering.txt
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/chud-metering.txt
+END
+jp-encode.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/jp-encode.lisp
+END
+x8664-solaris-syscalls.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/x8664-solaris-syscalls.lisp
+END
+elf.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/elf.lisp
+END
+loop.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/loop.lisp
+END
+syscall.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/syscall.lisp
+END
+ppc-linux-syscalls.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/ppc-linux-syscalls.lisp
+END
+macptr-termination.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/macptr-termination.lisp
+END
+darwinppc-syscalls.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/darwinppc-syscalls.lisp
+END
+lispequ.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/lispequ.lisp
+END
+x86-win64-syscalls.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/x86-win64-syscalls.lisp
+END
+splay-tree.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/splay-tree.lisp
+END
+x8664-linux-syscalls.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/x8664-linux-syscalls.lisp
+END
+pascal-strings.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/pascal-strings.lisp
+END
+mach-o-symbols.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/mach-o-symbols.lisp
+END
+dominance.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/dominance.lisp
+END
+darwinx8664-syscalls.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/darwinx8664-syscalls.lisp
+END
+lisp-package.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/lisp-package.lisp
+END
+mach-o.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/mach-o.lisp
+END
+sequence-utils.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/sequence-utils.lisp
+END
+sharp-comma.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/library/sharp-comma.lisp
+END

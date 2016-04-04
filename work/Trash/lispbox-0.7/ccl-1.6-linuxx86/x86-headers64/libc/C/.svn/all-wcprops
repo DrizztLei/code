@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/libc/C
+END
+populate.sh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/libc/C/populate.sh
+END
+.cvsignore
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/x86-headers64/libc/C/.cvsignore
+END

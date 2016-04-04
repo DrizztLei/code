@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/publicsvn/openmcl/!svn/ver/14433/release/1.6/source/level-0
+END
+l0-utils.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-utils.lisp
+END
+l0-init.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/publicsvn/openmcl/!svn/ver/14405/release/1.6/source/level-0/l0-init.lisp
+END
+l0-float.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/publicsvn/openmcl/!svn/ver/14381/release/1.6/source/level-0/l0-float.lisp
+END
+l0-symbol.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-symbol.lisp
+END
+l0-io.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-io.lisp
+END
+l0-complex.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-complex.lisp
+END
+l0-numbers.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-numbers.lisp
+END
+l0-array.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-array.lisp
+END
+nfasload.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/nfasload.lisp
+END
+l0-cfm-support.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/publicsvn/openmcl/!svn/ver/14433/release/1.6/source/level-0/l0-cfm-support.lisp
+END
+l0-hash.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-hash.lisp
+END
+l0-bignum32.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-bignum32.lisp
+END
+l0-error.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-error.lisp
+END
+l0-pred.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-pred.lisp
+END
+l0-int.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-int.lisp
+END
+l0-bignum64.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-bignum64.lisp
+END
+l0-aprims.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-aprims.lisp
+END
+l0-misc.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-misc.lisp
+END
+l0-def.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/level-0/l0-def.lisp
+END

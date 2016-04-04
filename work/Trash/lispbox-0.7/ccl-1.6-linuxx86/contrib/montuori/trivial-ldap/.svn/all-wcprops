@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/contrib/montuori/trivial-ldap
+END
+LICENSE.txt
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/contrib/montuori/trivial-ldap/LICENSE.txt
+END
+example.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/contrib/montuori/trivial-ldap/example.lisp
+END
+trivial-ldap.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/contrib/montuori/trivial-ldap/trivial-ldap.html
+END
+trivial-ldap.asd
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/contrib/montuori/trivial-ldap/trivial-ldap.asd
+END
+trivial-ldap.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/contrib/montuori/trivial-ldap/trivial-ldap.lisp
+END

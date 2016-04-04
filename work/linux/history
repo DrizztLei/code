@@ -1,0 +1,500 @@
+   12  free -h
+   13  top -d .1
+   14  top -d .01
+   15  top -d .001
+   16  top -d .9
+   17  top -d .1
+   18  lsblk 
+   19  free -h
+   20  sync
+   21  free -h
+   22  sudo -s
+   23  sudo -s
+   24  sudo -s
+   25  lsblk 
+   26  exit
+   27  sudo -s
+   28  jobs
+   29  sudo -s
+   30  cd /etc/
+   31  ls
+   32  ls shadow
+   33  cd wo
+   34  cd
+   35  cd work
+   36  ls -a
+   37  df -h .
+   38  ls -alsh
+   39  cat * 
+   40  ls `ls -a`
+   41  cd .java/
+   42  ls
+   43  cd RemoteSystemsTempFiles/
+   44  ls
+   45  ls -alsh
+   46  cd ..
+   47  ls
+   48  cd ROBOT/
+   49  ls
+   50  ls -alsh
+   51  df -h ..
+   52  df -h .
+   53  ls
+   54  df -h
+   55  df -h .
+   56  df -h .
+   57  df -h .
+   58  login-win 
+   59  cd
+   60  cd Music/
+   61  ls
+   62  vlc Bios\ -\ 罪恶王冠.mp3 
+   63  man vlc
+   64  vlc Bios\ -\ 罪恶王冠.mp3  -nw
+   65  vlc Bios\ -\ 罪恶王冠.mp3  -w
+   66  vlc Bios\ -\ 罪恶王冠.mp3 
+   67  mplayerthumbsconfig Moon\ Night\ Party\ -\ 初音ミク.mp3 
+   68  dragon Moon\ Night\ Party\ -\ 初音ミク.mp3 
+   69  ls
+   70  alsaloop 
+   71  alsaplayer 
+   72  sudo =
+   73  sudo -s
+   74  vlc Bi
+   75  kill %1
+   76  jobs
+   77  vlc Bios\ -\ 罪恶王冠.mp3 
+   78  vlc Bios\ -\ 罪恶王冠.mp3 -cvlc
+   79  cvlc Bios\ -\ 罪恶王冠.mp3 
+   80  cvlc Bios\ -\ 罪恶王冠.mp3 &
+   81  ls
+   82  cd
+   83  lsblk 
+   84  sudo -s
+   85  jobs
+   86  kill %1
+   87  sudo -s
+   88  login-mac 
+   89  touch d
+   90  sudo touch d
+   91  rm d
+   92  sudo rm d
+   93  cd
+   94  lsblk 
+   95  login-win 
+   96  exit
+   97  ifconfig wlan0
+   98  ping www.baidu.com
+   99  ifconfig eth0 down
+  100  sudo -s
+  101  sudo -s
+  102  cd
+  103  sudo -s
+  104  login-win 
+  105  ifconfig 
+  106  ping wifi
+  107  ping wifi
+  108  ping wifi
+  109  ping wifi
+  110  ping wifi
+  111  ping wifi
+  112  ifconfig 
+  113  ping www.baidu.com
+  114  vim /etc/host
+  115  vim /etc/hosts
+  116  sudo vim /etc/hosts
+  117  login-win 
+  118  bg %1
+  119  alsamixer 
+  120  ping www.baidu.com
+  121  ifconfig 
+  122  ping www.baidu.com
+  123  p->link[i] == equival ? doit() : defun();
+  124  jobs
+  125  embedded->1123581321.p
+  126  free -h
+  127  exit
+  128  sudo -s
+  129  sudo  -s
+  130  exi
+  131  exit
+  132  sudo -s
+  133  arp -a
+  134  sudo -s
+  135  sudo -s
+  136  sbcl
+  137  cd work
+  138  ls
+  139  ls -alsh
+  140  cd /root/
+  141  ls
+  142  sudo -s
+  143  cd /etc/portage/
+  144  ls
+  145  cd package.use/
+  146  ls
+  147  vim in
+  148  cd .
+  149  cd ..
+  150  ls
+  151  vim package.accept_keywords 
+  152  sudo vim package.accept_keywords 
+  153  eix networkmanger
+  154  eix networkmanager
+  155  sudo -s
+  156  uname -m
+  157  uname -a
+  158  eselect kernel list
+  159  eix gentoo-sources
+  160  ifconfig 
+  161  sudo -s
+  162  mkdir wine
+  163  sudo -s
+  164  mkdir 离散
+  165  chmod 777 
+  166  chmod 777 *
+  167  mkdir 离散
+  168  cd ..
+  169  chmod 777 PPT/
+  170  sudo chmod 777 PPT/
+  171  cd PPT/
+  172  ls
+  173  mkdir 离散
+  174  ls
+  175  cd ..
+  176  chown -Rf eva *
+  177  ls
+  178  ls
+  179  cd PPT/
+  180  ls
+  181  ls
+  182  cd 离散 
+  183  ls
+  184  cd ..
+  185  mkdir temp/
+  186  ls
+  187  rm temp/
+  188  rmdir temp/
+  189  ls
+  190  cd ..
+  191  l
+  192  chmod -Rf 711 *
+  193  cd PPT/
+  194  ls
+  195  mkdir t
+  196  rmdir t
+  197  cd
+  198  exit
+  199  hostname 
+  200  ifconfig 
+  201  ifconfig 
+  202  ifconfig eth0
+  203  ping wwwb.aidu.com
+  204  eix chromiu
+  205  eix adobe
+  206  eix firefox
+  207  sudo -s
+  208  sudo -s
+  209  sudo -s
+  210  exit
+  211  sudo =s
+  212  sudo -s
+  213  kmix
+  214  sudo -s
+  215  exit
+  216  eix alsa-utils
+  217  sudo emerge -av  alsa-utils
+  218  sudo -s
+  219  aplay -D hw:0,0 Bios\ -\ 罪恶王冠.mp3 
+  220  aplay -D hw:0,3 Bios\ -\ 罪恶王冠.mp3 
+  221  aplay -D hw:1,3 Bios\ -\ 罪恶王冠.mp3 
+  222  sudo -s
+  223  sudo -s
+  224  cd
+  225  vim .asoundrc 
+  226  emacs -q .asoundrc -nw
+  227  vim .asoundrc
+  228  aplay -D default 
+  229  aplay -D default test.wav
+  230  sudo -s
+  231  cd
+  232  vim .asoundrc
+  233  sudo -s
+  234  exit
+  235  cd
+  236  ls
+  237  cd .config/
+  238  ls
+  239  cd autostart/
+  240  ls
+  241  ls -alsh
+  242  vim fcitx.desktop 
+  243  exit
+  244  sudo -s
+  245  exit
+  246  sudo -s
+  247  hostname 
+  248  sudo -s
+  249  nmap  -Pn 192.168.1.1
+  250  exit
+  251  hostname D
+  252  sudo -s
+  253  ifconfig 
+  254  suod -s
+  255  sudo -s
+  256  sudo -s
+  257  ip addr
+  258  ifconfig -a
+  259  sudo -s
+  260  sudo -s
+  261  rc-up
+  262  sudo -s
+  263  exit
+  264  sudo -s
+  265  sudo -s
+  266  hostname 
+  267  sudo -s
+  268  exit
+  269  exit
+  270  sudo -s
+  271  hostname 
+  272  exit
+  273  sudo -s
+  274  sudo -s
+  275  sudo -s
+  276  hostname 
+  277  hostname 
+  278  hostname 
+  279  ping gentoo
+  280  ping gentoo
+  281  ping gentoo
+  282  ping gentoo
+  283  ifconfig 
+  284  hostname 
+  285  ifconfig 
+  286  ping www.baidu.com
+  287  ping gentoo
+  288  vim /etc/conf.d/net
+  289  sudo -s
+  290  ping www.baidu.com
+  291  ping gentoo
+  292  ping wifi
+  293  eselect  profile list
+  294  eselect  kernel  list
+  295  sudo -s
+  296  hostname 
+  297  sudo -s
+  298  hostname 
+  299  hostname 
+  300  hostname 
+  301  hostname 
+  302  hostname 
+  303  hostname 
+  304  hostname 
+  305  hostname 
+  306  hostname 
+  307  hostname 
+  308  hostname 
+  309  hostname 
+  310  hostname 
+  311  hostname 
+  312  exit
+  313  sudo -s
+  314  hostname 
+  315  sudo -s
+  316  hostname 
+  317  sudo -s
+  318  host
+  319  hostname 
+  320  hostname 
+  321  hostname 
+  322  hostname 
+  323  hostname 
+  324  hostname 
+  325  sudo -s
+  326  exit
+  327  exit
+  328  exit
+  329  exit
+  330  nmap  -A -Pn 203.208.46.146
+  331  ping 203.208.46.164
+  332  nmap  -A 203.208.46.164
+  333  bg %1
+  334  nmap -Pn 203.208.46.164
+  335  exit
+  336  jobs
+  337  fg %1
+  338  l
+  339  jobs
+  340  exit
+  341  ls
+  342  mv stage3-amd64-20160107.tar.bz2  .backup.old.system/
+  343  sudo mv stage3-amd64-20160107.tar.bz2  .backup.old.system/
+  344  cd .backup.old.system/
+  345  ls
+  346  ls -alsh
+  347  cd ..
+  348  amixer sset Master unmute
+  349  exit
+  350  su
+  351  exit
+  352  sudo -s
+  353  exit
+  354  tail -f /var/log/emerge-fetch.log 
+  355  sudo tail -f /var/log/emerge-fetch.log 
+  356  sudo tail -f /var/log/emerge-fetch.log 
+  357  lsblk 
+  358  jobs
+  359  umount -a
+  360  sudo umount -a
+  361  lsblk 
+  362  mount /dev/sda2 /boot/efi/
+  363  sudo mount /dev/sda2 /boot/efi/
+  364  sudo -s
+  365  su
+  366  exit
+  367  cd /mnt/kali
+  368  ls
+  369  cd etc/
+  370  ls
+  371  cd ..
+  372  cd /mnt/usb/
+  373  ls
+  374  cd etc/
+  375  ls
+  376  vim hosts.bak 
+  377  cat hosts.bak >> /etc/hosts
+  378  sudo cat hosts.bak >> /etc/hosts
+  379  sudo -s
+  380  203.208.46.190 
+  381  ping 203.208.46.190 
+  382  sudo -s
+  383  su
+  384  su
+  385  sudo -s
+  386  su
+  387  sudo -s
+  388  su
+  389  sudo -s
+  390  exit
+  391  sudo -s
+  392  su
+  393  sudo -s
+  394  alsamixer 
+  395  exit
+  396  exit
+  397  exit
+  398  ifconfig 
+  399  ping www.baidu.com
+  400  su
+  401  sudo -s
+  402  su
+  403  su
+  404  alsamixer 
+  405  uname -msr
+  406  uname -a
+  407  sudo -s
+  408  sudo -s
+  409  su
+  410  exit
+  411  exit
+  412  su
+  413  sudo -s
+  414  pwd
+  415  sudo -s
+  416  su
+  417  su
+  418  pwd
+  419  su
+  420  su
+  421  sudo -s
+  422  exit
+  423  su
+  424  su
+  425  sudo -s
+  426  alsamixer 
+  427  exit
+  428  exit
+  429  su
+  430  su
+  431  su
+  432  exit
+  433  exit
+  434  exit
+  435  exit
+  436  su
+  437  lsblk 
+  438  lsblk 
+  439  cd /usr/src/
+  440  ls
+  441  alsamixer 
+  442  alsamixer 
+  443  su
+  444  su
+  445  ls
+  446  su
+  447  exit
+  448  uname -a
+  449  exit
+  450  su
+  451  su
+  452  u
+  453  su
+  454  uname -a
+  455  sudo -s
+  456  su
+  457  exit
+  458  cd /usr/src/
+  459  ls
+  460  cd /boot/
+  461  ls
+  462  eix vmware-modules
+  463  sudo -s
+  464  exit
+  465  alsamixer 
+  466  su
+  467  exit
+  468  exit
+  469  exit
+  470  exit
+  471  sudo -s
+  472  su
+  473  sudo -s
+  474  sudo -s
+  475  sudo -s
+  476  login-win 
+  477  lsblk 
+  478  cd /mnt/kali
+  479  ls
+  480  cd /
+  481  ls -alsh
+  482  ls -a
+  483  cd /mnt/kali
+  484  ls
+  485  cat initrd.img 
+  486  ls
+  487  ls -l
+  488  ls
+  489  cd etc/
+  490  ls
+  491  vim hosts
+  492  exit
+  493  sudo -s
+  494  sudo -s
+  495  su
+  496  sudo -s
+  497  gparted-pkexec 
+  498  gparted
+  499  su
+  500  exit
+  501  sudo -s
+  502  login-win 
+  503  其实你要判定的东西是比较多的。 我是非常喜欢你的啊陈丹陈丹陈丹长度陈丹陈丹陈丹陈丹陈丹陈丹陈丹陈丹陈丹陈丹陈丹陈丹陈丹
+  504  history 
+  505  ls
+  506  cd work
+  507  ls
+  508  cd linux/
+  509  ls
+  510  touch history
+  511  history > history 

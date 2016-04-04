@@ -1,0 +1,37 @@
+9
+
+dir
+14471
+http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/examples/cocoa/ui-elements/HOWTO_files
+http://svn.clozure.com/publicsvn/openmcl
+
+
+
+2008-02-20T02:26:26.382714Z
+8517
+mikel
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+8bdb8f1d-59ce-db11-9e41-0016172a54ae
+
+pages
+dir
+
+images
+dir
+
+stylesheets
+dir
+

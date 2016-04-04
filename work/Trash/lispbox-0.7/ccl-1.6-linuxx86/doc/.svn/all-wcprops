@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/publicsvn/openmcl/!svn/ver/14405/release/1.6/source/doc
+END
+doc-splitter.lisp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/doc-splitter.lisp
+END
+release-notes-1.1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/release-notes-1.1.txt
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/LICENSE
+END
+release-notes-1.2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/release-notes-1.2.txt
+END
+release-notes.txt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/release-notes.txt
+END
+ccl-documentation.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/publicsvn/openmcl/!svn/ver/14405/release/1.6/source/doc/ccl-documentation.html
+END
+LGPL
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/doc/LGPL
+END

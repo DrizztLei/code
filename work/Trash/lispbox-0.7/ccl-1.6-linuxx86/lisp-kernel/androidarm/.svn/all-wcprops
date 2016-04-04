@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/lisp-kernel/androidarm
+END
+ucontext.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/lisp-kernel/androidarm/ucontext.h
+END
+link.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/lisp-kernel/androidarm/link.h
+END
+armandroid.x
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/lisp-kernel/androidarm/armandroid.x
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/publicsvn/openmcl/!svn/ver/14361/release/1.6/source/lisp-kernel/androidarm/Makefile
+END

@@ -1,0 +1,49 @@
+9
+
+dir
+14471
+http://svn.clozure.com/publicsvn/openmcl/release/1.6/x86-headers
+http://svn.clozure.com/publicsvn/openmcl
+
+
+
+2008-12-14T10:51:34.014679Z
+11519
+gb
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+8bdb8f1d-59ce-db11-9e41-0016172a54ae
+
+jni
+dir
+
+gl
+dir
+
+gmp
+dir
+
+elf
+dir
+
+gnome2
+dir
+
+gtk2
+dir
+
+libc
+dir
+
