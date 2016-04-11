@@ -560,6 +560,11 @@ void Ann<T> :: train(T ** const set , int const value , int const times , double
 
     double loss = value;
     string filename = "";
+
+    for (int var = 0; var < number; ++var) {
+            copy_input(var);
+    }
+
     for (int i = 0; i < times || loss > limit; ++i)
     {
         point = 0;
@@ -567,7 +572,7 @@ void Ann<T> :: train(T ** const set , int const value , int const times , double
         {
             set_input(set[j]);
             calculator();
-            copy_input(j);
+            //copy_input(j);
             copy_level(j);
             copy_list(j);
             ++ point;

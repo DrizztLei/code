@@ -10,11 +10,13 @@
 #include <unistd.h>
 #include <pthread.h>
 
+
 using std :: cout;
 using std :: endl;
 using std :: cin;
 using std :: string;
 using std :: stringstream;
+
 
 int const static LIMIT = 19;
 

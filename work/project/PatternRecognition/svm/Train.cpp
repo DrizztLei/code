@@ -4,6 +4,7 @@ double const static THRESHOLD = 0.8;
 bool start = false;
 int temp_err_train = 0, temp_err_check = 0, best_err_train = 1000, best_err_check = 1000;
 
+
 template <typename T>
 bool check(Ann<T> *& ann , double ** set , int number , int size){
     int limit = number * THRESHOLD;
@@ -15,6 +16,7 @@ bool check(Ann<T> *& ann , double ** set , int number , int size){
         ann -> calculator();
 //cout << "calculator " << endl;
 //cout << ann -> get_result(set[i][size-1]) << endl;
+
         if(!ann -> get_result(set[i][size-1])){
             temp_err_train++;
         }

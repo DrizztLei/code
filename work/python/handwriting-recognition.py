@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import input_data
 import tensorflow as tf
 

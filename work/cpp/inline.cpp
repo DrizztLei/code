@@ -1,4 +1,7 @@
 #include <iostream>
+
+
+
 using namespace std;
 inline double sqrt(double x){return x*x;}
 int main(int argc ,char * argb[]){
