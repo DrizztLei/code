@@ -1,0 +1,13 @@
+package libsvm;
+
+import java.io.IOException;
+
+public class Main {
+	public static void main(String[] args) throws IOException{
+		  String[] trainArgs = {"/home/elvis/final_svm"};//directory of training file  
+		  String modelFile = svm_train._main(trainArgs);  
+	      String[] testArgs = {"/home/elvis/final_svm", modelFile, "/home/elvis/svm_result"};//directory of test file, model file, result file  
+	      Double accuracy = svm_predict._main(testArgs);
+	      System.out.println("SVM Classification is done! The accuracy is " + accuracy);  		
+	}
+}

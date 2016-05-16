@@ -21,7 +21,6 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui
 
-QMAKE_CXXFLAGS += -std=c++0x
 QT += network
 QT += sql
 QT += testlib

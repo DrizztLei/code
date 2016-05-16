@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
   file -> addAction(openAction);
   QToolBar * toolbar = addToolBar(tr("&File"));
   toolbar -> addAction(openAction);
+  //this -> setBackingStore();
   //toolbar -> setStatusTip("Toolbar");
 }
 

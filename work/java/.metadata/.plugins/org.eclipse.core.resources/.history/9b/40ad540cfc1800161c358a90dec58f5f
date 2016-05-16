@@ -1,0 +1,10 @@
+package libsvm;
+public class Main {
+	public static void main(String[] args){
+		  String[] trainArgs = {"UCI-breast-cancer-tra"};//directory of training file  
+		  String modelFile = svm_train._main(trainArgs);  
+	      String[] testArgs = {"UCI-breast-cancer-test", modelFile, "UCI-breast-cancer-result"};//directory of test file, model file, result file  
+	      Double accuracy = svm_predict._main(testArgs);
+	      System.out.println("SVM Classification is done! The accuracy is " + accuracy);  		
+	}
+}

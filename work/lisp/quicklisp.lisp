@@ -1753,5 +1753,4 @@ the indexes in the header accordingly."
                             :dist-url dist-url))))))
 
 (write-string *after-load-message*)
-
 ;;; End of quicklisp.lisp

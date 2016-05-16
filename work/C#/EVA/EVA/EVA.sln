@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2857B73E-F847-4B02-9238-064979017E93}") = "EVA", "EVA\EVA.cproj", "{62E458F1-5B0D-401F-8BB2-5B5C9EDB4D78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62E458F1-5B0D-401F-8BB2-5B5C9EDB4D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62E458F1-5B0D-401F-8BB2-5B5C9EDB4D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62E458F1-5B0D-401F-8BB2-5B5C9EDB4D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62E458F1-5B0D-401F-8BB2-5B5C9EDB4D78}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = EVA\EVA.cproj
+	EndGlobalSection
+EndGlobal

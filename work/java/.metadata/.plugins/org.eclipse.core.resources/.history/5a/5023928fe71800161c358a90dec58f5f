@@ -1,0 +1,53 @@
+import java.io.*;
+import java.util.StringTokenizer;
+
+import javax.security.auth.x500.X500Principal;
+
+import libsvm.*;
+
+public class svm_demo {
+
+	/**
+	 * @param args
+	 * @throws IOException
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		/*
+		 * String[] arg = { "/home/elvis/data", // 存放SVM训练模型用的数据的路径
+		 * "/home/elvis/data" }; // 存放SVM通过训练数据训/ //练出来的模型的路径
+		 * 
+		 * String[] parg = { "/home/elvis/data", // 这个是存放测试数据
+		 * "/home/elvis/model", // 调用的是训练以后的模型 "/home/elvis/out" }; //
+		 * 生成的结果的文件的路径 System.out.println("........SVM运行开始.........."); //
+		 * 创建一个训练对象 svm_train t = new svm_train(); // 创建一个预测或者分类的对象 svm_predict
+		 * p = new svm_predict(); t.main(arg); // 调用 p.main(parg); // 调用
+		 */
+		int m = 1;
+		String path = "/home/elvis/model";
+		svm_model model = svm.svm_load_model(path);
+
+		
+		  BufferedReader input = new BufferedReader(new InputStreamReader(new FileInputStream(new File("D://testData.abs.chinese"))));
+			svm_node[] x = new svm_node[m];
+			 String line = input.readLine();
+			    if(line == null) break;
+
+			    StringTokenizer st = new StringTokenizer(line," /t/n/r/f:");
+
+			    double target = atof(st.nextToken());
+			    int m = st.countTokens()/2;
+			for(int i = 0 ; i  < m ; i++){
+				x[i] = new svm_node();
+				x[i].index = 
+			}
+			double predict_value[] = new double[m];
+			// 输出使用载入的模型预测的标签
+			System.out.println(svm.svm_predict(model, x));
+
+			svm_node node[] = new svm_node[2];
+			double result[] = new double[1];
+			System.out.println(svm.svm_predict_values(model, node, result));
+			// svm.svm_predict_values(arg0, arg1, arg2)
+	}
+}

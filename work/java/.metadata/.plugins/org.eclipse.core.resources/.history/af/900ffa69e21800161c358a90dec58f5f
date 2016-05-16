@@ -1,0 +1,51 @@
+import java.io.IOException;
+
+import libsvm.svm;
+
+import libsvm.svm_model;
+
+public class svm_demo {
+ 
+ public static void main(String[] args) throws IOException {
+  svm_train svmt = new svm_train();
+
+  svm_predict svmp = new svm_predict();
+
+  String[] argvTrain = {
+
+  "C:\\Users\\baolong\\Desktop\\KDD\\other\\svm\\train\\TR1.data",// 训练文件
+
+    "C:\\Users\\baolong\\Desktop\\KDD\\other\\svm\\model\\MO1.model"// 模型文件
+                    
+  };
+
+  String[] argvPredict = {
+
+    "C:\\Users\\baolong\\Desktop\\KDD\\other\\svm\\predict\\PR1.data",// 预测文件
+
+    "C:\\Users\\baolong\\Desktop\\KDD\\other\\svm\\model\\MO1.model", // 模型文件
+
+    "C:\\Users\\baolong\\Desktop\\KDD\\other\\svm\\result\\RE1.out" // 预测结果文件
+
+  };
+
+  try {
+
+   svmt.main(argvTrain);
+
+   svmp.main(argvPredict);
+
+  } catch (IOException e) {
+
+   e.printStackTrace();
+
+  }
+
+  double[] record = { -1, 12, 12, 78 };
+
+  libsvm.svm_model model = svm
+    .svm_load_model("C:\\Users\\baolong\\Desktop\\KDD\\other\\svm\\model\\MO1.model");
+
+  System.out.println(svmp.predictPerRecord(record, model));
+ }
+}

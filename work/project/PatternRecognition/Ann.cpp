@@ -510,14 +510,8 @@ void Ann<T> :: train(T ** const set , int const value , int const times , double
     this -> rate = rate;
     this -> lambda = lambda;
 
-    // pre_process(set , value);
+    int number = value * 0.8;
 
-    // getchar();
-
-    //int number = value * 0.8 ;
-    int number = value ;
-    //cout << number << endl;
-    //getchar();
     best_train = best_confirm = number;
     this -> set = set;
     origin = new double *[number];
@@ -572,12 +566,11 @@ void Ann<T> :: train(T ** const set , int const value , int const times , double
         {
             set_input(set[j]);
             calculator();
-            //copy_input(j);
             copy_level(j);
             copy_list(j);
             ++ point;
         }
-        if(i % 1000 == 0){
+        if(i % 2 == 0){
             cout << "Ietration : " << i << endl;
             double temp;
             temp = softmax(set , point , max , argc_output , value, true);
@@ -1004,7 +997,7 @@ void Ann<T> :: init(int input , int argc , int * detailed , int output){
 template <typename T>
 void Ann<T> :: init_level(){
     cout << std :: fixed << std :: setprecision(LIMIT);
-    srand((unsigned)time(NULL));
+    srand((unsigned)time(0));
     for (int i = 0; i < argc_level; ++i)
     {
         for (int j = 0; j < info[i]; ++j)

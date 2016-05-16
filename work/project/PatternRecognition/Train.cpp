@@ -81,7 +81,7 @@ bool check(Ann<T> *& ann , double ** set , int number , int size){
   }
 */
 
-int getNumber(string filename){
+int getNumber(string filename , int number){
     std :: ifstream in;
 //string filename = "Sample.sonic";
     in.open(filename.c_str());
@@ -103,20 +103,24 @@ int getNumber(string filename){
     count -= 1;
 
 //cout << "Number for : " << count << endl;
-    if(count % 202 == 0) {
+    if(count % number == 0) {
 //cout << "%202 done " << endl;
 //cout << "congratulation . " << endl;
         cout << "Sample confirm ." << endl;
     }else{
 //cout << "GG" << endl;
         cout << "Sample is broken ! " << endl;
+        for (int i = 1; i < count; i++) {
+            if(count % i == 0){
+                cout << "Get the suppose number : " << i << endl;
+            }
+        }
         exit(0);
     }
-
     return count;
 }
 
-void getData(double ** & set , int & number , int & size , string filename){
+void getData(double ** & set , int & number , int & size , string filename , int total){
 
     double var;
     std :: ifstream in;
@@ -128,9 +132,9 @@ void getData(double ** & set , int & number , int & size , string filename){
         return;
     }
 
-    int count = getNumber(filename);
-    number = count / 202;
-    size = 202;
+    int count = getNumber(filename , total);
+    number = count / total;
+    size = total;
 
     set = new double*[count];
 
@@ -160,10 +164,10 @@ void getData(double ** & set , int & number , int & size , string filename){
 
 int main(int argc , char ** argv){
     int array[] = { 50 , 50 };
-    Ann<double> * ann = new Ann<double>(201 , 2 , array , 6);
+    Ann<double> * ann = new Ann<double>(61 , 2 , array , 6);
     double ** set;
     int number , size;
-    getData(set , number , size , "train.txt");
+    getData(set , number , size , "raw_normal.txt" , 62);
     cout << "Number for : " << number << endl;
     ann -> train(set , number , 100000 , 5e-4 , 1e-3 , 0.2 , 0.0);
     cout << "Train done ." << endl;

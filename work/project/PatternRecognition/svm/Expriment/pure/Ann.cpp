@@ -27,10 +27,10 @@ public:
     void load(string filename);
     void save();
     void print_weight();
-    void train(T ** set , int number , int times , double rate , double lambda , double limit , double probality , double decay);
+    void train(T ** set , int number , int times , double rate , double lambda , double limit , double probality , double decay , int addition , int extract);
     bool adjust_output(double * target);
     bool adjust_hidden();
-    void calculator();
+    void calculator(bool flag = false);
     int get_argc_input();
     int get_argc_output();
     void set_input(double * argc);
@@ -75,7 +75,26 @@ private:
     string itos(int data);
     void deal_for_svm(T ** set , int value);
     void reset();
+    void segmentation(T ** set , int * count , int value , double rate , int addition , int extract);
+    void generate_svm(T ** set , string filename , int number , int size);
 };
+
+template<typename T>
+void Ann<T> ::  generate_svm(T ** set , string filename , int number , int size){
+    std::ofstream out;
+    out.open(filename.c_str());
+    if(out.is_open()){
+        for(int i = 0 ; i < number ; i++){
+            out << set[i][size] << " ";
+            for(int j = 0 ; j < size ; j++){
+                out << j+1 << ":" << set[i][j] << " " ;
+            }
+            out << "\n";
+        }
+    }
+    cout << "generate over . " << endl;
+}
+
 
 template <typename T>
 void Ann<T> :: reset(){
@@ -99,11 +118,10 @@ template <typename T>
 bool Ann<T> :: check(T ** set , T ** check , int train , int size){
     int err_train = 0 , err_confirm = 0;
     bool flag = false;
-    //if(best_train <= 10) flag = true;
     for (int i = 0; i < train; ++i)
     {
         set_input(set[i]);
-        calculator();
+        calculator(true);
         if(!get_result(set[i][argc_input])){
             err_train ++;
         }
@@ -120,9 +138,8 @@ bool Ann<T> :: check(T ** set , T ** check , int train , int size){
     if(flag) cout << "--------------------" << endl;
     for (int i = 0; i < size; ++i)
     {
-        //set_input(set[i]);
         set_input(check[i]);
-        calculator();
+        calculator(true);
         if(!get_result(check[i][argc_input])){
             err_confirm ++;
         }
@@ -135,14 +152,13 @@ bool Ann<T> :: check(T ** set , T ** check , int train , int size){
             cout << "check for calculator : " << max << endl << endl << endl;
         }
     }
-    // if(flag) getchar();
     cout << "Error in train for : " << err_train << endl;
     cout << "Number for : " << train << endl;
     cout << "Rate for : " << 1 - (double)err_train / train << endl;
     cout << "Error in check for : " << err_confirm << endl;
     cout << "Number for : " << size << endl;
     cout << "Rate for : " << 1 - (double)err_confirm / size << endl;
-    if(err_train * 0.8 + err_confirm * 0.2  < best_train * 0.8 + best_confirm * 0.2){
+    if(err_train * 0.2 + err_confirm * 0.8  < best_train * 0.2 + best_confirm * 0.8){
         best_train = err_train;
         best_confirm = err_confirm;
         save();
@@ -309,8 +325,8 @@ void Ann<T> :: compute_gradient(int point , int max){
             for (int j = 0; j < info[i]; ++j)
             {
                 //if(get_random() > probality){
-                    offset[i+1][j] += -rate * offset_sum(j);
-                    //}
+                offset[i+1][j] += -rate * offset_sum(j);
+                //}
             }
             {
                 int m = point , n = info[i+1] , p = info[i];
@@ -442,9 +458,8 @@ void Ann<T> :: deal_for_svm(T ** set , int value){
 }
 
 template <typename T>
-void Ann<T> :: train(T ** const set , int const value , int const times , double rate , double lambda , double limit , double probality , double decay){
-    pre_process(set , value);
-    // this -> temp = set;
+void Ann<T> :: train(T ** const set , int value , int const times , double rate , double lambda , double limit , double probality , double decay , int addition , int extract){
+    //pre_process(set , value);
 
     this -> probality = probality;
     this -> limit = limit;
@@ -452,63 +467,71 @@ void Ann<T> :: train(T ** const set , int const value , int const times , double
     this -> backup = rate;
     this -> lambda = lambda;
 
-    //int number = value * 0.2 - 17;
-    //int number = value * 0.8 + 18;
-    //int number = value ;
-    //int number = value * 0.8 + 15;
-    int count = 0;
-    int var = 0;
-    for (int i = 0; i < value; i++) {
-        var = set[i][argc_input];
-        //cout << var << endl;
-        if(var != 4 && var != 5 && var != 1 && var != 0){
-            count ++;
-        }
-    }
-    //cout << count << endl;
-    //getchar();
+    int count[argc_output];
 
-    int number = value * 0.8 + 18;
-    number = 260 - 40;
-    number = 104;
-    // this -> set = set + number;
-    this -> set = new T*[number];
-
-    for (int i = 0; i < number; i++) {
-        this -> set[i] = new T[argc_input+1];
-        for (int j = 0; j < argc_input+1; ++j) {
-            this -> set[i][j] = set[i][j];
-            //cout << this -> set[i][j] << endl;
-        }
-        //getchar();
-        //cout << this -> set[i][argc_input] << endl;
+    for(int i = 0 ; i < argc_output ; i++){
+        count[i] = 0;
     }
 
-    //getchar();
+
+
+    bool flag = true;
+    if(flag){
+        for(int i = 0 ; i < value ; i++){
+            set[i][argc_input] -= 3;
+            int target = set[i][argc_input];
+            if (target >= argc_output || target < 0 ) {
+                cout << "unexcepted target found : " << target  << endl;
+                getchar();
+            }
+            count[target] ++;
+        }
+    }
+
+    int number = 0;
+    for(int i = 0 ; i < argc_output ; ++i){
+        cout << "Count [" << i << "] for : " << count[i] << endl;
+        number += count[i];
+    }
+
+    //int addtion = 1 , extract = 0;
 
     /*
-    for (int i = 0; i < number; i++) {
-        for (int j = 0; j < argc_input; j++) {
-            cout << this -> set[i][j] << endl;
+    number = 192 * 4;
+    this -> set = new T*[number];
+
+    for(int i = 0 ; i < number; i++){
+        this -> set[i] = new T[argc_input+1];
+    }
+    int temp = 0;
+    for(int i = 0 ; i < value ; i++){
+        int target = (int)(round(set[i][argc_input]));
+        if(count[target] >= 192){
+            continue;
+        }else{
+            for(int j = 0 ; j < argc_input + 1 ; j++){
+                this -> set[temp][j] = set[i][j];
+            }
+            temp ++;
         }
+        count[target] ++;
     }
     */
+//    cout << "Get the sum for : " << temp << endl;
 
-    int help = 20;
-    this -> temp = new T * [help];
-    for (int i = 0 ; i < help; i++) {
-        temp[i] = new T[argc_input + 1];
-        for (int j = 0; j < argc_input+1; ++j) {
-            this -> temp[i][j] = set[number + i][j];
-        }
-        this -> temp[i][argc_input] = set[value - 64 + i][argc_input];
-        //cout << temp[i][argc_input] << endl;
-    }
+//    generate_svm(this -> set , "final_svm" , number , argc_input);
 
-    //getchar();
+//    exit(EXIT_SUCCESS);
+
+    segmentation(set , count , value , 0.8 , addition , extract);
+
+    value = number;
+
+    number = value * 0.8 + addition;
+    int help = value - number + extract;
 
     best_train = number;
-    best_confirm = value - number;
+    best_confirm = help;
 
     origin = new double *[number];
 
@@ -533,10 +556,6 @@ void Ann<T> :: train(T ** const set , int const value , int const times , double
         if(info[i] > max) max = info[i];
     }
 
-    //if(max < number) max = number;
-
-    //cout << argc_output << endl;
-    //getchar();
     this -> max = max;
     medium = new double*[max];
     for (int i = 0; i < max; ++i)
@@ -564,7 +583,6 @@ void Ann<T> :: train(T ** const set , int const value , int const times , double
         reset();
         point = 0;
         for (int j = 0; j < number; ++j)
-
         {
             set_input(this -> set[j]);
             calculator();
@@ -575,14 +593,14 @@ void Ann<T> :: train(T ** const set , int const value , int const times , double
 
         this -> rate = (backup) / (1 + decay * i);
 
-        if(i % 1000 == 0){
+        if(i % 100 == 0){
             cout << "----------------------------------->" << endl;
             cout << "Ietration : " << i << endl;
-            temp_var = softmax(this -> set , point , max , argc_output , number + help, true);
+            temp_var = softmax(this -> set,  point, max, argc_output,  value, true);
             cout << "The distance : " << temp_var - loss << endl;
             loss = temp_var;
         }else{
-            softmax(this -> set , point , max , argc_output , number + help , false);
+            temp_var = softmax(this -> set,  point, max, argc_output,  value, false);
         }
     }
     write_file("final.conf");
@@ -618,6 +636,86 @@ void Ann<T> :: train(T ** const set , int const value , int const times , double
 }
 
 template <typename T>
+void Ann<T> ::  segmentation(T ** set , int * count , int value , double rate , int addtion , int extract){
+    int limit_set[argc_output] , limit_temp[argc_output];
+    for(int i = 0 ; i < argc_output ; i++){
+        limit_set[i] = 0;
+        limit_temp[i] = 0;
+    }
+    int number = value * rate;
+    this -> set = new T*[number + addtion];
+    this -> temp = new T*[value - number + extract];
+
+    for(int i = 0 ; i < number + addtion ; i++){
+        this -> set[i] = new T[argc_input+1];
+    }
+    for(int i = 0 ; i < value - number + extract ;i++){
+        this -> temp[i] = new T[argc_input+1];
+    }
+
+    int count_set = 0 , count_temp = 0;
+
+    for(int i = 0 ; i < value ; i++){
+        int target = (int)(round(set[i][argc_input]));
+        if(target >= argc_output || target < 0) continue;
+        if(get_random() < rate){
+            if(limit_set[target] < count[target] * rate){
+                for(int j = 0 ; j < argc_input + 1 ; j++){
+                    this -> set[count_set][j] = set[i][j];
+                }
+                ++limit_set[target];
+                ++count_set;
+            }else{
+                for(int j = 0 ; j < argc_input + 1 ; j++){
+                    this -> temp[count_temp][j] = set[i][j];
+                }
+                ++limit_temp[target];
+                ++count_temp;
+            }
+        }else{
+            if(limit_temp[target] < (count[target] - count[target] * rate)){
+                for(int j = 0 ; j < argc_input + 1 ; j++){
+                    this -> temp[count_temp][j] = set[i][j];
+                }
+                ++limit_temp[target];
+                ++count_temp;
+            }else{
+                for(int j = 0 ; j < argc_input + 1 ; j++){
+                    this -> set[count_set][j] = set[i][j];
+                }
+                ++limit_set[target];
+                ++count_set;
+            }
+        }
+
+        /*
+        if(limit[target] < count[target] * rate){
+            if(get_random() >= rate && (count[target] - limit[target])){
+                for (int j = 0 ; j < argc_input+1; ++j){
+                    this -> temp[count_temp][j] = set[i][j];
+                }
+                cout << "TEMP FOR : " << set[i][argc_input] << endl;
+                count_temp ++;
+            }else{
+                limit[target] ++;
+                for (int j = 0; j < argc_input+1; ++j) {
+                    this -> set[count_set][j] = set[i][j];
+                }
+                cout << "SET FOR : " << set[i][argc_input] << endl;
+                count_set ++;
+            }
+        }else{
+            for (int j = 0 ; j < argc_input+1; ++j){
+                this -> temp[count_temp][j] = set[i][j];
+            }
+            cout << "TEMP FOR : " << set[i][argc_input] << endl;
+            count_temp ++;
+        }
+        */
+    }
+}
+
+template <typename T>
 double Ann<T> :: softmax(T ** set , int const point , int const  max , int const  argc_output , int value, bool flag){
     double sum[point];
     for (int i = 0 ; i < point; ++i)
@@ -633,8 +731,10 @@ double Ann<T> :: softmax(T ** set , int const point , int const  max , int const
     {
         for (int j = 0; j < argc_output; ++j)
         {
+            //cout << list[i][j] << "\t";
             list[i][j] /= sum[i];
         }
+        //cout << endl;
     }
     double loss = 0;
     for (int i = 0; i < point; ++i)
@@ -664,7 +764,8 @@ double Ann<T> :: softmax(T ** set , int const point , int const  max , int const
         string filename = "";
         int number = point;
         if(check(set , temp , number , value - number)){
-            filename = itos(best_train) + "-" + itos(number) + "-" + itos(best_confirm) + "-" + itos(value - number) + ".conf";
+            //filename = itos(best_train) + "-" + itos(number) + "-" + itos(best_confirm) + "-" + itos(value - number) + ".conf";
+            filename = itos(best_confirm) + "-" + itos(value - number) + "-" +itos(best_train) + "-" + itos(number) +".conf";
             cout << "Write the weight in : " << filename << endl;
             write_file(filename);
         }
@@ -689,6 +790,7 @@ void Ann<T> :: pre_process(T ** set , int value){
         for (int j = 0; j < argc_input; ++j)
         {
             set[i][j] *= 100;
+            if(set[i][j] < 0.1) set[i][j] = 0;
         }
     }
 }
@@ -803,10 +905,10 @@ Ann<T> :: Ann(int input , int argc , int * detailed , int output ){
 }
 
 template <typename T>
-void Ann<T> :: calculator(){
+void Ann<T> :: calculator(bool flag = false){
     for (int i = 0; i < info[0]; ++i)
     {
-        if(dropout[0][i]){
+        if(dropout[0][i] || flag){
             double sum = 0;
             for (int j = 0 ; j < argc_input ; ++j)
             {
@@ -819,7 +921,7 @@ void Ann<T> :: calculator(){
     {
         for (int j = 0; j < info[i]; ++j)
         {
-            if(dropout[i][j]){
+            if(dropout[i][j] || flag){
                 double sum = 0;
                 for (int k = 0 ; k < info[i-1]; ++k)
                 {
@@ -836,7 +938,7 @@ void Ann<T> :: calculator(){
         double sum = 0;
         for (int j = 0; j < info[argc_level-1]; ++j)
         {
-            if(dropout[argc_level-1][j]){
+            if(dropout[argc_level-1][j] || flag){
                 sum += level[argc_level-1][j] * weight[argc_level][j][i];
             }
         }

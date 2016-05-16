@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_TESTLIB_LIB -DQT_CORE_LIB -DQT_TESTCASE_BUILDDIR='"/home/elvis/work/QT/VLC/VLC_0.1/build-VLC-Qt_5_5_1_qt5-Debug"'
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -std=c++0x -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../VLC -I. -isystem /usr/include/qt5 -isystem /usr/include/qt5/QtWidgets -isystem /usr/include/qt5/QtGui -isystem /usr/include/qt5/QtCore -I. -I. -I/usr/lib64/qt5/mkspecs/linux-g++
+INCPATH       = -I../VLC -I. -isystem /usr/include/qt5 -isystem /usr/include/qt5/QtWidgets -isystem /usr/include/qt5/QtGui -isystem /usr/include/qt5/QtNetwork -isystem /usr/include/qt5/QtSql -isystem /usr/include/qt5/QtTest -isystem /usr/include/qt5/QtCore -I. -I. -I/usr/lib64/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib64/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = VLC1.0.0
 DISTDIR = /home/elvis/work/QT/VLC/VLC_0.1/build-VLC-Qt_5_5_1_qt5-Debug/.tmp/VLC1.0.0
 LINK          = g++
 LFLAGS        = 
-LIBS          = $(SUBLIBS) -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Sql -L/usr/lib64/mysql -lQt5Test -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -209,6 +209,7 @@ DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/features/qt.prf \
 		/usr/lib64/qt5/mkspecs/features/resources.prf \
 		/usr/lib64/qt5/mkspecs/features/moc.prf \
+		/usr/lib64/qt5/mkspecs/features/testlib_defines.prf \
 		/usr/lib64/qt5/mkspecs/features/unix/opengl.prf \
 		/usr/lib64/qt5/mkspecs/features/uic.prf \
 		/usr/lib64/qt5/mkspecs/features/unix/thread.prf \
@@ -402,6 +403,7 @@ Makefile: ../VLC/VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/
 		/usr/lib64/qt5/mkspecs/features/qt.prf \
 		/usr/lib64/qt5/mkspecs/features/resources.prf \
 		/usr/lib64/qt5/mkspecs/features/moc.prf \
+		/usr/lib64/qt5/mkspecs/features/testlib_defines.prf \
 		/usr/lib64/qt5/mkspecs/features/unix/opengl.prf \
 		/usr/lib64/qt5/mkspecs/features/uic.prf \
 		/usr/lib64/qt5/mkspecs/features/unix/thread.prf \
@@ -412,6 +414,9 @@ Makefile: ../VLC/VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/
 		../VLC/VLC.pro \
 		/usr/lib64/libQt5Widgets.prl \
 		/usr/lib64/libQt5Gui.prl \
+		/usr/lib64/libQt5Network.prl \
+		/usr/lib64/libQt5Sql.prl \
+		/usr/lib64/libQt5Test.prl \
 		/usr/lib64/libQt5Core.prl
 	$(QMAKE) -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ../VLC/VLC.pro
 /usr/lib64/qt5/mkspecs/features/spec_pre.prf:
@@ -566,6 +571,7 @@ Makefile: ../VLC/VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/
 /usr/lib64/qt5/mkspecs/features/qt.prf:
 /usr/lib64/qt5/mkspecs/features/resources.prf:
 /usr/lib64/qt5/mkspecs/features/moc.prf:
+/usr/lib64/qt5/mkspecs/features/testlib_defines.prf:
 /usr/lib64/qt5/mkspecs/features/unix/opengl.prf:
 /usr/lib64/qt5/mkspecs/features/uic.prf:
 /usr/lib64/qt5/mkspecs/features/unix/thread.prf:
@@ -576,6 +582,9 @@ Makefile: ../VLC/VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/
 ../VLC/VLC.pro:
 /usr/lib64/libQt5Widgets.prl:
 /usr/lib64/libQt5Gui.prl:
+/usr/lib64/libQt5Network.prl:
+/usr/lib64/libQt5Sql.prl:
+/usr/lib64/libQt5Test.prl:
 /usr/lib64/libQt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ../VLC/VLC.pro
@@ -620,13 +629,13 @@ compiler_moc_header_make_all: moc_mainwindow.cpp moc_newspaper.cpp moc_reader.cp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp moc_newspaper.cpp moc_reader.cpp
 moc_mainwindow.cpp: ../VLC/mainwindow.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/elvis/work/QT/VLC/VLC_0.1/VLC -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4 -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/x86_64-pc-linux-gnu -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include-fixed -I/usr/include ../VLC/mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib64/qt5/bin/moc $(DEFINES) -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/elvis/work/QT/VLC/VLC_0.1/VLC -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtNetwork -I/usr/include/qt5/QtSql -I/usr/include/qt5/QtTest -I/usr/include/qt5/QtCore -I. -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4 -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/x86_64-pc-linux-gnu -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include-fixed -I/usr/include ../VLC/mainwindow.h -o moc_mainwindow.cpp
 
 moc_newspaper.cpp: ../VLC/newspaper.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/elvis/work/QT/VLC/VLC_0.1/VLC -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4 -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/x86_64-pc-linux-gnu -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include-fixed -I/usr/include ../VLC/newspaper.h -o moc_newspaper.cpp
+	/usr/lib64/qt5/bin/moc $(DEFINES) -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/elvis/work/QT/VLC/VLC_0.1/VLC -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtNetwork -I/usr/include/qt5/QtSql -I/usr/include/qt5/QtTest -I/usr/include/qt5/QtCore -I. -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4 -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/x86_64-pc-linux-gnu -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include-fixed -I/usr/include ../VLC/newspaper.h -o moc_newspaper.cpp
 
 moc_reader.cpp: ../VLC/reader.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/elvis/work/QT/VLC/VLC_0.1/VLC -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4 -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/x86_64-pc-linux-gnu -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include-fixed -I/usr/include ../VLC/reader.h -o moc_reader.cpp
+	/usr/lib64/qt5/bin/moc $(DEFINES) -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/elvis/work/QT/VLC/VLC_0.1/VLC -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtNetwork -I/usr/include/qt5/QtSql -I/usr/include/qt5/QtTest -I/usr/include/qt5/QtCore -I. -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4 -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/x86_64-pc-linux-gnu -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include-fixed -I/usr/include ../VLC/reader.h -o moc_reader.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:

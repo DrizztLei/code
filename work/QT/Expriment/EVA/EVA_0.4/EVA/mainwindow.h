@@ -33,10 +33,20 @@ private:
             , this
             , &MainWindow :: free);
     dialog -> setAttribute(Qt::WA_DeleteOnClose);
+
+    /*
+    QObject :: connect(&newspaper ,
+                       (void (Newspaper ::*)(const QString & , const QDat &)),
+                       &reader,
+                       &Reader::reaceiveNewspaper
+                       );
+    */
+
   }
   void free(){
 //    dialog -> ~QDialog();
-    qDebug() << "I wanna delete it here ...." ;
+    qDebug() << "I wanna delete it here .... But failed ." ;
+
   }
 };
 

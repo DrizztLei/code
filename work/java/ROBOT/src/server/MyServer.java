@@ -52,6 +52,7 @@ public class MyServer {
 
 	public static void main(String[] args) throws IOException {
 		// init();
+		@SuppressWarnings("resource")
 		ServerSocket serverSocket = new ServerSocket(8888);
 		while (true) {
 			Tool.getPrintWriter().println("Myserver : Start thread here . ");
