@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::init(){
   title = "VLC";
   ui->setupUi(this);
-  setFile("/home/elvis/attack.wmv");
+  setFile("/home/elvis/Music/BilibiliJJ.COM-aLIEzmzkver.抒情版xALIEZ点进来你会收藏的_(Av2285257,P1).mp4");
   rename(title);
   setScreenInfo();
   adjustPosition();
@@ -51,8 +51,9 @@ void MainWindow::connect(){
               }
             setStatus(false);
             getMidle()->setText("pause");
+
             getPlayer()->play();
-            
+
             //getSlider()->setMaximum();
           }else{
             setStatus(true);
@@ -77,11 +78,9 @@ void MainWindow::connect(){
 
   QObject::connect(getPlayer(), &QMediaPlayer::positionChanged,getSlider(),[&](qint64 info){
     qDebug() << info;
-    //getSlider()->valueChanged(info);
-    //getSlider()->setMaximum(22222);
     getSlider()->setValue(info);
   });
-
+  QObject::connect(getSlider() ,&QSlider::valueChanged,getPlayer(),&QMediaPlayer::setPosi);
 }
 
 void MainWindow::openFile(){

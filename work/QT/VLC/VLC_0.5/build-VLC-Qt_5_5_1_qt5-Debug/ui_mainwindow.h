@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -40,6 +41,8 @@ public:
     QPushButton *pushButton_3;
     QListWidget *listWidget;
     QSlider *horizontalSlider;
+    QLabel *label;
+    QLabel *label_2;
     QMenuBar *menuBar;
     QMenu *menuVLC;
     QStatusBar *statusBar;
@@ -48,7 +51,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(962, 601);
+        MainWindow->resize(962, 586);
         actionOpen = new QAction(MainWindow);
         actionOpen->setObjectName(QStringLiteral("actionOpen"));
         actionClose = new QAction(MainWindow);
@@ -59,7 +62,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 500, 711, 32));
+        layoutWidget->setGeometry(QRect(10, 490, 711, 33));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -85,12 +88,18 @@ public:
         listWidget->setGeometry(QRect(750, 11, 181, 501));
         horizontalSlider = new QSlider(centralWidget);
         horizontalSlider->setObjectName(QStringLiteral("horizontalSlider"));
-        horizontalSlider->setGeometry(QRect(10, 470, 701, 20));
+        horizontalSlider->setGeometry(QRect(80, 470, 601, 20));
         horizontalSlider->setOrientation(Qt::Horizontal);
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(680, 460, 61, 23));
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(20, 460, 61, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 962, 27));
+        menuBar->setGeometry(QRect(0, 0, 962, 28));
         menuVLC = new QMenu(menuBar);
         menuVLC->setObjectName(QStringLiteral("menuVLC"));
         MainWindow->setMenuBar(menuBar);
@@ -112,11 +121,13 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         actionOpen->setText(QApplication::translate("MainWindow", "&Open", 0));
-        actionClose->setText(QApplication::translate("MainWindow", "&Close", 0));
+        actionClose->setText(QApplication::translate("MainWindow", "Pause", 0));
         actionExit->setText(QApplication::translate("MainWindow", "&Exit", 0));
         pushButton_2->setText(QApplication::translate("MainWindow", "pre", 0));
         pushButton->setText(QApplication::translate("MainWindow", "Play", 0));
         pushButton_3->setText(QApplication::translate("MainWindow", "next", 0));
+        label->setText(QApplication::translate("MainWindow", "   --:--", 0));
+        label_2->setText(QApplication::translate("MainWindow", "    --:--", 0));
         menuVLC->setTitle(QApplication::translate("MainWindow", "&VLC", 0));
     } // retranslateUi
 

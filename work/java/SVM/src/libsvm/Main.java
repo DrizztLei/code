@@ -26,14 +26,14 @@ public class Main {
 	      }
 	      String[] parg = {
 	    		  	"/home/elvis/final_svm", // 这个是存放测试数据
-					"/home/elvis/emp.file.modelt", // 调用的是训练以后的模型
+					"/home/elvis/temp.file.modelt", // 调用的是训练以后的模型
 					"/home/elvis/out" }; // 生成的结果的文件的路径
 			System.out.println("........SVM运行开始..........");
 			//svm_predict p = new svm_predict();
 			calculator(null);
 	}
 	public static int calculator(double [] info) throws IOException{
-		String path_test = "/home/elvis/final_svm" , path_model = "/home/elvis/set.modules" , path_out = "/home/elvis/out";
+		String path_test = "/home/elvis/final_svm" , path_model = "/home/elvis/final_svm.model" , path_out = "/home/elvis/out";
 	      String[] parg = { path_test , path_model , path_out // 这个是存放测试数据
 	    		   // 调用的是训练以后的模型
 					 }; // 生成的结果的文件的路径	      
