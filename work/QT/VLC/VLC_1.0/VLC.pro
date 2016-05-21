@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-QMAKE_CXXFLAGS += -std=c++0x -fpermissive
+QMAKE_CXXFLAGS += -std=c++0x -fpermissive -Wunused-parameter -Wsign-compare
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia multimediawidgets
 
@@ -18,7 +18,8 @@ SOURCES += main.cpp\
         mediaplayer.cpp \
         mediaplaylist.cpp \
         fileinfo.cpp \
-        slider.cpp
+        slider.cpp \
+    test.cpp
         receiver.cpp
         command.cpp
         commandset.cpp
@@ -32,3 +33,6 @@ HEADERS  += mainwindow.h \
     slider.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    resources.qrc

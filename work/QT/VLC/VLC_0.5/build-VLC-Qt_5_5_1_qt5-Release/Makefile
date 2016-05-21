@@ -14,7 +14,7 @@ CC            = gcc
 CXX           = g++
 DEFINES       = -DQT_NO_DEBUG -DQT_MULTIMEDIAWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-CXXFLAGS      = -pipe -std=c++0x -fpermissive -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
+CXXFLAGS      = -pipe -std=c++0x -fpermissive -Wunused-parameter -Wsign-compare -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 INCPATH       = -I../../VLC_1.0 -I. -isystem /usr/include/qt5 -isystem /usr/include/qt5/QtMultimediaWidgets -isystem /usr/include/qt5/QtWidgets -isystem /usr/include/qt5/QtMultimedia -isystem /usr/include/qt5/QtGui -isystem /usr/include/qt5/QtNetwork -isystem /usr/include/qt5/QtCore -I. -I. -I/usr/lib64/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib64/qt5/bin/qmake
 DEL_FILE      = rm -f
@@ -659,6 +659,7 @@ moc_mainwindow.cpp: ../../VLC_1.0/fileinfo.h \
 		../../VLC_1.0/mediaplaylist.h \
 		../../VLC_1.0/command.cpp \
 		../../VLC_1.0/receiver.cpp \
+		../../VLC_1.0/mainwindow.h \
 		../../VLC_1.0/invoker.cpp \
 		../../VLC_1.0/mainwindow.h
 	/usr/lib64/qt5/bin/moc $(DEFINES) -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/elvis/work/QT/VLC/VLC_1.0 -I/usr/include/qt5 -I/usr/include/qt5/QtMultimediaWidgets -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtMultimedia -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtNetwork -I/usr/include/qt5/QtCore -I. -I/usr/lib/gcc/x86_64-pc-linux-gnu/5.3.0/include/g++-v5 -I/usr/lib/gcc/x86_64-pc-linux-gnu/5.3.0/include/g++-v5/x86_64-pc-linux-gnu -I/usr/lib/gcc/x86_64-pc-linux-gnu/5.3.0/include/g++-v5/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/5.3.0/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/5.3.0/include-fixed -I/usr/include ../../VLC_1.0/mainwindow.h -o moc_mainwindow.cpp

@@ -5,6 +5,8 @@
 #include "receiver.cpp"
 #include "invoker.cpp"
 
+//Ui::MainWindow * MainWindow::interface = NULL;
+
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::MainWindow)
@@ -56,7 +58,7 @@ void MainWindow::connect(){
   Command * main_to_main = new m_to_m(receiver , this);
   Command * action_pre = new a_to_p(receiver , this);
   Command * action_next = new a_to_n(receiver , this);
-
+  Command * action_to_exit = new a_to_e(receiver, this);
   invoker->setCommand(play_music);
   invoker->setCommand(play_pre);
   invoker->setCommand(play_next);
@@ -68,7 +70,9 @@ void MainWindow::connect(){
   invoker->setCommand(main_to_main);
   invoker->setCommand(action_pre);
   invoker->setCommand(action_next);
+  invoker->setCommand(action_to_exit);
   invoker->runCommand();
+
 }
 
 void MainWindow::openFile(){

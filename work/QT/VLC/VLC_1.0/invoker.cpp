@@ -26,7 +26,7 @@ public :
         atom.command_1 = command;
         atom.command_2 = NULL;
         log(atom);
-        point++;
+
     }
 
     void runCommand(){
@@ -39,15 +39,14 @@ public :
         atom.command_1 = NULL;
         atom.command_2 = NULL;
         log(atom);
-        point++;
+
     }
 
     void undo(Command * command){
         for (int i = 0; i < vec.size(); i++){
-            if(command == vec[i] && history[point - 1].item == UNDO){
+            if(command == vec[i]){
                 vec[i] -> undo();
                 vec.erase(vec.begin() + i);
-                point --;
                 return;
             };
         }
@@ -68,7 +67,7 @@ public :
         atom.command_1 = pre;
         atom.command_2 = now;
         log(atom);
-        point++;
+
     }
 
 private:
@@ -80,6 +79,6 @@ private:
         history.push_back(item);
     }
 
-    int point = 0;
+
 };
 #endif

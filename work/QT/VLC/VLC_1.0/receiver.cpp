@@ -1,96 +1,67 @@
 #ifndef RECEIVER_CPP
 #define RECEIVER_CPP
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <wait.h>
-#include <string>
+#include "command.cpp"
+#include <QDebug>
+#include <QPushButton>
+#include <QMediaPlayer>
+#include <QListWidget>
+#include "mainwindow.h"
 
-using namespace std;
+class MainWindow;
+class play;
 
 class Receiver{
 public:
-    explicit Receiver(){};
+    explicit Receiver(){}
 
-    void ps(string argv , string object){
-        pid_t ps = fork();
-        if(ps < 0){
-            perror("Error for get the pid failed.\n");
-            exit(EXIT_FAILURE);
-        }else if(ps > 0){
-            waitpid(ps , 0 , 0);
-        }else{
-            execl("/bin/ps" , "ps" , argv.length() == 0 ? NULL: argv.c_str() , object.length() == 0 ? NULL : object.c_str(), NULL);
-            exit(EXIT_SUCCESS);
-        }
+    void play_music(QPushButton * button , void(*function)(bool)){
+        QObject::connect(button , &QPushButton::clicked , function);
     }
 
-    void ls(string argv , string object){
-        pid_t ls = fork();
-        if(ls < 0){
-            perror("Error for get the pid failed.\n");
-            exit(EXIT_FAILURE);
-        }else if(ls > 0){
-            waitpid(ls , 0 , 0);
-        }else{
-            execl("/bin/ls" ,"ls" , argv.length() == 0 ? NULL: argv.c_str() , object.length() == 0 ? NULL : object.c_str(), NULL);
-            exit(EXIT_SUCCESS);
-        }
+    void play_pre(QPushButton * left , QMediaPlayer * player ,void(*function)(bool)){
+        QObject::connect(left , &QPushButton::clicked , player , function);
     }
 
-    void lsblk(string argv , string object){
-        pid_t lsblk = fork();
-        if(lsblk < 0){
-            perror("Error for get the pid failed.\n");
-            exit(EXIT_FAILURE);
-        }else if(lsblk > 0){
-            waitpid(lsblk , 0 , 0);
-        }else{
-            execlp("/bin/" , "lsblk" , argv.length() == 0 ? NULL: argv.c_str() , object.length() == 0 ? NULL : object.c_str(), NULL);
-            exit(EXIT_SUCCESS);
-        }
+    void play_next(QPushButton * right , QMediaPlayer * player ,void(*function)(bool)){
+        QObject::connect(right, &QPushButton::clicked , player , function);
     }
 
-
-    void htop(string argv , string object){
-        pid_t htop = fork();
-        if(htop < 0){
-            perror("Error for get the pid failed.\n");
-            exit(EXIT_FAILURE);
-        }else if(htop > 0){
-            waitpid(htop , 0 , 0);
-        }else{
-            execlp("/usr/bin/htop" , "htop" , argv.length() == 0 ? NULL: argv.c_str() , object.length() == 0 ? NULL : object.c_str(), NULL);
-            exit(EXIT_SUCCESS);
-        }
+    void open(QAction* action , void(QAction::*triggered)(bool) , void(*funtion)(bool)){
+        QObject::connect(action , triggered , funtion);
     }
 
-
-    void make(string argv , string object){
-        pid_t make = fork();
-        if(make < 0){
-            perror("Error for get the pid failed.\n");
-            exit(EXIT_FAILURE);
-        }else if(make > 0){
-            waitpid(make , 0 , 0);
-        }else{
-            execlp("/bin/make" , "make" ,argv.length() == 0 ? NULL: argv.c_str() , object.length() == 0 ? NULL : object.c_str(), NULL);
-            exit(EXIT_SUCCESS);
-        }
+    void list(QListWidget * list , void(QListWidget::*clicked)(QListWidgetItem* ) ,void(*function)(QListWidgetItem *)){
+        QObject::connect(list , clicked , function);
     }
 
-    void os_3(string argv, string object){
-        pid_t make = fork();
-        if(make < 0){
-            perror("Error for get the pid failed.\n");
-            exit(EXIT_FAILURE);
-        }else if(make > 0){
-            waitpid(make , 0 , 0);
-        }else{
-            execlp("/home/elvis/work/os/experiment3/os_3" , "os_3" ,argv.length() == 0 ? NULL: argv.c_str() , object.length() == 0 ? NULL : object.c_str(), NULL);
-            exit(EXIT_SUCCESS);
-        }
+    void player_to_slider(QMediaPlayer * player ,void(QMediaPlayer::*changed)(qint64) , QSlider * slider , void(*ref)(qint64)){
+        QObject::connect(player , changed , slider , ref);
     }
+
+    void slider_to_player(QSlider * slider , void(QSlider::*changed)(int), QMediaPlayer* player , void(*ref)(qint64)){
+        QObject::connect(slider , changed , player , ref);
+    }
+
+    void player_to_main(QMediaPlayer * player , void(QMediaPlayer::*changed)(qint64) , QMainWindow * window , void(*function)(qint64)){
+        QObject::connect(player , changed , window , function);
+    }
+
+    void main_to_save(QMainWindow * windows , void(QObject::*destory)(QObject*), QMainWindow * ui , void(*save)()){
+        QObject::connect(windows , destory , ui , save);
+    }
+
+    void action_to_pre(QAction* pre ,void(QAction::*triggered)(bool) , QPushButton * button , void(QPushButton::*clicked)()){
+        QObject::connect(pre , triggered , button , clicked);
+    }
+
+    void action_to_next(QAction* next ,void(QAction::*triggered)(bool) , QPushButton * button , void(QPushButton::*clicked)()){
+        QObject::connect(next, triggered , button , clicked);
+    }
+
+    void action_to_exit(QAction* exit ,void(QAction::*triggered)(bool), QMainWindow * window , bool(QWidget::*close)()){
+        QObject::connect(exit , triggered , window , close);
+    }
+
 };
 #endif

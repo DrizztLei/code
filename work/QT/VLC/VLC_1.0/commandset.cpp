@@ -1,16 +1,16 @@
 #ifndef COMMANDSET_CPP
 #define COMMANDSET_CPP
 
-#include <mainwindow.h>
+#include "mainwindow.h"
 #include <QPushButton>
 #include <QMediaPlayer>
 #include "command.cpp"
 #include <QString>
 
+
 namespace store{
     static MainWindow * ui = NULL;
 }
-
 
 class play : public Command
 {
@@ -31,8 +31,7 @@ public:
     }
 
     void execute(){
-        QObject::connect(play::getUI()->getMidle(),&QPushButton::clicked,&(play::exec));
-
+        this->receiver->play_music(play::getUI()->getMidle() ,&(this->exec));
     }
 
 private:
@@ -72,7 +71,7 @@ public:
     }
 
     void execute(){
-        QObject::connect(music_pre::getUI()->getLeft(),&QPushButton::clicked,music_pre::getUI()->getPlayer(),&(music_pre::exec));
+        this->receiver->play_pre(music_pre::getUI()->getLeft() , music_pre::getUI()->getPlayer() , this->exec);
     }
 
 private:
@@ -104,7 +103,7 @@ public:
     }
 
     void execute(){
-        QObject::connect(music_next::getUI()->getRight(),&QPushButton::clicked,music_next::getUI()->getPlayer(),&(music_next::exec));
+        this->receiver->play_next(music_next::getUI()->getRight() , music_next::getUI()->getPlayer() , this->exec);
     }
 
 private:
@@ -136,7 +135,7 @@ public:
     }
 
     void execute(){
-      QObject::connect(file_open::getUI()->getOpen() , &QAction::triggered, &(file_open::exec));
+        this->receiver->open(file_open::getUI()->getOpen() , &QAction::triggered ,this->exec);
     }
 
 private:
@@ -167,7 +166,7 @@ public:
     }
 
     void execute(){
-      QObject::connect(list_op::getUI()->getList() , &QListWidget::itemClicked, &(list_op::exec));
+      this->receiver->list(list_op::getUI()->getList() , &QListWidget::itemClicked, &(list_op::exec));
     }
 
 private:
@@ -207,7 +206,7 @@ public:
     }
 
     void execute(){
-      QObject::connect(p_to_s::getUI()->getPlayer(), &QMediaPlayer::positionChanged, p_to_s::getUI()->getSlider() , &(p_to_s::exec));
+      this->receiver->player_to_slider(p_to_s::getUI()->getPlayer(), &QMediaPlayer::positionChanged, p_to_s::getUI()->getSlider() , &(p_to_s::exec));
     }
 
 private:
@@ -238,7 +237,7 @@ public:
     }
 
     void execute(){
-      QObject::connect(s_to_p::getUI()->getSlider(), &Slider::valueChanged , s_to_p::getUI()->getPlayer() , &(s_to_p::exec));
+      this->receiver->slider_to_player(s_to_p::getUI()->getSlider(), &Slider::valueChanged , s_to_p::getUI()->getPlayer() , &(s_to_p::exec));
     }
 
 private:
@@ -287,7 +286,7 @@ public:
     }
 
     void execute(){
-      QObject::connect(p_to_m::getUI()->getPlayer() , &QMediaPlayer::durationChanged , p_to_m::getUI() , &(p_to_m::exec));
+      this->receiver->player_to_main(p_to_m::getUI()->getPlayer() , &QMediaPlayer::durationChanged , p_to_m::getUI() , &(p_to_m::exec));
     }
 
 private:
@@ -318,9 +317,8 @@ public:
     }
 
     void execute(){
-      QObject::connect(m_to_m::getUI(), &MainWindow::destroyed, m_to_m::getUI() , &(m_to_m::exec));
+        this->receiver->main_to_save(m_to_m::getUI(), &MainWindow::destroyed, m_to_m::getUI() , &(m_to_m::exec));
     }
-
 private:
     static MainWindow * getUI(){
         return store::ui;
@@ -348,7 +346,7 @@ public:
     }
 
     void execute(){
-      QObject::connect(a_to_p::getUI()->getPre(), &QAction::triggered, a_to_p::getUI()->getLeft() , &QPushButton::click);
+      this->receiver->action_to_pre(a_to_p::getUI()->getPre(), &QAction::triggered, a_to_p::getUI()->getLeft() , &QPushButton::click);
     }
 
 private:
@@ -373,7 +371,8 @@ public:
     }
 
     void execute(){
-      QObject::connect(a_to_n::getUI()->getNext(), &QAction::triggered, a_to_n::getUI()->getRight() , &QPushButton::click);
+
+    this->receiver->action_to_next(a_to_n::getUI()->getNext(), &QAction::triggered, a_to_n::getUI()->getRight() , &QPushButton::click);
     }
 
 private:
@@ -381,5 +380,31 @@ private:
         return store::ui;
     }
 };
+
+class a_to_e: public Command
+{
+public:
+    explicit a_to_e(Receiver * rece , MainWindow * _ui) : Command(rece){
+        store::ui = _ui;
+    }
+    virtual ~a_to_e(){
+        if (receiver != NULL) {
+        delete receiver;
+        }
+    }
+    void undo(){
+        a_to_e::getUI()->getExit()->disconnect();
+    }
+
+    void execute(){
+        this->receiver->action_to_exit(a_to_e::getUI()->getExit() , &QAction::triggered , a_to_e::getUI() , &QMainWindow::close);
+    }
+
+private:
+    static MainWindow * getUI(){
+        return store::ui;
+    }
+};
+
 
 #endif

@@ -13,7 +13,6 @@
 #include "fileinfo.h"
 #include "slider.h"
 #include "file.h"
-#include "pushbutton.h"
 #include "mediaplayer.h"
 #include "mediaplaylist.h"
 #include "command.cpp"
@@ -43,6 +42,7 @@ public:
   QAction* getOpen();
   QAction* getPre();
   QAction* getNext();
+  QAction* getExit();
   QPushButton* getMidle();
   QPushButton* getLeft();
   QPushButton* getRight();
@@ -52,6 +52,7 @@ public:
   Slider * getSlider();
   MediaPlaylist * getMediaList();
   QLabel * getLabelLeft();
+  static Ui::MainWindow * interface;
 private:
   void init();
   void setScreenInfo();
@@ -69,7 +70,6 @@ private:
   void dealFailed();
   void dealLoaded();
   QAction* getClose();
-  QAction* getExit();
   QUrl& getUrl();
   QLabel * getLabelRight();
   Slider * slider;

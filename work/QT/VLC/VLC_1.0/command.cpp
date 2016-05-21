@@ -3,7 +3,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string>
 #include "receiver.cpp"
+
+using namespace std;
 
 class Command{
 public:

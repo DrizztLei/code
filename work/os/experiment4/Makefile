@@ -6,7 +6,9 @@ out = out.elf
 out_pro = pro.elf
 out_smo = smo.elf
 cc = gcc
-
+all : ${pro} ${smo}
+	make pro
+	make smo
 pro : ${pro}
 	${cc} ${pro} ${opt} ${out_pro}
 smo : ${smo}

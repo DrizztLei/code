@@ -1,6 +1,5 @@
 #ifndef SLIDER_H
 #define SLIDER_H
-
 #include <QSlider>
 
 class Slider : public QSlider
