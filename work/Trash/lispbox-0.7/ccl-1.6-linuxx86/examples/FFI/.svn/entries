@@ -1,34 +1,0 @@
-9
-
-dir
-14471
-http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/examples/FFI
-http://svn.clozure.com/publicsvn/openmcl
-
-
-
-2006-08-17T16:43:57.000000Z
-4946
-phil
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-8bdb8f1d-59ce-db11-9e41-0016172a54ae
-
-Using-basic-calls-and-types
-dir
-
-Allocating-foreign-data-on-the-lisp-heap
-dir
-

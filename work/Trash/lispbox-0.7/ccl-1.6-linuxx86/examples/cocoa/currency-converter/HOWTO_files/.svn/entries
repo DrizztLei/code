@@ -1,37 +1,0 @@
-9
-
-dir
-14471
-http://svn.clozure.com/publicsvn/openmcl/release/1.6/source/examples/cocoa/currency-converter/HOWTO_files
-http://svn.clozure.com/publicsvn/openmcl
-
-
-
-2009-01-02T00:22:12.851519Z
-11571
-gb
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-8bdb8f1d-59ce-db11-9e41-0016172a54ae
-
-pages
-dir
-
-images
-dir
-
-stylesheets
-dir
-
