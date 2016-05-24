@@ -1,0 +1,149 @@
+#ifndef _BAR_CPP
+#include <stdio.h>
+#include <sys/ipc.h>
+#include <sys/types.h>
+#include <sys/shm.h>
+#include <sys/sem.h>
+#include <sys/msg.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <sys/msg.h>
+#include <error.h>
+#include <sys/wait.h>
+#include <stdbool.h>
+#include <string.h>
+int  _pipe[2];
+int P(int semid , int index);
+int V(int semid , int index);
+void barbe();
+void charge();
+void rest(int msg_barber);
+void move(key_t key_sofa , key_t key_wait);
+int msg_length(key_t msgid);
+key_t get_key(char const * const address , int code){
+    return ftok(address , code);
+}
+struct msgbuf{
+    long type;
+    char mtext[1];
+    int id;
+};
+int const SIZE = sizeof(char) + sizeof(int);
+key_t key_shm , key_sem , key_sofa , key_wait , key_charge , key_barber;
+int shmid , semid , msg_sofa , msg_wait , msg_charge , msg_barber;
+int main(int argc , char ** argv){
+    key_t key_shm = get_key("./" , 0x12);
+    key_t key_sem = get_key("./" , 0x13);
+    key_t key_sofa = get_key("./" , 0x14);
+    key_t key_wait = get_key("./" , 0x15);
+    key_t key_charge = get_key("./" , 0x16);
+    key_t key_barber = get_key("./" , 0x17);
+    while(1){
+        shmid = shmget(key_shm , 0 , IPC_CREAT);
+        if(shmid < 0){
+            perror("The shm not found . \n");
+        }
+        semid = semget(key_sem , 0 , IPC_CREAT);
+        if(semid < 0){
+            perror("The sem not found . \n .");
+        }
+        msg_sofa = msgget(key_sofa , IPC_CREAT);
+        if(msg_sofa < 0){
+            perror("Error for msgget .");
+        }
+        msg_wait = msgget(key_wait , IPC_CREAT);
+        if(msg_wait < 0){
+            perror("Error for msgget .");
+        }
+        msg_charge = msgget(key_charge , IPC_CREAT);
+        if(msg_charge < 0){
+            perror("Error for msgget .");
+        }
+        msg_barber = msgget(key_barber, IPC_CREAT);
+        if(shmid > 0 && semid > 0 && msg_sofa > 0 && msg_wait > 0 && msg_charge > 0 && msg_barber > 0) {
+            break;
+        }
+    }
+    pid_t A = fork();
+    if(A < 0){
+        perror("create the t fork() error.");
+        return EXIT_FAILURE;
+    }else if(A == 0){
+        signal(SIGCONT, rest);
+        while(1){
+            struct msgbuf buf;
+            buf.id = 0;
+            P(semid , 1);
+            {
+                P(semid , 0);
+                move(msg_sofa , msg_wait);
+            }
+            V(semid , 1);
+            barbe("A" , getpid());
+            if(msg_length(msg_charge) > 0){
+                P(semid , 3);
+                {
+                }
+                V(semid , 3);
+            }
+        }
+    }
+    return EXIT_SUCCESS;
+}
+int P(int semid , int index){
+    struct sembuf buf = {index , -1 , SEM_UNDO};
+    if(semop(semid , &buf , 1)){
+        perror("Error for operation P .");
+        return EXIT_FAILURE;
+    }
+    printf("Get the info for smoker coming. \n");
+    return EXIT_SUCCESS;
+}
+int V(int semid , int index){
+    struct sembuf buf = {index , 1 , SEM_UNDO};
+    printf("Get the info for smoker quiet. \n");
+    if(semop(semid , &buf , 1)){
+        perror("Error for operation V .");
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
+}
+void barbe(char * string , int id){
+    printf("%s is barbe for %d .\n" , string , id);
+    kill(id , SIGCONT);
+}
+void charge(){
+}
+void rest(int msg_barber){
+    struct msgbuf buf;
+    buf.id = getpid();
+    msgsnd(msg_barber, &buf, IPC_STAT, IPC_NOWAIT);
+    return ;
+}
+void move(key_t key_sofa , key_t key_wait){
+    struct msgbuf buf;
+    buf.id = -1;
+    P(semid , 5);
+    if(msgrcv(key_wait, &buf, SIZE, 0, IPC_NOWAIT)){
+        perror("Error for moving of msgrcv .");
+        exit(EXIT_FAILURE);
+    }
+    V(semid , 5);
+    if(buf.id == -1) {
+        return ;
+    }
+    if(msgsnd(key_sofa, &buf, SIZE, IPC_NOWAIT)){
+        perror("Error for moving of msgsnd .");
+        exit(EXIT_FAILURE);
+    }
+}
+int msg_length(key_t msgid){
+    struct msqid_ds buf;
+    if(msgctl(msgid, IPC_STAT, &buf)){
+        perror("Error for msgctl in msg_length.");
+        return EXIT_FAILURE;
+    }
+    return buf.msg_qnum;
+}
+#endif

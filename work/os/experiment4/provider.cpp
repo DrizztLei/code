@@ -21,7 +21,7 @@
 #define NUM 4
 
 union semun{
-    int val;
+     int val;
     struct semid_ds * buf;
     unsigned short * array;
 };
@@ -53,7 +53,7 @@ int main(int argc , char ** argv){
         return EXIT_FAILURE;
     }
     key_t key_shm = get_key("./" , 0x12);
-    int shmid = shmget(key_shm, SIZE, IPC_CREAT | IPC_EXCL);
+    int shmid = shmget(key_shm, SIZE, IPC_CREAT);
     if(shmid < 0){
         perror("Error for shmget failed . ");
         return EXIT_FAILURE;
@@ -64,7 +64,7 @@ int main(int argc , char ** argv){
         return EXIT_FAILURE;
     }
     key_t key_sem = get_key("./" , 0x13);
-    int semid = semget(key_sem, NUM , IPC_CREAT | IPC_EXCL);
+    int semid = semget(key_sem, NUM , IPC_CREAT);
     if(semid < 0){
         perror("Error for semid failed . ");
         return EXIT_FAILURE;
@@ -79,7 +79,7 @@ int main(int argc , char ** argv){
         }
     }
     key_t key_msg = get_key("./" , 0x14);
-    int msgid = msgget(key_msg, IPC_CREAT | IPC_EXCL);
+    int msgid = msgget(key_msg, IPC_CREAT);
     if(msgid < 0){
         perror("Error for msgid failed . ");
         return EXIT_FAILURE;
@@ -90,9 +90,9 @@ int main(int argc , char ** argv){
         int x = 0;
         write(_pipe[1] , &x , sizeof(int));
         msgbuf buf;
-        buf.mtext[0] = 'U';
         while(1){
-            sleep(1.5);
+            buf.mtext[0] = 'U';
+            sleep(15);
             P(semid);
             {
                 printf("son's process\n");
@@ -184,11 +184,11 @@ int main(int argc , char ** argv){
         int x = 0;
         read(_pipe[0] , &x , sizeof(int));
         msgbuf buf ;
-        buf.mtext[0] = 'U';
         printf("Get the info\n");
         while(1){
+            buf.mtext[0] = 'U';
             x = get_random();
-            sleep(1.5);
+            sleep(15);
             P(semid);
             {
                 printf("father's process\n");

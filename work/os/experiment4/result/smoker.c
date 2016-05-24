@@ -21,7 +21,7 @@ int V(int semid );
 
 
 struct msgbuf{
-    long mtype ;
+    long mtype;
     char mtext[1];
 };
 

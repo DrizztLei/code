@@ -1,0 +1,9 @@
+src = smoker.cpp
+opt = -fpermissive -g -o
+out = a.out
+cc = gcc
+
+all : ${src}
+	${cc} ${src} ${opt} ${out}
+claen :
+	rm ${out}
