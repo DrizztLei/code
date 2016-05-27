@@ -41,8 +41,6 @@ int V(int semid , int index);
 
 void charge();
 
-void rest(int msg_barber);
-
 void move(key_t key_sofa , key_t key_wait);
 
 int msg_length(key_t msgid);
@@ -150,13 +148,6 @@ void charge(){
         printf("charge %d customer of %d barber.\n" , buf.id , getpid());
         V(semid , LEAVE);
     }
-}
-
-void rest(int msg_barber){
-    struct msgbuf buf;
-    buf.id = getpid();
-    msgsnd(msg_barber, &buf, IPC_STAT, IPC_NOWAIT);
-    return ;
 }
 
 void move(key_t key_sofa , key_t key_wait){
