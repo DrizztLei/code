@@ -7,12 +7,6 @@
 ;;;; For more information about the Quicklisp beta, see:
 ;;;;
 ;;;;    http://www.quicklisp.org/beta/
-;;;;
-;;;; If you have any questions or comments about Quicklisp, please
-;;;; contact:
-;;;;
-;;;;    Zach Beane <zach@quicklisp.org>
-;;;;
 
 (cl:in-package #:cl-user)
 (cl:defpackage #:qlqs-user
