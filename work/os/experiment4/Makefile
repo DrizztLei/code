@@ -1,11 +1,11 @@
 src = provider.cpp smoker.cpp
 pro = provider.cpp
 smo = smoker.cpp
-opt = -lstdc++ -fpermissive -g -o
+opt = -fpermissive -g -o
 out = out.elf
 out_pro = pro.elf
 out_smo = smo.elf
-cc = gcc
+cc = gcc 
 all : ${pro} ${smo}
 	make pro
 	make smo

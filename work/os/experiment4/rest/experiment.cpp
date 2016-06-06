@@ -235,7 +235,6 @@ int main(int argc, char ** argv){
         msgbuf queue;
         queue.mtype = 10;
         queue.mtext[0] = 'd';
-
         if(msgsnd(mesid , &queue , 1 , 0)){
             perror("Error for msgsnd \n");
             return EXIT_FAILURE;

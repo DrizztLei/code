@@ -1,61 +1,16 @@
 #ifndef _BAR_CPP
 #define _BAR_CPP
 
-#include <stdio.h>
-#include <sys/ipc.h>
-#include <sys/types.h>
-#include <sys/shm.h>
-#include <sys/sem.h>
-#include <sys/msg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <sys/msg.h>
-#include <error.h>
-#include <sys/wait.h>
-#include <stdbool.h>
-#include <string.h>
-
-#define NUM 4
-
-enum type{
-    SOFA,
-    WAIT,
-    PEOPLE,
-    S_W_LOCK,
-    BARBE,
-    CHARGE,
-    IN_SOFA,
-    LEAVE,
-};
-
-int  _pipe[2];
+#include "message.h"
 
 int get_random(){
     return random() % 5;
 }
 
-int P(int semid , int index);
-
-int V(int semid , int index);
 
 void charge();
 
-void move(key_t key_sofa , key_t key_wait);
-
-int msg_length(key_t msgid);
-
-key_t get_key(char const * const address , int code){
-    return ftok(address , code);
-}
-
-struct msgbuf{
-    long type;
-    char mtext[1];
-    int id;
-};
-
-int const SIZE = sizeof(char) + sizeof(int);
+int move(key_t key_sofa , key_t key_wait);
 
 key_t key_shm , key_sem , key_sofa , key_wait , key_charge , key_barber;
 
@@ -65,39 +20,31 @@ void barbe(char * string , int id , struct msgbuf * buf);
 
 int main(int argc , char ** argv){
     // The grammar for creating the share memory.
-
-    key_t key_shm = get_key("./" , 0x12);
+    int const num = 8;
     key_t key_sem = get_key("./" , 0x13);
     key_t key_sofa = get_key("./" , 0x14);
     key_t key_wait = get_key("./" , 0x15);
     key_t key_charge = get_key("./" , 0x16);
     key_t key_barber = get_key("./" , 0x17);
-
-    while(1){
-        shmid = shmget(key_shm , 0 , IPC_CREAT);
-        if(shmid < 0){
-            perror("The shm not found .");
-        }
-        semid = semget(key_sem , 0 , IPC_CREAT);
-        if(semid < 0){
-            perror("The sem not found .");
-        }
-        msg_sofa = msgget(key_sofa , IPC_CREAT);
-        if(msg_sofa < 0){
-            perror("Error for msgget .");
-        }
-        msg_wait = msgget(key_wait , IPC_CREAT);
-        if(msg_wait < 0){
-            perror("Error for msgget .");
-        }
-        msg_charge = msgget(key_charge , IPC_CREAT);
-        if(msg_charge < 0){
-            perror("Error for msgget .");
-        }
-        msg_barber = msgget(key_barber, IPC_CREAT);
-        if(shmid > 0 && semid > 0 && msg_sofa > 0 && msg_wait > 0 && msg_charge > 0 && msg_barber > 0) {
-            break;
-        }
+    semid = semget(key_sem , num , IPC_CREAT);
+    if(semid < 0){
+        perror("The sem not found.");
+    }
+    msg_sofa = msgget(key_sofa , IPC_CREAT);
+    if(msg_sofa < 0){
+        perror("Error for msgget.");
+    }
+    msg_wait = msgget(key_wait , IPC_CREAT);
+    if(msg_wait < 0){
+        perror("Error for msgget.");
+    }
+    msg_charge = msgget(key_charge , IPC_CREAT);
+    if(msg_charge < 0){
+        perror("Error for msgget.");
+    }
+    msg_barber = msgget(key_barber, IPC_CREAT);
+    if(msg_barber < 0){
+        perror("Error for msgget.");
     }
     pid_t A = fork();
     if(A < 0){
@@ -109,13 +56,15 @@ int main(int argc , char ** argv){
             struct msgbuf buf;
             P(semid , SOFA); // waiting the cus int sofa coming.
             P(semid , S_W_LOCK); // lock the sofa_wait_lock.
-            move(msg_sofa , msg_wait); // move the customer from the wait to sofa.
+            int id = move(msg_sofa , msg_wait); // move the customer from the wait to sofa.
             V(semid , S_W_LOCK); // unlock the sofa_wait_lock.
-            barbe("A" , 3 , &buf); // barbe the customer.
+            barbe("A" , id , &buf); // barbe the customer.
             P(semid , CHARGE); // lock the charge.
             charge(); // let the customer charge.
             V(semid , CHARGE); // unlock the charge.
         }
+    }else if(A > 0){
+        waitpid(A , 0 , 0);
     }
     return EXIT_SUCCESS;
 }
@@ -141,30 +90,45 @@ int V(int semid , int index){
 void charge(){
     struct msgbuf buf;
     while(msg_length(msg_charge) > 0){
-        if(msgrcv(msg_charge, &buf, SIZE, 0, IPC_NOWAIT)){
+        if(msgrcv(msg_charge, &buf, SIZE, 0, IPC_NOWAIT) == -1){
             perror("Error for charge msgrcv");
             exit(EXIT_FAILURE);
         }
-        printf("charge %d customer of %d barber.\n" , buf.id , getpid());
+        printf("charge %ld customer of %d barber.\n" , buf.mtype , getpid());
         V(semid , LEAVE);
     }
 }
 
-void move(key_t key_sofa , key_t key_wait){
+int move(key_t key_sofa , key_t key_wait){
     struct msgbuf buf;
-    buf.id = -1;
-    if(msgrcv(key_wait, &buf, SIZE, 0, IPC_NOWAIT)){
-        perror("Error for moving of msgrcv .");
+    int id ;
+    int message;
+    if((message = msgrcv(key_sofa, &buf, SIZE , 0 , IPC_NOWAIT))==-1){
+        perror("Error");
         exit(EXIT_FAILURE);
     }
-    if(buf.id == -1) {
-        return ;
+    /*
+    printf("Get the id for %ld.\n" , buf.mtype);
+    printf("Get the mytpe for %d\n" , (int)buf.mtype);
+    printf("Get the mtext for %s\n" , buf.mtext);
+    */
+    id = buf.mtype;
+    if(msgrcv(key_wait, &buf, SIZE, 0, IPC_NOWAIT)){
+        //perror("Empty for wait.");
+        printf("Empyt in wait.\n");
+        //exit(EXIT_FAILURE);
     }
+    if(buf.mtype == -1 || buf.mtype == id) {
+        return id;
+    }
+    printf("Let the customer %ld get the queue in sofa.\n" , buf.mtype);
+    buf.mtext[0] = 'W';
     if(msgsnd(key_sofa, &buf, SIZE, IPC_NOWAIT)){
         perror("Error for moving of msgsnd .");
         exit(EXIT_FAILURE);
     }
     V(semid , IN_SOFA);
+    return id;
 }
 
 int msg_length(key_t msgid){
@@ -180,6 +144,8 @@ void barbe(char * string , int id , struct msgbuf * buf){
     printf("%s is barbe for %d .\n" , string , id);
     sleep(get_random());
     V(semid , BARBE);
+    buf -> mtype = id;
+    buf -> mtext[0] = 'C';
     if(msgsnd(msg_charge, buf, SIZE, IPC_NOWAIT)){
         perror("Error for msgsnd in barbe .\n");
         exit(EXIT_FAILURE);

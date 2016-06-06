@@ -25,6 +25,7 @@ int V(int semid );
 struct msgbuf{
     long type;
     char mtext[1];
+    int id;
 };
 
 int get_random(){
@@ -67,7 +68,7 @@ int main(int argc , char ** argv){
             sleep(2);
             P(semid);
             {
-                if(msgrcv(msgid, &buf, sizeof(char), 0, IPC_NOWAIT)){
+                if(msgrcv(msgid, &buf, sizeof(char)+sizeof(int), 0, IPC_NOWAIT)){
                     if(strcmp(buf.mtext , "U") == 0){
                         x = get_random();
                         int * result = (int *)shmat(shmid, NULL, 0);
@@ -141,7 +142,7 @@ int main(int argc , char ** argv){
             sleep(2);
             P(semid);
             {
-                if(msgrcv(msgid, &buf, sizeof(char), 0, IPC_NOWAIT)){
+                if(msgrcv(msgid, &buf, sizeof(char)+sizeof(int), 0, IPC_NOWAIT)){
                     if(strcmp(buf.mtext , "U") == 0){
                         x = get_random();
                         int * result = (int *)shmat(shmid, NULL, 0);

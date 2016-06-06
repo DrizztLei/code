@@ -23,18 +23,19 @@ int V(int semid );
 struct msgbuf{
     long mtype;
     char mtext[1];
+    int id;
 };
 
 int main(int argc , char ** argv){
     key_t key = ftok("." , 0x12);
     int shmid , semid , msgid;
-    while(1){
+//    while(1){
         sleep(2);
-        shmid = shmget(key , 0 , IPC_CREAT);
+        shmid = shmget(key , 2 , IPC_CREAT );
         if(shmid < 0){
             perror("Error for shmget .");
         }
-        semid = semget(key , 0 , IPC_CREAT);
+        semid = semget(key , 2 , IPC_CREAT);
         if(semid < 0){
             perror("Error for semget .");
         }
@@ -43,18 +44,34 @@ int main(int argc , char ** argv){
             perror("Error for msgget .");
         }
         if(shmid > 0 && semid > 0 && msgid > 0) {
-            break;
+//            break;
         }
-    }
+//    }
     pid_t T = fork();
     if(T < 0){
         perror("create the t fork() error.");
         return EXIT_FAILURE;
     }else if(T == 0){
+        printf("son .\n");
+        struct msgbuf buf;
+        buf.id = 21345;
+        buf.mtext[0] = 'f';
+        buf.mtype = 0;
+        if(msgsnd(msgid, &buf, sizeof(int), IPC_NOWAIT)){
+            perror("Error for msgsnd failed.\n");
+        }
+        if(msgsnd(msgid, &buf, sizeof(int)+sizeof(char), IPC_NOWAIT)){
+            perror("Error for msgsnd failed.\n");
+        }
+        if(msgrcv(msgid, &buf, sizeof(int), 0, IPC_NOWAIT)){
+            perror("Error for smgrcv.");
+        }
+        printf("get the value for %d.\n" , buf.id);
+        printf("done.\n");
         bool flag = true;
         while(1){
             sleep(2);
-            P(semid);
+            //P(semid);
             {
                 int * address = (int *)shmat(shmid, NULL, 0);
                 if((int)(address) == -1){
@@ -65,7 +82,7 @@ int main(int argc , char ** argv){
                     if(flag){
                         struct msgbuf buf;
                         buf.mtext[0] = 'T';
-                        if(msgsnd(msgid, &buf, sizeof(char), IPC_NOWAIT)){
+                        if(msgsnd(msgid, &buf, sizeof(char)+sizeof(int), IPC_NOWAIT)){
                             perror("Error for msgsnd .");
                             return EXIT_FAILURE;
                         }
@@ -104,7 +121,7 @@ int main(int argc , char ** argv){
                         if(flag){
                             struct msgbuf buf;
                             buf.mtext[0] = 'G';
-                            if(msgsnd(msgid, &buf, sizeof(char), IPC_NOWAIT)){
+                            if(msgsnd(msgid, &buf, sizeof(char)+sizeof(int), IPC_NOWAIT)){
                                 perror("Error for msgsnd .");
                                 return EXIT_FAILURE;
                             }
