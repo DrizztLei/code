@@ -76,7 +76,7 @@ int main(int argc , char ** argv){
       IN_SOFA,
       LEAVE,
     */
-    int array[8] = {4 ,13 ,20 ,1 ,0 ,1 ,0};
+    int array[8] = {0 ,0 ,20 ,1 ,0 ,1 ,0};
     for(int i = 0 ; i < 8; i++){
         sender.val = array[i];
         if(semctl(semid , i , SETVAL , sender)){
@@ -92,54 +92,76 @@ int main(int argc , char ** argv){
         return EXIT_FAILURE;
     }else if(son == 0){
         //code for son.
-        while(1){
-            P(semid , PEOPLE); // waiting the people which < 20.
-            P(semid , S_W_LOCK); // lock the sofa_wait lock.
-            if(msg_length(msg_sofa) < 4){
-                struct msgbuf buf;
-                buf.mtype = getpid();
-                buf.mtext[0] = 'S';
-                if(msgsnd(msg_sofa, &buf, SIZE , IPC_NOWAIT)){
-                    perror("Error for msgsnd in sofa .");
-                    return EXIT_FAILURE;
+        /*
+          int number = 4;
+          pid_t key[number];
+          for(int i = 0 ; i < number ; i++){
+          key[i] = fork();
+          printf("The id %d is %d.\n" , i , getpid());
+          }
+        */
+        int i = 0 , number = 40;
+        while(i < number){
+            sleep(2);
+            pid_t son = fork();
+            if(son < 0){
+                perror("Error in frok()");
+            }else if(son == 0){
+                printf("Get the order %d and id %d.\n" , i , getpid());
+                {
+                    while(1){
+                        P(semid , PEOPLE); // waiting the people which < 20.
+                        P(semid , S_W_LOCK); // lock the sofa_wait lock.
+                        if(msg_length(msg_sofa) < 4){
+                            struct msgbuf buf;
+                            buf.mtype = getpid();
+                            buf.mtext[0] = 'S';
+                            if(msgsnd(msg_sofa, &buf, SIZE , IPC_NOWAIT)){
+                                perror("Error for msgsnd in sofa .");
+                                return EXIT_FAILURE;
+                            }
+                            printf("message's length %d .\n" , msg_length(msg_sofa));
+                            V(semid , SOFA); // add the number in sofa.
+                            V(semid , S_W_LOCK); // unlock the sofa_wait lock.
+                            P(semid , BARBE); // in queue to get barbed.
+                            P(semid , LEAVE); // in queue to charge and leave.
+                            printf("Over the customer %d who was luck.\n" , getpid());
+                            V(semid , PEOPLE);
+                        }else if(msg_length(msg_wait) < 13){
+                            struct msgbuf buf;
+                            buf.mtype = getpid();
+                            buf.mtext[0] = 'W';
+                            if(msgsnd(msg_wait, &buf, SIZE, IPC_NOWAIT)){
+                                perror("Error for msgsnd in wait .");
+                                return EXIT_FAILURE;
+                            }
+                            V(semid , WAIT); // add the number in wait.
+                            V(semid , S_W_LOCK); // unlock the sofa_wait lock.
+                            P(semid , IN_SOFA); // in queue to get the sofa.
+                            P(semid , S_W_LOCK);// imatate the value of before.
+                            V(semid , SOFA); // add the number in sofa.
+                            V(semid , S_W_LOCK);// imagetate the vlaue of before.
+                            P(semid , BARBE); // in queue to get the barbed.
+                            P(semid , LEAVE); // in queue to charge and leave.
+                            printf("Over the customer %d who was not luck.\n" , getpid());
+                            V(semid , PEOPLE);
+                        }else{
+                            perror("Error for process the logic.\n");
+                            exit(EXIT_FAILURE);
+                        }
+                        printf("Run over here.\n");
+                    }
                 }
-                printf("Send the message .\n");
-                V(semid , SOFA); // add the number in sofa.
-                V(semid , S_W_LOCK); // unlock the sofa_wait lock.
-                P(semid , BARBE); // in queue to get barbed.
-                P(semid , LEAVE); // in queue to charge and leave.
-                printf("Over the customer %d who was luck.\n" , getpid());
-                V(semid , PEOPLE);
-            }else if(msg_length(msg_wait) < 13){
-                struct msgbuf buf;
-                buf.mtype = getpid();
-                buf.mtext[0] = 'W';
-                //buf.mtype = 0;
-                if(msgsnd(msg_wait, &buf, SIZE, IPC_NOWAIT)){
-                    perror("Error for msgsnd in wait .");
-                    return EXIT_FAILURE;
-                }
-                V(semid , WAIT); // add the number in wait.
-                V(semid , S_W_LOCK); // unlock the sofa_wait lock.
-                P(semid , IN_SOFA); // in queue to get the sofa.
-                P(semid , S_W_LOCK);// imatate the value of before.
-                V(semid , SOFA); // add the number in sofa.
-                V(semid , S_W_LOCK);// imagetate the vlaue of before.
-                P(semid , BARBE); // in queue to get the barbed.
-                P(semid , LEAVE); // in queue to charge and leave.
-                printf("Over the customer %d who was not luck.\n" , getpid());
-                V(semid , PEOPLE);
-            }else{
-                perror("Error for process the logic.\n");
-                exit(EXIT_FAILURE);
+                break;
+            }else if(son > 0){
+                printf("Deamon process here for order %d.\n" , i);
+                i++;
             }
-            printf("Run over here.\n");
         }
+        exit(EXIT_SUCCESS);
         return EXIT_FAILURE;
     }else if(son > 0){
-        //code for father
         waitpid(son , 0 , 0);
-        return EXIT_FAILURE;
     }
     return EXIT_SUCCESS;
 }

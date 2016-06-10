@@ -5,7 +5,7 @@ opt = -g -o
 out = out.elf
 out_cus = cus.elf
 out_bar = bar.elf
-cc = gcc
+cc = clang
 all : ${cus} ${bar}
 	make cus
 	make bar

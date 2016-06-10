@@ -7,7 +7,6 @@ int get_random(){
     return random() % 5;
 }
 
-
 void charge();
 
 int move(key_t key_sofa , key_t key_wait);
@@ -48,7 +47,7 @@ int main(int argc , char ** argv){
     }
     pid_t A = fork();
     if(A < 0){
-        perror("create the t fork() error.");
+        perror("create the A fork() error.");
         return EXIT_FAILURE;
     }else if(A == 0){
         // code for A
@@ -64,7 +63,45 @@ int main(int argc , char ** argv){
             V(semid , CHARGE); // unlock the charge.
         }
     }else if(A > 0){
-        waitpid(A , 0 , 0);
+        pid_t B = fork();
+        if(B < 0){
+            perror("create the B fork() error.");
+            return EXIT_FAILURE;
+        }else if(B == 0){
+            while(1){
+                struct msgbuf buf;
+                P(semid , SOFA); // waiting the cus int sofa coming.
+                P(semid , S_W_LOCK); // lock the sofa_wait_lock.
+                int id = move(msg_sofa , msg_wait); // move the customer from the wait to sofa.
+                V(semid , S_W_LOCK); // unlock the sofa_wait_lock.
+                barbe("A" , id , &buf); // barbe the customer.
+                P(semid , CHARGE); // lock the charge.
+                charge(); // let the customer charge.
+                V(semid , CHARGE); // unlock the charge.
+            }
+        }else if(B > 0){
+            pid_t C = fork();
+            if(C < 0){
+                perror("create the C fork() error.");
+                return EXIT_FAILURE;
+            }else if(C == 0){
+                while(1){
+                    struct msgbuf buf;
+                    P(semid , SOFA); // waiting the cus int sofa coming.
+                    P(semid , S_W_LOCK); // lock the sofa_wait_lock.
+                    int id = move(msg_sofa , msg_wait); // move the customer from the wait to sofa.
+                    V(semid , S_W_LOCK); // unlock the sofa_wait_lock.
+                    barbe("A" , id , &buf); // barbe the customer.
+                    P(semid , CHARGE); // lock the charge.
+                    charge(); // let the customer charge.
+                    V(semid , CHARGE); // unlock the charge.
+                }
+            }else if(C > 0){
+                waitpid(A,0,0);
+                waitpid(B,0,0);
+                waitpid(C,0,0);
+            }
+        }
     }
     return EXIT_SUCCESS;
 }
@@ -103,6 +140,7 @@ int move(key_t key_sofa , key_t key_wait){
     struct msgbuf buf;
     int id ;
     int message;
+    sleep(3);
     if((message = msgrcv(key_sofa, &buf, SIZE , 0 , IPC_NOWAIT))==-1){
         perror("Error");
         exit(EXIT_FAILURE);

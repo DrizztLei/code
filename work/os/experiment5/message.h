@@ -32,9 +32,9 @@ struct msgbuf{
     char mtext[1];
 };
 
-
 #define NUM 4
 int  _pipe[2];
+
 int P(int semid , int index);
 
 int V(int semid , int index);

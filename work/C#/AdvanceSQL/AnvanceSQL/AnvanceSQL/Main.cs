@@ -2,23 +2,16 @@ using System;
 
 namespace AdvanceSQL
 {
-    class MainClass
-    {
-        public static void Main (string[] args)
-        {
-            
-        }
-    }
   public class TrieTree    
    {        
-   TrieNode _root = null;  
-   private TrieTree()     
+     TrieNode _root = null;  
+     private TrieTree()     
    {           
-   _root = new TrieNode(char.MaxValue,0);  
-   charCount = 0;   
+     _root = new TrieNode(char.MaxValue,0);  
+     charCount = 0;   
    }       
-   static TrieTree _instance = null; 
-   public static TrieTree GetInstance()   
+      static TrieTree _instance = null; 
+     public static TrieTree GetInstance()   
    {            
    if (_instance == null)        
    {             
