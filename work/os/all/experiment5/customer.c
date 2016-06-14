@@ -100,7 +100,7 @@ int main(int argc , char ** argv){
           printf("The id %d is %d.\n" , i , getpid());
           }
         */
-        int i = 0 , number = 7;
+        int i = 0 , number = 40;
         while(i < number){
             sleep(2);
             pid_t son = fork();

@@ -15,14 +15,6 @@
 
 using namespace std;
 
-int sem_p(){
-
-}
-
-int sem_v(){
-
-}
-
 #define SIZE 2014
 #define PROFILE 2
 
