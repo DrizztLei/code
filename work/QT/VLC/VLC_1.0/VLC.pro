@@ -19,7 +19,6 @@ SOURCES += main.cpp\
         mediaplaylist.cpp \
         fileinfo.cpp \
         slider.cpp \
-    test.cpp
         receiver.cpp
         command.cpp
         commandset.cpp

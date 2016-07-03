@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="300dp"
+	android:orientation="vertical"
+	android:descendantFocusability="blocksDescendants"
+	android:background="#000000" >
+	<VideoView 
+		android:id="@+id/videoview"
+		android:layout_width="fill_parent"
+		android:layout_height="300dp"
+		android:visibility="gone"
+		android:layout_centerInParent="true"
+		/>	
+	<ImageView 
+		android:id="@+id/video_image"
+		android:layout_width="fill_parent"
+		android:layout_height="300dp"
+		android:contentDescription="this is an image about the movie"
+		android:scaleType="centerCrop"
+		android:background="@drawable/video2"
+		/>
+	<ProgressBar 
+		android:id="@+id/progressbar"
+		android:layout_width="45dp"
+		android:layout_height="45dp"
+		android:layout_centerInParent="true"
+		android:visibility="gone"
+		/>
+	<TextView 
+		android:id="@+id/video_name_text"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textColor="#ffffff"
+		android:text="小鸡小鸡"
+		android:textSize="24sp"
+		android:gravity="center_horizontal"
+		/>
+	<ImageButton 
+		android:id="@+id/video_play_btn"
+		android:layout_width="45dp"
+		android:layout_height="45dp"
+		android:layout_centerInParent="true"
+		android:background="@drawable/ic_play_video"
+		android:contentDescription="this is a button and play a video"
+		/>
+</RelativeLayout>

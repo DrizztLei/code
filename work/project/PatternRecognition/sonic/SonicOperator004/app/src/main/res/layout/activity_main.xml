@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hillsidewatchers.sdu.sonicoperator.ViewSurface.DragLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    tools:context=".MainActivity" >
+    <!-- 这一部分添加滑动后的内容 -->
+
+    <RelativeLayout
+        android:background="@drawable/bg_left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="30dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="20dp" >
+
+        <FrameLayout
+            android:id="@+id/ll_userblock"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:orientation="vertical"
+            >
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_marginLeft="53dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/beader_border"
+                android:layout_height="150dp" />
+
+            <LinearLayout
+                android:layout_marginTop="28dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="50dp"
+                android:orientation="vertical" >
+
+                <!-- 用户头像 -->
+
+                <ImageView
+                    android:id="@+id/iv_main_head"
+                    android:layout_gravity="center"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/head"
+                    />
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Emilia Clarke"
+                    android:textColor="@color/white"
+                    />
+
+            </LinearLayout>
+            <ImageButton
+
+                android:layout_gravity="top|left"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_setting"
+                android:id="@+id/ll_main_settting"
+                />
+
+        </FrameLayout>
+        <!-- 分割线二 -->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/line2"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0.5dp"-->
+            <!--android:layout_below="@+id/ll_userblock"-->
+            <!--android:layout_marginBottom="25dp"-->
+            <!--android:layout_marginTop="4dp"-->
+            <!--android:background="@color/mslideline1" />-->
+
+        <!-- 中间部分的选项 -->
+        <LinearLayout
+            android:layout_below="@+id/ll_userblock"
+            android:layout_width="wrap_content"
+            android:layout_height="350dp"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="-15dp"
+            >
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:id="@+id/ll_scriptRecord"
+                    >
+                    <ImageButton
+                        android:layout_width="145dp"
+                        android:layout_height="145dp"
+                        android:clickable="false"
+                        android:background="@drawable/button1"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:id="@+id/ll_getGesture"
+                    >
+                    <ImageButton
+                        android:layout_width="145dp"
+                        android:layout_height="145dp"
+                        android:clickable="false"
+                        android:background="@drawable/button2"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:id="@+id/ll_operatorcenter"
+                        >
+                        <ImageButton
+                            android:layout_width="145dp"
+                            android:layout_height="145dp"
+                            android:clickable="false"
+                            android:background="@drawable/button3"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:id="@+id/ll_expand"
+                        >
+                        <ImageButton
+                            android:layout_width="145dp"
+                            android:layout_height="145dp"
+                            android:clickable="false"
+                            android:background="@drawable/button4"
+                            />
+                    </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- 滑动之前的界面 -->
+
+    <com.hillsidewatchers.sdu.sonicoperator.ViewSurface.DragRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        >
+        <include layout="@layout/top01"
+            android:id="@+id/top01"
+            />
+
+        <LinearLayout
+            android:layout_below="@+id/top01"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/container"
+
+            >
+
+        </LinearLayout>
+    </com.hillsidewatchers.sdu.sonicoperator.ViewSurface.DragRelativeLayout>
+
+</com.hillsidewatchers.sdu.sonicoperator.ViewSurface.DragLayout>

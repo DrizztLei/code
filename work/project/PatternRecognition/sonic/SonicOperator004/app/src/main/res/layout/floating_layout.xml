@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.hillsidewatchers.sdu.sonicoperator.ViewSurface.SliderSwitch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/floating_imageView"
+        app:btn_background="@drawable/_btn_panda"
+        app:abackground="@drawable/_bg_panda"
+        app:btn_width="40dp"
+        app:awidth="100dp"
+        app:aheight="40dp"
+        />
+    <!--<ImageButton-->
+        <!--android:id="@+id/floating_imageView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/ic_launcher" />-->
+</LinearLayout>

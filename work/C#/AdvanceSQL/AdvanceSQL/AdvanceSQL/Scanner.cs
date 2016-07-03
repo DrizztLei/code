@@ -46,6 +46,11 @@ namespace AdvanceSQL
             return false;
         }
         
+        public bool hasNext()
+        {
+            return sr.ReadLine () == null;
+        }
+        
         public String nextLine()
         {
             if ((line = sr.ReadLine ()) != null) 

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:gravity="center_vertical"
+    android:background="@color/fragmentblue5"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageButton
+            android:layout_marginLeft="8dp"
+            android:id="@+id/toggleBt"
+            android:layout_width="32dp"
+            android:layout_height="28dp"
+            android:onClick="toggleMenu"
+            android:layout_gravity="left|center"
+            android:background="@drawable/silde_aside"
+            />
+        <TextView
+            android:id="@+id/toggleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical|right"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        >
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:text="打开超声波"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="16dp"-->
+            <!--/>-->
+        <!--<com.hillsidewatchers.sdu.sonicoperator.ViewSurface.FragmentSwitch-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:id="@+id/sw_open_sonic"-->
+            <!--app:btn_background="@drawable/btn_back_frag"-->
+            <!--app:abackground="@drawable/backfrag"-->
+            <!--app:btn_width="30dp"-->
+            <!--app:awidth="70dp"-->
+            <!--app:aheight="30dp"-->
+            <!--/>-->
+        <ImageButton
+            android:background="@drawable/search"
+            android:layout_width="30dp"
+            android:layout_height="28dp" />
+        <ImageButton
+            android:id="@+id/sw_open_sonic"
+            android:background="@drawable/sonic_close"
+            android:layout_marginLeft="8dp"
+            android:layout_width="42dp"
+            android:layout_height="28dp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:layout_height="120dp">
+    <LinearLayout
+        android:layout_weight="7"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/cloud_image"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/appqq"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+                 android:layout_weight="1"
+                 android:orientation="vertical"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/cloud_title"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:textSize="18dp"
+                    android:text="QQ自动阅读消息"
+                    android:textColor="@color/textblack"
+                    />
+                <TextView
+                    android:layout_marginTop="6dp"
+                    android:id="@+id/cloud_content"
+                    android:layout_weight="1"
+                    android:text="只需要一个简单的手势就可以进入QQ，并阅读QQ消息"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="14dp"
+                    android:textColor="@color/gray"
+                    />
+
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            >
+            <Button
+                android:id="@+id/cloud_downloud"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+
+                android:background="@drawable/download"
+                />
+
+        </LinearLayout>
+        </LinearLayout>
+
+
+</LinearLayout>

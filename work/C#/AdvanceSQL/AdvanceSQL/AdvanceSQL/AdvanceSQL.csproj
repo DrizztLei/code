@@ -41,8 +41,6 @@
     <Compile Include="Main.cs" />
     <Compile Include="Scanner.cs" />
     <Compile Include="Trie.cs" />
-    <Compile Include="test.cs" />
-    <Compile Include="Tree.cs" />
     <Compile Include="Write.cs" />
     <Compile Include="GroupNode.cs" />
   </ItemGroup>

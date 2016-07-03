@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/fragmentblue5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--<Button-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:id="@+id/start"-->
+            <!--android:layout_gravity="center"-->
+            <!--/>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="录制超声波手势"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.hillsidewatchers.sdu.sonicoperator.ViewSurface.FragmentSwitch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/sw_record_gesture"
+                    app:btn_background="@drawable/btn_switch4"
+                    app:abackground="@drawable/bg_switch4"
+                    app:btn_width="25dp"
+                    app:awidth="60dp"
+                    app:aheight="25dp"
+                    android:layout_marginTop="-8dp"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="打开小红点"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.hillsidewatchers.sdu.sonicoperator.ViewSurface.FragmentSwitch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sw_open_dot"
+                    app:btn_background="@drawable/btn_switch4"
+                    app:abackground="@drawable/bg_switch4"
+                    app:btn_width="25dp"
+                    app:awidth="60dp"
+                    app:aheight="25dp"
+                    android:layout_marginTop="-8dp"
+
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--开始录制手势，关闭录制手势-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+            <ListView
+                android:id="@+id/gestureList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                >
+
+            </ListView>
+        </LinearLayout>
+
+</LinearLayout>

@@ -125,7 +125,7 @@ int main(int argc , char ** argv){
                             V(semid , S_W_LOCK); // unlock the sofa_wait lock.
                             P(semid , BARBE); // in queue to get barbed.
                             P(semid , LEAVE); // in queue to charge and leave.
-                            printf("Over the customer %d who was luck.\n" , getpid());
+                            printf("Over the customer %d who was luck and in sofa.\n" , getpid());
                             V(semid , PEOPLE);
                         }else if(msg_length(msg_wait) < 13){
                             struct msgbuf buf;
@@ -143,10 +143,10 @@ int main(int argc , char ** argv){
                             V(semid , S_W_LOCK);// imagetate the vlaue of before.
                             P(semid , BARBE); // in queue to get the barbed.
                             P(semid , LEAVE); // in queue to charge and leave.
-                            printf("Over the customer %d who was not luck.\n" , getpid());
+                            printf("Over the customer %d who was not luck and in wait room.\n" , getpid());
                             V(semid , PEOPLE);
                         }else{
-                            perror("Error for process the logic.\n");
+                            printf("The number is over 20 , leave here.\n");
                             exit(EXIT_FAILURE);
                         }
                         printf("Run over here.\n");

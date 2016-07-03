@@ -54,7 +54,8 @@ SOURCES       = main.cpp \
 		mediaplayer.cpp \
 		mediaplaylist.cpp \
 		fileinfo.cpp \
-		slider.cpp moc_mainwindow.cpp
+		slider.cpp qrc_resources.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		file.o \
@@ -62,6 +63,7 @@ OBJECTS       = main.o \
 		mediaplaylist.o \
 		fileinfo.o \
 		slider.o \
+		qrc_resources.o \
 		moc_mainwindow.o
 DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/common/unix.conf \
@@ -73,7 +75,6 @@ DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/common/g++-unix.conf \
 		/usr/lib64/qt5/mkspecs/qconfig.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_Attica.pri \
-		/usr/lib64/qt5/mkspecs/modules/qt_BluezQt.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KActivities.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KArchive.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KAuth.pri \
@@ -114,7 +115,6 @@ DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/modules/qt_KParts.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KPeople.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KPeopleWidgets.pri \
-		/usr/lib64/qt5/mkspecs/modules/qt_KPlotting.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KPty.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KrossCore.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KrossUi.pri \
@@ -139,6 +139,8 @@ DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_core_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_dbus_private.pri \
+		/usr/lib64/qt5/mkspecs/modules/qt_lib_declarative.pri \
+		/usr/lib64/qt5/mkspecs/modules/qt_lib_declarative_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_designer.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_designer_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri \
@@ -174,8 +176,6 @@ DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_script_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_scripttools.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_scripttools_private.pri \
-		/usr/lib64/qt5/mkspecs/modules/qt_lib_sensors.pri \
-		/usr/lib64/qt5/mkspecs/modules/qt_lib_sensors_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_sql_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_svg.pri \
@@ -191,6 +191,8 @@ DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_webkit_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_webkitwidgets.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_webkitwidgets_private.pri \
+		/usr/lib64/qt5/mkspecs/modules/qt_lib_websockets.pri \
+		/usr/lib64/qt5/mkspecs/modules/qt_lib_websockets_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_widgets.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_widgets_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_x11extras.pri \
@@ -278,7 +280,6 @@ Makefile: VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mks
 		/usr/lib64/qt5/mkspecs/common/g++-unix.conf \
 		/usr/lib64/qt5/mkspecs/qconfig.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_Attica.pri \
-		/usr/lib64/qt5/mkspecs/modules/qt_BluezQt.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KActivities.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KArchive.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KAuth.pri \
@@ -319,7 +320,6 @@ Makefile: VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mks
 		/usr/lib64/qt5/mkspecs/modules/qt_KParts.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KPeople.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KPeopleWidgets.pri \
-		/usr/lib64/qt5/mkspecs/modules/qt_KPlotting.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KPty.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KrossCore.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KrossUi.pri \
@@ -344,6 +344,8 @@ Makefile: VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mks
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_core_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_dbus_private.pri \
+		/usr/lib64/qt5/mkspecs/modules/qt_lib_declarative.pri \
+		/usr/lib64/qt5/mkspecs/modules/qt_lib_declarative_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_designer.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_designer_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri \
@@ -379,8 +381,6 @@ Makefile: VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mks
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_script_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_scripttools.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_scripttools_private.pri \
-		/usr/lib64/qt5/mkspecs/modules/qt_lib_sensors.pri \
-		/usr/lib64/qt5/mkspecs/modules/qt_lib_sensors_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_sql_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_svg.pri \
@@ -396,6 +396,8 @@ Makefile: VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mks
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_webkit_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_webkitwidgets.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_webkitwidgets_private.pri \
+		/usr/lib64/qt5/mkspecs/modules/qt_lib_websockets.pri \
+		/usr/lib64/qt5/mkspecs/modules/qt_lib_websockets_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_widgets.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_widgets_private.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_lib_x11extras.pri \
@@ -432,6 +434,7 @@ Makefile: VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mks
 		/usr/lib64/qt5/mkspecs/features/yacc.prf \
 		/usr/lib64/qt5/mkspecs/features/lex.prf \
 		VLC.pro \
+		resources.qrc \
 		/usr/lib64/libQt5MultimediaWidgets.prl \
 		/usr/lib64/libQt5Widgets.prl \
 		/usr/lib64/libQt5Multimedia.prl \
@@ -449,7 +452,6 @@ Makefile: VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mks
 /usr/lib64/qt5/mkspecs/common/g++-unix.conf:
 /usr/lib64/qt5/mkspecs/qconfig.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_Attica.pri:
-/usr/lib64/qt5/mkspecs/modules/qt_BluezQt.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_KActivities.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_KArchive.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_KAuth.pri:
@@ -490,7 +492,6 @@ Makefile: VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mks
 /usr/lib64/qt5/mkspecs/modules/qt_KParts.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_KPeople.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_KPeopleWidgets.pri:
-/usr/lib64/qt5/mkspecs/modules/qt_KPlotting.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_KPty.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_KrossCore.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_KrossUi.pri:
@@ -515,6 +516,8 @@ Makefile: VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mks
 /usr/lib64/qt5/mkspecs/modules/qt_lib_core_private.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_dbus.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_dbus_private.pri:
+/usr/lib64/qt5/mkspecs/modules/qt_lib_declarative.pri:
+/usr/lib64/qt5/mkspecs/modules/qt_lib_declarative_private.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_designer.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_designer_private.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri:
@@ -550,8 +553,6 @@ Makefile: VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mks
 /usr/lib64/qt5/mkspecs/modules/qt_lib_script_private.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_scripttools.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_scripttools_private.pri:
-/usr/lib64/qt5/mkspecs/modules/qt_lib_sensors.pri:
-/usr/lib64/qt5/mkspecs/modules/qt_lib_sensors_private.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_sql.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_sql_private.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_svg.pri:
@@ -567,6 +568,8 @@ Makefile: VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mks
 /usr/lib64/qt5/mkspecs/modules/qt_lib_webkit_private.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_webkitwidgets.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_webkitwidgets_private.pri:
+/usr/lib64/qt5/mkspecs/modules/qt_lib_websockets.pri:
+/usr/lib64/qt5/mkspecs/modules/qt_lib_websockets_private.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_widgets.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_widgets_private.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_lib_x11extras.pri:
@@ -603,6 +606,7 @@ Makefile: VLC.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mks
 /usr/lib64/qt5/mkspecs/features/yacc.prf:
 /usr/lib64/qt5/mkspecs/features/lex.prf:
 VLC.pro:
+resources.qrc:
 /usr/lib64/libQt5MultimediaWidgets.prl:
 /usr/lib64/libQt5Widgets.prl:
 /usr/lib64/libQt5Multimedia.prl:
@@ -623,6 +627,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.h file.h mediaplayer.h mediaplaylist.h fileinfo.h slider.h $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp mainwindow.cpp file.cpp mediaplayer.cpp mediaplaylist.cpp fileinfo.cpp slider.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
@@ -646,8 +651,18 @@ mocables: compiler_moc_header_make_all compiler_moc_source_make_all
 
 check: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resources.cpp
+qrc_resources.cpp: resources.qrc \
+		icon/save.png \
+		icon/play.png \
+		icon/next.png \
+		icon/previous.png \
+		icon/folder_open.png \
+		icon/pause.png
+	/usr/lib64/qt5/bin/rcc -name resources resources.qrc -o qrc_resources.cpp
+
 compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp
@@ -661,7 +676,7 @@ moc_mainwindow.cpp: fileinfo.h \
 		mainwindow.h \
 		invoker.cpp \
 		mainwindow.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/elvis/work/QT/VLC/VLC_1.0 -I/usr/include/qt5 -I/usr/include/qt5/QtMultimediaWidgets -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtMultimedia -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtNetwork -I/usr/include/qt5/QtCore -I/usr/lib/gcc/x86_64-pc-linux-gnu/5.3.0/include/g++-v5 -I/usr/lib/gcc/x86_64-pc-linux-gnu/5.3.0/include/g++-v5/x86_64-pc-linux-gnu -I/usr/lib/gcc/x86_64-pc-linux-gnu/5.3.0/include/g++-v5/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/5.3.0/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/5.3.0/include-fixed -I/usr/include mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib64/qt5/bin/moc $(DEFINES) -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/elvis/work/QT/VLC/VLC_1.0 -I/usr/include/qt5 -I/usr/include/qt5/QtMultimediaWidgets -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtMultimedia -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtNetwork -I/usr/include/qt5/QtCore -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4 -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/x86_64-pc-linux-gnu -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include-fixed -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -677,7 +692,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -719,6 +734,9 @@ fileinfo.o: fileinfo.cpp fileinfo.h
 
 slider.o: slider.cpp slider.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o slider.o slider.cpp
+
+qrc_resources.o: qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

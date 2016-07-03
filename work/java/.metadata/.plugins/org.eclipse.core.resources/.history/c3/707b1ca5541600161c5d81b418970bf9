@@ -1,7 +1,0 @@
-
-public class OB_2 {
-	public static void main(String[] argv){
-		OB ob(1);
-		OB ob2(2);
-	}
-}
