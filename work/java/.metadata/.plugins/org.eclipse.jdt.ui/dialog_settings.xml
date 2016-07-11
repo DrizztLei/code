@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item value="JavaSE-1.7" key="org.eclipse.jdt.ui.last.selected.execution.enviroment"/>
+	<item value="/home/elvis/work/java/FaceDemo/lib" key="org.eclipse.jdt.ui.lastextjar"/>
 	<item value="/home/eva/work/java" key="org.eclipse.jdt.ui.last.external.project"/>
 	<item value="2" key="org.eclipse.jdt.ui.last.selected.jre.kind2"/>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">

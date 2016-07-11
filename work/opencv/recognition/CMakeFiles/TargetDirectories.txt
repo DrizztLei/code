@@ -1,0 +1,1 @@
+/home/elvis/work/opencv/recognition/CMakeFiles/DisplayImage.dir

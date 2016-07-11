@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.3)
+project(svm )
+find_package( OpenCV REQUIRED  )
+include_directories( ${OpenCV_INCLUDE_DIRS}  )
+add_executable( svm svm.cpp  )
+target_link_libraries( svm ${OpenCV_LIBS}  )

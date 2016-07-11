@@ -9,7 +9,6 @@
 <fullyQualifiedTypeName name="DNN"/>
 <fullyQualifiedTypeName name="OB_2"/>
 <fullyQualifiedTypeName name="OB"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="DrawBasic"/>
 <fullyQualifiedTypeName name="org.omg.CORBA.portable.ValueBase"/>
 <fullyQualifiedTypeName name="java.lang.Math"/>
@@ -18,4 +17,5 @@
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>
