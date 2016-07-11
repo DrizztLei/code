@@ -1,16 +1,11 @@
 #/bin/sh
 src="./work"
-backup="../Backup"
+backup="/home/elvis/Backup"
 origin="/home/elvis/work"
 if [ ! -d "${src}" ];
 then
     echo "Direct for ${src} not exists . Generate it."
     mkdir "${src}"
-fi
-if [ ! -d "${backup}" ];
-then
-    echo "Direct for ${backup} not exists . Generate it."
-    mkdir "${backup}"
 fi
 if [ ! -d "${backup}" ];
 then
@@ -22,5 +17,7 @@ then
     echo "Sources not exists.Terminated here."
     exit 1
 fi
+rm -rf "${backup}"
+mkdir "${backup}"
 mv ${src} ${backup}
 cp -rf ${origin} .
