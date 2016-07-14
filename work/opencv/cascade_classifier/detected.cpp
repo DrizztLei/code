@@ -26,7 +26,6 @@ int main(int argc , char ** argv)
 {
     return online_detect(argv , argc);
 }
-
 int online_detect(char ** argv , int argc)
 {
     VideoCapture capture;

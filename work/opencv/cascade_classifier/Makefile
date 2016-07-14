@@ -3,7 +3,7 @@ src=temp.cpp
 try=try.cpp
 out_try=try.elf
 out=temp.elf
-necessary=`pkg-config --cflags --libs opencv` -lstdc++
+necessary=`pkg-config --cflags --libs opencv` -lstdc++ -O3
 all : 
 	make demo
 	make try
