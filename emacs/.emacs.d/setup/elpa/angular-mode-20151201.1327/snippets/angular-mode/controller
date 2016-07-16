@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: controller
-# --
-.controller('${1:name}Ctrl', function $1Controller(${2:dependencies}) {
-  $0
-})

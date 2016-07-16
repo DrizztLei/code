@@ -1,4 +1,0 @@
-# -*- mode: snippet -*-
-# name: ngClick
-# --
-<${1:tag} ng-click="${2:expression}">$0</$1>

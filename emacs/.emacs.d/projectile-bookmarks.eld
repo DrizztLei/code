@@ -1,1 +1,0 @@
-("~/work/project/PatternRecognition/" "/sudo:root@localhost:/home/elvis/work/project/PatternRecognition/" "~/Desktop/work/project/PatternRecognition/" "~/" "/sudo:root@localhost:/home/eva/" "~/tensorflow/" "~/.emacs.cell/" "/usr/src/linux-4.1.12-gentoo/")
