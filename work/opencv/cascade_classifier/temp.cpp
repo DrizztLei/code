@@ -37,7 +37,8 @@ int main( int argc, const char** argv )
     {
         while( true )
         {
-            frame = cvQueryFrame( capture );
+            //capture->read(cv::FileNodeIterator &it, std::vector<_Tp> &vec, size_t maxCount)
+            //capture->read(frame);
             //-- 3. Apply the classifier to the frame
             if( !frame.empty() )
             {

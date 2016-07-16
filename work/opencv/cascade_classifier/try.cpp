@@ -92,7 +92,7 @@ int main(int argc , char ** argv)
     // 0 for camera in computer
     // 1 for camera in extra
 
-    capture.open(0);
+    capture.open(1);
     if ( ! capture.isOpened() ) { printf("--(!)Error opening video capture\n"); return -1; }
     while ( capture.read(frame) )
     {

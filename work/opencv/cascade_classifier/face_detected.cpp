@@ -84,7 +84,7 @@ void learn()
             nEigens,
             eigenVectArr,
             0, 0,
-            pAvgTrainImg,
+p            pAvgTrainImg,
             projectedTrainFaceMat->data.fl + i*nEigens
             );
     }
