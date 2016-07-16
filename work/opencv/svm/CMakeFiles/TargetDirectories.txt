@@ -1,0 +1,1 @@
+/home/elvis/work/opencv/svm/CMakeFiles/svm.dir

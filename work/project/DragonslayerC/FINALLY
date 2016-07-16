@@ -1,0 +1,8 @@
+#inculde<iostream>
+int main(int argc, char ** argv){
+cout<<"A"<<endl;
+cout<<(12+33)<<endl;
+cout << (0+1+2) << endl;
+cout << 5 << endl;
+return 0;
+}

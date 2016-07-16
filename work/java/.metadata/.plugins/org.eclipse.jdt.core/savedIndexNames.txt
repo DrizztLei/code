@@ -1,0 +1,2 @@
+INDEX VERSION 1.127+/home/elvis/work/java/.metadata/.plugins/org.eclipse.jdt.core
+4059365292.index

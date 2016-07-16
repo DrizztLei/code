@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/media">
+        <file>icon/folder_open.png</file>
+        <file>icon/next.png</file>
+        <file>icon/pause.png</file>
+        <file>icon/play.png</file>
+        <file>icon/previous.png</file>
+        <file>icon/save.png</file>
+    </qresource>
+</RCC>

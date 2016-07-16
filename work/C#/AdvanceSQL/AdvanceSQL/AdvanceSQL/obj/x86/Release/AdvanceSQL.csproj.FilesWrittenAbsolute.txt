@@ -1,0 +1,6 @@
+/home/elvis/work/C#/AdvanceSQL/AnvanceSQL/AnvanceSQL/obj/x86/Release/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/home/elvis/work/C#/AdvanceSQL/AnvanceSQL/AnvanceSQL/bin/Release/AnvanceSQL.exe
+/home/elvis/work/C#/AdvanceSQL/AnvanceSQL/AnvanceSQL/obj/x86/Release/AnvanceSQL.exe
+/home/elvis/work/C#/AdvanceSQL/AdvanceSQL/AdvanceSQL/obj/x86/Release/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/home/elvis/work/C#/AdvanceSQL/AdvanceSQL/AdvanceSQL/bin/Release/AnvanceSQL.exe
+/home/elvis/work/C#/AdvanceSQL/AdvanceSQL/AdvanceSQL/obj/x86/Release/AnvanceSQL.exe

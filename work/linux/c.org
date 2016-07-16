@@ -1,0 +1,118 @@
+4.1
+gcc 编译器
+1.预处理
+2.编译
+3.汇编
+4.连接
+
+-o filename 指定生成文件
+-c 编译不连接 .o
+-S 编译不汇编
+-E 预编译
+-I dir 头文件搜索路径列表中添加dir 目录
+-L dir 库文件---------------------
+-static 连接静态库函数
+-library libname
+-Dmacro 定义指定的宏 ， 可以通过源码中的#ifdef 进行校验
+-Wall 将Warning 看成错误
+-Werror 同上
+-w 禁止所有的警报
+-pedantic 严格符合ANSI标准
+
+4.2.6 管道加速编译
+
+gcc -pipe -Wall foo.c -o foo
+
+4.3.1 gdb
+需要在gcc 的时候加上 -g 或者 -ggdb
+#gdb filename
+run 执行.
+kill .
+step 进入函内部.
+next 不进入函数内部.
+break 断点设置.
+p / print 打印.
+display 设置自动显示的表达式或者变量.
+list 列出源码的一部分.
+watch 监视变量不管何时被改变.
+backtrace 回溯跟踪.
+frame n 定位道发生错误的代码段 n 为backtrace 命令的输出结果中的行号.
+examine 查看memory's value.
+jump let the programmer jump.
+signal to produce the signal.
+return to force the function return.
+call to force the function called.
+make to make the executable file without exiting the gdb.
+shell to execute the executable the linux shell order without exit the gdb.
+you can use the help to know how to use the gdb or input the "gdb h" to the simple list of gbd.
+
+Now we can use the gdb like it .
+If you see the Segmentation fault .
+Then you can #gdb filename.
+(gdb) run
+/*********************Error information here *********************/
+(gdb) backtrace
+(gdb) frame 3
+
+/********************Done *************/
+We can use the break's usage .
+break <function> We can use the class::function or function(type , type)
+break <linenum>
+break + offset -> break when execute the line (now) + offset.
+break - offset -> you can infer from the up line.
+break filename:linenum.
+break filename:function.
+break *address.
+break -> break when the next order.
+break ...if <condition> -> such as break if i=100
+display <expr>
+display/<fmt> <expr>
+display/<fmt> <addr>
+
+Now you can use the powerful order like :
+display/i $pc
+/i -> means the ASM order .
+
+gdb's enviroment variale .
+such as : set $foo = *object_ptr
+show convenience
+(gdb) list
+/*** code here ***/
+/*** code here done ***/
+(gdb) show listsize
+Number of source lines gdb will list by default is 10.
+(gdb) set listsize 5
+(gdb) list functionName //This will show the code of the
+fucntion which lines up to the listsize .
+4.4.5 change the execute of programming
+4.5 xxgdb
+
+5 Make and Makefile
+If we had four file named main.c foo1.c foo2.c and foo3.c
+then you would like to use the Makefile like this :
+/*********************************Makefile***********************/
+all : main.c foo1.c foo2.c foo3.c
+gcc -W -pipe -pedantic -O2 -o all main.c foo1.c foo2.c foo3.c
+/*********************************Makefile DONE***********************/
+Attention : you must have the [TAB] at the begin of the gcc
+-W ... for the [TAB] is the begin of the order . you can see
+the change of color when you type the [TAB] in vim .
+
+5.1.2 the relationship of make and Makefile
+make [options] [target] ...
+-f filname //To appoint the filename obvious
+-C dirname //To set the work's origin .
+-e //forbide to set the value of enviroment.
+-k //when execute in error status giving up the target at
+monment and continue-process the other program.
+-V // version
+-l //skip the error when run the make
+-t // Some like the touch , change the data of the file .
+-s // execute without echo the order
+-S // execute the order till an error ocur .
+-r // ingore the rule inside
+-p // echo the rule inside and value .
+-n // echo the step of the executing time in really
+executing time .
+When you use the command make . you'll reduce the time of
+compilint time.

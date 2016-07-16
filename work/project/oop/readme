@@ -1,0 +1,7 @@
+enviroment :
+    g++ 4.9.3
+run :
+    in linux enviroment , you should compile it first of all , just type "make" command in terminal . and it will generate the executable file "out"
+    which you could type ./out in your terminal and see the result.
+function :
+    we've got the basic functions except the restore and log for I havn't decided how to achieve it.

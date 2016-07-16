@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/Image">
+        <file alias="face">face.jpg</file>
+        <file alias="save">save.jpg</file>
+        <file alias="profile">profile.jpg</file>
+    </qresource>
+</RCC>

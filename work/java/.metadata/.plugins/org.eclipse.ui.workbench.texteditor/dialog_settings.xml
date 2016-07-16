@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="321" key="DIALOG_WIDTH"/>
+		<item value="204" key="DIALOG_Y_ORIGIN"/>
+		<item value="1524" key="DIALOG_X_ORIGIN"/>
+		<item value="406" key="DIALOG_HEIGHT"/>
+		<item value="1|Sans|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="祖国还需要，知道，但是没有办法，要去尿尿了" key="selection"/>
+		<list key="findhistory">
+			<item value="祖国还需要，知道，但是没有办法，要去尿尿了"/>
+			<item value="背诗"/>
+			<item value="你会"/>
+			<item value="你说换就换啊"/>
+			<item value="换"/>
+			<item value="换背景"/>
+			<item value="我会很多"/>
+			<item value="@"/>
+		</list>
+		<list key="replacehistory">
+			<item value=""/>
+		</list>
+	</section>
+</section>

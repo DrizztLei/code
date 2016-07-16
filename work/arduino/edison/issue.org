@@ -1,0 +1,38 @@
+There is a install issue about when I install the edison board in arduino IDE.It reported 
+"
+find: invalid mode ‘+111’
+"
+and I install failed . 
+the enviroment is :
+arduino-1.6.5-r5
+and I resolve the issue 
+In File : 
+    ~/.arduino15/packages/Intel/tools/i586-poky-linux-uclibc/1.6.2+1.0/i586/install_script.sh
+    Find the line : 
+        executable_files="'"$($SUDO_EXEC find "$native_sysroot" -type f -perm +111)"'"
+        executable_files=$($SUDO_EXEC find "$native_sysroot" -type f -perm +111 -exec printf "\"%s\" " {} \; )
+    replace it with : 
+        executable_files=$($SUDO_EXEC find "$native_sysroot" -type f -perm /111 -exec printf "\"%s\" " {} \; )
+    also , you can commit the line in that file which cause the issue.
+My computer's hardware is : 
+    00:00.0 Host bridge: Intel Corporation Xeon E3-1200 v3/4th Gen Core Processor DRAM Controller (rev 06)
+    00:01.0 PCI bridge: Intel Corporation Xeon E3-1200 v3/4th Gen Core Processor PCI Express x16 Controller (rev 06)
+    00:02.0 VGA compatible controller: Intel Corporation 4th Gen Core Processor Integrated Graphics Controller (rev 06)
+    00:03.0 Audio device: Intel Corporation Xeon E3-1200 v3/4th Gen Core Processor HD Audio Controller (rev 06)
+    00:14.0 USB controller: Intel Corporation 8 Series/C220 Series Chipset Family USB xHCI (rev 05)
+    00:16.0 Communication controller: Intel Corporation 8 Series/C220 Series Chipset Family MEI Controller #1 (rev 04)
+    00:1a.0 USB controller: Intel Corporation 8 Series/C220 Series Chipset Family USB EHCI #2 (rev 05)
+    00:1b.0 Audio device: Intel Corporation 8 Series/C220 Series Chipset High Definition Audio Controller (rev 05)
+    00:1c.0 PCI bridge: Intel Corporation 8 Series/C220 Series Chipset Family PCI Express Root Port #1 (rev d5)
+    00:1c.1 PCI bridge: Intel Corporation 8 Series/C220 Series Chipset Family PCI Express Root Port #2 (rev d5)
+    00:1c.2 PCI bridge: Intel Corporation 8 Series/C220 Series Chipset Family PCI Express Root Port #3 (rev d5)
+    00:1c.4 PCI bridge: Intel Corporation 8 Series/C220 Series Chipset Family PCI Express Root Port #5 (rev d5)
+    00:1d.0 USB controller: Intel Corporation 8 Series/C220 Series Chipset Family USB EHCI #1 (rev 05)
+    00:1f.0 ISA bridge: Intel Corporation HM86 Express LPC Controller (rev 05)
+    00:1f.2 SATA controller: Intel Corporation 8 Series/C220 Series Chipset Family 6-port SATA Controller 1 [AHCI mode] (rev 05)
+    00:1f.3 SMBus: Intel Corporation 8 Series/C220 Series Chipset Family SMBus Controller (rev 05)
+    01:00.0 3D controller: NVIDIA Corporation GM107M [GeForce GTX 860M] (rev a2)
+    08:00.0 Network controller: Intel Corporation Wireless 3160 (rev 93)
+    09:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 10)
+    0a:00.0 Unassigned class [ff00]: Realtek Semiconductor Co., Ltd. RTS5249 PCI Express Card Reader (rev 01)
+
