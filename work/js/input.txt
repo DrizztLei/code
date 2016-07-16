@@ -1,3 +1,0 @@
-This is the text from /home/elvis/work/js/input.txt
-which author is Elvis Lei.
-E-mail : elvis.linuxer@gmail.com

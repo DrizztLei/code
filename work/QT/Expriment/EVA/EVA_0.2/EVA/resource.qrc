@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/images">
-        <file alias="MARK">makr.jpg</file>
-    </qresource>
-</RCC>

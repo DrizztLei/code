@@ -1,5 +1,0 @@
-/home/elvis/work/C#/AdvanceSQL/AdvanceSQL/AdvanceSQL/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
-/home/elvis/work/C#/AdvanceSQL/AdvanceSQL/AdvanceSQL/bin/Debug/AnvanceSQL.exe.mdb
-/home/elvis/work/C#/AdvanceSQL/AdvanceSQL/AdvanceSQL/bin/Debug/AnvanceSQL.exe
-/home/elvis/work/C#/AdvanceSQL/AdvanceSQL/AdvanceSQL/obj/x86/Debug/AnvanceSQL.exe
-/home/elvis/work/C#/AdvanceSQL/AdvanceSQL/AdvanceSQL/obj/x86/Debug/AnvanceSQL.exe.mdb

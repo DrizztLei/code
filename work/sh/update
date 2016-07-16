@@ -1,2 +1,0 @@
-#emerge --sync && emerge --update --deep --with-bdeps=y --newuse --autounmask-write world
-emerge --update --deep --with-bdeps=y --newuse --autounmask-write world
