@@ -80,7 +80,7 @@ private:
 };
 
 template<typename T>
-void Ann<T> ::  generate_svm(T ** set , string filename , int number , int size)
+void Ann<T> :: generate_svm(T ** set , string filename , int number , int size)
 {
     std::ofstream out;
     out.open(filename.c_str());

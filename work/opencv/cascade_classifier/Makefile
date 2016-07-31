@@ -11,4 +11,5 @@ demo :
 	${CC} ${necessary} ${src} -o ${out}
 try :
 	${CC} ${necessary} ${try} -o ${out_try}
-
+clean :
+	rm out_try out

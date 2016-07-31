@@ -31,7 +31,7 @@ int main( int argc, const char** argv )
 
     //-- 2. Read the video stream
 
-    capture = cvCaptureFromCAM( -1 );
+    capture = cvCaptureFromCAM( 1 );
 
     if( capture )
     {

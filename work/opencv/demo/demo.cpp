@@ -6,7 +6,6 @@
 #include "opencv2/imgproc/imgproc_c.h"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
-//#include "opencv2/legacy/legacy.hpp"
 #include "opencv2/video/tracking.hpp"
 #include "opencv2/photo/photo.hpp"
 #include <cstring>
@@ -15,7 +14,7 @@ using namespace std;
 int main()
 {
 	IplImage *frame = NULL;
-	int num = 0;
+	int num = 1;
 	int key;
 	CvCapture *input_camera = cvCaptureFromCAM(-1);
 	frame = cvQueryFrame(input_camera);
