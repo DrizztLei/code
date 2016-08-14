@@ -107,6 +107,7 @@ int main(int argc , char ** argv)
     if(argc != 3)
     {
         cerr << "Error for argc != 3" << endl;
+        return -1;
     }
 
     Ptr<FaceRecognizer> model = createLBPHFaceRecognizer();

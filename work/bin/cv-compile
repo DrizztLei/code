@@ -13,6 +13,17 @@ function compile()
 	echo "Error for file format of" $1
     fi
 }
+
+if [ $# -ge 1 ]
+then
+    for file in $@
+    do
+        compile $file
+    done
+    echo "Compile Over"
+    exit 0
+fi
+
 for dir in $(ls ./)
 do
   compile $dir

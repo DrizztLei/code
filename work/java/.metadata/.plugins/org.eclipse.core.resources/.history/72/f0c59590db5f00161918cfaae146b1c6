@@ -1,0 +1,167 @@
+package com.philips.lighting;
+
+import java.util.List;
+import com.philips.lighting.hue.sdk.PHAccessPoint;
+import com.philips.lighting.hue.sdk.PHBridgeSearchManager;
+import com.philips.lighting.hue.sdk.PHHueSDK;
+import com.philips.lighting.hue.sdk.PHSDKListener;
+import com.philips.lighting.model.PHBridge;
+import com.philips.lighting.model.PHHueParsingError;
+import com.philips.lighting.model.PHLight;
+import com.philips.lighting.model.PHLightState;
+
+public class setColor {
+	private static PHHueSDK phHueSDK = PHHueSDK.getInstance();
+	public static int color;
+	public static PHBridge bridge ;
+
+	public static void main(String[] args)
+	{
+		setColor.color = new Integer(args[0]);
+		//System.out.println("Get the color identifier : " + setColor.color );
+		
+		PHSDKListener listener = new PHSDKListener() {
+			
+			@Override
+			public void onParsingErrors(List<PHHueParsingError> arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("on parasing errors");
+			}
+			
+			@Override
+			public void onError(int arg0, String arg1) {
+				// TODO Auto-generated method stub
+				System.out.println("on error");
+			}
+			
+			@Override
+			public void onConnectionResumed(PHBridge arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("on connection resumed");
+			}
+			
+			@Override
+			public void onConnectionLost(PHAccessPoint arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("on connection lost");
+			}
+			
+			@Override
+			public void onCacheUpdated(List<Integer> arg0, PHBridge arg1) {
+				// TODO Auto-generated method stub
+				System.out.println("on cache updated");
+			}
+			
+			@Override
+			public void onBridgeConnected(PHBridge arg0, String arg1) {
+				// TODO Auto-generated method stub
+				/*
+				System.out.println(arg1);
+				System.out.println(setColor.color);
+				*/
+				System.out.println("on bridge connected");
+				setColor.phHueSDK.setSelectedBridge(arg0);
+				//setColor.phHueSDK.enableHeartbeat(bridge, PHHueSDK.HB_INTERVAL);
+				/*
+				System.out.println(arg0.getResourceCache().getAllLights().size());
+				*/
+				//setColor.bridge = arg0;
+				//System.out.println(bridge == null);
+			}
+			
+			@Override
+			public void onAuthenticationRequired(PHAccessPoint arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("on authentication required");
+			}
+			
+			@Override
+			public void onAccessPointsFound(List<PHAccessPoint> arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("on access points found");
+				//System.out.println(setColor.bridge == null);
+				//setColor.deploy();
+			}
+		};
+		
+		
+		phHueSDK.getNotificationManager().registerSDKListener(listener);
+		
+		//PHBridgeSearchManager sm = (PHBridgeSearchManager) phHueSDK.getSDKService(PHHueSDK.SEARCH_BRIDGE);
+		//sm.search(true, true);
+		
+		PHAccessPoint accessPoint = new PHAccessPoint();
+		accessPoint.setIpAddress("192.168.1.8");
+		accessPoint.setUsername("pehNjKT6cdWEaSk-uC9T6c4mpw6ecI8kz2zyjRuY" );
+		phHueSDK.connect(accessPoint);
+		
+		//System.out.println(bridge == null);
+		while(true)
+		{
+			bridge = phHueSDK.getSelectedBridge();
+			if(bridge != null)
+			{
+				System.out.println(bridge != null);
+				break;
+			}
+		}
+		
+		/*
+		bridge.getResourceCache();
+		
+		phHueSDK.destroySDK();
+		
+		System.out.println("init done");
+		*/
+		//PHLightState lightState = new PHLightState();
+		//lightState.setHue(12345);
+		
+		//List<PHLight> lights = bridge.getResourceCache().getAllLights();
+		
+		//System.out.println(lights.size());
+		
+		//bridge.updateLightState(bridge.getResourceCache().getAllLights().get(0), lightState , (PHLightListener) listener);
+		
+		//PHLightState lightState = new PHLightState();
+		//lightState.setHue(12345);
+		
+		/*
+		//phHueSDK.enableHeartbeat(bridge, PHHueSDK.HB_INTERVAL);
+		//PHHeartbeatManager heartbeatManager = PHHeartbeatManager.getInstance();
+		//heartbeatManager.enableLightsHeartbeat(bridge	, PHHueSDK.HB_INTERVAL);
+		
+		PHBridgeResourcesCache cache = phHueSDK.getSelectedBridge().getResourceCache();
+		// And now you can get any resource you want, for example:
+		List<PHLight> myLights = cache.getAllLights();
+		
+		System.out.println("Get the size for : " + myLights.size());
+		
+		System.out.println("init  done.");
+		
+		//heartbeatManager.disableLightsHeartbeat(bridge);
+		//heartbeatManager.disableAllHeartbeats(bridge);
+		phHueSDK.disableAllHeartbeat();
+		phHueSDK.destroySDK();
+		*/
+	}
+	
+	public static void deploy()
+	{
+		System.out.println("bridge in deploy() is null : " + (setColor.bridge == null) );
+		
+		PHLightState lightState = new PHLightState();
+		
+		lightState.setBrightness(0);
+		lightState.setOn(false);
+		lightState.setHue(324567);
+				
+		List<PHLight> lights = bridge.getResourceCache().getAllLights();
+		System.out.println("Get the info for : " + lights.get(0).getIdentifier() ) ;
+		System.out.println("Get the info for : " + lights.get(0).getName() ) ;
+		System.out.println("Get the info for : " + lights.get(0).getLastKnownLightState());
+		
+		bridge.updateLightState(lights.get(0) , lightState);
+		
+		//System.exit(0);
+	}
+}

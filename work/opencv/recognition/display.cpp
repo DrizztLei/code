@@ -3,7 +3,7 @@
 	> Author: Elvis Lei
 	> Mail: elvis.linuxer@gmail.com
 	> Created Time: Fri 08 Jul 2016 09:27:51 PM CST
- ************************************************************************/
+************************************************************************/
 
 #include <stdio.h>
 #include <opencv2/opencv.hpp>
@@ -16,7 +16,6 @@ int main(int argc, char** argv )
     {
         printf("usage: DisplayImage.out <Image_Path>\n");
         return -1;
-            
     }
 
     Mat image;
@@ -26,8 +25,8 @@ int main(int argc, char** argv )
     {
         printf("No image data \n");
         return -1;
-            
     }
+
     namedWindow("Display Image", WINDOW_AUTOSIZE );
     imshow("Display Image", image);
 

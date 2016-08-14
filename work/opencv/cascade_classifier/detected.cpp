@@ -19,6 +19,7 @@ String face_cascade_name = "haarcascade_frontalface_alt.xml";
 String eyes_cascade_name = "haarcascade_eye_tree_eyeglasses.xml";
 CascadeClassifier face_cascade;
 CascadeClassifier eyes_cascade;
+
 String window_name = "Capture - Face detection";
 
 /** @function main */
@@ -28,13 +29,17 @@ int main(int argc , char ** argv)
 }
 int online_detect(char ** argv , int argc)
 {
-    VideoCapture capture;
+
+    VideoCapture capture(0);
     Mat frame;
+
     //-- 1. Load the cascades
+    
     if( !face_cascade.load( face_cascade_name ) ){ printf("--(!)Error loading face cascade\n"); return -1; };
     if( !eyes_cascade.load( eyes_cascade_name ) ){ printf("--(!)Error loading eyes cascade\n"); return -1; };
 
     //-- 2. Read the video stream
+
     /*
     if(argc > 1)
     {
@@ -42,8 +47,11 @@ int online_detect(char ** argv , int argc)
     }
     */
 
-    capture.open( -1 );
+    capture.open(0);
+
     if ( ! capture.isOpened() ) { printf("--(!)Error opening video capture\n"); return -1; }
+
+    cout << "open the camera done ." << endl;
 
     while ( capture.read(frame) )
     {
@@ -72,7 +80,7 @@ void detectAndDisplay( Mat frame )
     equalizeHist( frame_gray, frame_gray );
 
     //-- Detect faces
-    face_cascade.detectMultiScale( frame_gray, faces, 1.1, 2, 0|CASCADE_SCALE_IMAGE, Size(30, 30) );
+    face_cascade.detectMultiScale(frame_gray, faces, 1.1, 2, 0|CASCADE_SCALE_IMAGE, Size(30, 30));
 
     for ( size_t i = 0; i < faces.size(); i++ )
     {
@@ -92,6 +100,7 @@ void detectAndDisplay( Mat frame )
             circle( frame, eye_center, radius, Scalar( 255, 0, 0 ), 4, 8, 0 );
         }
     }
+
     //-- Show what you got
     imshow( window_name, frame );
 }

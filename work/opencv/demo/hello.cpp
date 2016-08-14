@@ -5,7 +5,7 @@
 using namespace std;
 int main(int argc , char ** argv)
 {
-	int camera_id = 1;
+	int camera_id = -1;
 	if(argc > 1) camera_id = atoi(argv[1]);
 	cv::VideoCapture cap(camera_id);
 	if(!cap.isOpened())

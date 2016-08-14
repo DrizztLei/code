@@ -18,5 +18,6 @@
     console.log("done.");
     console.log("Get the info.");
     */
-    
+    var temp = "\"temp\"";
+    console.log(temp);
 }

@@ -13,7 +13,9 @@ void setup()
   pinMode(fsr,INPUT);
   //analogWrite( fsr , 784);
   //Serial.begin(9600);
+    digitalWrite(13 , HIGH);
   Bridge.begin();
+
 }
 void loop()
 { 
@@ -24,6 +26,7 @@ void loop()
   //string info = itoa(value); 
   itoa(value , info , info_length);
   Bridge.put("key" , info);
+
   //Serial.print("Put done " );
   //Serial.println(info);
   /*
