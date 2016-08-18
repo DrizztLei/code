@@ -1,15 +1,13 @@
 double Fahrenheit(double celsius) 
 {
         return 1.8 * celsius + 32;
-}    //摄氏温度度转化为华氏温度
+}
 
 double Kelvin(double celsius)
 {
         return celsius + 273.15;
-}     //摄氏温度转化为开氏温度
+}
 
-// 露点（点在此温度时，空气饱和并产生露珠）
-// 参考: http://wahiduddin.net/calc/density_algorithms.htm 
 double dewPoint(double celsius, double humidity)
 {
         double A0= 373.15/(273.15 + celsius);
@@ -23,8 +21,6 @@ double dewPoint(double celsius, double humidity)
         return (241.88 * T) / (17.558-T);
 }
 
-// 快速计算露点，速度是5倍dewPoint()
-// 参考: http://en.wikipedia.org/wiki/Dew_point
 double dewPointFast(double celsius, double humidity)
 {
         double a = 17.271;
@@ -90,6 +86,8 @@ void loop()
 
   Serial.print("Dew PointFast (oC): ");
   Serial.println(dewPointFast(DHT11.temperature, DHT11.humidity));
+
+  Serial.println();
 
   delay(2000);
 }

@@ -146,7 +146,7 @@ int main(int argc , char ** argv)
     Ann<double> * ann = new Ann<double>(input , level , array , output);
     double ** set;
     int number , size;
-    getData(set , number , size , "file" , input);
+    getData(set , number , size , "temp.file" , input);
     cout << "Number for : " << number << endl;
     //getchar();
     if(true)
