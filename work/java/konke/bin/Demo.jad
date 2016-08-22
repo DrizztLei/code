@@ -1,0 +1,112 @@
+// Decompiled by Jad v1.5.8e. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.geocities.com/kpdus/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   Demo.java
+
+import com.google.gson.Gson;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class Demo
+{
+
+    public Demo()
+    {
+    }
+
+    public static String post(String strURL, String access_token, String msg, String info)
+    {
+        String result;
+        URL url = new URL(strURL);
+        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+        connection.setDoOutput(true);
+        connection.setDoInput(true);
+        connection.setUseCaches(false);
+        connection.setInstanceFollowRedirects(true);
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("Accept-Encoding", "identity");
+        connection.setRequestProperty("Authorization", (new StringBuilder("Bearer ")).append(access_token).toString());
+        connection.connect();
+        if(msg != null && msg.length() > 0)
+        {
+            OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
+            out.append(msg);
+            out.flush();
+            out.close();
+        }
+        int length = 10240;
+        InputStream is = connection.getInputStream();
+        if(length == -1)
+            break MISSING_BLOCK_LABEL_275;
+        byte data[] = new byte[length];
+        byte temp[] = new byte[512];
+        int readLen = 0;
+        for(int destPos = 0; (readLen = is.read(temp)) > 0; destPos += readLen)
+            System.arraycopy(temp, 0, data, destPos, readLen);
+
+        result = new String(data, "UTF-8");
+        System.out.println((new StringBuilder(String.valueOf(info))).append("-\u670D\u52A1\u5668\u8FD4\u56DE\u7ED3\u679C\uFF1A").append(result).toString());
+        return result;
+        IOException e;
+        e;
+        e.printStackTrace();
+        return "error";
+    }
+
+    private static String buildURL(String in, String mn)
+    {
+        StringBuffer sb = new StringBuffer("http://kk.bigk2.com:8080/KOAuthDemeter/");
+        if(in != null && in.length() > 0)
+            sb.append(in);
+        if(mn != null && mn.length() > 0)
+        {
+            sb.append("/");
+            sb.append(mn);
+        }
+        return sb.toString();
+    }
+
+    private static void test(String access_token, String msg, String threadName)
+    {
+        post(url3, access_token, msg, (new StringBuilder(String.valueOf(threadName))).append("#doSwitchK").toString());
+    }
+
+    public static void main(String args[])
+    {
+        String access_token = "155bbd381a287e9b505e987379fa685e";
+        RequestParamsBean bean = new RequestParamsBean();
+        bean.setKey("open");
+        bean.setKid("0");
+        bean.setUserid("elvis.linuxer@gmail.com");
+        bean.setRemoteType(Integer.valueOf(1));
+        bean.setOrder("order");
+        bean.setBaseOrder("base order");
+        bean.setExtraOrder("extra order");
+        String msg = gson.toJson(bean);
+        String threadName = Thread.currentThread().getName();
+        test(access_token, msg, threadName);
+    }
+
+    private static Gson gson = new Gson();
+    static final String url0 = buildURL("UserInfo", "");
+    static final String url1 = buildURL("User", "getAvatar");
+    static final String url2 = buildURL("User", "getKList");
+    static final String url3 = buildURL("KControl", "doSwitchK");
+    static final String url4 = buildURL("KInfo", "getKTimerList");
+    static final String url5 = buildURL("KInfo", "getKElectricity");
+    static final String url6 = buildURL("KInfo", "getKDelayOpenInfo");
+    static final String url7 = buildURL("KInfo", "getKState");
+    static final String url8 = buildURL("User", "getKInfo");
+    static final String url9 = buildURL("User", "switchKLight");
+    static final String url10 = buildURL("User", "getKLightInfo");
+    static final String url11 = buildURL("User", "getKSceneList");
+    static final String url12 = buildURL("KInfo", "getKDelayCloseInfo");
+    static final String url13 = buildURL("User", "getGeneralRemoteList");
+    static final String url14 = buildURL("KControl", "sendGeneralRemoteOrder");
+    static final String url15 = buildURL("User", "getAirConditionerRemoteList");
+    static final String url16 = buildURL("KControl", "sendAirConditionerOrder");
+
+}

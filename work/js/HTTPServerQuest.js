@@ -13,6 +13,6 @@
            post = querystring.parse(post);
            res.end(util.inspect(post));
        })
-    }).listen(3000);
+    }).listen(80);
 
 }

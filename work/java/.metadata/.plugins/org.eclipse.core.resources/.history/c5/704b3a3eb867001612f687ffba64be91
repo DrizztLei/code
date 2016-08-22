@@ -1,0 +1,8 @@
+
+public class subMethod {
+	private String methodName;
+	public String getMethod()
+	{
+		return methodName;
+	}
+}

@@ -1,0 +1,59 @@
+// Decompiled by Jad v1.5.8e. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.geocities.com/kpdus/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   pluginControl.java
+
+import java.io.IOException;
+import java.io.PrintStream;
+import org.json.JSONObject;
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+public class pluginControl
+{
+
+    public pluginControl()
+    {
+    }
+
+    public static String getID()
+        throws IOException
+    {
+        Connection conn = null;
+        String url = "http://kk.bigk2.com:8080/KOAuthDemeter/User/queryUserId";
+        conn = Jsoup.connect(url);
+        conn.header("Authorization", "Bearer 155bbd381a287e9b505e987379fa685e");
+        conn.data("username", "elvis.linuxer@gmail.com");
+        Document doc = conn.post();
+        String text = doc.body().text();
+        System.out.println(doc.body());
+        System.out.println(text);
+        JSONObject jo = new JSONObject(text);
+        String reqId = jo.getString("reqId");
+        String result = jo.getString("result");
+        String username = jo.getString("username");
+        String des = jo.getString("des");
+        String userid = jo.getString("userid");
+        if(result.hashCode() == "-1".hashCode())
+            return null;
+        else
+            return userid;
+    }
+
+    public static void main(String args[])
+    {
+        try
+        {
+            String id = getID();
+            System.out.println(id);
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private static final String token = "155bbd381a287e9b505e987379fa685e";
+}

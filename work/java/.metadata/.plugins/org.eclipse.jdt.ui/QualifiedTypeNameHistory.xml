@@ -16,7 +16,6 @@
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.PrimitiveIterator"/>
 <fullyQualifiedTypeName name="javax.xml.bind.Marshaller.Listener"/>
 <fullyQualifiedTypeName name="com.philips.lighting.hue.sdk.PHSDKListener"/>
@@ -25,11 +24,19 @@
 <fullyQualifiedTypeName name="javax.swing.text.StyleContext.SmallAttributeSet"/>
 <fullyQualifiedTypeName name="com.philips.lighting.hue.sdk.heartbeat.PHHeartbeatManager"/>
 <fullyQualifiedTypeName name="com.philips.lighting.model.PHBridgeResourcesCache"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.philips.lighting.model.PHBridge"/>
 <fullyQualifiedTypeName name="com.philips.lighting.hue.sdk.PHHueSDK"/>
 <fullyQualifiedTypeName name="com.philips.lighting.model.PHLight"/>
 <fullyQualifiedTypeName name="com.philips.lighting.model.PHLightState"/>
 <fullyQualifiedTypeName name="com.philips.lighting.hue.listener.PHLightListener"/>
+<fullyQualifiedTypeName name="org.jsoup.Connection"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.jsoup.nodes.FormElement"/>
+<fullyQualifiedTypeName name="org.jsoup.select.Elements"/>
+<fullyQualifiedTypeName name="org.jsoup.nodes.Document"/>
+<fullyQualifiedTypeName name="org.jsoup.Jsoup"/>
+<fullyQualifiedTypeName name="org.json.JSONObject"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.google.gson.Gson"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>

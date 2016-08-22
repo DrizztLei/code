@@ -1,0 +1,16 @@
+
+public class subMethod 
+{
+	private String methodName;
+	
+	public String getMethod()
+	{
+		return methodName;
+	}
+	
+	public void setMethod(String methodName)
+	{
+		this.methodName = methodName;
+	}
+	
+}

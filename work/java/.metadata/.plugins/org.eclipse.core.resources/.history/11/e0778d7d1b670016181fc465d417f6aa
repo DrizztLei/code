@@ -1,0 +1,19 @@
+import java.util.List;
+
+import org.json.JSONObject;
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.FormElement;
+import org.jsoup.select.Elements;
+
+public class pluginControl {
+	public static String getID()
+	{
+		return null;
+	}
+	public static void main(String [] args)
+	{
+		
+	}
+}

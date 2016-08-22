@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: Experiment.Main
-Class-Path: libs/huelocalsdk.jar libs/huesdkresources.jar

@@ -1,0 +1,81 @@
+import java.io.IOException;
+import java.util.List;
+
+import org.json.JSONObject;
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.FormElement;
+import org.jsoup.select.Elements;
+
+public class pluginControl {
+	private static final String token = "155bbd381a287e9b505e987379fa685e";
+	public static String getID() throws IOException
+	{
+		Connection conn = null;
+		String url = "http://kk.bigk2.com:8080/KOAuthDemeter/User/queryUserId";
+		url = "http://www.baidu.com";
+		/*
+		conn = Jsoup.connect(url);
+		Document doc = conn.get();
+		System.out.println("Info for : ");
+		System.out.println(doc);
+		
+		List<FormElement> list = doc.getAllElements().forms();
+		if(list.size() > 0)
+		{
+			
+			FormElement form = list.get(0);
+			Elements input = form.select("input[name=username");
+			input.attr("value" , "demo");
+			conn = form.submit();
+			doc = conn.post();
+			
+		}
+		String code = doc.baseUri().split("=")[1];
+		System.out.println("code : " + code);
+		
+		*/
+		
+		conn = Jsoup.connect(url);
+		
+		conn.header("Authorization", "Bearer " + token);
+		conn.data("username" , "13335313557");
+				
+		Document doc = conn.post();
+		
+		String text= doc.body().text();
+		
+		System.out.println(doc.body());
+		
+		System.out.println(text);
+		
+		JSONObject jo=new JSONObject(text);
+		
+		String reqId = jo.getString("reqId");
+		String result = jo.getString("result");
+		String username = jo.getString("username");
+		String des = jo.getString("des");
+		String userid = jo.getString("userid");
+		
+		if(result.hashCode() == "-1".hashCode() )
+		{
+			return null;
+		}
+		else
+		{
+			return userid;
+		}
+	}
+	
+	public static void main(String [] args)
+	{
+		try {
+			String id = getID();
+			System.out.println(id);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

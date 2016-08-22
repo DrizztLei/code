@@ -19,7 +19,6 @@ import com.alibaba.fastjson.JSONObject;
  * <p>
  * 测试基础类
  * </p>
- * 
  * @author pengxiongwei 2014年7月8日 上午9:19:54
  * @version V1.0
  * @modificationHistory=========================逻辑或功能性重大变更记录
@@ -38,7 +37,7 @@ public class BaseTest {
     // private static final String TEST_HOST = "https://test.shipin7.com:65/api/";
 
     protected static JSONObject sendHttpRequest(List<NameValuePair> pairsList, String method) {
-    	
+
         ProtocolSocketFactory fcty = new MySecureProtocolSocketFactory();
         Protocol.registerProtocol("https", new Protocol("https", fcty, 443));
         HttpClient httpClient = new HttpClient();

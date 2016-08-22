@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: Main.java
-Class-Path: libs/docs/huelocalsdk.jar libs/docs/huesdkresources.jar
