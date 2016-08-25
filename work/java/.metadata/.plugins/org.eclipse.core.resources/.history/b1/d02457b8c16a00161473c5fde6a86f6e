@@ -1,0 +1,9 @@
+package com.hikvision;
+
+public class examination extends PublicControllerTest{
+	
+	public static void main(String[] args)
+	{
+		
+	}
+}

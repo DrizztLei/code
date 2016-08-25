@@ -1,0 +1,8 @@
+package com.hikvision;
+
+public class examination {
+	public static void main(String[] args)
+	{
+		
+	}
+}

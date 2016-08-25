@@ -7,6 +7,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.FormElement;
 import org.jsoup.select.Elements;
 
+
 public class TestOauthLogin {
 
 	private static final String client_id = "4yCOi48I687EN2Ix";
@@ -64,13 +65,12 @@ public class TestOauthLogin {
 			String refresh_token = jo.getString("refresh_token");
 
 			// ------------------------------------------------------------------------
-
-			System.out.println("access_token : " + access_token);
-			System.out.println("refresh_token : " + refresh_token);
-
+			//System.out.println("access_token : " + access_token);
+			//System.out.println("refresh_token : " + refresh_token);
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("catch the error");
+			//e.printStackTrace();
+			System.err.println("Error in access the token .");
+			System.exit(-1);
 		}
 		return access_token;
 	}
