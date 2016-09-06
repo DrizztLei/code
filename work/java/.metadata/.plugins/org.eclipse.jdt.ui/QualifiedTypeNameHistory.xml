@@ -27,7 +27,6 @@
 <fullyQualifiedTypeName name="com.philips.lighting.model.PHBridge"/>
 <fullyQualifiedTypeName name="com.philips.lighting.hue.sdk.PHHueSDK"/>
 <fullyQualifiedTypeName name="com.philips.lighting.model.PHLight"/>
-<fullyQualifiedTypeName name="com.philips.lighting.model.PHLightState"/>
 <fullyQualifiedTypeName name="com.philips.lighting.hue.listener.PHLightListener"/>
 <fullyQualifiedTypeName name="org.jsoup.Connection"/>
 <fullyQualifiedTypeName name="java.util.List"/>
@@ -39,8 +38,16 @@
 <fullyQualifiedTypeName name="com.google.gson.Gson"/>
 <fullyQualifiedTypeName name="java.rmi.server.Skeleton"/>
 <fullyQualifiedTypeName name="javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.lang.StackOverflowError"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="skeletonKey"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
+<fullyQualifiedTypeName name="com.philips.lighting.model.PHLightState"/>
+<fullyQualifiedTypeName name="java.awt.image.AreaAveragingScaleFilter"/>
+<fullyQualifiedTypeName name="Experiment.Read"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Parameter"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="Experiment.Main"/>
 </qualifiedTypeNameHistroy>

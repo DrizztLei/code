@@ -45,7 +45,7 @@ public class PublicControllerTest {
 		paramString.append("method").append(":").append(method).append(",");
 		paramString.append("time").append(":").append(time).append(",");
 		paramString.append("secret").append(":").append(secret);
-		System.out.println(paramString.toString().trim());
+		//System.out.println(paramString.toString().trim());
 
 		String sign = null;
 		try {
@@ -75,7 +75,7 @@ public class PublicControllerTest {
 		HttpClient client = new HttpClient();
 		// 使用POST方法
 		PostMethod method = new PostMethod("https://open.ys7.com:443/api/method");
-
+		
 		try {
 			RequestEntity entity = new StringRequestEntity(json, "application/json", "UTF-8");
 			method.setRequestEntity(entity);

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+function compile()
+{
+    echo "Compiling $@"
+    if [[ $1 == *.c ]]
+    then
+	gcc `pkg-config --cflags --libs opencv` -o `basename "$@" .c` "$@"
+    elif [[ $1 == *.cpp ]]
+    then
+	g++ `pkg-config --cflags --libs opencv` -o `basename "$@" .cpp` "$@"
+    else
+	echo "Error for file format of" "$@"
+    fi
+}
+
+if [ $# -ge 1 ]
+then
+    for file in $@
+    do
+        compile "${file}"
+    done
+    echo "Compile Over"
+    exit 0
+fi
+
+for dir in $(ls ./)
+do
+  compile "${dir}"
+done
+
+echo "Compile Over"
+

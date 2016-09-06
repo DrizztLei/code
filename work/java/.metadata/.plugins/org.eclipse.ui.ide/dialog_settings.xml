@@ -14,6 +14,7 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/home/elvis/work/java/facepp-java-sdk-facepp-v3"/>
 			<item value="/home/elvis/Downloads/java/philps/PhilipsHueSDK-Java-MultiPlatform-Android-master"/>
 			<item value="/home/elvis/work/java/TankSnake"/>
 			<item value="/home/eva/work/.java/ROBOT"/>

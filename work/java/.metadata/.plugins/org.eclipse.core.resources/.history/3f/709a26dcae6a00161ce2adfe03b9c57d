@@ -1,8 +1,0 @@
-package ezviz;
-
-public class ezviz {
-	public static void main(String[] args) 
-	{
-
-	}
-}

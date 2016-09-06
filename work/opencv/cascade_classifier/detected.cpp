@@ -30,7 +30,7 @@ int main(int argc , char ** argv)
 int online_detect(char ** argv , int argc)
 {
 
-    VideoCapture capture(0);
+    VideoCapture capture("rtsp://admin:123456@192.168.1.10:554:h264/ch1/main/av_stream");
     Mat frame;
 
     //-- 1. Load the cascades
@@ -47,12 +47,13 @@ int online_detect(char ** argv , int argc)
     }
     */
 
-    capture.open(0);
+   // capture.open(0);
 
     if ( ! capture.isOpened() ) { printf("--(!)Error opening video capture\n"); return -1; }
 
     cout << "open the camera done ." << endl;
 
+    int count = 0;
     while ( capture.read(frame) )
     {
         if( frame.empty() )
@@ -62,6 +63,7 @@ int online_detect(char ** argv , int argc)
         }
 
         //-- 3. Apply the classifier to the frame
+
         detectAndDisplay( frame );
 
         int c = waitKey(10);

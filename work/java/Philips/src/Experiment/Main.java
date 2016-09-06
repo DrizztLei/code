@@ -1,6 +1,6 @@
 package Experiment;
 
-import java.lang.reflect.Parameter;
+import java.io.PrintWriter;
 import java.util.List;
 import com.philips.lighting.hue.sdk.PHAccessPoint;
 import com.philips.lighting.hue.sdk.PHBridgeSearchManager;
@@ -14,10 +14,28 @@ import com.philips.lighting.model.PHLight;
 import com.philips.lighting.model.PHLightState;
 
 public class Main {
+	private static final  String userName = "pehNjKT6cdWEaSk-uC9T6c4mpw6ecI8kz2zyjRuY";
+	private static final String id = "192.168.1.8";
 	public static final PHHueSDK philips = PHHueSDK.getInstance();
 	public static List<PHLight> lights;
 	public static int red = 255, green = 255 , blue = 255;
+	public static int brightness = -1;
 	public static boolean philipsSwitch = true;
+	public static int order;
+	
+	private static final PrintWriter pwout = new PrintWriter(System.out , true);
+	private static final PrintWriter pwerr = new PrintWriter(System.err , true);
+	
+	public static PrintWriter getPrintWriteOut()
+	{
+		return pwout;
+	}
+	
+	public static PrintWriter getPrintWriteErr()
+	{
+		return pwerr;
+	}
+
 	public static PHSDKListener listener = new PHSDKListener() {
 
 		@Override
@@ -48,7 +66,8 @@ public class Main {
 		public void onCacheUpdated(List<Integer> arg0, PHBridge arg1) {
 			// TODO Auto-generated method stub
 			if (arg0.contains(PHMessageType.LIGHTS_CACHE_UPDATED)) {
-				System.out.println("Lights Cache Updated ");
+				getPrintWriteOut().print("LIGHTS CACHE UPDATED.");
+				getPrintWriteOut().flush();
 				System.exit(0);
 			}
 		}
@@ -56,7 +75,7 @@ public class Main {
 		@Override
 		public void onBridgeConnected(PHBridge arg0, String arg1) {
 			// TODO Auto-generated method stub
-			System.out.println("on bridge connected");
+			getPrintWriteOut().print("ON BRIDGE CONNECTED .");
 			philips.setSelectedBridge(arg0);
 			philips.enableHeartbeat(arg0, PHHueSDK.HB_INTERVAL);
 			Main.lights = philips.getSelectedBridge().getResourceCache().getAllLights();
@@ -65,20 +84,30 @@ public class Main {
 			PHLightState lightState = new PHLightState();
 			float xy[] = PHUtilities.calculateXYFromRGB(red, green, blue, lights.get(0).getModelNumber());
 			
+			if(brightness != -1)
+			{
+				lightState.setBrightness(brightness);	
+			}
 			lightState.setOn(philipsSwitch);
 			lightState.setX(xy[0]);
 			lightState.setY(xy[1]);
 			//lightState.setHue(color);
 			// lightState.setOn(false);
 			{
+				/*
 				System.out.println("light support brightness : " + lights.get(0).supportsBrightness());
 				System.out.println("light support CT : " + lights.get(0).supportsCT());
 				System.out.println("light support color : " + lights.get(0).supportsColor());
 				System.out.println("light support last known light statate : " + lights.get(0).getLastKnownLightState());
+				*/
 			}
-
-			arg0.updateLightState(lights.get(0).getIdentifier(), lightState, null);
-
+			if(Main.order >= lights.size())
+			{
+				getPrintWriteErr().print("ERROR FOR OUT OF BOUNDARY.");
+				getPrintWriteErr().flush();
+				System.exit(-1);
+			}
+			arg0.updateLightState(lights.get(Main.order).getIdentifier(), lightState, null);
 		}
 
 		@Override
@@ -94,21 +123,46 @@ public class Main {
 	};
 
 	public static void main(String[] args) {
-		if (args.length != 1 && args.length != 3) {
-			System.err.println("Error for parameter ." );
+		int length = args.length;
+		if (length != 2 && length != 4) {
+			getPrintWriteErr().print("ERROR FOR PARAMETER." );
+			getPrintWriteErr().flush();
 			System.exit(1);
 		}
-		if(args.length == 1)
+		if(args.length == 2)
 		{
-			philipsSwitch = new Boolean(args[0]);
-			System.out.println("Mode for switch.");
+			try
+			{
+				order = new Integer(args[0]);
+				brightness = new Integer(args[1]);
+				getPrintWriteOut().print("MODE FOR BRIGHTNESS");
+				getPrintWriteOut().flush();
+				if(brightness < 0 || brightness > 254)
+				{
+					getPrintWriteErr().print("ERROR FOR PARAMETER OUT OF BOUNDARY");
+					getPrintWriteErr().flush();
+					System.exit(-1);
+				}
+			}
+			catch(NumberFormatException exception)
+			{
+				order = new Integer(args[0]);
+				philipsSwitch = new Boolean(args[1]);
+				getPrintWriteOut().print("MODE FOR SWITCH.");
+			}
+			catch (Exception e) {
+				getPrintWriteErr().print("ERROR FOR PARAMETER UNKNOW");
+				getPrintWriteErr().flush();
+				System.exit(-1);
+			}
 		}
 		else
 		{
-			red= new Integer(args[0]);
-			green = new Integer(args[1]);
-			blue = new Integer(args[2]);
-			System.out.println("Mode for color.");
+			order = new Integer(args[0]);
+			red= new Integer(args[1]);
+			green = new Integer(args[2]);
+			blue = new Integer(args[3]);
+			getPrintWriteOut().print("MODE FOR COLOR.");
 		}
 		// System.out.println(color);
 		PHHueSDK philips = PHHueSDK.getInstance();
@@ -116,8 +170,8 @@ public class Main {
 		PHBridgeSearchManager sm = (PHBridgeSearchManager) philips.getSDKService(PHHueSDK.SEARCH_BRIDGE);
 		sm.search(true, true);
 		PHAccessPoint accessPoint = new PHAccessPoint();
-		accessPoint.setIpAddress("192.168.1.8");
-		accessPoint.setUsername("pehNjKT6cdWEaSk-uC9T6c4mpw6ecI8kz2zyjRuY");
+		accessPoint.setIpAddress(Main.id);
+		accessPoint.setUsername(Main.userName);
 		philips.connect(accessPoint);
 
 		/*
@@ -137,6 +191,5 @@ public class Main {
 		 * PHHueSDK.getInstance().getSelectedBridge(); PHLightState status = new
 		 * PHLightState(); status.setHue(12345);
 		 */
-
 	}
 }

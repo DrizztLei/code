@@ -30,11 +30,14 @@ public class method
 		// RequestParamsBean params = new RequestParamsBean();
 		// params.setUserid(getUserID());
 
-		int start = 1, step = 2;
+		int start = 2 , step = 2;
 
 		String msg = "{";
-		msg += "\"userid\":\"" + skeletonKey.getUserID() + "\"," + "\"kid\":\"" + skeletonKey.getKID() + "\"";
-		if (info.length != 1) 
+		
+		String control = skeletonKey.getKID().getID((new Integer(info[0])));
+		
+		msg += "\"userid\":\"" + skeletonKey.getUserID() + "\"," + "\"kid\":\"" + control + "\"";
+		if (info.length != 2) 
 		{
 			msg += ",";
 		}
@@ -82,9 +85,9 @@ public class method
 		getMethod().add(new subMethod(getPrefix() + "User/openChargingProtection"));
 		getMethod().add(new subMethod(getPrefix() + "User/closeChargingProtection"));
 		getMethod().add(new subMethod(getPrefix() + "KInfo/getSingleKStatus"));
-		getMethod().add(new subMethod(getPrefix() + "KInfo/getEnviromentInfo"));
+		getMethod().add(new subMethod(getPrefix() + "KInfo/getEnvironmentInfo"));
 		getMethod().add(new subMethod(getPrefix() + "KInfo/getKHumanInfo"));
-		getMethod().add(new subMethod(getPrefix() + "KInfo/getKLatesHumanInfo"));
+		getMethod().add(new subMethod(getPrefix() + "KInfo/getKLatestHumanInfo"));
 		getMethod().add(new subMethod(getPrefix() + "User/uploadKSceneList"));
 		getMethod().add(new subMethod(getPrefix() + "KInfo/getKOnlineStatus"));
 		getMethod().add(new subMethod(getPrefix() + "KInfo/getKElectricityByMonth"));
