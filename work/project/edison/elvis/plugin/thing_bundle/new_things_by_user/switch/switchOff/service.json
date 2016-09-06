@@ -1,0 +1,27 @@
+{
+  "type": "hope_service",
+  "name": "控制插座关闭",
+  "description": "To control the k2 plugin off",
+  "spec": {
+    "in": {
+      "ports": [
+        {
+          "name": "in",
+          "type": "bool"
+        }
+      ]
+    },
+    "out": {
+      "ports": [
+        {
+          "name": "out",
+          "type": "string"
+        }
+      ]
+    },
+    "name": "switchOff",
+    "id": "SPEC__9d6bcd60-67dd-11e6-aac9-4f4ac8d8782f"
+  },
+  "id": "HOPE_SERVICE_9d6c4290_67dd_11e6_b182_95476acf7e9a",
+  "thing": "HOPE_THING_67898d40_67dd_11e6_b182_95476acf7e9a"
+}

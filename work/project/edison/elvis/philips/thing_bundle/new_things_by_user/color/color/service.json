@@ -1,0 +1,27 @@
+{
+  "type": "hope_service",
+  "name": "调节颜色",
+  "description": "",
+  "spec": {
+    "in": {
+      "ports": [
+        {
+          "name": "in",
+          "type": "string"
+        }
+      ]
+    },
+    "out": {
+      "ports": [
+        {
+          "name": "status",
+          "type": "bool"
+        }
+      ]
+    },
+    "name": "color",
+    "id": "SPEC__cd23b7f0-6d20-11e6-8a73-3da301b6b9f9"
+  },
+  "id": "HOPE_SERVICE_cd240610_6d20_11e6_bdd4_698ead77d110",
+  "thing": "HOPE_THING_cb61c610_600e_11e6_b201_affea44c4036"
+}

@@ -1,0 +1,27 @@
+{
+  "type": "hope_service",
+  "name": "读取压力值",
+  "description": "Get the value of the FSR between 1 - 1024",
+  "spec": {
+    "in": {
+      "ports": [
+        {
+          "name": "switch",
+          "type": "bool"
+        }
+      ]
+    },
+    "out": {
+      "ports": [
+        {
+          "name": "value",
+          "type": "number"
+        }
+      ]
+    },
+    "name": "ReadValue",
+    "id": "SPEC__8bfb26b0-6da6-11e6-86dc-c1f21f57e923"
+  },
+  "id": "HOPE_SERVICE_8bfb9be0_6da6_11e6_8644_c1f23714ab6b",
+  "thing": "HOPE_THING_4c5780e0_5487_11e6_974e_b53afe91a0bb"
+}

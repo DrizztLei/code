@@ -1,0 +1,16 @@
+{
+  "type": "hope_service",
+  "name": "设置亮度",
+  "description": "the value is between [0.254]",
+  "spec": {
+    "id": "SPEC__4a155b30-6dc4-11e6-8fe0-19d7a7d3ee91",
+    "in": {
+      "ports": []
+    },
+    "out": {
+      "ports": []
+    }
+  },
+  "id": "HOPE_SERVICE_4a15d060_6dc4_11e6_8879_77ba5150fa3e",
+  "thing": "HOPE_THING_31be1fe0_6dc4_11e6_8879_77ba5150fa3e"
+}

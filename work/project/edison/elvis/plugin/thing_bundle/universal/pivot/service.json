@@ -1,0 +1,27 @@
+{
+  "type": "hope_service",
+  "name": "万能枢纽",
+  "description": "The universal , you should read the API of the konke and set the parameter for it .",
+  "spec": {
+    "in": {
+      "ports": [
+        {
+          "name": "in",
+          "type": "string"
+        }
+      ]
+    },
+    "out": {
+      "ports": [
+        {
+          "name": "out",
+          "type": "string"
+        }
+      ]
+    },
+    "name": "pivot",
+    "id": "SPEC__1a5d80a0-67d1-11e6-867e-87fe3677aa9e"
+  },
+  "id": "HOPE_SERVICE_1a5df5d0_67d1_11e6_b182_95476acf7e9a",
+  "thing": "HOPE_THING_eca4a350_67d0_11e6_b182_95476acf7e9a"
+}

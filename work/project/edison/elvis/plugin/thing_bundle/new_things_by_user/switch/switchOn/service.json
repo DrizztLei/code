@@ -1,0 +1,27 @@
+{
+  "type": "hope_service",
+  "name": "控制插座开启",
+  "description": "To control the k2 plugin on",
+  "spec": {
+    "in": {
+      "ports": [
+        {
+          "name": "in",
+          "type": "bool"
+        }
+      ]
+    },
+    "out": {
+      "ports": [
+        {
+          "name": "status",
+          "type": "string"
+        }
+      ]
+    },
+    "name": "switchOn",
+    "id": "SPEC__7c7059f0-67dd-11e6-aac9-4f4ac8d8782f"
+  },
+  "id": "HOPE_SERVICE_7c70cf20_67dd_11e6_b182_95476acf7e9a",
+  "thing": "HOPE_THING_67898d40_67dd_11e6_b182_95476acf7e9a"
+}

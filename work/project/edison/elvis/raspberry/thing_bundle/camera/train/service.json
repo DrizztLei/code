@@ -1,0 +1,27 @@
+{
+  "type": "hope_service",
+  "name": "训练",
+  "description": "",
+  "spec": {
+    "in": {
+      "ports": [
+        {
+          "name": "train",
+          "type": "bool"
+        }
+      ]
+    },
+    "out": {
+      "ports": [
+        {
+          "name": "out",
+          "type": "bool"
+        }
+      ]
+    },
+    "name": "train",
+    "id": "SPEC__ca044ea0-5339-11e6-92b3-998b6f647dfe"
+  },
+  "id": "HOPE_SERVICE_ca049cc0_5339_11e6_a41a_2b8857baae82",
+  "thing": "/home/elvis/enviroment/iot-sol/node_modules/hope-demo/raspberry/thing_bundle/camera@05fefcf9e4bd068cede734dad31b4f84"
+}

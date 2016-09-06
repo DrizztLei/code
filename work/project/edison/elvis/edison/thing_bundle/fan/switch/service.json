@@ -1,0 +1,18 @@
+{
+  "description":"turn on or turn off the device",
+  "spec": {
+    "id": "__HOPE__/demo/edison/fan/switch",
+    "in": {
+      "ports": [{
+        "name": "on",
+        "type": "boolean"
+        }]
+    },
+    "out": {
+      "ports": [{
+        "name": "status",
+        "type": "boolean"
+      }]
+    }
+  }
+}

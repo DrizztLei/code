@@ -1,0 +1,40 @@
+{
+  "type": "hope_service",
+  "name": "人脸识别",
+  "description": "",
+  "spec": {
+    "in": {
+      "ports": [
+        {
+          "name": "model",
+          "type": "string",
+          "default": "/home/elvis/work/opencv/pattern_recognition/LBPHF.cv.model"
+        },
+        {
+          "name": "input",
+          "type": "string"
+        }
+      ]
+    },
+    "out": {
+      "ports": [
+        {
+          "name": "out",
+          "type": "number"
+        },
+        {
+          "name": "err",
+          "type": "string"
+        },
+        {
+          "name": "code",
+          "type": "number"
+        }
+      ]
+    },
+    "name": "recognize",
+    "id": "SPEC__c632fb50-5339-11e6-92b3-998b6f647dfe"
+  },
+  "id": "HOPE_SERVICE_c6337080_5339_11e6_a41a_2b8857baae82",
+  "thing": "/home/elvis/enviroment/iot-sol/node_modules/hope-demo/raspberry/thing_bundle/camera@05fefcf9e4bd068cede734dad31b4f84"
+}

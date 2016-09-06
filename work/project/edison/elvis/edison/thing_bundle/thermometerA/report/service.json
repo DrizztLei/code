@@ -1,0 +1,25 @@
+{
+  "description": "report the temprature at intervals",
+  "spec": {
+    "name": "thermometer report",
+    "in": {
+      "ports": [
+        {
+          "name": "interval",
+          "type": "int",
+          "default": 3000
+        }
+      ]
+    },
+    "out": {
+      "ports": [
+        {
+          "name": "temprature",
+          "type": "int"
+        }
+      ]
+    },
+    "id": "__HOPE__/demo/edison/thermometer_report_001"
+  },
+  "id": "report@/home/elvis/enviroment/iot-sol/node_modules/hope-demo/edison/thing_bundle/thermometerA@3733f9e6f9e542c64fa901370cd54cf7"
+}

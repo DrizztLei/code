@@ -1,0 +1,16 @@
+{
+  "type": "hope_service",
+  "name": "读取压力值",
+  "description": "",
+  "spec": {
+    "id": "SPEC__8bfb26b0-6da6-11e6-86dc-c1f21f57e923",
+    "in": {
+      "ports": []
+    },
+    "out": {
+      "ports": []
+    }
+  },
+  "id": "HOPE_SERVICE_8bfb9be0_6da6_11e6_8644_c1f23714ab6b",
+  "thing": "HOPE_THING_8286a640_6da6_11e6_8644_c1f23714ab6b"
+}

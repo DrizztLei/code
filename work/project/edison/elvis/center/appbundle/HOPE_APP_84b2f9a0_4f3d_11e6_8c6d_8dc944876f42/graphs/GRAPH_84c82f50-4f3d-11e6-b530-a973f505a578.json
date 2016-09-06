@@ -1,0 +1,71 @@
+{
+  "version": "1.0.0",
+  "type": "graph",
+  "id": "GRAPH_84c82f50-4f3d-11e6-b530-a973f505a578",
+  "name": "Default Workflow",
+  "description": "",
+  "timestamp": 1469103632069,
+  "specs": [],
+  "styles": {
+    "nodes": {
+      "NODE_9bf78c70-4f3d-11e6-b530-a973f505a578": {
+        "x": 227,
+        "y": -57
+      },
+      "NODE_a9751200-4f3d-11e6-b530-a973f505a578": {
+        "x": 23,
+        "y": -48
+      }
+    },
+    "edges": {}
+  },
+  "bindings": {
+    "NODE_9bf78c70-4f3d-11e6-b530-a973f505a578": {
+      "type": "fixed",
+      "thing": "/home/elvis/enviroment/iot-sol/node_modules/hope-demo/startkit/thing_bundle/led@05dccd4b239b6e6b2fe6b660a77b8519",
+      "hub": "05dccd4b239b6e6b2fe6b660a77b8519",
+      "service": "switch@/home/elvis/enviroment/iot-sol/node_modules/hope-demo/startkit/thing_bundle/led@05dccd4b239b6e6b2fe6b660a77b8519"
+    },
+    "NODE_a9751200-4f3d-11e6-b530-a973f505a578": {
+      "type": "fixed",
+      "thing": "/home/elvis/enviroment/iot-sol/node_modules/hope-center/lib/hubbundles/thingbundle/timer@ee8234d7fa23c475eaabbc6cac606aec__built_in_hub__",
+      "hub": "ee8234d7fa23c475eaabbc6cac606aec__built_in_hub__",
+      "service": "interval@/home/elvis/enviroment/iot-sol/node_modules/hope-center/lib/hubbundles/thingbundle/timer@ee8234d7fa23c475eaabbc6cac606aec__built_in_hub__"
+    }
+  },
+  "graph": {
+    "nodes": [
+      {
+        "name": "",
+        "description": "",
+        "spec": "digitalwrite_1_1_startkit",
+        "id": "NODE_9bf78c70-4f3d-11e6-b530-a973f505a578",
+        "config": {
+          "pin": 6
+        }
+      },
+      {
+        "name": "",
+        "description": "",
+        "spec": "__HOPE__/builtin/timer/interval",
+        "id": "NODE_a9751200-4f3d-11e6-b530-a973f505a578",
+        "config": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "EDGE_aab8b590-4f3d-11e6-b530-a973f505a578",
+        "source": {
+          "node": "NODE_a9751200-4f3d-11e6-b530-a973f505a578",
+          "port": "out"
+        },
+        "target": {
+          "node": "NODE_9bf78c70-4f3d-11e6-b530-a973f505a578",
+          "port": "on"
+        }
+      }
+    ],
+    "tags": []
+  },
+  "app": "HOPE_APP_84b2f9a0_4f3d_11e6_8c6d_8dc944876f42"
+}
