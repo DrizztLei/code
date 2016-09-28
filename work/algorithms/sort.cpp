@@ -45,14 +45,14 @@ void sort::_show_for_user(){
 		/**if(accept.length() == 0) {
 		   cin.get();
 		   }
-		if(accept.length() == 0){
-			getline(cin , accept);
-			}*/
+           if(accept.length() == 0){
+           getline(cin , accept);
+           }*/
 		do{
 			getline(cin , accept);
 		}
 		while(accept.length() == 0);
-			int * expression = new int[accept.length()];
+        int * expression = new int[accept.length()];
 		for(int i = 0 ;i < accept.length() ;i++){
 			expression[i] = 0;
 		}
@@ -103,7 +103,7 @@ int sort::deal(int number , int max){
    if(array[i] == '\0') return i;
    }
    }
-	
+
    int sort::_get_array(int * temp){
    cout << "Input the expression you wanna sort : " << endl;
    string accept = "";
@@ -124,7 +124,7 @@ int sort::deal(int number , int max){
    }
    }
    temp = new int[count];
-	
+
    for(int i = 0; i < count ; i++){
    temp[i] = expression[i] ;
    cout << temp[i] << "\t";
@@ -230,7 +230,7 @@ void sort::quickSort(int * array , int length){
    i++;
    }
    }
-	
+
    int i = begin , j = end , key = array[begin];
    while(begin < end){
    while(begin < end && array[end] >= key) --end;
@@ -238,7 +238,7 @@ void sort::quickSort(int * array , int length){
    }
    cout << "Done . " << endl;
    return begin;
-	
+
    int i = begin , j = end - 1, position = begin;
    int key = array[position];
    cout << "Begin : " << begin << "\nend : " << end << endl;
@@ -350,13 +350,13 @@ void sort::merge(int * array , int begin , int mid , int end){
 	   }
 	   cout << "\nPrint Done .";*/
 	for( int start = 0 , count = begin ; count < end ; count++ , start++)
-		{
-			/**if(temp[start] == 0) {
-			   cout << "Find here .  " << endl;
-			   }*/
-			array[count] = temp[start];
-			/**cout << "array[" << count <<"] = " << array[count] << endl;*/
-		}
+    {
+        /**if(temp[start] == 0) {
+           cout << "Find here .  " << endl;
+           }*/
+        array[count] = temp[start];
+        /**cout << "array[" << count <<"] = " << array[count] << endl;*/
+    }
 	delete temp;
 }
 
@@ -388,7 +388,7 @@ void sort::bucketSort(int * array , int length){
 			}else{
 				while(temp->next != NULL) {
 					//cout << "Find and will new node ." << endl;
-					temp = temp -> next; 
+					temp = temp -> next;
 				}
 				temp -> next = new node();
 				temp -> next -> info = array[i];
@@ -410,7 +410,7 @@ void sort::bucketSort(int * array , int length){
 		n++;
 	}
 }
-	
+
 
 void sort::show(int * array , int length){
 	for(int i = 0 ; i < length ; i++){

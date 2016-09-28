@@ -66,8 +66,8 @@ public class Main {
 		public void onCacheUpdated(List<Integer> arg0, PHBridge arg1) {
 			// TODO Auto-generated method stub
 			if (arg0.contains(PHMessageType.LIGHTS_CACHE_UPDATED)) {
-				getPrintWriteOut().print("LIGHTS CACHE UPDATED.");
-				getPrintWriteOut().flush();
+				//getPrintWriteOut().print("LIGHTS CACHE UPDATED.");
+				//getPrintWriteOut().flush();
 				System.exit(0);
 			}
 		}
@@ -75,7 +75,7 @@ public class Main {
 		@Override
 		public void onBridgeConnected(PHBridge arg0, String arg1) {
 			// TODO Auto-generated method stub
-			getPrintWriteOut().print("ON BRIDGE CONNECTED .");
+			//getPrintWriteOut().print("ON BRIDGE CONNECTED .");
 			philips.setSelectedBridge(arg0);
 			philips.enableHeartbeat(arg0, PHHueSDK.HB_INTERVAL);
 			Main.lights = philips.getSelectedBridge().getResourceCache().getAllLights();
@@ -86,7 +86,14 @@ public class Main {
 			
 			if(brightness != -1)
 			{
-				lightState.setBrightness(brightness);	
+				lightState.setBrightness(brightness);
+				arg0.updateLightState(lights.get(Main.order).getIdentifier(), lightState, null);
+				System.out.println("UPD");
+				System.exit(0);
+			}
+			else
+			{
+				System.out.println("UNNN");
 			}
 			lightState.setOn(philipsSwitch);
 			lightState.setX(xy[0]);
@@ -103,8 +110,8 @@ public class Main {
 			}
 			if(Main.order >= lights.size())
 			{
-				getPrintWriteErr().print("ERROR FOR OUT OF BOUNDARY.");
-				getPrintWriteErr().flush();
+				//getPrintWriteErr().print("ERROR FOR OUT OF BOUNDARY.");
+				//getPrintWriteErr().flush();
 				System.exit(-1);
 			}
 			arg0.updateLightState(lights.get(Main.order).getIdentifier(), lightState, null);
@@ -125,8 +132,6 @@ public class Main {
 	public static void main(String[] args) {
 		int length = args.length;
 		if (length != 2 && length != 4) {
-			getPrintWriteErr().print("ERROR FOR PARAMETER." );
-			getPrintWriteErr().flush();
 			System.exit(1);
 		}
 		if(args.length == 2)
@@ -135,12 +140,9 @@ public class Main {
 			{
 				order = new Integer(args[0]);
 				brightness = new Integer(args[1]);
-				getPrintWriteOut().print("MODE FOR BRIGHTNESS");
-				getPrintWriteOut().flush();
+				System.out.println(brightness);
 				if(brightness < 0 || brightness > 254)
 				{
-					getPrintWriteErr().print("ERROR FOR PARAMETER OUT OF BOUNDARY");
-					getPrintWriteErr().flush();
 					System.exit(-1);
 				}
 			}
@@ -148,11 +150,8 @@ public class Main {
 			{
 				order = new Integer(args[0]);
 				philipsSwitch = new Boolean(args[1]);
-				getPrintWriteOut().print("MODE FOR SWITCH.");
 			}
 			catch (Exception e) {
-				getPrintWriteErr().print("ERROR FOR PARAMETER UNKNOW");
-				getPrintWriteErr().flush();
 				System.exit(-1);
 			}
 		}
@@ -162,7 +161,7 @@ public class Main {
 			red= new Integer(args[1]);
 			green = new Integer(args[2]);
 			blue = new Integer(args[3]);
-			getPrintWriteOut().print("MODE FOR COLOR.");
+			//getPrintWriteOut().print("MODE FOR COLOR.");
 		}
 		// System.out.println(color);
 		PHHueSDK philips = PHHueSDK.getInstance();

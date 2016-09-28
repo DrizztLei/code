@@ -121,7 +121,7 @@ public class skeletonKey
 		//getMethod();
 		String msg = method.setParameter(info);
 		
-		//System.out.println(msg);
+		System.out.println(msg);
 
 		// 向服务器POST信息
 		if (null != msg && msg.length() > 0) 
@@ -259,6 +259,15 @@ public class skeletonKey
 
 	public static void main(String[] args) 
 	{
+		args = new String[8];
+		args[0] = "0";
+		args[1] = "16";
+		args[2] = "remoteType";
+		args[3] = "1";
+		args[4] = "baseOrder";
+		args[5] = "Haier&YR-W08";
+		args[6] = "extraOrder";
+		args[7] = "1.0.0.24";
 		if (args == null || args.length == 0) 
 		{
 			getPrintErr().print("ERROR FOR PARAMETER.");

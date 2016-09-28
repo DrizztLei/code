@@ -12,6 +12,10 @@
         res.end('<p>Copyleft by Elvis Lei</p>');
     });
 
+    server.on('data' , function (data){
+        console.log(data);
+    });
+
     server.listen(3389);
     
     console.log("HTTP Server is running.");

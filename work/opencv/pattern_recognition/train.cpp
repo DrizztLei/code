@@ -54,13 +54,13 @@ int main(int argc , char ** argv)
                 + cv_int_to_string(j) + ".pgm";
             if(j < sub_size * rate)
             {
-                cout << "Add to train" << endl;
+                //cout << "Add to train" << endl;
                 images.push_back(imread(name , CV_LOAD_IMAGE_GRAYSCALE));
                 labels.push_back(i);
             }
             else
             {
-                cout << "Add to predict" << endl;
+                //cout << "Add to predict" << endl;
                 check.push_back(imread(name , CV_LOAD_IMAGE_GRAYSCALE));
                 verify.push_back(i);
             }
