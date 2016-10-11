@@ -1,0 +1,18 @@
+CXXFLAGS =	-O2 -g -Wall -fmessage-length=0 -std=gnu++11
+
+OBJS =		EVA.o
+
+LIBS = EVA.h 
+
+TARGET =	EVA
+
+$(TARGET):	$(OBJS)
+	$(CXX) ${CXXFLAGS} -o $(TARGET) $(OBJS) $(LIBS) 
+
+all: obj $(TARGET)
+
+obj:
+	${CXX} ${CXXFLAGS} -c ${LIBS}
+
+clean:
+	rm -f $(OBJS) $(TARGET)

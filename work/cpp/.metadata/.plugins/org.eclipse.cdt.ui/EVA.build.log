@@ -1,0 +1,7 @@
+17:58:45 **** Build of configuration Default for project EVA ****
+make all 
+g++ -O2 -g -Wall -fmessage-length=0 -std=gnu++11 -c EVA.h EVA.cpp
+g++ -O2 -g -Wall -fmessage-length=0 -std=gnu++11 -o EVA EVA.o Main.cpp 
+
+17:58:45 Build Finished (took 814ms)
+

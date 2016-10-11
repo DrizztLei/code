@@ -1,0 +1,29 @@
+//============================================================================
+// Name        : EVA.cpp
+// Author      : elvis
+// Version     :
+// Copyright   : GPL
+// Description : Hello World in C, Ansi-style
+//============================================================================
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "EVA.h"
+
+int main(void)
+{
+	puts("EVA");
+	return EXIT_SUCCESS;
+}
+
+EVA::EVA()
+{
+	// TODO Auto-generated constructor stub
+
+}
+
+EVA::~EVA()
+{
+	// TODO Auto-generated destructor stub
+}
+
