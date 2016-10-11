@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <vector>
 
 #include "http.h"
 
@@ -92,6 +93,8 @@ private:
     QAction *about;
     QAction *contact;
     static HTTP http;
+    std::vector<HTTP> list;
+    const int size = 1;
 };
 
 #endif // MAINWINDOW_H

@@ -2,9 +2,9 @@
 #define RECORDMETERWIDGET_H
 #include "http.h"
 
-#include <QSqlQuery>
 #include <QStandardItemModel>
 #include <QWidget>
+#include <vector>
 
 namespace Ui
 {
@@ -18,7 +18,7 @@ class RecordMeterWidget : public QWidget
 public:
     explicit RecordMeterWidget(QWidget *parent = 0);
     ~RecordMeterWidget();
-    static HTTP& getHTTP();
+    // static HTTP& getHTTP();
 private slots:
     void on_buildingomboBox_currentIndexChanged(int index);
 
@@ -31,7 +31,9 @@ private slots:
 private:
     Ui::RecordMeterWidget *ui;
     QStandardItemModel  *model;
-    static HTTP http;
+    const int size = 8;
+    std::vector<HTTP> list;
+    // static HTTP http;
 };
 
 #endif // RECORDMETERWIDGET_H

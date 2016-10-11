@@ -4,6 +4,7 @@
 #include "http.h"
 
 #include <QWidget>
+#include <vector>
 
 namespace Ui
 {
@@ -17,14 +18,16 @@ class AllProprietorWidget : public QWidget
 public:
     explicit AllProprietorWidget(QWidget *parent = 0);
     ~AllProprietorWidget();
-    static HTTP& getHTTP();
+    // static HTTP& getHTTP();
 
 private slots:
     void on_comboBox_currentIndexChanged(int index);
 
 private:
     Ui::AllProprietorWidget *ui;
-    static HTTP http;
+    std::vector<HTTP> list;
+    int const size = 3;
+    // static HTTP http;
 };
 
 #endif // ALLPROPRIETORWIDGET_H

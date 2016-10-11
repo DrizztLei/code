@@ -4,8 +4,8 @@
 #include "http.h"
 
 #include <QWidget>
-#include <QSqlQuery>
-#include <QStandardItemModel>
+// #include <QSqlQuery>
+// #include <QStandardItemModel>
 
 namespace Ui
 {

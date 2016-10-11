@@ -30,8 +30,11 @@ class HTTP : public QObject
     Q_OBJECT
 
 public:
-    //explicit HTTP(QWidget *parent = Q_NULLPTR);
-    explicit HTTP();
+    // explicit HTTP(QWidget *parent = Q_NULLPTR);
+    // explicit HTTP();
+    HTTP();
+    HTTP(HTTP&& src) noexcept;
+    HTTP& operator=(HTTP&& src) noexcept;
 
     void startRequest(const QUrl &requestedUrl);
     void postRequest(QString info);
@@ -44,25 +47,35 @@ public:
     void infoClear();
     void setFlag(bool flag);
     void setLength(int length);
+    void setTransaction(bool transaction);
+    void setRollback(bool rollback);
     void addParameter(QString parameter);
+    void addParameter(double value);
     void setCommit(bool commit);
     void clear();
+    bool isFinished();
+    void setFinished(bool finished);
+    void setSync(bool sync);
 
     int getLength();
-    QByteArray getParameter();
     bool getCommit();
+    bool getFlag();
+    bool getTransaction();
+    bool getRollback();
+    bool isPost();
+    bool isSync();
 
+    QByteArray getParameter();
     QByteArray getInfo();
     QString getDownload();
     QString getUrl();
     QString getFileName();
     QString getSQL();
-    bool getFlag();
-    bool isPost();
     QNetworkReply* getReply();
 
-private slots:
+public slots:
     void download();
+private slots:
     void cancelDownload();
     void httpFinished();
     void httpReadyRead();
@@ -97,10 +110,10 @@ private:
     QByteArray parameter;
 
     int length = 0;
-    bool commit = false;
-    bool flag; // flag for the get the info of if exec() succeed .
+    bool commit = false , transaction = false , rollback = false , flag = false , sync = false;
     bool httpRequestAborted;
-    bool post;
+    bool post = true;
+    bool finished = false;
 };
 
 #endif // HTTP_H

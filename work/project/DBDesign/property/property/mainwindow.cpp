@@ -17,6 +17,7 @@
 #include "yearbillreportwidget.h"
 #include "allproprietorwidget.h"
 #include "allroomproprietor.h"
+#include "logindialog.h"
 
 #include <iostream>
 #include <QStandardItemModel>
@@ -27,7 +28,7 @@
 #include <QDesktopWidget>
 #include <QNetworkReply>
 
-HTTP MainWindow::http;
+// HTTP MainWindow::http;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -44,11 +45,67 @@ MainWindow::MainWindow(QWidget *parent,QString id) :
     ui->setupUi(this);
     loginId = id;
 
+    if(list.size() != size)
+    {
+        list.clear();
+        for(int i = 0 ; i < size ; i++)
+        {
+            list.push_back(HTTP());
+        }
+    }
+
     QList<QString> rights;
 
     QSqlQuery query;
 
     QString sql = "select function from user natural join role_func where login_id=?";
+
+    list[0].setFlag(false);
+    list[0].setCommit(false);
+    list[0].setSync(true);
+    list[0].setLength(1);
+    list[0].addParameter(LoginDialog::LOGIN_ID);
+    list[0].postRequest(sql);
+
+//    QObject::connect(list[0].getReply() , &QNetworkReply::finished , [&]()
+//    {
+
+        rights.clear();
+
+        QList<QByteArray> info = list[0].getInfo().split('\n');
+
+        int size = info[0].toInt();
+        int rows = info[1].toInt();
+
+        int sequence;
+        for(int i = 0 ; i < size ; i ++)
+        {
+            for(int j = 0 ; j < rows ; j++)
+            {
+                sequence = i*rows + j + 2;
+                if(j == 0)
+                {
+                    QString temp = info[sequence];
+                    rights.append(temp);
+                }
+            }
+        }
+
+        QDesktopWidget * desktop = QApplication::desktop();
+        QRect screen = desktop->screenGeometry();
+
+        int width = screen.width();
+        int height = screen.height();
+
+        height = 0.730 * 0.5 * width ;
+        move(width / 4 , height / 4); //height/2 - 0.618 * 0.5 * width * 0.5);
+        resize(0.5 * width , height);
+
+        setActions(rights);
+
+//    });
+
+    /*
 
     query.prepare(sql);
     query.addBindValue(loginId);
@@ -72,6 +129,8 @@ MainWindow::MainWindow(QWidget *parent,QString id) :
 
     resize(0.5 * width , height);
     setActions(rights);
+
+    */
 
 }
 
@@ -444,7 +503,11 @@ void MainWindow::setCentralContent(QWidget* w)
 //    ui->centralWidget->layout()->update();
 }
 
+/*
+
 HTTP& MainWindow::getHTTP()
 {
     return http;
 }
+
+*/

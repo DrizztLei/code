@@ -7,13 +7,15 @@ using std::cin;
 using std::endl;
 
 template<class E>
-struct node{
+struct node
+{
     E info;
     bool isVisit;
 };
 
 template<class T , class E>
-class graph{
+class graph
+{
 public:
     int ** matrix ;
     int ** weight;
@@ -38,26 +40,34 @@ public:
 };
 
 template<class T , class E>
-void graph<T , E> :: reset(){
+void graph<T , E> :: reset()
+{
     for(int i = 0 ; i < length ;i++)
         Graph[i].isVisit = false;
 }
 
 template<class T , class E>
-void graph<T , E> ::  BFS(int n){
+void graph<T , E> ::  BFS(int n)
+{
     cout << "IN BFS > " << endl;
     vector<int> left;//Attention the grammer design uncompletely here .
     vector<int> right;
     left.push_back(n);
-    while(left.size() != 0 || right.size() != 0){
-        if(left.size()){
+    while(left.size() != 0 || right.size() != 0)
+    {
+        if(left.size())
+        {
             int Size = left.size();
-            for(int i = 0 ; i < Size ; i++){
+            for(int i = 0 ; i < Size ; i++)
+            {
                 cout << "Visit the node " << Graph[left[i]].info << " . " << endl;
                 Graph[left[i]].isVisit = true;}
-            for(int i = 0 ; i < Size ; i++){
-                for(int k = 0 ; k < length ; k++){
-                    if(matrix[k][left[i]] && (!Graph[k].isVisit)){
+            for(int i = 0 ; i < Size ; i++)
+            {
+                for(int k = 0 ; k < length ; k++)
+                {
+                    if(matrix[k][left[i]] && (!Graph[k].isVisit))
+                    {
                         Graph[left[i]].isVisit = true;
                         right.push_back(k);
                     }
@@ -68,13 +78,17 @@ void graph<T , E> ::  BFS(int n){
         else
         {
             int Size = right.size();
-            for(int i = 0 ; i < Size ; i++){
+            for(int i = 0 ; i < Size ; i++)
+            {
                 cout << "Visit the node " << Graph[right[i]].info << " . " << endl;
                 Graph[right[i]].isVisit = true;
             }
-            for(int i = 0 ; i < Size ; i++){
-                for(int k = 0 ; k < length ; k++){
-                    if(matrix[k][right[i]] && (!Graph[k].isVisit)){
+            for(int i = 0 ; i < Size ; i++)
+            {
+                for(int k = 0 ; k < length ; k++)
+                {
+                    if(matrix[k][right[i]] && (!Graph[k].isVisit))
+                    {
                         Graph[right[i]].isVisit = true;
                         left.push_back(k);
                     }
@@ -87,18 +101,22 @@ void graph<T , E> ::  BFS(int n){
 }
 
 template<class T , class E>
-void graph<T , E> :: DFS(int n){
+void graph<T , E> :: DFS(int n)
+{
     DFS(n , true);
     reset();
 }
 
 template<class T , class E>
-void graph<T , E> ::  DFS(int n , bool flag){
+void graph<T , E> ::  DFS(int n , bool flag)
+{
     if(false) reset();
     cout << "Visit the node " << Graph[n].info << " . " << endl;
     Graph[n].isVisit = true;
-    for(int i = 0 ; i < length ; i++){
-        if(matrix[i][n] && (!Graph[i].isVisit)){
+    for(int i = 0 ; i < length ; i++)
+    {
+        if(matrix[i][n] && (!Graph[i].isVisit))
+        {
             Graph[i].isVisit = true;
             DFS(i , false);
 
@@ -109,10 +127,12 @@ void graph<T , E> ::  DFS(int n , bool flag){
 
 
 template<class T , class E>
-void graph<T , E> :: outputTree(){
+void graph<T , E> :: outputTree()
+{
         if(copy != NULL)
     {
-        for(int i = 0 ;i < length ; i++){
+        for(int i = 0 ;i < length ; i++)
+        {
             //cout << i << "\t : limit : " << length << endl;
             delete[] copy[i];
         }
@@ -141,7 +161,8 @@ void graph<T , E> :: outputTree(){
 
 
 template<class T , class E>
-void graph<T , E> :: innerForward(int count , int i , int j){
+void graph<T , E> :: innerForward(int count , int i , int j)
+{
     /*cout << "length : " << length << endl << "COUNT : " << count << endl;
       if(count < length - 1) return;
       if(count == length - 1 && i == length && j == 0)
@@ -153,7 +174,8 @@ void graph<T , E> :: innerForward(int count , int i , int j){
       for(int i = 0 ; i < length ; i++)
       for(int j = i ; j < length ; j++)
       temp[i][j] = temp[j][i] = copy[i][j];
-      if(forward()){
+      if(forward())
+      {
       cout << "Find the spanning tree . " << endl;
       cout << "We reset the value . " << endl;
       }
@@ -175,10 +197,12 @@ void graph<T , E> :: innerForward(int count , int i , int j){
       j++;
       }
 
-      if(i == length && j == 0 ){
+      if(i == length && j == 0 )
+      {
       innerForward(count , i , j);
       }else {
-      if(copy[i][j] == 1){
+      if(copy[i][j] == 1)
+      {
       //cout << "Call the function ." << endl;
       innerForward(count , i , j);
       cout << "change the flag . " << endl;
@@ -283,7 +307,8 @@ void graph<T , E> :: innerForward(int count , int i , int j){
 }
 
 template<class T , class E>
-void graph<T , E> :: show(){
+void graph<T , E> :: show()
+{
     cout << "------------------------------------------------------>" << endl;
     for(int l = 0 ; l < length ; l++)
     {
@@ -297,7 +322,8 @@ void graph<T , E> :: show(){
 
 
 template<class T , class E>
-bool graph<T , E> :: forward(int n){
+bool graph<T , E> :: forward(int n)
+{
     /*for(int i = 0 ; i < length ; i++)
       for(int j = i ; j < length ; j++)
       {
@@ -321,20 +347,25 @@ bool graph<T , E> :: forward(int n){
       copy[n][i] = copy[n][i] = 0;
       return forward(i);
       }*
-      for(int i = 0 ; i < length ; i++){
-      if(copy[n][i] == 1){
+      for(int i = 0 ; i < length ; i++)
+      {
+      if(copy[n][i] == 1)
+      {
       if(Graph[i].isVisit) return false;
       Graph[i].isVisit = true;
       forward(i);
       }
       }
-      for(int i = 0 ; i < length ; i++){
+      for(int i = 0 ; i < length ; i++)
+      {
       if(!Graph[i].isVisit) return false;
       }
       return true;
     */
-    for(int i = 0 ; i < length ; i++){
-        if(copy[n][i] == 1){
+    for(int i = 0 ; i < length ; i++)
+    {
+        if(copy[n][i] == 1)
+        {
             copy[n][i] = copy[i][n] = 0;
             Graph[i].isVisit = true;
             Graph[n].isVisit = true;
@@ -344,9 +375,11 @@ bool graph<T , E> :: forward(int n){
 }
 
 template<class T , class E>
-bool graph<T , E> :: adjust(){
+bool graph<T , E> :: adjust()
+{
     forward();
-    for(int i = 0 ; i < length ; i++){
+    for(int i = 0 ; i < length ; i++)
+    {
         if(!Graph[i].isVisit) return false;
     }
     for(int i = 0 ; i < length ; i++)
@@ -355,12 +388,15 @@ bool graph<T , E> :: adjust(){
 }
 
 template<class T , class E>
-void graph<T , E> :: outputMin(){
+void graph<T , E> :: outputMin()
+{
     for(int i = 0 ; i < length ; i++)
         for(int j = 0 ; j < length ; j++)
             weight[i][j] = matrix[i][j] == 0 ? 1 << sizeof(int) * 3 - 2 : i + j;
-    for(int i = 0 ; i < length ; i++){
-        for(int j = 0 ; j < length ; j++){
+    for(int i = 0 ; i < length ; i++)
+    {
+        for(int j = 0 ; j < length ; j++)
+        {
             cout << weight[i][j] << "\t";
         }
         cout <<endl;
@@ -388,7 +424,8 @@ void graph<T , E> :: outputMin(){
     iterator.push_back(select_j);
     edge.push_back(min);
     bool isSelected = true;
-    while(!flag && iterator.size() != length){
+    while(!flag && iterator.size() != length)
+    {
         int size = iterator.size();
         int min , select;
         for(int i = 0 ; i < size ; i++)
@@ -410,27 +447,35 @@ void graph<T , E> :: outputMin(){
                 }
             }
         }
-        if(flag){
+        if(flag)
+        {
             iterator.push_back(select);
             edge.push_back(min);
             flag = false;
             isSelected = true;
-        }else{
+        }
+        else
+        {
             break;
         }
     }
     cout << "Output  the min tree order : " << endl;
     for(int i = 0 ; i < iterator.size() ; i++)
+    {
         cout << iterator[i] << endl;
+    }
     cout << "Output  the min edge order : " << endl;
     for(int i = 0 ; i < edge.size() ; i++)
+    {
         cout << edge[i] << endl;
+    }
     iterator.clear();
     reset();
 }
 
 template<class T , class E>
-bool graph<T , E> :: invalid(int i , int l , vector<T> iterator){
+bool graph<T , E> :: invalid(int i , int l , vector<T> iterator)
+{
     if(matrix[i][l] == 0) return false;
     for(int j = 0 ; j < iterator.size() ; j++)
     {
@@ -441,8 +486,10 @@ bool graph<T , E> :: invalid(int i , int l , vector<T> iterator){
 }
 
 /*template<class T , class E>
-  void graph<T , E > :: show(){
-  for(int i = 0 ; i < length ; i++){
+  void graph<T , E > :: show()
+  {
+  for(int i = 0 ; i < length ; i++)
+  {
   for(int j = 0 ; j < length ; j ++)
   cout << matrix[i][j] << "\t" ;
   cout << endl;
@@ -450,7 +497,8 @@ bool graph<T , E> :: invalid(int i , int l , vector<T> iterator){
   }*/
 
 template<class T , class E>
-void graph<T ,E> :: init(){
+void graph<T ,E> :: init()
+{
     //count = 0;
     copy = new int * [length];
     cout << "START > " << endl;
@@ -459,7 +507,8 @@ void graph<T ,E> :: init(){
     this -> length = length;
     matrix = new E * [length];
     weight = new int * [length];
-    for(int i = 0 ; i < length ; i++ ){
+    for(int i = 0 ; i < length ; i++ )
+    {
         matrix[i] = new int[length]();
         weight[i] = new int[length]();
     }
@@ -491,14 +540,17 @@ void graph<T ,E> :: init(){
 }
 
 template<class T , class E>
-graph<T , E> :: graph(){
+graph<T , E> :: graph()
+{
     init();
 }
 
 
 template<class T , class E>
-graph<T , E > :: ~graph(){
-    for(int i = 0 ; i < length ; i++){
+graph<T , E > :: ~graph()
+{
+    for(int i = 0 ; i < length ; i++)
+    {
         delete[] matrix[i];
         delete[] weight[i];
     }
@@ -508,8 +560,10 @@ graph<T , E > :: ~graph(){
     cout << "ALL THINGS DONE > " << endl;
 }
 
-void test(int i , int size , int * array){
-    if(i == size){
+void test(int i , int size , int * array)
+{
+    if(i == size)
+    {
         for(int l = 0 ; l < size ; l++)
             cout << array[l] << "\t";
         cout << endl;
@@ -521,7 +575,8 @@ void test(int i , int size , int * array){
     test(i+1 , size , array);
 }
 
-int main(int argc , char ** argv){
+int main(int argc , char ** argv)
+{
     graph<int , int> TEMP;
     TEMP.DFS();
     TEMP.BFS();

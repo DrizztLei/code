@@ -1,0 +1,15 @@
+#include<iostream>
+#include<istream>
+#include<ostream>
+#include<cstring>
+#include<vector>
+#include <stdio.h>
+using namespace std;
+int  get(){
+return 99;
+}
+int main(int argc, char ** argv){
+string temp = "abcdefg";
+cout << temp.substr(2,4) << endl;
+return 0;
+}

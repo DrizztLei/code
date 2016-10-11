@@ -4,8 +4,8 @@
 #include "http.h"
 
 #include <QWidget>
-#include <QSqlQuery>
-#include <QSqlDatabase>
+// #include <QSqlQuery>
+// #include <QSqlDatabase>
 #include <QStandardItemModel>
 #include <QSemaphore>
 #include <vector>
@@ -30,8 +30,9 @@ private slots:
 private:
     Ui::AddProprietorWidget *ui;
     QStandardItemModel* old;
-    HTTP BUILDING , ID , ROOM  , AREA;
+    // HTTP BUILDING , ID , ROOM  , AREA;
     std::vector<HTTP> list;
+    const int size = 17;
     QSemaphore sem;
     // INFO info = INFO::DEFAULT;
 };

@@ -19,7 +19,7 @@
 #include "src/database/sql.h"
 #include "src/database/serialquery.h"
 
-/** Cache for template files */
+/** Cache for template fi les */
 TemplateCache* templateCache;
 
 /** Storage for session cookies */
@@ -175,13 +175,13 @@ int main(int argc, char *argv[])
         else
         {
             qDebug() << "MAIN : LOG IN FAILED .";
-            app->destroyed();
             return EXIT_FAILURE;
         }
     }
     else
     {
         app->destroyed();
+        qDebug() << "MAIN : OPEN DATABASE FAILED .";
         return EXIT_FAILURE;
     }
 

@@ -4,7 +4,10 @@
 #include "http.h"
 
 #include <QDialog>
-#include <QSqlQuery>
+// #include <QSqlQuery>
+#include <QNetworkReply>
+
+#include <vector>
 
 namespace Ui
 {
@@ -18,14 +21,23 @@ class LoginDialog : public QDialog
 public:
     explicit LoginDialog(QWidget *parent = 0);
     ~LoginDialog();
-    static HTTP& getHTTP();
+    static QString LOGIN_ID;
+    // static HTTP& getHTTP();
+
+signals:
+    void checked();
+
 private slots:
     void on_loginButton_clicked();
     void on_exitLoginButton_clicked();
 
 private:
     Ui::LoginDialog *ui;
-    static HTTP http;
+    std::vector<HTTP> list;
+    const int size = 1;
+    QString md5;
+
+    // static HTTP http;
 };
 
 #endif // LOGINDIALOG_H

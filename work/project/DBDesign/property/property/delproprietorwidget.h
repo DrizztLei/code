@@ -4,8 +4,9 @@
 #include "http.h"
 
 #include <QWidget>
-#include <QSqlQuery>
+// #include <QSqlQuery>
 #include <QStandardItemModel>
+#include <vector>
 
 namespace Ui
 {
@@ -19,17 +20,17 @@ class DelProprietorWidget : public QWidget
 public:
     explicit DelProprietorWidget(QWidget *parent = 0);
     ~DelProprietorWidget();
-    static HTTP& getHTTP();
+    // static HTTP& getHTTP();
 private slots:
     void on_buildComboBox_currentIndexChanged(int index);
-
     void on_roomComboBox_currentIndexChanged(int index);
-
     void on_pushButton_clicked();
 
 private:
     Ui::DelProprietorWidget *ui;
-    static HTTP http;
+    std::vector<HTTP> list;
+    int const size = 14;
+    // static HTTP http;
 };
 
 #endif // DELPROPRIETORWIDGET_H

@@ -4,8 +4,9 @@
 #include "http.h"
 
 #include <QDialog>
-#include <QSqlQuery>
+// #include <QSqlQuery>
 #include <QStandardItemModel>
+#include <vector>
 
 namespace Ui
 {
@@ -19,7 +20,7 @@ class RecordMeterDialog : public QDialog
 public:
     explicit RecordMeterDialog(QWidget *parent = 0);
     ~RecordMeterDialog();
-    static HTTP& getHTTP();
+    // static HTTP& getHTTP();
 private slots:
     void on_buildingomboBox_currentIndexChanged(int index);
 
@@ -31,7 +32,9 @@ private slots:
 private:
     Ui::RecordMeterDialog *ui;
     QStandardItemModel  *model;
-    static HTTP http;
+    const int size = 8;
+    std::vector<HTTP> list;
+    // static HTTP http;
 };
 
 #endif // RECORDMETERDIALOG_H

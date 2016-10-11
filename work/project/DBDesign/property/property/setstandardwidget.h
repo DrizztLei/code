@@ -3,9 +3,11 @@
 
 #include "http.h"
 
-#include <QSqlQuery>
-#include <QSqlTableModel>
+// #include <QSqlQuery>
+// #include <QSqlTableModel>
+#include <QStandardItem>
 #include <QWidget>
+#include <vector>
 
 namespace Ui
 {
@@ -19,14 +21,16 @@ class setStandardWidget : public QWidget
 public:
     explicit setStandardWidget(QWidget *parent = 0);
     ~setStandardWidget();
-    static HTTP& getHTTP();
+    // static HTTP& getHTTP();
 private slots:
     void on_submitPushButton_clicked();
 
 private:
     Ui::setStandardWidget *ui;
-    QSqlTableModel *model;
-    static HTTP http;
+    QStandardItemModel *model;
+    const int size = 1;
+    std::vector<HTTP> list;
+    // static HTTP http;
 };
 
 #endif // SETSTANDARDWIDGET_H

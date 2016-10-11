@@ -1,18 +1,15 @@
 ﻿<Properties StartupItem="AdvanceSQL/AdvanceSQL.csproj">
   <MonoDevelop.Ide.Workbench ActiveDocument="AdvanceSQL/Trie.cs">
     <Files>
-      <File FileName="AdvanceSQL/AssemblyInfo.cs" Line="1" Column="1" />
-      <File FileName="AdvanceSQL/GroupNode.cs" Line="1" Column="1" />
+      <File FileName="AdvanceSQL/GroupNode.cs" Line="14" Column="10" />
       <File FileName="AdvanceSQL/Node.cs" Line="25" Column="29" />
-      <File FileName="AdvanceSQL/Trie.cs" Line="264" Column="57" />
+      <File FileName="AdvanceSQL/Trie.cs" Line="22" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
   <MonoDevelop.Ide.ItemProperties.AdvanceSQL PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/home/elvis/work/C#/AdvanceSQL/AdvanceSQL/AdvanceSQL/Trie.cs" line="276" column="65" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

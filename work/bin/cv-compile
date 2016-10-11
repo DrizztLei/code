@@ -1,14 +1,16 @@
 #!/bin/bash
 
+path="./*"
+
 function compile()
 {
-    echo "Compiling $1"
-    if [[ $1 == *.c ]]
+    echo "Compiling $*"
+    if [[ $* == *.c ]]
     then
-	gcc `pkg-config --cflags --libs opencv` -o `basename $1 .c` $1 
-    elif [[ $1 == *.cpp ]]
+	gcc `pkg-config --cflags --libs opencv` -o `basename $* .c` $* 
+    elif [[ $* == *.cpp ]]
     then
-	g++ `pkg-config --cflags --libs opencv` -o `basename $1 .cpp` $1
+	g++ `pkg-config --cflags --libs opencv` -o `basename $* .cpp` $*
     else
 	echo "Error for file format of" $1
     fi
@@ -23,10 +25,9 @@ then
     echo "Compile Over"
     exit 0
 fi
-
-for dir in $(ls ./)
+for dir in ${path}
 do
-  compile $dir
+    compile "${dir}"
 done
 
 echo "Compile Over"

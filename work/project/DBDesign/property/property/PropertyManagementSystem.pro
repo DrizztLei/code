@@ -32,8 +32,7 @@ SOURCES += main.cpp\
     yearbillreportwidget.cpp \
     allproprietorwidget.cpp \
     allroomproprietor.cpp \
-    http.cpp \
-    textformat.cpp
+    http.cpp
 
 HEADERS  += mainwindow.h \
     connection.h \
@@ -55,8 +54,7 @@ HEADERS  += mainwindow.h \
     yearbillreportwidget.h \
     allproprietorwidget.h \
     allroomproprietor.h \
-    http.h \
-    textformat.h
+    http.h
 
 FORMS    += mainwindow.ui \
     logindialog.ui \

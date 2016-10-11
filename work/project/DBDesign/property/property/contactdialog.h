@@ -2,8 +2,8 @@
 #define CONTACTDIALOG_H
 
 #include <QDialog>
-#include <QSqlQuery>
-#include <QStandardItemModel>
+// #include <QSqlQuery>
+// #include <QStandardItemModel>
 
 namespace Ui {
 class ContactDialog;

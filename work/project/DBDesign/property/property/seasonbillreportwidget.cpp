@@ -4,14 +4,28 @@
 #include <QSqlQuery>
 #include <QDate>
 #include <QStandardItemModel>
+#include <QNetworkReply>
+#include <QDateTime>
 
-HTTP SeasonBillReportWidget::http;
+// HTTP SeasonBillReportWidget::http;
 
 SeasonBillReportWidget::SeasonBillReportWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SeasonBillReportWidget)
 {
     ui->setupUi(this);
+
+    if(list.size() != size)
+    {
+        list.clear();
+        for(int i = 0 ; i < size ; i++)
+        {
+            list.push_back(HTTP());
+        }
+    }
+
+    /*
+
     QSqlQuery query;
     query.exec("select min(date) min_date,max(date) max_date from month_bill");
     int begin_year;
@@ -35,6 +49,54 @@ SeasonBillReportWidget::SeasonBillReportWidget(QWidget *parent) :
     ui->feeTypeComboBox->addItem("应收未收");
     ui->feeTypeComboBox->addItem("实收费用");
     ui->feeTypeComboBox->addItem("应收费用");
+
+    */
+
+    list[0].clear();
+    list[0].setFlag(false);
+    list[0].setCommit(false);
+    list[0].setLength(0);
+    list[0].postRequest("select min(date) min_date,max(date) max_date from month_bill");
+
+    QObject::connect(list[0].getReply() , &QNetworkReply::finished , [&]()
+    {
+        QList<QByteArray> info = list[0].getInfo().split('\n');
+
+        int size = info[0].toInt();
+        int rows = info[1].toInt();
+
+        int sequence , begin_year , end_year;
+        for(int i = 0 ; i < size ; i ++)
+        {
+            for(int j = 0 ; j < rows ; j++)
+            {
+                sequence = i*rows + j + 2;;
+                if(j == 0)
+                {
+                    begin_year = QDateTime::fromString(QString(info[sequence]) , "yyyy-mm-dd").date().year();
+                }
+                else if(j == 1)
+                {
+                    end_year = QDateTime::fromString(QString(info[sequence]) , "yyyy-mm-dd").date().year();
+                }
+            }
+        }
+
+        while(begin_year <= end_year)
+        {
+            ui->yearomboBox->addItem(QString("%1").arg(begin_year));
+            begin_year++;
+        }
+
+        ui->seasonComboBox->addItem("第一季度");
+        ui->seasonComboBox->addItem("第二季度");
+        ui->seasonComboBox->addItem("第三季度");
+        ui->seasonComboBox->addItem("第四季度");
+
+        ui->feeTypeComboBox->addItem("应收未收");
+        ui->feeTypeComboBox->addItem("实收费用");
+        ui->feeTypeComboBox->addItem("应收费用");
+    });
 }
 
 SeasonBillReportWidget::~SeasonBillReportWidget()
@@ -44,6 +106,9 @@ SeasonBillReportWidget::~SeasonBillReportWidget()
 
 void SeasonBillReportWidget::on_selectPushButton_clicked()
 {
+
+    /*
+
     QSqlQuery query;
     QString y = ui->yearomboBox->currentText();
     QString m = ui->seasonComboBox->currentText();
@@ -104,6 +169,7 @@ void SeasonBillReportWidget::on_selectPushButton_clicked()
             query.prepare(QString("select id, name, building_id, room_id,  sum(water) s_water, sum(watt) s_watt, sum(gas) s_gas, sum(tv) s_tv, sum(property) s_property, sum(mortage) s_mortage,payed from proprietor natural join month_bill where date like '%1-10-%' or date like '%2-11-%' or date like '%3-12-%' group by id").arg(y).arg(y).arg(y));
         }
     }
+
     query.exec();
     QStandardItemModel* model = new QStandardItemModel();
     model->setColumnCount(11);
@@ -152,9 +218,148 @@ void SeasonBillReportWidget::on_selectPushButton_clicked()
             model->setItem(i,10,new QStandardItem("未交"));
         }
     }
+
+    */
+
+    QString y = ui->yearomboBox->currentText();
+    QString m = ui->seasonComboBox->currentText();
+    QString sql;
+
+    if(ui->feeTypeComboBox->currentText().compare("应收未收") == 0)
+    {
+        if(ui->seasonComboBox->currentText().compare("第一季度") == 0)
+        {
+            sql = QString("select id, name, building_id, room_id,  sum(water) s_water, sum(watt) s_watt, sum(gas) s_gas, sum(tv) s_tv, sum(property) s_property, sum(mortage) s_mortage,payed from proprietor natural join month_bill where payed=false and (date like '%1-01-%' or date like '%2-02-%' or date like '%3-03-%') group by id").arg(y).arg(y).arg(y);
+        }
+        else if(ui->seasonComboBox->currentText().compare("第二季度") == 0)
+        {
+            sql = QString("select id, name, building_id, room_id, sum(water) s_water, sum(watt) s_watt, sum(gas) s_gas, sum(tv) s_tv, sum(property) s_property, sum(mortage) s_mortage,payed from proprietor natural join month_bill where payed=false and (date like '%1-04-%' or date like '%2-05-%' or date like '%3-06-%') group by id").arg(y).arg(y).arg(y);
+        }
+        else if(ui->seasonComboBox->currentText().compare("第三季度") == 0)
+        {
+            sql = QString("select id, name, building_id, room_id, sum(water) s_water, sum(watt) s_watt, sum(gas) s_gas, sum(tv) s_tv, sum(property) s_property, sum(mortage) s_mortage,payed from proprietor natural join month_bill where payed=false and (date like '%1-07-%' or date like '%2-08-%' or date like '%3-09-%') group by id").arg(y).arg(y).arg(y);
+        }
+        else if(ui->seasonComboBox->currentText().compare("第四季度") == 0)
+        {
+            sql = QString("select id, name, building_id, room_id,  sum(water) s_water, sum(watt) s_watt, sum(gas) s_gas, sum(tv) s_tv, sum(property) s_property, sum(mortage) s_mortage,payed from proprietor natural join month_bill where payed=false and (date like '%1-10-%' or date like '%2-11-%' or date like '%3-12-%') group by id").arg(y).arg(y).arg(y);
+        }
+    }
+    else if(ui->feeTypeComboBox->currentText().compare("实收费用") == 0)
+    {
+        if(ui->seasonComboBox->currentText().compare("第一季度") == 0)
+        {
+            sql = QString("select id, name, building_id, room_id,  sum(water) s_water, sum(watt) s_watt, sum(gas) s_gas, sum(tv) s_tv, sum(property) s_property, sum(mortage) s_mortage,payed from proprietor natural join month_bill where payed=true and (date like '%1-01-%' or date like '%2-02-%' or date like '%3-03-%') group by id").arg(y).arg(y).arg(y);
+        }
+        else if(ui->seasonComboBox->currentText().compare("第二季度") == 0)
+        {
+            sql = QString("select id, name, building_id, room_id, sum(water) s_water, sum(watt) s_watt, sum(gas) s_gas, sum(tv) s_tv, sum(property) s_property, sum(mortage) s_mortage,payed from proprietor natural join month_bill where payed=true and (date like '%1-04-%' or date like '%2-05-%' or date like '%3-06-%') group by id ").arg(y).arg(y).arg(y);
+        }
+        else if(ui->seasonComboBox->currentText().compare("第三季度") == 0)
+        {
+            sql = QString("select id, name, building_id, room_id,  sum(water) s_water, sum(watt) s_watt, sum(gas) s_gas, sum(tv) s_tv, sum(property) s_property, sum(mortage) s_mortage,payed from proprietor natural join month_bill where payed=true and (date like '%1-07-%' or date like '%2-08-%' or date like '%3-09-%') group by id").arg(y).arg(y).arg(y);
+        }
+        else if(ui->seasonComboBox->currentText().compare("第四季度") == 0)
+        {
+            sql = QString("select id, name, building_id, room_id,  sum(water) s_water, sum(watt) s_watt, sum(gas) s_gas, sum(tv) s_tv, sum(property) s_property, sum(mortage) s_mortage,payed from proprietor natural join month_bill where payed=true and (date like '%1-10-%' or date like '%2-11-%' or date like '%3-12-%') group by id").arg(y).arg(y).arg(y);
+        }
+    }
+    else if(ui->feeTypeComboBox->currentText().compare("应收费用") == 0)
+    {
+        if(ui->seasonComboBox->currentText().compare("第一季度") == 0)
+        {
+            sql = QString("select id, name, building_id, room_id, sum(water) s_water, sum(watt) s_watt, sum(gas) s_gas, sum(tv) s_tv, sum(property) s_property, sum(mortage) s_mortage,payed from proprietor natural join month_bill where date like '%1-01-%' or date like '%2-02-%' or date like '%3-03-%' group by id").arg(y).arg(y).arg(y);
+        }
+        else if(ui->seasonComboBox->currentText().compare("第二季度") == 0)
+        {
+            sql = QString("select id, name, building_id, room_id,  sum(water) s_water, sum(watt) s_watt, sum(gas) s_gas, sum(tv) s_tv, sum(property) s_property, sum(mortage) s_mortage,payed from proprietor natural join month_bill where date like '%1-04-%' or date like '%2-05-%' or date like '%3-06-%' group by id ").arg(y).arg(y).arg(y);
+        }
+        else if(ui->seasonComboBox->currentText().compare("第三季度") == 0)
+        {
+            sql = QString("select id, name, building_id, room_id,sum(water) s_water, sum(watt) s_watt, sum(gas) s_gas, sum(tv) s_tv, sum(property) s_property, sum(mortage) s_mortage,payed from proprietor natural join month_bill where date like '%1-07-%' or date like '%2-08-%' or date like '%3-09-%' group by id").arg(y).arg(y).arg(y);
+        }
+        else if(ui->seasonComboBox->currentText().compare("第四季度") == 0)
+        {
+            sql = QString("select id, name, building_id, room_id,  sum(water) s_water, sum(watt) s_watt, sum(gas) s_gas, sum(tv) s_tv, sum(property) s_property, sum(mortage) s_mortage,payed from proprietor natural join month_bill where date like '%1-10-%' or date like '%2-11-%' or date like '%3-12-%' group by id").arg(y).arg(y).arg(y);
+        }
+    }
+
+    list[1].clear();
+    list[1].setFlag(false);
+    list[1].setCommit(false);
+    list[1].setLength(0);
+    list[1].postRequest(sql);
+
+    QObject::connect(list[1].getReply() , &QNetworkReply::finished , [&]()
+    {
+        QStandardItemModel* model = new QStandardItemModel();
+        model->setColumnCount(11);
+        model->setHeaderData(0,Qt::Horizontal,QString::fromUtf8("身份证号"));
+        model->setHeaderData(1,Qt::Horizontal,QString::fromUtf8("姓名"));
+        model->setHeaderData(2,Qt::Horizontal,QString::fromUtf8("楼栋"));
+        model->setHeaderData(3,Qt::Horizontal,QString::fromUtf8("房屋"));
+        model->setHeaderData(4,Qt::Horizontal,QString::fromUtf8("水费"));
+        model->setHeaderData(5,Qt::Horizontal,QString::fromUtf8("电费"));
+        model->setHeaderData(6,Qt::Horizontal,QString::fromUtf8("天然气费"));
+        model->setHeaderData(7,Qt::Horizontal,QString::fromUtf8("电视费用"));
+        model->setHeaderData(8,Qt::Horizontal,QString::fromUtf8("物业费用"));
+        model->setHeaderData(9,Qt::Horizontal,QString::fromUtf8("月房贷款"));
+        model->setHeaderData(10,Qt::Horizontal,QString::fromUtf8("交费情况"));
+
+        ui->tableView->model()->deleteLater();
+        ui->tableView->setModel(model);
+
+        //表头信息显示居左
+
+        ui->tableView->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
+        ui->tableView->setColumnWidth(0,100);
+
+        QList<QByteArray> info = list[1].getInfo().split('\n');
+
+        int size = info[0].toInt();
+        int rows = info[1].toInt();
+
+        int sequence , rowNum ;
+        for(int i = 0 ; i < size ; i ++)
+        {
+            rowNum = model->rowCount();
+            for(int j = 0 ; j < rows ; j++)
+            {
+                sequence = i*rows + j + 2;
+                {
+                    //---------------------------------------------------
+                    if(j == 0)
+                    {
+                        model->setItem(rowNum , j , new QStandardItem(QString(info[sequence])));
+                        model->item(rowNum , 0)->setForeground(QBrush(QColor(255, 0, 0)));
+                        model->item(rowNum,0)->setTextAlignment(Qt::AlignCenter);
+                    }
+                    else if(j == 10)
+                    {
+                        if(info[sequence].toInt() == 1)
+                        {
+                            model->setItem(rowNum ,10,new QStandardItem("已交"));
+                        }
+                        else
+                        {
+                            model->setItem(rowNum ,10,new QStandardItem("未交"));
+                        }
+                    }
+                    else
+                    {
+                        model->setItem(rowNum,j,new QStandardItem(QString(info[sequence])));
+                    }
+                    //---------------------------------------------------
+                }
+            }
+        }
+    });
 }
+
+/*
 
 HTTP& SeasonBillReportWidget::getHTTP()
 {
     return SeasonBillReportWidget::http;
 }
+
+*/

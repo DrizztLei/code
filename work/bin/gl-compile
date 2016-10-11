@@ -1,5 +1,7 @@
 #!/bin/bash
 
+path="./*"
+
 function compile()
 {
     echo "Compiling $1"
@@ -26,7 +28,7 @@ then
     exit 0
 fi
 
-for dir in $(ls ./)
+for dir in ${path}
 do
   compile $dir
 done

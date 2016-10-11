@@ -1,0 +1,315 @@
+-- MySQL dump 10.13  Distrib 5.6.33, for Linux (x86_64)
+--
+-- Host: localhost    Database: propertydata
+-- ------------------------------------------------------
+-- Server version	5.6.33-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `building`
+--
+
+DROP TABLE IF EXISTS `building`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `building` (
+  `building_id` varchar(10) NOT NULL COMMENT '楼栋id',
+  `floor_num` smallint(3) NOT NULL COMMENT '楼层数目',
+  `built_date` date NOT NULL COMMENT '建成时间',
+  PRIMARY KEY (`building_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `building`
+--
+
+LOCK TABLES `building` WRITE;
+/*!40000 ALTER TABLE `building` DISABLE KEYS */;
+/*!40000 ALTER TABLE `building` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `func`
+--
+
+DROP TABLE IF EXISTS `func`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `func` (
+  `function` varchar(40) NOT NULL COMMENT '功能',
+  PRIMARY KEY (`function`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `func`
+--
+
+LOCK TABLES `func` WRITE;
+/*!40000 ALTER TABLE `func` DISABLE KEYS */;
+/*!40000 ALTER TABLE `func` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `meter`
+--
+
+DROP TABLE IF EXISTS `meter`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `meter` (
+  `building_id` varchar(10) NOT NULL COMMENT '楼栋id',
+  `room_id` varchar(10) NOT NULL COMMENT '房屋id',
+  `date` date NOT NULL COMMENT '抄表时间',
+  `water` decimal(6,1) NOT NULL COMMENT '水表读数',
+  `watt` decimal(6,1) NOT NULL COMMENT '电表读数',
+  `gas` decimal(6,1) NOT NULL COMMENT '煤气表读数',
+  PRIMARY KEY (`room_id`,`building_id`,`date`),
+  KEY `building_id` (`building_id`,`room_id`),
+  CONSTRAINT `meter_ibfk_1` FOREIGN KEY (`building_id`, `room_id`) REFERENCES `room` (`building_id`, `room_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `meter`
+--
+
+LOCK TABLES `meter` WRITE;
+/*!40000 ALTER TABLE `meter` DISABLE KEYS */;
+/*!40000 ALTER TABLE `meter` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `month_bill`
+--
+
+DROP TABLE IF EXISTS `month_bill`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `month_bill` (
+  `ID` varchar(18) NOT NULL COMMENT '业主身份证号',
+  `date` date NOT NULL COMMENT '月账单产生日期',
+  `water` decimal(5,2) NOT NULL COMMENT '月水费数额',
+  `watt` decimal(5,2) NOT NULL COMMENT '月电费数额',
+  `gas` decimal(5,2) NOT NULL COMMENT '月煤气费数额',
+  `tv` decimal(5,2) NOT NULL,
+  `property` decimal(5,2) NOT NULL COMMENT '月物业费数额',
+  `mortage` decimal(8,2) NOT NULL COMMENT '月房贷数额',
+  `payed` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`ID`,`date`),
+  CONSTRAINT `month_bill_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `proprietor` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `month_bill`
+--
+
+LOCK TABLES `month_bill` WRITE;
+/*!40000 ALTER TABLE `month_bill` DISABLE KEYS */;
+/*!40000 ALTER TABLE `month_bill` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `proprietor`
+--
+
+DROP TABLE IF EXISTS `proprietor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `proprietor` (
+  `ID` varchar(18) NOT NULL COMMENT '业主身份证号',
+  `name` varchar(30) NOT NULL COMMENT '业主姓名',
+  `organization` varchar(50) NOT NULL DEFAULT 'none' COMMENT '业主工作单位',
+  `building_id` varchar(10) NOT NULL COMMENT '楼栋id',
+  `room_id` varchar(10) NOT NULL COMMENT '房屋id',
+  `own_date` date NOT NULL COMMENT '入住时间',
+  PRIMARY KEY (`ID`),
+  KEY `building_id` (`building_id`,`room_id`),
+  CONSTRAINT `proprietor_ibfk_1` FOREIGN KEY (`building_id`, `room_id`) REFERENCES `room` (`building_id`, `room_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `proprietor`
+--
+
+LOCK TABLES `proprietor` WRITE;
+/*!40000 ALTER TABLE `proprietor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `proprietor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `proprietor_phone_num`
+--
+
+DROP TABLE IF EXISTS `proprietor_phone_num`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `proprietor_phone_num` (
+  `phone_num` varchar(20) NOT NULL COMMENT '业主电话号码',
+  `ID` varchar(18) NOT NULL COMMENT '业主身份证号',
+  PRIMARY KEY (`phone_num`),
+  KEY `ID` (`ID`),
+  CONSTRAINT `proprietor_phone_num_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `proprietor` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `proprietor_phone_num`
+--
+
+LOCK TABLES `proprietor_phone_num` WRITE;
+/*!40000 ALTER TABLE `proprietor_phone_num` DISABLE KEYS */;
+/*!40000 ALTER TABLE `proprietor_phone_num` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role` (
+  `role_type` varchar(20) NOT NULL COMMENT '角色类型',
+  PRIMARY KEY (`role_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role`
+--
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role_func`
+--
+
+DROP TABLE IF EXISTS `role_func`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role_func` (
+  `role_type` varchar(20) NOT NULL COMMENT '角色类型',
+  `function` varchar(20) NOT NULL COMMENT '功能',
+  PRIMARY KEY (`role_type`,`function`),
+  KEY `function` (`function`),
+  CONSTRAINT `role_func_ibfk_1` FOREIGN KEY (`role_type`) REFERENCES `role` (`role_type`),
+  CONSTRAINT `role_func_ibfk_2` FOREIGN KEY (`function`) REFERENCES `func` (`function`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role_func`
+--
+
+LOCK TABLES `role_func` WRITE;
+/*!40000 ALTER TABLE `role_func` DISABLE KEYS */;
+/*!40000 ALTER TABLE `role_func` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `room`
+--
+
+DROP TABLE IF EXISTS `room`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `room` (
+  `building_id` varchar(10) NOT NULL COMMENT '楼栋id',
+  `room_id` varchar(10) NOT NULL COMMENT '每栋楼上房屋id',
+  `area` decimal(5,2) NOT NULL COMMENT '房屋面积',
+  `stayed` varchar(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`building_id`,`room_id`),
+  CONSTRAINT `room_ibfk_1` FOREIGN KEY (`building_id`) REFERENCES `building` (`building_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `room`
+--
+
+LOCK TABLES `room` WRITE;
+/*!40000 ALTER TABLE `room` DISABLE KEYS */;
+/*!40000 ALTER TABLE `room` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `standard`
+--
+
+DROP TABLE IF EXISTS `standard`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `standard` (
+  `start_date` date NOT NULL COMMENT '标准启动时间',
+  `water_per_stere` decimal(5,2) NOT NULL DEFAULT '0.00' COMMENT '每立方米水价(元)',
+  `watt_per_degree` decimal(5,2) NOT NULL DEFAULT '0.00' COMMENT '每度电价格(元)',
+  `gas_per_stere` decimal(5,2) NOT NULL DEFAULT '0.00' COMMENT '每立方米煤气价(元)',
+  `tv_per_month` decimal(5,2) NOT NULL DEFAULT '0.00' COMMENT '每月有线电视价格',
+  `prop_per_sqare_month` decimal(5,2) NOT NULL DEFAULT '0.00' COMMENT '每平米每月物业费',
+  `mortage` decimal(8,2) NOT NULL DEFAULT '0.00',
+  PRIMARY KEY (`start_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `standard`
+--
+
+LOCK TABLES `standard` WRITE;
+/*!40000 ALTER TABLE `standard` DISABLE KEYS */;
+/*!40000 ALTER TABLE `standard` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `login_id` varchar(20) NOT NULL COMMENT '系统用户登录名',
+  `password` varchar(100) NOT NULL COMMENT '登录密码哈希密文',
+  `role_type` varchar(20) NOT NULL,
+  PRIMARY KEY (`login_id`),
+  KEY `role_type` (`role_type`),
+  CONSTRAINT `user_ibfk_1` FOREIGN KEY (`role_type`) REFERENCES `role` (`role_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-10-09 21:45:53

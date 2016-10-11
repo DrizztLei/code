@@ -1,0 +1,97 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+extern char *optarg;
+extern int optind;
+extern int opterr;
+extern int optopt;
+extern int getopt(int argc, char * const argv[], const char *optstring);
+const char *programe_name = "getopt";
+static void usage(void);
+static int PRS(int argc, char **argv, int *opts);
+static void usage(void)
+{
+	fprintf(stderr,
+			"Usage:  %s [OPTION]\n"
+"\t[-abcdeh]\n"
+"\t[-f digit] [-g string]\n",
+programe_name);
+exit(1);
+}
+static int PRS(int argc, char **argv, int *opts)
+{
+int retval, prog_num;
+char ch;
+*opts &= 0x00000000;
+while ((ch = getopt(argc, argv, "abcdef:g:h")) != -1) {
+switch (ch) {
+case 'a':
+*opts |= (1<<0);
+break;
+case 'b':
+*opts |= (1<<1);
+break;
+case 'c':
+*opts |= (1<<2);
+break;
+case 'd':
+*opts |= (1<<3);
+break;
+case 'e':
+*opts |= (1<<4);
+break;
+case 'f':
+*opts |= (1<<5);
+printf("-f optarg=%s\n", optarg);
+break;
+case 'g':
+*opts |= (1<<6);
+printf("-g optarg=%s\n", optarg);
+break;
+case 'h':
+*opts |= (1<<7);
+usage();
+break;
+default:
+fprintf(stderr,
+"our: %s: invalid option -- '%c'\n",
+programe_name, optopt);
+exit(1);
+break;
+}
+}
+return 0;
+}
+int main(int argc ,char **argv)
+{
+int i, retval;
+int opts;
+printf("Before calling getopt\n");
+for (i = 0; i < argc; i++) {
+printf("%s ", argv[i]);
+}
+printf("\n\n");
+retval = PRS(argc, argv, &opts);
+if (retval < 0) {
+exit(1);
+}
+printf("\n");
+printf("After calling getopt\n");
+for (i = 0; i < argc; i++) {
+printf("%s ", argv[i]);
+}
+printf("\n\n");
+printf("-a \t set %s\n", opts&(1<<0) ? "yes" : "no");
+printf("-b \t set %s\n", opts&(1<<1) ? "yes" : "no");
+printf("-c \t set %s\n", opts&(1<<2) ? "yes" : "no");
+printf("-d \t set %s\n", opts&(1<<3) ? "yes" : "no");
+printf("-e \t set %s\n", opts&(1<<4) ? "yes" : "no");
+printf("-f \t set %s\n", opts&(1<<5) ? "yes" : "no");
+printf("-g \t set %s\n", opts&(1<<6) ? "yes" : "no");
+printf("-h \t set %s\n", opts&(1<<7) ? "yes" : "no");
+printf("\n");
+for (i = optind; i < argc; i++) {
+printf("optind=%d\t: argv[%d]=%s\n", i, i, argv[i]);
+}
+return 0;
+}

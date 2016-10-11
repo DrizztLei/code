@@ -1,0 +1,41 @@
+#!/bin/bash
+
+path="./*"
+
+function compile()
+{
+    echo "Macroing $*"
+    if [[ $* == *.c ]]
+    then
+        macro -f $* -o `basename $* .c` 
+    elif [[ $* == *.cpp ]]
+    then
+        macro -f $* -o `basename $* .cpp`
+    elif [[ $* == *.h ]]
+    then
+        macro -f $* -o `basename $* .h`
+    elif [[ $* == *.hpp ]]
+    then
+        macro -f $* -o `basename $* .hpp`
+    else
+	echo "Error for file format of" $1
+    fi
+}
+
+if [ $# -ge 1 ]
+then
+    for file in $@
+    do
+        compile $file
+    done
+    echo "Macro Over"
+    exit 0
+fi
+
+for dir in ${path}
+do
+  compile $dir
+done
+
+echo "Macro Over"
+

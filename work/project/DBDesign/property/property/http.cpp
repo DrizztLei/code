@@ -117,6 +117,37 @@ HTTP::HTTP()
 
 }
 
+HTTP::HTTP(HTTP&& src) noexcept
+{
+    this->length = src.length;
+    this->commit = src.commit;
+    this->flag = src.flag;
+    this->httpRequestAborted = src.httpRequestAborted;
+    this->post = src.post;
+    // this->qnam = src.qnam;
+    this->reply = src.reply;
+    this->info = src.info;
+    this->parameter = src.parameter;
+    this->urlInfo = src.urlInfo;
+    this->url = src.url;
+    this->path = src.path;
+    this->fileName = src.fileName;
+    this->sql = src.sql;
+
+    reply = Q_NULLPTR;
+    // file = Q_NULLPTR;
+
+    httpRequestAborted = false;
+
+    connect(&qnam, &QNetworkAccessManager::authenticationRequired,
+            this, &HTTP::slotAuthenticationRequired);
+#ifndef QT_NO_SSL
+    connect(&qnam, &QNetworkAccessManager::sslErrors,
+            this, &HTTP::sslErrors);
+#endif
+}
+
+
 void HTTP::startRequest(const QUrl &requestedUrl)
 {
     if(isPost())
@@ -138,7 +169,9 @@ void HTTP::startRequest(const QUrl &requestedUrl)
         postData.append("&length=" + QString::number(getLength() , 10));
         postData.append("&commit=" + QString(getCommit()?"true":"false"));
         postData.append("&flag=" + QString(getFlag()?"true":"false"));
-        postData.append("&parameter=" + getParameter());
+        postData.append("&transaction=" + QString(getTransaction()?"true":"false"));
+        postData.append("&rollback=" + QString(getRollback()?"true":"false"));
+        postData.append("&parameter=" + QString(getParameter()));
 
         request.setUrl(requestedUrl);
         request.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
@@ -150,27 +183,37 @@ void HTTP::startRequest(const QUrl &requestedUrl)
         request.setRawHeader("User-Agent","Mozilla/5.0");
         request.setRawHeader("Accept-Encoding","gzip,deflate");
         request.setRawHeader("Host","localhost:8080");
-
-
-        // request.setRawHeader("Connection","Keep-Alive");
-        request.setRawHeader("Connection","close");
+        request.setRawHeader("Connection","close"); // "Connection" , "Keey-Alive"
         request.setRawHeader("Cache-Control","no-cache");
 
+        // qDebug() << "LOG : POST DATA : " << postData;
+
         QByteArray size;
+        size.clear();
         size.append(postData.size());
 
-        request.setRawHeader("Content-Length",size);
+        // request.setRawHeader("Content-Length",size);
 
         reply = qnam.post(request , postData);
 
         // connect(reply ,&QNetworkReply::downloadProgress , this , &HTTP::slotNetworkReplyProgress);
         // connect(reply, &QNetworkReply::finished , this , &HTTP::slotDownFinish);
 
-        connect(reply, &QIODevice::readyRead, this, &HTTP::httpReadyRead);
-        connect(reply, &QNetworkReply::finished , this , &HTTP::httpFinished);
+        if(isSync())
+        {
+            while(!reply->isFinished())
+            {
+                QApplication::processEvents();
+            }
 
-        // connect(reply ,&QNetworkReply::downloadProgress , this , &HTTP::slotNetworkReplyProgress);
-
+            httpReadyRead();
+            httpFinished();
+        }
+        else
+        {
+            connect(reply, &QIODevice::readyRead, this, &HTTP::httpReadyRead);
+            connect(reply, &QNetworkReply::finished , this , &HTTP::httpFinished);
+        }
     }
     else
     {
@@ -178,8 +221,6 @@ void HTTP::startRequest(const QUrl &requestedUrl)
         httpRequestAborted = false;
 
         reply = qnam.get(QNetworkRequest(url));
-
-        connect(reply, &QIODevice::readyRead, this, &HTTP::httpReadyRead);
 
         // ProgressDialog *progressDialog = new ProgressDialog(url, this);
         // progressDialog->setAttribute(Qt::WA_DeleteOnClose);
@@ -189,7 +230,24 @@ void HTTP::startRequest(const QUrl &requestedUrl)
         // connect(reply, &QNetworkReply::finished, progressDialog, &ProgressDialog::hide);
         // connect(reply, &QNetworkReply::finished , this , &HTTP::slotDownFinish);
 
-        connect(reply, &QNetworkReply::finished , this , &HTTP::httpFinished);
+        // connect(reply, &QIODevice::readyRead, this, &HTTP::httpReadyRead);
+        // connect(reply, &QNetworkReply::finished , this , &HTTP::httpFinished);
+
+        if(isSync())
+        {
+            while(!reply->isFinished())
+            {
+                QApplication::processEvents();
+            }
+
+            httpReadyRead();
+            httpFinished();
+        }
+        else
+        {
+            connect(reply, &QIODevice::readyRead, this, &HTTP::httpReadyRead);
+            connect(reply, &QNetworkReply::finished , this , &HTTP::httpFinished);
+        }
 
         // progressDialog->show();
         // statusLabel->setText(tr("Downloading %1...").arg(url.toString()));
@@ -397,8 +455,10 @@ void HTTP::httpFinished()
     downloadButton->setEnabled(true);
     */
 
-    reply->deleteLater();
-    reply = Q_NULLPTR;
+    // reply->deleteLater();
+    // reply = Q_NULLPTR;
+
+    setFinished(true);
 
     return;
 }
@@ -549,6 +609,7 @@ void HTTP::postRequest(QString info)
     this->setFileName("info.sql");
     this->setSQL(info);
     this->setIsPost(true);
+    this->setFinished(false);
     this->infoClear();
     this->download();
 }
@@ -625,12 +686,95 @@ void HTTP::clear()
 {
     this->sql.clear();
     this->parameter.clear();
-    this->commit = false;
-    this->flag = false;
-    this->length = 0;
+    this->setLength(0);
+    this->setFlag(false);
+    this->setCommit(false);
+    this->setTransaction(false);
+    this->setRollback(false);
 }
 
 QNetworkReply* HTTP::getReply()
 {
     return this->reply;
+}
+
+HTTP& HTTP::operator=(HTTP&& src) noexcept
+{
+    if(this == &src)
+    {
+        return *this;
+    }
+    // free old memory .
+    this->length = src.length;
+    this->commit = src.commit;
+    this->flag = src.flag;
+    this->httpRequestAborted = src.httpRequestAborted;
+    this->post = src.post;
+    // this->qnam = src.qnam;
+    // QNetworkAccessManager qnam;
+    this->reply = src.reply;
+    this->info = src.info;
+    this->parameter = src.parameter;
+    this->urlInfo = src.urlInfo;
+    this->url = src.url;
+    this->path = src.path;
+    this->fileName = src.fileName;
+    this->sql = src.sql;
+
+    reply = Q_NULLPTR;
+    // file = Q_NULLPTR;
+
+    httpRequestAborted = false;
+
+    connect(&qnam, &QNetworkAccessManager::authenticationRequired,
+            this, &HTTP::slotAuthenticationRequired);
+#ifndef QT_NO_SSL
+    connect(&qnam, &QNetworkAccessManager::sslErrors,
+            this, &HTTP::sslErrors);
+#endif
+}
+
+void HTTP::setFinished(bool finished)
+{
+    this->finished = finished;
+}
+
+bool HTTP::isFinished()
+{
+    return this->finished;
+}
+
+bool HTTP::isSync()
+{
+    return this->sync;
+}
+
+void HTTP::setSync(bool sync)
+{
+    this->sync = sync;
+}
+
+void HTTP::setTransaction(bool transaction)
+{
+    this->transaction = transaction;
+}
+
+bool HTTP::getTransaction()
+{
+    return this->transaction;
+}
+
+void HTTP::setRollback(bool rollback)
+{
+    this->rollback = rollback;
+}
+
+bool HTTP::getRollback()
+{
+    return this->rollback;
+}
+
+void HTTP::addParameter(double value)
+{
+    this->parameter.append(QString::number(value)+"\t");
 }
