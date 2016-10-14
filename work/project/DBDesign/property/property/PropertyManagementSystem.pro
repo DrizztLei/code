@@ -11,6 +11,8 @@ QT       += core gui sql printsupport network
 TARGET = PropertyManagementSystem
 TEMPLATE = app
 
+CXXFLAGS += gnu+=11
+
 
 SOURCES += main.cpp\
         mainwindow.cpp \

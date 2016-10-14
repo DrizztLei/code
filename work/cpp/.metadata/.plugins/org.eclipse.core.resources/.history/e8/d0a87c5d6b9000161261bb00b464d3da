@@ -1,0 +1,20 @@
+/*
+ * EVA.cpp
+ *
+ *  Created on: Oct 12, 2016
+ *      Author: elvis
+ */
+
+#include "EVA.h"
+
+EVA::EVA()
+{
+	// TODO Auto-generated constructor stub
+
+}
+
+EVA::~EVA()
+{
+	// TODO Auto-generated destructor stub
+}
+

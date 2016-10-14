@@ -21,9 +21,9 @@ public final class Machine
 	 */
 	public static void main(final String[] args)
 	{
-		
-		System.out.println("nachos 5.0j initializing...");
-		
+
+		System.out.print("nachos 5.0j initializing...");
+
 		Lib.assertTrue(Machine.args == null);
 		Machine.args = args;
 
@@ -63,11 +63,12 @@ public final class Machine
 		privilege.stats = stats;
 
 		securityManager.enable();
+
 		createDevices();
 		checkUserClasses();
 
 		autoGrader = (AutoGrader) Lib.constructObject(autoGraderClassName);
-
+		
 		new TCB().start(new Runnable()
 		{
 			public void run()
@@ -147,7 +148,7 @@ public final class Machine
 				}
 				else if (arg.equals("-h"))
 				{
-					System.out.print(help);
+					System.out.println(help);
 					System.exit(1);
 				}
 				else if (arg.equals("-m"))
@@ -181,7 +182,7 @@ public final class Machine
 				}
 				else if (arg.equals("-z"))
 				{
-					System.out.print(copyright);
+					System.out.println(copyright);
 					System.exit(1);
 				}
 				// these switches are reserved for the autograder

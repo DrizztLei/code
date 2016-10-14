@@ -1,4 +1,54 @@
-17:58:45 **** Build of configuration Default for project EVA ****
+19:03:54 **** Incremental Build of configuration Debug for project EVA ****
 make all 
-g++ -O2 -g -Wall -fmessage-length=0 -std=gnu++11 -c EVA.h EVA.cpp
-g++ -O2 -g -Wall -fmessage-length=0 -std=gnu++11 -o EVA EVA.o Main.cpp 
+Building file: ../EVA.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"EVA.d" -MT"EVA.o" -o "EVA.o" "../EVA.cpp"
+../EVA.cpp:10:1: error: extra qualification ‘EVA::’ on member ‘EVA’ [-fpermissive]
+ EVA::EVA()
+ ^
+../EVA.cpp:10:1: error: ‘EVA::EVA()’ cannot be overloaded
+In file included from ../EVA.cpp:8:0:
+subdir.mk:21: recipe for target 'EVA.o' failed
+../EVA.h:14:2: error: with ‘EVA::EVA()’
+  EVA();
+  ^
+../EVA.cpp:16:1: error: extra qualification ‘EVA::’ on member ‘EVA’ [-fpermissive]
+ EVA::~EVA()
+ ^
+../EVA.cpp:16:1: error: ‘EVA::~EVA()’ cannot be overloaded
+In file included from ../EVA.cpp:8:0:
+../EVA.h:15:10: error: with ‘virtual EVA::~EVA()’
+  virtual ~EVA();
+          ^
+../EVA.cpp:19:1: error: expected ‘}’ at end of input
+ }
+ ^
+../EVA.cpp:19:1: error: expected unqualified-id at end of input
+make: *** [EVA.o] Error 1
+19:17:40 **** Incremental Build of configuration Debug for project EVA ****
+make all 
+Building file: ../EVA.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"EVA.d" -MT"EVA.o" -o "EVA.o" "../EVA.cpp"
+../EVA.cpp:10:1: error: extra qualification ‘EVA::’ on member ‘EVA’ [-fpermissive]
+subdir.mk:21: recipe for target 'EVA.o' failed
+ EVA::EVA()
+ ^
+../EVA.cpp:10:1: error: ‘EVA::EVA()’ cannot be overloaded
+In file included from ../EVA.cpp:8:0:
+../EVA.h:14:2: error: with ‘EVA::EVA()’
+  EVA();
+  ^
+../EVA.cpp:16:1: error: extra qualification ‘EVA::’ on member ‘EVA’ [-fpermissive]
+ EVA::~EVA()
+ ^
+../EVA.cpp:16:1: error: ‘EVA::~EVA()’ cannot be overloaded
+In file included from ../EVA.cpp:8:0:
+../EVA.h:15:10: error: with ‘virtual EVA::~EVA()’
+  virtual ~EVA();
+          ^
+../EVA.cpp:19:1: error: expected ‘}’ at end of input
+ }
+ ^
+../EVA.cpp:19:1: error: expected unqualified-id at end of input
+make: *** [EVA.o] Error 1

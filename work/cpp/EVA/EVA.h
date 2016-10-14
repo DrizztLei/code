@@ -1,7 +1,7 @@
 /*
  * EVA.h
  *
- *  Created on: Oct 11, 2016
+ *  Created on: Oct 12, 2016
  *      Author: elvis
  */
 
@@ -13,8 +13,5 @@ class EVA
 public:
 	EVA();
 	virtual ~EVA();
-	EVA(EVA&& src) noexcept;
-	EVA& operator=(EVA&& src) noexcept;
-};
 
 #endif /* EVA_H_ */
