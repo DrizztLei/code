@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://www.mycorp.com/Schema/Test"
+   targetNamespace="http://www.mycorp.com/Schema/Test"
+   attributeFormDefault="unqualified"
+   elementFormDefault="qualified">
+
+   <!-- 
+	   these are the simple elements, they have no children and no attributes
+	-->
+   <xsd:element name="description"  type="xsd:string"></xsd:element>
+   <xsd:element name="questionText" type="xsd:string"></xsd:element>
+   <xsd:element name="choiceText"   type="xsd:string"></xsd:element>
+
+   <!-- 
+       Both the value of <correct> and the
+       allowMultiple attribute of <choices>
+       are contrained to the values 'Yes' 
+       and 'No'.
+       
+       This SimpleType definition is used to
+       capture the specification in one place.
+       
+   -->
+   <xsd:simpleType name="yesOrNo">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Yes"/>
+         <xsd:enumeration value="No"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:element name="correct" type="yesOrNo"></xsd:element>
+
+   <!-- 
+	   these are the complex elements
+	-->
+   <xsd:element name="choice">
+      <xsd:complexType>
+         <xsd:all>
+            <xsd:element ref="choiceText"/>
+            <xsd:element ref="correct"/>
+         </xsd:all>
+         <xsd:attribute name="id" type="xsd:ID"/>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="choices">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="choice" maxOccurs="unbounded"/>
+         </xsd:sequence>
+         <xsd:attribute name="allowMultiple" type="yesOrNo" default="No"/>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="question">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="questionText"/>
+            <xsd:element ref="choices" maxOccurs="unbounded"/>
+         </xsd:sequence>
+         <xsd:attribute name="id" type="xsd:ID"/>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="testQuestions">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="question" maxOccurs="unbounded"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="test">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="description"/>
+            <xsd:element ref="testQuestions"/>
+         </xsd:sequence>
+         <xsd:attribute name="id" type="xsd:ID"/>
+      </xsd:complexType>
+   </xsd:element>
+
+</xsd:schema>

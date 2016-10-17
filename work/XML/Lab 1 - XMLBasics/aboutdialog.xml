@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>SYSTEM</class>
+    <widget class="QDialog" name="AboutDialog">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>430</width>
+                <height>234</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Dialog</string>
+        </property>
+        <widget class="QLabel" name="label">
+            <property name="geometry">
+                <rect>
+                    <x>70</x>
+                    <y>30</y>
+                    <width>291</width>
+                    <height>41</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>Courier</family>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                </font>
+            </property>
+            <property name="text">
+                <string>Town control system</string>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignCenter</set>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_2">
+            <property name="geometry">
+                <rect>
+                    <x>90</x>
+                    <y>140</y>
+                    <width>241</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>2.clieck and operator .</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_3">
+            <property name="geometry">
+                <rect>
+                    <x>90</x>
+                    <y>90</y>
+                    <width>281</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>1.This system is used to control the town.</string>
+            </property>
+        </widget>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>

@@ -116,7 +116,6 @@ int main(int argc , char ** argv){
     }
     recycle(g_s_stack_for_maze);
     //recycle(g_t_stack_for_temp);
-    /**	   g_	   s_	   c_	 p  m_	   a	   p	   fv	   v	   h	   l	   b	   f for float or file	   c or cnt for count	   ch as usual for c -> character	   i for Integer but usual for n	   by byte	   w word	   r real	   u unsign	   Max	   Min	   Init	   T or Temp		 Src for srource object	   Dest for destination object*/
     int founder = maze[row-1][col-1];
     //cout << "Max = maze[row-1][col-1] : " << founder << endl;
     maze[row - 1][col - 1] = 1;

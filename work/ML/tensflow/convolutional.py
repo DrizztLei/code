@@ -23,7 +23,7 @@ SEED = 66478
 BATCH_SIZE = 64
 NUM_EPOCHS = 10
 EVAL_BATCH_SIZE = 64
-EVAL_FREQUENCY = 100 
+EVAL_FREQUENCY = 100
 
 
 tf.app.flags.DEFINE_boolean("self_test", False, "True if running a self test.")
@@ -90,7 +90,7 @@ def error_rate(predictions, labels):
       predictions.shape[0])
 
 
-def main(argv=None):  
+def main(argv=None):
   if FLAGS.self_test:
     print('Running self-test.')
     train_data, train_labels = fake_data(256)
@@ -98,6 +98,7 @@ def main(argv=None):
     test_data, test_labels = fake_data(EVAL_BATCH_SIZE)
     num_epochs = 1
   else:
+
     train_data_filename = maybe_download('train-images-idx3-ubyte.gz')
     train_labels_filename = maybe_download('train-labels-idx1-ubyte.gz')
     test_data_filename = maybe_download('t10k-images-idx3-ubyte.gz')
@@ -113,6 +114,7 @@ def main(argv=None):
     train_data = train_data[VALIDATION_SIZE:, ...]
     train_labels = train_labels[VALIDATION_SIZE:]
     num_epochs = NUM_EPOCHS
+
   train_size = train_labels.shape[0]
 
   train_data_node = tf.placeholder(
@@ -124,7 +126,7 @@ def main(argv=None):
       shape=(EVAL_BATCH_SIZE, IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNELS))
 
   conv1_weights = tf.Variable(
-      tf.truncated_normal([5, 5, NUM_CHANNELS, 32],  
+      tf.truncated_normal([5, 5, NUM_CHANNELS, 32],
                           stddev=0.1,
                           seed=SEED, dtype=data_type()))
   conv1_biases = tf.Variable(tf.zeros([32], dtype=data_type()))
@@ -132,7 +134,8 @@ def main(argv=None):
       [5, 5, 32, 64], stddev=0.1,
       seed=SEED, dtype=data_type()))
   conv2_biases = tf.Variable(tf.constant(0.1, shape=[64], dtype=data_type()))
-  fc1_weights = tf.Variable(  
+  fc1_weights = tf.Variable
+  (
       tf.truncated_normal([IMAGE_SIZE // 4 * IMAGE_SIZE // 4 * 64, 512],
                           stddev=0.1,
                           seed=SEED,
@@ -183,10 +186,10 @@ def main(argv=None):
 
   batch = tf.Variable(0, dtype=data_type())
   learning_rate = tf.train.exponential_decay(
-      0.01,                
-      batch * BATCH_SIZE, 
-      train_size,        
-      0.95,             
+      0.01,
+      batch * BATCH_SIZE,
+      train_size,
+      0.95,
       staircase=True)
   optimizer = tf.train.MomentumOptimizer(learning_rate,
                                          0.9).minimize(loss,

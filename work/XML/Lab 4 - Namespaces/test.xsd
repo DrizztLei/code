@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+		This XMLSchema is used to enforce namespace adherence
+     in the Namespaces lab. Please do not change it.
+-->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://www.ibm.com/ILS/WDO3"
+   targetNamespace="http://www.ibm.com/ILS/WDO3" elementFormDefault="qualified">
+   <xsd:complexType name="choiceType">
+      <xsd:choice>
+         <xsd:sequence>
+            <xsd:element ref="choiceText"/>
+            <xsd:element ref="correct"/>
+         </xsd:sequence>
+         <xsd:sequence>
+            <xsd:element ref="correct"/>
+            <xsd:element ref="choiceText"/>
+         </xsd:sequence>
+      </xsd:choice>
+      <xsd:attribute name="id" type="xsd:ID" use="required"/>
+   </xsd:complexType>
+   <xsd:element name="choiceText" type="xsd:string"/>
+   <xsd:complexType name="choicesType">
+      <xsd:sequence>
+         <xsd:element name="choice" type="choiceType"
+            maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="allowMultiple" default="No">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:NMTOKEN">
+               <xsd:enumeration value="Yes"/>
+               <xsd:enumeration value="No"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>
+   </xsd:complexType>
+   <xsd:element name="correct" type="xsd:boolean"/>
+   <xsd:element name="description" type="xsd:string"/>
+   <xsd:complexType name="questionType">
+      <xsd:sequence>
+         <xsd:element name="questionText" type="xsd:string"/>
+         <xsd:element name="choices" type="choicesType"/>
+      </xsd:sequence>
+      <xsd:attribute name="id" type="xsd:ID" use="required"/>
+   </xsd:complexType>
+   <xsd:element name="test">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="description"/>
+               maxOccurs="unbounded"/>
+            <xsd:element name="testQuestions" type="testQuestionsType"/>
+         </xsd:sequence>
+         <xsd:attribute name="id" type="xsd:ID" use="required"/>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:complexType name="testQuestionsType">
+      <xsd:sequence>
+         <xsd:element name="question" type="questionType"
+            maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

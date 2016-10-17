@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!ELEMENT choice
+   (((correct,choiceText)|(choiceText,correct)))
+>
+<!--
+   <annotation>
+      <appinfo source='com.ibm.DDbEv2.Models.AbstractXModel.POSSIBLE'>
+         <restriction base='string'/>
+      </appinfo>
+   </annotation>
+-->
+
+<!ATTLIST choice
+id CDATA #IMPLIED
+>
+<!ELEMENT choiceText
+   (#PCDATA)
+>
+<!ELEMENT choices
+   (choice+)
+>
+<!--
+   <annotation>
+      <appinfo source='com.ibm.DDbEv2.Models.AbstractXModel.POSSIBLE'>
+         <restriction base='string'/>
+      </appinfo>
+   </annotation>
+-->
+
+<!ATTLIST choices
+allowMultiple CDATA #IMPLIED
+>
+<!ELEMENT correct
+   (#PCDATA)
+>
+<!ELEMENT description
+   (#PCDATA)
+>
+<!ELEMENT question
+   (questionText,choices)
+>
+<!--
+   <annotation>
+      <appinfo source='com.ibm.DDbEv2.Models.AbstractXModel.POSSIBLE'>
+         <restriction base='string'/>
+      </appinfo>
+   </annotation>
+-->
+
+<!ATTLIST question
+id CDATA #IMPLIED
+>
+<!ELEMENT questionText
+   (#PCDATA)
+>
+<!ELEMENT test
+   (description,testQuestions)
+>
+<!--
+   <annotation>
+      <appinfo source='com.ibm.DDbEv2.Models.AbstractXModel.POSSIBLE'>
+         <restriction base='string'/>
+      </appinfo>
+   </annotation>
+-->
+
+<!ATTLIST test
+id CDATA #IMPLIED
+>
+<!ELEMENT testQuestions
+   (question+)
+>
