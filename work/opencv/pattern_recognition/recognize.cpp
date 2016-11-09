@@ -124,6 +124,8 @@ int main(int argc , char ** argv)
     int target = model->predict(unsure);
     double confidence = 0;
     model->predict(unsure, target , confidence);
+
+    cout << "confidence : " << confidence << endl;
     if(confidence >= 60 && confidence <= 99)
     {
         cout << target << endl;

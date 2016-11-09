@@ -2,7 +2,9 @@
 #include <stdio.h>
 #include <cstring>
 #include <iostream>
+
 using namespace std;
+
 int main(int argc , char ** argv)
 {
 	int camera_id = -1;

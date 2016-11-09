@@ -27,7 +27,6 @@ int main(int argc , char ** argv)
     ANN_MLP::TrainFlags train_flag = ANN_MLP::UPDATE_WEIGHTS;
     ANN_MLP::TrainingMethods train_method = ANN_MLP::BACKPROP;
 
-
     //StaModel::train(const Ptr<cv::ml::TrainData> &trainData, int flags)
 
     Ptr<ANN_MLP> model = ANN_MLP::create();

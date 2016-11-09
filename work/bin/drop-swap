@@ -1,0 +1,1 @@
+sudo swapoff /dev/sda7 && swapon /dev/sda7 && free -h

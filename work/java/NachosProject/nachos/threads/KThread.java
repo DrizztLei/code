@@ -308,6 +308,8 @@ public class KThread
 
 		Lib.assertTrue(this != currentThread);
 		
+		
+		
 	}
 
 	/**

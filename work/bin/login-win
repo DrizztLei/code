@@ -1,0 +1,12 @@
+#! /bin/sh
+#sudo ifconfig enp9s0 up
+#sudo service dhcpcd restart
+echo "Start rdesktop ..."
+ipAddr=211.87.226.212
+user=eva
+passwd=\|\-\|acker\@\|\-\|acker
+echo $ipAddr
+rdesktop -f -a24 -r clipboard:PRIMARYCLIPBOARD -r sound:local -r disk:eva=/home/eva -r disk:usb=/mnt -u $user -p $passwd $ipAddr    
+#sudo ifconfig enp9s0 down
+#sudo service dhcpcd restart
+#sleep 1

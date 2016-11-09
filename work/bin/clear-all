@@ -1,0 +1,3 @@
+sudo ipcs -q | awk '$2 ~/[0-9]+/ {print $2}' | while read s ; do sudo ipcrm -q $s ; done
+sudo ipcs -s | awk '$2 ~/[0-9]+/ {print $2}' | while read s ; do sudo ipcrm -s $s ; done 
+sudo ipcs -m | awk '$2 ~/[0-9]+/ {print $2}' | while read s ; do sudo ipcrm -m $s ; done 

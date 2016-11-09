@@ -172,6 +172,7 @@ DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/modules/qt_KIOFileWidgets.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KIOGui.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KIOWidgets.pri \
+		/usr/lib64/qt5/mkspecs/modules/qt_Kirigami.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KItemModels.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KItemViews.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KJobWidgets.pri \
@@ -395,6 +396,7 @@ Makefile: ../property/PropertyManagementSystem.pro /usr/lib64/qt5/mkspecs/linux-
 		/usr/lib64/qt5/mkspecs/modules/qt_KIOFileWidgets.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KIOGui.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KIOWidgets.pri \
+		/usr/lib64/qt5/mkspecs/modules/qt_Kirigami.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KItemModels.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KItemViews.pri \
 		/usr/lib64/qt5/mkspecs/modules/qt_KJobWidgets.pri \
@@ -575,6 +577,7 @@ Makefile: ../property/PropertyManagementSystem.pro /usr/lib64/qt5/mkspecs/linux-
 /usr/lib64/qt5/mkspecs/modules/qt_KIOFileWidgets.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_KIOGui.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_KIOWidgets.pri:
+/usr/lib64/qt5/mkspecs/modules/qt_Kirigami.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_KItemModels.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_KItemViews.pri:
 /usr/lib64/qt5/mkspecs/modules/qt_KJobWidgets.pri:

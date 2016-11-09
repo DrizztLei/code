@@ -28,10 +28,15 @@ int main(int argc, char** argv )
     }
 
     namedWindow("Display Image", WINDOW_AUTOSIZE );
-    imshow("Display Image", image);
-
-    waitKey(0);
-
+    while(true)
+    {
+        imshow("Display Image" , image);
+        char c = waitKey(100);
+        if(c == 'a')
+        {
+            break;
+        }
+    }
     return 0;
 
 }

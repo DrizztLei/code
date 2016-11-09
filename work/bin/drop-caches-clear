@@ -1,0 +1,5 @@
+while [ 0 ]
+do
+    drop-caches
+    sleep 180
+done

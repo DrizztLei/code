@@ -1,3 +1,4 @@
+#!/usr/bin/node 
 // 这是一个简单的Node HTTP服务器,能处理当前目录的文件
 // 并能实现两种特殊的URL用于测试
 // 用HTTP://localhost:8000或http://127.0.0.1:8000连接这个服务器
@@ -25,16 +26,14 @@ server.on('request', function(request, response) { // 当有request请求的时�
         var json = eval("(" + data.toString() + ")");
         count ++ ;
 
-        if(count % 2 === 0)
-        {
-            return;
-        }
-
         console.log(json);
 
-        var value = "0 ";
+        var value = "1 ";
 
-        value += json["switch"] + " ";
+
+        value += json["R"] + " ";
+        value += json["G"] + " ";
+        value += json["B"] + " ";
 
         console.log(value);
 
@@ -45,8 +44,6 @@ server.on('request', function(request, response) { // 当有request请求的时�
     response.write("END");
     response.end();
     console.log("END");
-
-
 });
           /*
           // 特殊URL会让服务器在发送响应前先等待

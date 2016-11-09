@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- On-Line Exam, DTD Exercise -->
+<!--
+Listed below are all the elements [and attributes] in this XML
+document. The rules for each are also included. Use this
+information to create an in-line DTD.
+
+test [ id ] root element
+	description
+	testQuestions
+		question [ id ]: One or more
+			questionText: Required
+				choices [ allowMultiple ]: [ allowMultiple must be "Yes or "No" ]
+					choice [ id ]: One or more
+						choiceText
+						correct: Must be "Yes" or "No"
+
+Notes:
+- The "allowMultiple" attribute has a "Yes" or "No" value.
+- The choice's "id" attribute has a character value.
+- The "correct" element has a "Yes" or "No" value.
+
+The ordering of "choiceText" and "correct" may vary
+-->
+<!-- Start of DTD here -->
+<!DOCTYPE test SYSTEM "test.dtd">
+<!-- End   of DTD here -->
+
+<test id="XML30-DTD">
+   <description>Document Type Definition</description>
+   <testQuestions>
+      <question id="Q1">
+         <questionText>
+            Which DTD entry correctly depicts an phone number, with
+            optional areas code
+         </questionText>
+         <choices allowMultiple="No">
+            <choice id="A">
+               <choiceText>
+                  <![CDATA[<!ELEMENT phone ( (areaCode)*, prefix, body ) >]]>
+               </choiceText>
+               <correct>No</correct>
+            </choice>
+            <choice id="B">
+               <choiceText>
+                  <![CDATA[<!ELEMENT phone ( areaCode?, prefix, body ) >]]>
+               </choiceText>
+               <correct>Yes</correct>
+            </choice>
+            <choice id="C">
+               <choiceText>
+                  <![CDATA[<!ELEMENT phone? ( areaCode, prefix, body ) >]]>
+               </choiceText>
+               <correct>No</correct>
+            </choice>
+            <choice id="D">
+               <choiceText>
+                  <![CDATA[<!ELEMENT phone ( areaCode, (prefix, body)+ ) >]]>
+               </choiceText>
+               <correct>Yes</correct>
+            </choice>
+         </choices>
+      </question>
+      <!-- To conserve space, test question 2 has been removed -->
+      <question id="Q3">
+         <questionText>
+            Which of the following is a not a limitation of DTD
+         </questionText>
+         <choices allowMultiple="No">
+            <choice id="A">
+               <correct>No</correct>
+               <choiceText>Non-XML Syntax</choiceText>
+            </choice>
+            <choice id="B">
+               <correct>No</correct>
+               <choiceText>
+                  Does not allow range of values (i.e. 5 to 10
+                  elements)
+               </choiceText>
+            </choice>
+            <choice id="C">
+               <correct>No</correct>
+               <choiceText>
+                  Does not provide proper typing of values (i.e.
+                  integer vs string)
+               </choiceText>
+            </choice>
+            <choice id="D">
+               <correct>Yes</correct>
+               <choiceText>
+                  Does not permit Parameter Entity references
+               </choiceText>
+            </choice>
+            <choice id="E">
+               <correct>No</correct>
+               <choiceText>All of the above</choiceText>
+            </choice>
+         </choices>
+      </question>
+      <!-- To conserve space, test question 4 has been removed -->
+      <!-- In fact, all of the other questions have been removed -->
+   </testQuestions>
+</test>
+<!-- End of File -->

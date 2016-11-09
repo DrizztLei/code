@@ -13,155 +13,177 @@ import com.philips.lighting.model.PHHueParsingError;
 import com.philips.lighting.model.PHLight;
 import com.philips.lighting.model.PHLightState;
 
-public class Main {
-	private static final  String userName = "pehNjKT6cdWEaSk-uC9T6c4mpw6ecI8kz2zyjRuY";
+public class Main
+{
+	private static final String userName = "pehNjKT6cdWEaSk-uC9T6c4mpw6ecI8kz2zyjRuY";
 	private static final String id = "192.168.1.8";
 	public static final PHHueSDK philips = PHHueSDK.getInstance();
 	public static List<PHLight> lights;
-	public static int red = 255, green = 255 , blue = 255;
+	public static int red = -1, green = -1, blue = -1;
 	public static int brightness = -1;
-	public static boolean philipsSwitch = true;
+	public static Boolean philipsSwitch = null;
 	public static int order;
-	
-	private static final PrintWriter pwout = new PrintWriter(System.out , true);
-	private static final PrintWriter pwerr = new PrintWriter(System.err , true);
-	
+
+	private static final PrintWriter pwout = new PrintWriter(System.out, true);
+	private static final PrintWriter pwerr = new PrintWriter(System.err, true);
+
 	public static PrintWriter getPrintWriteOut()
 	{
 		return pwout;
 	}
-	
+
 	public static PrintWriter getPrintWriteErr()
 	{
 		return pwerr;
 	}
 
-	public static PHSDKListener listener = new PHSDKListener() {
+	public static PHSDKListener listener = new PHSDKListener()
+	{
 
 		@Override
-		public void onParsingErrors(List<PHHueParsingError> arg0) {
+		public void onParsingErrors(List<PHHueParsingError> arg0)
+		{
 			// TODO Auto-generated method stub
 
 		}
 
 		@Override
-		public void onError(int arg0, String arg1) {
+		public void onError(int arg0, String arg1)
+		{
 			// TODO Auto-generated method stub
 
 		}
 
 		@Override
-		public void onConnectionResumed(PHBridge arg0) {
+		public void onConnectionResumed(PHBridge arg0)
+		{
 			// TODO Auto-generated method stub
 
 		}
 
 		@Override
-		public void onConnectionLost(PHAccessPoint arg0) {
+		public void onConnectionLost(PHAccessPoint arg0)
+		{
 			// TODO Auto-generated method stub
 
 		}
 
 		@Override
-		public void onCacheUpdated(List<Integer> arg0, PHBridge arg1) {
+		public void onCacheUpdated(List<Integer> arg0, PHBridge arg1)
+		{
 			// TODO Auto-generated method stub
-			if (arg0.contains(PHMessageType.LIGHTS_CACHE_UPDATED)) {
-				//getPrintWriteOut().print("LIGHTS CACHE UPDATED.");
-				//getPrintWriteOut().flush();
+			if (arg0.contains(PHMessageType.LIGHTS_CACHE_UPDATED))
+			{
+				// getPrintWriteOut().print("LIGHTS CACHE UPDATED.");
+				// getPrintWriteOut().flush();
 				System.exit(0);
 			}
 		}
 
 		@Override
-		public void onBridgeConnected(PHBridge arg0, String arg1) {
+		public void onBridgeConnected(PHBridge arg0, String arg1)
+		{
 			// TODO Auto-generated method stub
-			//getPrintWriteOut().print("ON BRIDGE CONNECTED .");
+			// getPrintWriteOut().print("ON BRIDGE CONNECTED .");
 			philips.setSelectedBridge(arg0);
 			philips.enableHeartbeat(arg0, PHHueSDK.HB_INTERVAL);
 			Main.lights = philips.getSelectedBridge().getResourceCache().getAllLights();
 
 			// System.out.println(lights.size());
 			PHLightState lightState = new PHLightState();
-			float xy[] = PHUtilities.calculateXYFromRGB(red, green, blue, lights.get(0).getModelNumber());
-			
-			if(brightness != -1)
+
+			if (brightness != -1)
 			{
 				lightState.setBrightness(brightness);
-				arg0.updateLightState(lights.get(Main.order).getIdentifier(), lightState, null);
-				System.out.println("UPD");
-				System.exit(0);
+				// arg0.updateLightState(lights.get(Main.order).getIdentifier(),
+				// lightState, null);
+				// System.exit(0);
 			}
-			else
+			else if (red + green + blue != -3)
 			{
-				System.out.println("UNNN");
+				float xy[] = PHUtilities.calculateXYFromRGB(red, green, blue, lights.get(0).getModelNumber());
+				lightState.setOn(true);
+				lightState.setX(xy[0]);
+				lightState.setY(xy[1]);
 			}
-			lightState.setOn(philipsSwitch);
-			lightState.setX(xy[0]);
-			lightState.setY(xy[1]);
-			//lightState.setHue(color);
+			else if (philipsSwitch != null)
+			{
+				lightState.setOn(philipsSwitch);
+			}
+
+			// lightState.setHue(color);
 			// lightState.setOn(false);
 			{
 				/*
-				System.out.println("light support brightness : " + lights.get(0).supportsBrightness());
-				System.out.println("light support CT : " + lights.get(0).supportsCT());
-				System.out.println("light support color : " + lights.get(0).supportsColor());
-				System.out.println("light support last known light statate : " + lights.get(0).getLastKnownLightState());
-				*/
+				 * System.out.println("light support brightness : " +
+				 * lights.get(0).supportsBrightness());
+				 * System.out.println("light support CT : " +
+				 * lights.get(0).supportsCT());
+				 * System.out.println("light support color : " +
+				 * lights.get(0).supportsColor()); System.out.
+				 * println("light support last known light statate : " +
+				 * lights.get(0).getLastKnownLightState());
+				 */
 			}
-			if(Main.order >= lights.size())
+			if (Main.order >= lights.size())
 			{
-				//getPrintWriteErr().print("ERROR FOR OUT OF BOUNDARY.");
-				//getPrintWriteErr().flush();
+				// getPrintWriteErr().print("ERROR FOR OUT OF BOUNDARY.");
+				// getPrintWriteErr().flush();
 				System.exit(-1);
 			}
 			arg0.updateLightState(lights.get(Main.order).getIdentifier(), lightState, null);
 		}
 
 		@Override
-		public void onAuthenticationRequired(PHAccessPoint arg0) {
+		public void onAuthenticationRequired(PHAccessPoint arg0)
+		{
 			// TODO Auto-generated method stub
 
 		}
 
 		@Override
-		public void onAccessPointsFound(List<PHAccessPoint> arg0) {
+		public void onAccessPointsFound(List<PHAccessPoint> arg0)
+		{
 			// TODO Auto-generated method stub
 		}
 	};
 
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		int length = args.length;
-		if (length != 2 && length != 4) {
+		if (length != 2 && length != 4)
+		{
 			System.exit(1);
 		}
-		if(args.length == 2)
+		if (args.length == 2)
 		{
 			try
 			{
 				order = new Integer(args[0]);
 				brightness = new Integer(args[1]);
-				System.out.println(brightness);
-				if(brightness < 0 || brightness > 254)
+				if (brightness < 0 || brightness > 254)
 				{
+					System.out.println("ERROR FOR PARAMETER");
 					System.exit(-1);
 				}
 			}
-			catch(NumberFormatException exception)
+			catch (NumberFormatException exception)
 			{
 				order = new Integer(args[0]);
 				philipsSwitch = new Boolean(args[1]);
 			}
-			catch (Exception e) {
+			catch (Exception e)
+			{
 				System.exit(-1);
 			}
 		}
 		else
 		{
 			order = new Integer(args[0]);
-			red= new Integer(args[1]);
+			red = new Integer(args[1]);
 			green = new Integer(args[2]);
 			blue = new Integer(args[3]);
-			//getPrintWriteOut().print("MODE FOR COLOR.");
+			// getPrintWriteOut().print("MODE FOR COLOR.");
 		}
 		// System.out.println(color);
 		PHHueSDK philips = PHHueSDK.getInstance();
