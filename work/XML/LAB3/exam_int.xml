@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE test
+[
+<!ELEMENT test ( description , testQuestions )>
+<!ELEMENT description ( #PCDATA )>
+<!ELEMENT testQuestions ( question )>
+<!ELEMENT question ( questionText , choices )>
+<!ELEMENT questionText (#PCDATA)>
+<!ELEMENT choices (choice)>
+<!ELEMENT choice (choiceText , correct)>
+<!ELEMENT choiceText ( #PCDATA )>
+<!ELEMENT correct (#PCDATA)>
+
+<!ATTLIST test id CDATA #REQUIRED>
+<!ATTLIST question id CDATA #REQUIRED>
+<!ATTLIST choices allowMultiple (Yes|No) "No">
+<!ATTLIST choice id CDATA #REQUIRED>
+
+]>
+
+<test id="XML30-DTD">
+   <description>Document Type Definition</description>
+   <testQuestions>
+      <question id="Q1">
+         <questionText>
+            Which DTD entry correctly depicts an phone number, with
+            optional areas code
+         </questionText>
+         <choices allowMultiple="No">
+            <choice id="A">
+               <choiceText>
+                  <![CDATA[<!ELEMENT phone ( (areaCode)*, prefix, body ) >]]>
+               </choiceText>
+               <correct>No</correct>
+            </choice>
+            <choice id="B">
+               <choiceText>
+                  <![CDATA[<!ELEMENT phone ( areaCode?, prefix, body ) >]]>
+               </choiceText>
+               <correct>Yes</correct>
+            </choice>
+            <choice id="C">
+               <choiceText>
+                  <![CDATA[<!ELEMENT phone? ( areaCode, prefix, body ) >]]>
+               </choiceText>
+               <correct>No</correct>
+            </choice>
+            <choice id="D">
+               <choiceText>
+                  <![CDATA[<!ELEMENT phone ( areaCode, (prefix, body)+ ) >]]>
+               </choiceText>
+               <correct>Yes</correct>
+            </choice>
+         </choices>
+      </question>
+      <!-- To conserve space, test question 2 has been removed -->
+      <question id="Q3">
+         <questionText>
+            Which of the following is a not a limitation of DTD
+         </questionText>
+         <choices allowMultiple="No">
+            <choice id="A">
+               <correct>No</correct>
+               <choiceText>Non-XML Syntax</choiceText>
+            </choice>
+            <choice id="B">
+               <correct>No</correct>
+               <choiceText>
+                  Does not allow range of values (i.e. 5 to 10
+                  elements)
+               </choiceText>
+            </choice>
+            <choice id="C">
+               <correct>No</correct>
+               <choiceText>
+                  Does not provide proper typing of values (i.e.
+                  integer vs string)
+               </choiceText>
+            </choice>
+            <choice id="D">
+               <correct>Yes</correct>
+               <choiceText>
+                  Does not permit Parameter Entity references
+               </choiceText>
+            </choice>
+            <choice id="E">
+               <correct>No</correct>
+               <choiceText>All of the above</choiceText>
+            </choice>
+         </choices>
+      </question>
+   </testQuestions>
+</test>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system
+    xmlns="http://www.gentoo.org"
+    xmlns:xsi="http://www.gentoo.org/instance/"
+    xsi:schemaLocation="http://www.gentoo.org/target target.xsd"
+    id="Elvis Lei">
+    <linux/>
+    <architecture>
+        <distribute id="GENTOO">
+            <info>This is a system distribution</info>
+            <feature>
+                <hostname id="EVA">
+                    <binary>False</binary>
+                    <source>Yes</source>
+                </hostname>
+                <hostname id="ELVIS">
+                    <binary>True</binary>
+                    <source>No</source>
+                </hostname>
+            </feature>
+        </distribute>
+    </architecture>
+</system>

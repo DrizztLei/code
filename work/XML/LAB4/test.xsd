@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system:schema
+    xmlns:system="http://www.gentoo.org"
+    xmlns="http://www.linuxfromscratch.org"
+    targetNamespace="http://www.gentoo.org/schema/schema.xsd"
+    elementFormDefault="qualified">
+    <system:complexType name="kernelType">
+        <system:kernel>
+            <system:sequence>
+                <system:element ref="kernelPreview"/>
+                <system:element ref="deprecatory"/>
+            </system:sequence>
+            <system:sequence>
+                <system:element ref="deprecatory"/>
+                <system:element ref="kernelPreview>"/>
+            </system:sequence>
+        </system:kernel>
+        <system:attribute name="id" type="system:ID" use="required"/>
+    </system:complexType>
+    <system:element name="deprecatory" type="system:string"/>
+    <system:complexType name="kernelPreview">
+        <system:sequence>
+            <system:element name="kernel" type="kernelType"
+                         maxOccurs="unbounded"/>
+        </system:sequence>
+        <system:attribute name="allowMultiple" default="No">
+            <system:simpleType>
+                <system:restriction base="system:NMTOKEN">
+                    <system:enumeration value="Yes"/>
+                    <system:enumeration value="No"/>
+                </system:restriction>
+            </system:simpleType>
+        </system:attribute>
+    </system:complexType>
+    <system:element name="correct" type="system:boolean"/>
+    <system:element name="description" type="system:string"/>
+    <system:complexType name="questionType">
+        <system:sequence>
+            <system:element name="questionFeature" type="system:string"/>
+            <system:element name="kernels" type="kernelPreview"/>
+        </system:sequence>
+        <system:attribute name="id" type="system:ID" use="required"/>
+    </system:complexType>
+    <system:element name="test">
+        <system:complexType>
+            <system:sequence>
+                <system:element ref="description"/>
+                maxOccurs="unbounded"/>
+                <system:element name="system" type="systemType"/>
+            </system:sequence>
+            <system:attribute name="id" type="system:ID" use="required"/>
+        </system:complexType>
+    </system:element>
+    <system:complexType name="systemType">
+        <system:sequence>
+            <system:element name="question" type="questionType"
+                         maxOccurs="unbounded"/>
+        </system:sequence>
+    </system:complexType>
+</system:schema>

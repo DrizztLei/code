@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    xmlns:xsd="http://www.gentoo.org/schame.sdx"
+    xmlns="http://www.gentoo.org"
+    targetNamespace="http://www.gentoo.org/target"
+    attributeFormDefault="unqualified"
+    elementFormDefault="qualified">
+
+    <xsd:element name="linux"  type="xsd:string"></xsd:element>
+    <xsd:element name="info" type="xsd:string"></xsd:element>
+    <xsd:element name="binary"   type="xsd:string"></xsd:element>
+    <xsd:simpleType name="yesOrNo">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Yes"/>
+            <xsd:enumeration value="No"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:element name="correct" type="yesOrNo"></xsd:element>
+
+    <xsd:element name="hostname">
+        <xsd:complexType>
+            <xsd:all>
+                <xsd:element ref="binary"/>
+                <xsd:element ref="source"/>
+            </xsd:all>
+            <xsd:attribute name="id" type="xsd:ID"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="feature">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="hostname" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute name="allowMultiple" type="yesOrNo" default="No"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="distribute">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="info"/>
+                <xsd:element ref="feature" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:ID"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="architecture">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="distribute" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="system">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="linux"/>
+                <xsd:element ref="architecture"/>
+            </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:ID"/>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

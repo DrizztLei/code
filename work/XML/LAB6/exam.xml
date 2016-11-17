@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<system id="XML30-XPATH">
+    <description>XML Path language system</description>
+    <architecture>
+	    <platform id="Linux">
+		    <advanced>
+                safe, fast, concise
+		    </advanced>
+		    <feature allowMultiple="Yes">
+			    <distribution id="Gentoo">
+				    <binary>False</binary>
+				    <sources>Yes</sources>
+			    </distribution>
+			    <distribution id="Arch">
+				    <binary>True</binary>
+				    <sources>Yes</sources>
+			    </distribution>
+			    <distribution id="Kali">
+				    <binary>True</binary>
+				    <sources>No</sources>
+			    </distribution>
+			    <distribution id="Linux From Scratch">
+				    <binary>True</binary>
+				    <sources>Yes</sources>
+			    </distribution>
+			    <distribution id="debian">
+				    <binary>True</binary>
+				    <sources>Yes</sources>
+			    </distribution>
+		    </feature>
+	    </platform>
+	    <platform id="Win">
+		    <advanced>
+			    Easy to use
+		    </advanced>
+		    <feature allowMultiple="No">
+			    <distribution id="win7">
+				    <binary>True</binary>
+				    <sources>Yes</sources>
+			    </distribution>
+			    <distribution id="win8">
+				    <binary>True</binary>
+				    <sources>Yes</sources>
+			    </distribution>
+			    <distribution id="win10">
+				    <binary>True</binary>
+				    <sources>Yes</sources>
+			    </distribution>
+			    <distribution id="xp">
+				    <binary>True</binary>
+				    <sources>Yes</sources>
+			    </distribution>
+		    </feature>
+	    </platform>
+	    <platform id="Mac">
+		    <advanced>
+			    Like the Unix and will be the substitutes of win
+		    </advanced>
+		    <feature allowMultiple="No">
+			    <distribution id="10.6">
+				    <sources>Yes</sources>
+				    <binary>Yes</binary>
+			    </distribution>
+			    <distribution id="10.7">
+				    <sources>No</sources>
+				    <binary>Yes</binary>
+			    </distribution>
+			    <distribution id="10.8">
+				    <sources>No</sources>
+				    <binary>Yes</binary>
+			    </distribution>
+		    </feature>
+	    </platform>
+    </architecture>
+</system>

@@ -1,0 +1,9 @@
+package cluster;
+
+public class Documents
+{
+
+	public Object docs;
+	public Object termToIndexMap;
+
+}

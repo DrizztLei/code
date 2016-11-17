@@ -4,5 +4,6 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="lib" path="/home/elvis/environment/computational-journalism/CoreNLP/en/stanford-english-corenlp-2016-10-31-models.jar"/>
 	<classpathentry kind="lib" path="/home/elvis/work/java/lib/stanford-corenlp.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

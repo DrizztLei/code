@@ -6,6 +6,7 @@
       <w>regularizers</w>
       <w>relu</w>
       <w>reshpe</w>
+      <w>softmax</w>
     </words>
   </dictionary>
 </component>
