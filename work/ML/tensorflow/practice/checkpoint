@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/elvis/work/ML/tensorflow/graph.ckpt"
+all_model_checkpoint_paths: "/home/elvis/work/ML/tensorflow/graph.ckpt"

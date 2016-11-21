@@ -1,18 +1,1 @@
-INDEX VERSION 1.129+/home/elvis/work/java/.metadata/.plugins/org.eclipse.jdt.core
-1182512251.index
-2460614040.index
-731537500.index
-2368587296.index
-168356753.index
-3118206080.index
-4266156955.index
-1945480659.index
-3080045654.index
-3285709458.index
-454490897.index
-550774328.index
-2825581339.index
-1793244153.index
-1721143613.index
-3019651048.index
-3501810496.index
+INDEX VERSION 1.129+/home/visualization/work/java/.metadata/.plugins/org.eclipse.jdt.core

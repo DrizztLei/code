@@ -12,7 +12,7 @@ public class Main
 
 	    LdaGibbsSampler ldaGibbsSampler = new LdaGibbsSampler(corpus.getDocument(), corpus.getVocabularySize());
 
-	    ldaGibbsSampler.gibbs(10);
+	    ldaGibbsSampler.gibbs(4);
 
 	    double[][] phi = ldaGibbsSampler.getPhi();
 	    Map<String, Double>[] topicMap = LdaUtil.translate(phi, corpus.getVocabulary(), 10);

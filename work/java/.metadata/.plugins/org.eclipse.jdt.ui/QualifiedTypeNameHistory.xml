@@ -21,7 +21,10 @@
 <fullyQualifiedTypeName name="edu.stanford.nlp.ling.CoreAnnotations.TokenEndAnnotation"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.BasicDependenciesAnnotation"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.pipeline.CoreNLPProtos.Sentiment"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.coref.CorefCoreAnnotations.CorefChainAnnotation"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.util.PropertiesUtils"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.pipeline.CoreNLPProtos.CorefChain"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.coref.data.CorefChain"/>
@@ -30,6 +33,7 @@
 <fullyQualifiedTypeName name="edu.stanford.nlp.pipeline.Annotation"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.util.CoreMap"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.ling.CoreLabel"/>
+<fullyQualifiedTypeName name="edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.semgraph.SemanticGraph"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.trees.TreeCoreAnnotations.TreeAnnotation"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.ling.CoreAnnotations.NamedEntityTagAnnotation"/>
@@ -42,16 +46,4 @@
 <fullyQualifiedTypeName name="edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation"/>
 <fullyQualifiedTypeName name="java.lang.SecurityException"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.simple.Sentence"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="edu.stanford.nlp.ling.Word"/>
-<fullyQualifiedTypeName name="java.util.Set"/>
-<fullyQualifiedTypeName name="java.util.LinkedList"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.util.Collections"/>
-<fullyQualifiedTypeName name="java.util.HashSet"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="java.io.BufferedWriter"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation"/>
 </qualifiedTypeNameHistroy>

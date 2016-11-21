@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import edu.stanford.nlp.*;
 import edu.stanford.nlp.dcoref.CorefChain;
 import edu.stanford.nlp.dcoref.CorefCoreAnnotations.CorefChainAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.NamedEntityTagAnnotation;
@@ -21,7 +22,6 @@ import edu.stanford.nlp.trees.TreeCoreAnnotations.TreeAnnotation;
 import edu.stanford.nlp.util.CoreMap;
 import edu.stanford.nlp.util.PropertiesUtils;
 
-@SuppressWarnings("deprecation")
 public class Demo
 {
 	@SuppressWarnings("deprecation")
@@ -62,12 +62,9 @@ public class Demo
 				// this is the text of the token
 				String word = token.get(TextAnnotation.class);
 				// this is the POS tag of the token
-				System.out.println("word : " + word);
 				String pos = token.get(PartOfSpeechAnnotation.class);
-				System.out.println("pos: " + pos);
 				// this is the NER label of the token
 				String ne = token.get(NamedEntityTagAnnotation.class);
-				System.out.println("ne: " + ne);
 			}
 
 			// this is the parse tree of the current sentence
