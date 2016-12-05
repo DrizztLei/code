@@ -34,7 +34,7 @@ int online_detect(char ** argv , int argc)
 {
 
     // VideoCapture capture("rtsp://admin:123456@192.168.1.10:554:h264/ch1/main/av_stream");
-    VideoCapture capture(0);
+    VideoCapture capture(1);
     Mat frame;
 
     //-- 1. Load the cascades

@@ -1,6 +1,7 @@
 package cluster;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class LdaGibbsSampling
 {

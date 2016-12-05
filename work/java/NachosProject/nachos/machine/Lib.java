@@ -6,21 +6,22 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.security.PrivilegedAction;
 import java.util.Random;
 
 /**
  * Thrown when an assertion fails.
  */
-class AssertionFailureError extends Error
-{
-	AssertionFailureError()
-	{
+class AssertionFailureError extends Error {
+	/**
+	 * Eclipse-generated serialVersionUID
+	 */
+	private static final long serialVersionUID = 6418926892172162124L;
+
+	AssertionFailureError() {
 		super();
 	}
 
-	AssertionFailureError(String message)
-	{
+	AssertionFailureError(String message) {
 		super(message);
 	}
 }
@@ -28,25 +29,22 @@ class AssertionFailureError extends Error
 /**
  * Provides miscellaneous library routines.
  */
-public final class Lib
-{
+public final class Lib {
 	/**
 	 * Prevent instantiation.
 	 */
-	private Lib()
-	{
+	private Lib() {
 	}
 
 	private static Random random = null;
 
 	/**
 	 * Seed the random number generater. May only be called once.
-	 *
+	 * 
 	 * @param randomSeed
 	 *            the seed for the random number generator.
 	 */
-	public static void seedRandom(long randomSeed)
-	{
+	public static void seedRandom(long randomSeed) {
 		assertTrue(random == null);
 		random = new Random(randomSeed);
 	}
@@ -54,37 +52,34 @@ public final class Lib
 	/**
 	 * Return a random integer between 0 and <i>range - 1</i>. Must not be
 	 * called before <tt>seedRandom()</tt> seeds the random number generator.
-	 *
+	 * 
 	 * @param range
 	 *            a positive value specifying the number of possible return
 	 *            values.
 	 * @return a random integer in the specified range.
 	 */
-	public static int random(int range)
-	{
+	public static int random(int range) {
 		assertTrue(range > 0);
 		return random.nextInt(range);
 	}
 
 	/**
 	 * Return a random double between 0.0 (inclusive) and 1.0 (exclusive).
-	 *
+	 * 
 	 * @return a random double between 0.0 and 1.0.
 	 */
-	public static double random()
-	{
+	public static double random() {
 		return random.nextDouble();
 	}
 
 	/**
 	 * Asserts that <i>expression</i> is <tt>true</tt>. If not, then Nachos
 	 * exits with an error message.
-	 *
+	 * 
 	 * @param expression
 	 *            the expression to assert.
 	 */
-	public static void assertTrue(boolean expression)
-	{
+	public static void assertTrue(boolean expression) {
 		if (!expression)
 			throw new AssertionFailureError();
 	}
@@ -92,14 +87,13 @@ public final class Lib
 	/**
 	 * Asserts that <i>expression</i> is <tt>true</tt>. If not, then Nachos
 	 * exits with the specified error message.
-	 *
+	 * 
 	 * @param expression
 	 *            the expression to assert.
 	 * @param message
 	 *            the error message.
 	 */
-	public static void assertTrue(boolean expression, String message)
-	{
+	public static void assertTrue(boolean expression, String message) {
 		if (!expression)
 			throw new AssertionFailureError(message);
 	}
@@ -107,20 +101,18 @@ public final class Lib
 	/**
 	 * Asserts that this call is never made. Same as <tt>assertTrue(false)</tt>.
 	 */
-	public static void assertNotReached()
-	{
+	public static void assertNotReached() {
 		assertTrue(false);
 	}
 
 	/**
 	 * Asserts that this call is never made, with the specified error messsage.
 	 * Same as <tt>assertTrue(false, message)</tt>.
-	 *
+	 * 
 	 * @param message
 	 *            the error message.
 	 */
-	public static void assertNotReached(String message)
-	{
+	public static void assertNotReached(String message) {
 		assertTrue(false, message);
 	}
 
@@ -128,38 +120,36 @@ public final class Lib
 	 * Print <i>message</i> if <i>flag</i> was enabled on the command line. To
 	 * specify which flags to enable, use the -d command line option. For
 	 * example, to enable flags a, c, and e, do the following:
-	 *
+	 * 
 	 * <p>
 	 * 
 	 * <pre>
 	 * nachos -d ace
 	 * </pre>
-	 *
+	 * 
 	 * <p>
 	 * Nachos uses several debugging flags already, but you are encouraged to
 	 * add your own.
-	 *
+	 * 
 	 * @param flag
 	 *            the debug flag that must be set to print this message.
 	 * @param message
 	 *            the debug message.
 	 */
-	public static void debug(char flag, String message)
-	{
+	public static void debug(char flag, String message) {
 		if (test(flag))
 			System.out.println(message);
 	}
 
 	/**
 	 * Tests if <i>flag</i> was enabled on the command line.
-	 *
+	 * 
 	 * @param flag
 	 *            the debug flag to test.
-	 *
+	 * 
 	 * @return <tt>true</tt> if this flag was enabled on the command line.
 	 */
-	public static boolean test(char flag)
-	{
+	public static boolean test(char flag) {
 		if (debugFlags == null)
 			return false;
 		else if (debugFlags[(int) '+'])
@@ -172,18 +162,16 @@ public final class Lib
 
 	/**
 	 * Enable all the debug flags in <i>flagsString</i>.
-	 *
+	 * 
 	 * @param flagsString
 	 *            the flags to enable.
 	 */
-	public static void enableDebugFlags(String flagsString)
-	{
+	public static void enableDebugFlags(String flagsString) {
 		if (debugFlags == null)
 			debugFlags = new boolean[0x80];
 
 		char[] newFlags = flagsString.toCharArray();
-		for (int i = 0; i < newFlags.length; i++)
-		{
+		for (int i = 0; i < newFlags.length; i++) {
 			char c = newFlags[i];
 			if (c >= 0 && c < 0x80)
 				debugFlags[(int) c] = true;
@@ -196,7 +184,7 @@ public final class Lib
 	/**
 	 * Read a file, verifying that the requested number of bytes is read, and
 	 * verifying that the read operation took a non-zero amount of time.
-	 *
+	 * 
 	 * @param file
 	 *            the file to read.
 	 * @param position
@@ -208,8 +196,8 @@ public final class Lib
 	 * @param length
 	 *            the number of bytes to read.
 	 */
-	public static void strictReadFile(OpenFile file, int position, byte[] buf, int offset, int length)
-	{
+	public static void strictReadFile(OpenFile file, int position, byte[] buf,
+			int offset, int length) {
 		long startTime = Machine.timer().getTime();
 		assertTrue(file.read(position, buf, offset, length) == length);
 		long finishTime = Machine.timer().getTime();
@@ -218,14 +206,13 @@ public final class Lib
 
 	/**
 	 * Load an entire file into memory.
-	 *
+	 * 
 	 * @param file
 	 *            the file to load.
 	 * @return an array containing the contents of the entire file, or
 	 *         <tt>null</tt> if an error occurred.
 	 */
-	public static byte[] loadFile(OpenFile file)
-	{
+	public static byte[] loadFile(OpenFile file) {
 		int startOffset = file.tell();
 
 		int length = file.length();
@@ -246,13 +233,12 @@ public final class Lib
 
 	/**
 	 * Take a read-only snapshot of a file.
-	 *
+	 * 
 	 * @param file
 	 *            the file to take a snapshot of.
 	 * @return a read-only snapshot of the file.
 	 */
-	public static OpenFile cloneFile(OpenFile file)
-	{
+	public static OpenFile cloneFile(OpenFile file) {
 		OpenFile clone = new ArrayFile(loadFile(file));
 
 		clone.seek(file.tell());
@@ -262,7 +248,7 @@ public final class Lib
 
 	/**
 	 * Convert a short into its little-endian byte string representation.
-	 *
+	 * 
 	 * @param array
 	 *            the array in which to store the byte string.
 	 * @param offset
@@ -270,15 +256,14 @@ public final class Lib
 	 * @param value
 	 *            the value to convert.
 	 */
-	public static void bytesFromShort(byte[] array, int offset, short value)
-	{
+	public static void bytesFromShort(byte[] array, int offset, short value) {
 		array[offset + 0] = (byte) ((value >> 0) & 0xFF);
 		array[offset + 1] = (byte) ((value >> 8) & 0xFF);
 	}
 
 	/**
 	 * Convert an int into its little-endian byte string representation.
-	 *
+	 * 
 	 * @param array
 	 *            the array in which to store the byte string.
 	 * @param offset
@@ -286,8 +271,7 @@ public final class Lib
 	 * @param value
 	 *            the value to convert.
 	 */
-	public static void bytesFromInt(byte[] array, int offset, int value)
-	{
+	public static void bytesFromInt(byte[] array, int offset, int value) {
 		array[offset + 0] = (byte) ((value >> 0) & 0xFF);
 		array[offset + 1] = (byte) ((value >> 8) & 0xFF);
 		array[offset + 2] = (byte) ((value >> 16) & 0xFF);
@@ -297,13 +281,12 @@ public final class Lib
 	/**
 	 * Convert an int into its little-endian byte string representation, and
 	 * return an array containing it.
-	 *
+	 * 
 	 * @param value
 	 *            the value to convert.
 	 * @return an array containing the byte string.
 	 */
-	public static byte[] bytesFromInt(int value)
-	{
+	public static byte[] bytesFromInt(int value) {
 		byte[] array = new byte[4];
 		bytesFromInt(array, 0, value);
 		return array;
@@ -312,7 +295,7 @@ public final class Lib
 	/**
 	 * Convert an int into a little-endian byte string representation of the
 	 * specified length.
-	 *
+	 * 
 	 * @param array
 	 *            the array in which to store the byte string.
 	 * @param offset
@@ -322,12 +305,11 @@ public final class Lib
 	 * @param value
 	 *            the value to convert.
 	 */
-	public static void bytesFromInt(byte[] array, int offset, int length, int value)
-	{
+	public static void bytesFromInt(byte[] array, int offset, int length,
+			int value) {
 		assertTrue(length == 1 || length == 2 || length == 4);
 
-		switch (length)
-		{
+		switch (length) {
 		case 1:
 			array[offset] = (byte) value;
 			break;
@@ -342,52 +324,50 @@ public final class Lib
 
 	/**
 	 * Convert to a short from its little-endian byte string representation.
-	 *
+	 * 
 	 * @param array
 	 *            the array containing the byte string.
 	 * @param offset
 	 *            the offset of the byte string in the array.
 	 * @return the corresponding short value.
 	 */
-	public static short bytesToShort(byte[] array, int offset)
-	{
+	public static short bytesToShort(byte[] array, int offset) {
 		return (short) ((((short) array[offset + 0] & 0xFF) << 0) | (((short) array[offset + 1] & 0xFF) << 8));
 	}
 
 	/**
 	 * Convert to an unsigned short from its little-endian byte string
 	 * representation.
-	 *
+	 * 
 	 * @param array
 	 *            the array containing the byte string.
 	 * @param offset
 	 *            the offset of the byte string in the array.
 	 * @return the corresponding short value.
 	 */
-	public static int bytesToUnsignedShort(byte[] array, int offset)
-	{
+	public static int bytesToUnsignedShort(byte[] array, int offset) {
 		return (((int) bytesToShort(array, offset)) & 0xFFFF);
 	}
 
 	/**
 	 * Convert to an int from its little-endian byte string representation.
-	 *
+	 * 
 	 * @param array
 	 *            the array containing the byte string.
 	 * @param offset
 	 *            the offset of the byte string in the array.
 	 * @return the corresponding int value.
 	 */
-	public static int bytesToInt(byte[] array, int offset)
-	{
-		return (int) ((((int) array[offset + 0] & 0xFF) << 0) | (((int) array[offset + 1] & 0xFF) << 8)
+	public static int bytesToInt(byte[] array, int offset) {
+		return (int) ((((int) array[offset + 0] & 0xFF) << 0)
+				| (((int) array[offset + 1] & 0xFF) << 8)
 				| (((int) array[offset + 2] & 0xFF) << 16) | (((int) array[offset + 3] & 0xFF) << 24));
 	}
 
 	/**
 	 * Convert to an int from a little-endian byte string representation of the
 	 * specified length.
-	 *
+	 * 
 	 * @param array
 	 *            the array containing the byte string.
 	 * @param offset
@@ -396,12 +376,10 @@ public final class Lib
 	 *            the length of the byte string.
 	 * @return the corresponding value.
 	 */
-	public static int bytesToInt(byte[] array, int offset, int length)
-	{
+	public static int bytesToInt(byte[] array, int offset, int length) {
 		assertTrue(length == 1 || length == 2 || length == 4);
 
-		switch (length)
-		{
+		switch (length) {
 		case 1:
 			return array[offset];
 		case 2:
@@ -415,7 +393,7 @@ public final class Lib
 
 	/**
 	 * Convert to a string from a possibly null-terminated array of bytes.
-	 *
+	 * 
 	 * @param array
 	 *            the array containing the byte string.
 	 * @param offset
@@ -425,11 +403,9 @@ public final class Lib
 	 * @return a string containing the specified bytes, up to and not including
 	 *         the null-terminator (if present).
 	 */
-	public static String bytesToString(byte[] array, int offset, int length)
-	{
+	public static String bytesToString(byte[] array, int offset, int length) {
 		int i;
-		for (i = 0; i < length; i++)
-		{
+		for (i = 0; i < length; i++) {
 			if (array[offset + i] == 0)
 				break;
 		}
@@ -439,7 +415,7 @@ public final class Lib
 
 	/**
 	 * Mask out and shift a bit substring.
-	 *
+	 * 
 	 * @param bits
 	 *            the bit string.
 	 * @param lowest
@@ -448,8 +424,7 @@ public final class Lib
 	 *            the number of bits in the substring.
 	 * @return the substring.
 	 */
-	public static int extract(int bits, int lowest, int size)
-	{
+	public static int extract(int bits, int lowest, int size) {
 		if (size == 32)
 			return (bits >> lowest);
 		else
@@ -458,7 +433,7 @@ public final class Lib
 
 	/**
 	 * Mask out and shift a bit substring.
-	 *
+	 * 
 	 * @param bits
 	 *            the bit string.
 	 * @param lowest
@@ -467,8 +442,7 @@ public final class Lib
 	 *            the number of bits in the substring.
 	 * @return the substring.
 	 */
-	public static long extract(long bits, int lowest, int size)
-	{
+	public static long extract(long bits, int lowest, int size) {
 		if (size == 64)
 			return (bits >> lowest);
 		else
@@ -477,7 +451,7 @@ public final class Lib
 
 	/**
 	 * Mask out and shift a bit substring; then sign extend the substring.
-	 *
+	 * 
 	 * @param bits
 	 *            the bit string.
 	 * @param lowest
@@ -486,51 +460,47 @@ public final class Lib
 	 *            the number of bits in the substring.
 	 * @return the substring, sign-extended.
 	 */
-	public static int extend(int bits, int lowest, int size)
-	{
+	public static int extend(int bits, int lowest, int size) {
 		int extra = 32 - (lowest + size);
 		return ((extract(bits, lowest, size) << extra) >> extra);
 	}
 
 	/**
 	 * Test if a bit is set in a bit string.
-	 *
+	 * 
 	 * @param flag
 	 *            the flag to test.
 	 * @param bits
 	 *            the bit string.
 	 * @return <tt>true</tt> if <tt>(bits & flag)</tt> is non-zero.
 	 */
-	public static boolean test(long flag, long bits)
-	{
+	public static boolean test(long flag, long bits) {
 		return ((bits & flag) != 0);
 	}
 
 	/**
 	 * Creates a padded upper-case string representation of the integer argument
 	 * in base 16.
-	 *
+	 * 
 	 * @param i
 	 *            an integer.
 	 * @return a padded upper-case string representation in base 16.
 	 */
-	public static String toHexString(int i)
-	{
+	public static String toHexString(int i) {
 		return toHexString(i, 8);
 	}
 
 	/**
 	 * Creates a padded upper-case string representation of the integer argument
 	 * in base 16, padding to at most the specified number of digits.
-	 *
+	 * 
 	 * @param i
 	 *            an integer.
 	 * @param pad
 	 *            the minimum number of hex digits to pad to.
 	 * @return a padded upper-case string representation in base 16.
 	 */
-	public static String toHexString(int i, int pad)
-	{
+	public static String toHexString(int i, int pad) {
 		String result = Integer.toHexString(i).toUpperCase();
 		while (result.length() < pad)
 			result = "0" + result;
@@ -540,15 +510,14 @@ public final class Lib
 	/**
 	 * Divide two non-negative integers, round the quotient up to the nearest
 	 * integer, and return it.
-	 *
+	 * 
 	 * @param a
 	 *            the numerator.
 	 * @param b
 	 *            the denominator.
 	 * @return <tt>ceiling(a / b)</tt>.
 	 */
-	public static int divRoundUp(int a, int b)
-	{
+	public static int divRoundUp(int a, int b) {
 		assertTrue(a >= 0 && b > 0);
 
 		return ((a + (b - 1)) / b);
@@ -557,38 +526,30 @@ public final class Lib
 	/**
 	 * Load and return the named class, or return <tt>null</tt> if the class
 	 * could not be loaded.
-	 *
+	 * 
 	 * @param className
 	 *            the name of the class to load.
 	 * @return the loaded class, or <tt>null</tt> if an error occurred.
 	 */
-	public static Class tryLoadClass(String className)
-	{
-		try
-		{
+	public static Class tryLoadClass(String className) {
+		try {
 			return ClassLoader.getSystemClassLoader().loadClass(className);
-		}
-		catch (Throwable e)
-		{
+		} catch (Throwable e) {
 			return null;
 		}
 	}
 
 	/**
 	 * Load and return the named class, terminating Nachos on any error.
-	 *
+	 * 
 	 * @param className
 	 *            the name of the class to load.
 	 * @return the loaded class.
 	 */
-	public static Class loadClass(String className)
-	{
-		try
-		{
+	public static Class loadClass(String className) {
+		try {
 			return ClassLoader.getSystemClassLoader().loadClass(className);
-		}
-		catch (Throwable e)
-		{
+		} catch (Throwable e) {
 			Machine.terminate(e);
 			return null;
 		}
@@ -597,24 +558,20 @@ public final class Lib
 	/**
 	 * Create and return a new instance of the named class, using the
 	 * constructor that takes no arguments.
-	 *
+	 * 
 	 * @param className
 	 *            the name of the class to instantiate.
 	 * @return a new instance of the class.
 	 */
-	public static Object constructObject(String className)
-	{
-		try
-		{
+	public static Object constructObject(String className) {
+		try {
 			// kamil - workaround for Java 1.4
 			// Thanks to Ka-Hing Cheung for the suggestion.
 			// Fixed for Java 1.5 by geels
 			Class[] param_types = new Class[0];
 			Object[] params = new Object[0];
 			return loadClass(className).getConstructor(param_types).newInstance(params);
-		}
-		catch (Throwable e)
-		{
+		} catch (Throwable e) {
 			Machine.terminate(e);
 			return null;
 		}
@@ -623,36 +580,32 @@ public final class Lib
 	/**
 	 * Verify that the specified class extends or implements the specified
 	 * superclass.
-	 *
+	 * 
 	 * @param cls
 	 *            the descendant class.
 	 * @param superCls
 	 *            the ancestor class.
 	 */
-	public static void checkDerivation(Class<?> cls, Class<?> superCls)
-	{
+	public static void checkDerivation(Class<?> cls, Class<?> superCls) {
 		Lib.assertTrue(superCls.isAssignableFrom(cls));
 	}
 
 	/**
 	 * Verifies that the specified class is public and not abstract, and that a
 	 * constructor with the specified signature exists and is public.
-	 *
+	 * 
 	 * @param cls
 	 *            the class containing the constructor.
 	 * @param parameterTypes
 	 *            the list of parameters.
 	 */
-	public static void checkConstructor(Class cls, Class[] parameterTypes)
-	{
-		try
-		{
-			Lib.assertTrue(Modifier.isPublic(cls.getModifiers()) && !Modifier.isAbstract(cls.getModifiers()));
+	public static void checkConstructor(Class cls, Class[] parameterTypes) {
+		try {
+			Lib.assertTrue(Modifier.isPublic(cls.getModifiers())
+					&& !Modifier.isAbstract(cls.getModifiers()));
 			Constructor constructor = cls.getConstructor(parameterTypes);
 			Lib.assertTrue(Modifier.isPublic(constructor.getModifiers()));
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			Lib.assertNotReached();
 		}
 	}
@@ -661,7 +614,7 @@ public final class Lib
 	 * Verifies that the specified class is public, and that a non-static method
 	 * with the specified name and signature exists, is public, and returns the
 	 * specified type.
-	 *
+	 * 
 	 * @param cls
 	 *            the class containing the non-static method.
 	 * @param methodName
@@ -671,17 +624,15 @@ public final class Lib
 	 * @param returnType
 	 *            the required return type.
 	 */
-	public static void checkMethod(Class cls, String methodName, Class[] parameterTypes, Class returnType)
-	{
-		try
-		{
+	public static void checkMethod(Class cls, String methodName,
+			Class[] parameterTypes, Class returnType) {
+		try {
 			Lib.assertTrue(Modifier.isPublic(cls.getModifiers()));
 			Method method = cls.getMethod(methodName, parameterTypes);
-			Lib.assertTrue(Modifier.isPublic(method.getModifiers()) && !Modifier.isStatic(method.getModifiers()));
+			Lib.assertTrue(Modifier.isPublic(method.getModifiers())
+					&& !Modifier.isStatic(method.getModifiers()));
 			Lib.assertTrue(method.getReturnType() == returnType);
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			Lib.assertNotReached();
 		}
 	}
@@ -690,7 +641,7 @@ public final class Lib
 	 * Verifies that the specified class is public, and that a static method
 	 * with the specified name and signature exists, is public, and returns the
 	 * specified type.
-	 *
+	 * 
 	 * @param cls
 	 *            the class containing the static method.
 	 * @param methodName
@@ -700,17 +651,15 @@ public final class Lib
 	 * @param returnType
 	 *            the required return type.
 	 */
-	public static void checkStaticMethod(Class cls, String methodName, Class[] parameterTypes, Class returnType)
-	{
-		try
-		{
+	public static void checkStaticMethod(Class cls, String methodName,
+			Class[] parameterTypes, Class returnType) {
+		try {
 			Lib.assertTrue(Modifier.isPublic(cls.getModifiers()));
 			Method method = cls.getMethod(methodName, parameterTypes);
-			Lib.assertTrue(Modifier.isPublic(method.getModifiers()) && Modifier.isStatic(method.getModifiers()));
+			Lib.assertTrue(Modifier.isPublic(method.getModifiers())
+					&& Modifier.isStatic(method.getModifiers()));
 			Lib.assertTrue(method.getReturnType() == returnType);
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			Lib.assertNotReached();
 		}
 	}
@@ -718,7 +667,7 @@ public final class Lib
 	/**
 	 * Verifies that the specified class is public, and that a non-static field
 	 * with the specified name and type exists, is public, and is not final.
-	 *
+	 * 
 	 * @param cls
 	 *            the class containing the field.
 	 * @param fieldName
@@ -726,18 +675,15 @@ public final class Lib
 	 * @param fieldType
 	 *            the required type.
 	 */
-	public static void checkField(Class cls, String fieldName, Class fieldType)
-	{
-		try
-		{
+	public static void checkField(Class cls, String fieldName, Class fieldType) {
+		try {
 			Lib.assertTrue(Modifier.isPublic(cls.getModifiers()));
 			Field field = cls.getField(fieldName);
 			Lib.assertTrue(field.getType() == fieldType);
-			Lib.assertTrue(Modifier.isPublic(field.getModifiers()) && !Modifier.isStatic(field.getModifiers())
+			Lib.assertTrue(Modifier.isPublic(field.getModifiers())
+					&& !Modifier.isStatic(field.getModifiers())
 					&& !Modifier.isFinal(field.getModifiers()));
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			Lib.assertNotReached();
 		}
 	}
@@ -745,7 +691,7 @@ public final class Lib
 	/**
 	 * Verifies that the specified class is public, and that a static field with
 	 * the specified name and type exists and is public.
-	 *
+	 * 
 	 * @param cls
 	 *            the class containing the static field.
 	 * @param fieldName
@@ -753,17 +699,15 @@ public final class Lib
 	 * @param fieldType
 	 *            the required type.
 	 */
-	public static void checkStaticField(Class cls, String fieldName, Class fieldType)
-	{
-		try
-		{
+	public static void checkStaticField(Class cls, String fieldName,
+			Class fieldType) {
+		try {
 			Lib.assertTrue(Modifier.isPublic(cls.getModifiers()));
 			Field field = cls.getField(fieldName);
 			Lib.assertTrue(field.getType() == fieldType);
-			Lib.assertTrue(Modifier.isPublic(field.getModifiers()) && Modifier.isStatic(field.getModifiers()));
-		}
-		catch (Exception e)
-		{
+			Lib.assertTrue(Modifier.isPublic(field.getModifiers())
+					&& Modifier.isStatic(field.getModifiers()));
+		} catch (Exception e) {
 			Lib.assertNotReached();
 		}
 	}

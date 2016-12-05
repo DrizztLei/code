@@ -15,13 +15,12 @@ public final class Machine
 {
 	/**
 	 * Nachos main entry point.
-	 *
+	 * 
 	 * @param args
 	 *            the command line arguments.
 	 */
 	public static void main(final String[] args)
 	{
-
 		System.out.print("nachos 5.0j initializing...");
 
 		Lib.assertTrue(Machine.args == null);
@@ -29,16 +28,11 @@ public final class Machine
 
 		processArgs();
 
-		configFileName = "/home/elvis/work/java/NachosProject/nachos/proj1/nachos.conf";
-
 		Config.load(configFileName);
 
 		// get the current directory (.)
-
 		baseDirectory = new File(new File("").getAbsolutePath());
-
 		// get the nachos directory (./nachos)
-
 		nachosDirectory = new File(baseDirectory, "nachos");
 
 		String testDirectoryName = Config.getString("FileSystem.testDirectory");
@@ -63,7 +57,6 @@ public final class Machine
 		privilege.stats = stats;
 
 		securityManager.enable();
-
 		createDevices();
 		checkUserClasses();
 
@@ -97,7 +90,7 @@ public final class Machine
 
 	/**
 	 * Terminate Nachos as the result of an unhandled exception or error.
-	 *
+	 * 
 	 * @param e
 	 *            the exception or error.
 	 */
@@ -115,14 +108,14 @@ public final class Machine
 	 */
 	public static void halt()
 	{
-		System.out.println("Machine halting!");
+		System.out.print("Machine halting!\n\n");
 		stats.print();
 		terminate();
 	}
 
 	/**
 	 * Return an array containing all command line arguments.
-	 *
+	 * 
 	 * @return the command line arguments passed to Nachos.
 	 */
 	public static String[] getCommandLineArguments()
@@ -148,7 +141,7 @@ public final class Machine
 				}
 				else if (arg.equals("-h"))
 				{
-					System.out.println(help);
+					System.out.print(help);
 					System.exit(1);
 				}
 				else if (arg.equals("-m"))
@@ -182,7 +175,7 @@ public final class Machine
 				}
 				else if (arg.equals("-z"))
 				{
-					System.out.println(copyright);
+					System.out.print(copyright);
 					System.exit(1);
 				}
 				// these switches are reserved for the autograder
@@ -356,7 +349,7 @@ public final class Machine
 
 	/**
 	 * Return the hardware interrupt manager.
-	 *
+	 * 
 	 * @return the hardware interrupt manager.
 	 */
 	public static Interrupt interrupt()
@@ -366,7 +359,7 @@ public final class Machine
 
 	/**
 	 * Return the hardware timer.
-	 *
+	 * 
 	 * @return the hardware timer.
 	 */
 	public static Timer timer()
@@ -376,7 +369,7 @@ public final class Machine
 
 	/**
 	 * Return the hardware elevator bank.
-	 *
+	 * 
 	 * @return the hardware elevator bank, or <tt>null</tt> if it is not
 	 *         present.
 	 */
@@ -387,7 +380,7 @@ public final class Machine
 
 	/**
 	 * Return the MIPS processor.
-	 *
+	 * 
 	 * @return the MIPS processor, or <tt>null</tt> if it is not present.
 	 */
 	public static Processor processor()
@@ -397,7 +390,7 @@ public final class Machine
 
 	/**
 	 * Return the hardware console.
-	 *
+	 * 
 	 * @return the hardware console, or <tt>null</tt> if it is not present.
 	 */
 	public static SerialConsole console()
@@ -407,7 +400,7 @@ public final class Machine
 
 	/**
 	 * Return the stub filesystem.
-	 *
+	 * 
 	 * @return the stub file system, or <tt>null</tt> if it is not present.
 	 */
 	public static FileSystem stubFileSystem()
@@ -417,7 +410,7 @@ public final class Machine
 
 	/**
 	 * Return the network link.
-	 *
+	 * 
 	 * @return the network link, or <tt>null</tt> if it is not present.
 	 */
 	public static NetworkLink networkLink()
@@ -427,7 +420,7 @@ public final class Machine
 
 	/**
 	 * Return the autograder.
-	 *
+	 * 
 	 * @return the autograder.
 	 */
 	public static AutoGrader autoGrader()
@@ -450,7 +443,7 @@ public final class Machine
 	 * Return the name of the shell program that a user-programming kernel must
 	 * run. Make sure <tt>UserKernel.run()</tt> <i>always</i> uses this method
 	 * to decide which program to run.
-	 *
+	 * 
 	 * @return the name of the shell program to run.
 	 */
 	public static String getShellProgramName()
@@ -469,9 +462,9 @@ public final class Machine
 	 * multi-programming project, returns <tt>nachos.userprog.UserProcess</tt>.
 	 * In the VM project, returns <tt>nachos.vm.VMProcess</tt>. In the
 	 * networking project, returns <tt>nachos.network.NetProcess</tt>.
-	 *
+	 * 
 	 * @return the name of the process class that the kernel should use.
-	 *
+	 * 
 	 * @see nachos.userprog.UserKernel#run
 	 * @see nachos.userprog.UserProcess
 	 * @see nachos.vm.VMProcess
@@ -499,7 +492,7 @@ public final class Machine
 	private static long randomSeed = 0;
 
 	private static File baseDirectory, nachosDirectory, testDirectory;
-	private static String configFileName = "nachos.conf";
+	private static String configFileName = "/home/elvis/work/java/NachosProject/nachos/proj1/nachos.conf";
 
 	private static final String help = "\n" + "Options:\n" + "\n" + "\t-d <debug flags>\n"
 			+ "\t\tEnable some debug flags, e.g. -d ti\n" + "\n" + "\t-h\n" + "\t\tPrint this help message.\n" + "\n"
@@ -536,7 +529,4 @@ public final class Machine
 			Machine.console = console;
 		}
 	}
-
-	// dummy variables to make javac smarter
-	private static Coff dummy1 = null;
 }

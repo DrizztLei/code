@@ -6,18 +6,17 @@ import nachos.security.*;
 import nachos.threads.KThread;
 
 import java.util.Vector;
-import java.security.PrivilegedAction;
 
 /**
  * A TCB simulates the low-level details necessary to create, context-switch,
  * and destroy Nachos threads. Each TCB controls an underlying JVM Thread
  * object.
- *
+ * 
  * <p>
  * Do not use any methods in <tt>java.lang.Thread</tt>, as they are not
  * compatible with the TCB API. Most <tt>Thread</tt> methods will either crash
  * Nachos or have no useful effect.
- *
+ * 
  * <p>
  * Do not use the <i>synchronized</i> keyword <b>anywhere</b> in your code. It's
  * against the rules, <i>and</i> it can easily deadlock nachos.
@@ -29,14 +28,13 @@ public final class TCB
 	 */
 	public TCB()
 	{
-		// System.out.println("CALLED ");
 	}
 
 	/**
 	 * Give the TCB class the necessary privilege to create threads. This is
 	 * necessary, because unlike other machine classes that need privilege, we
 	 * want the kernel to be able to create TCB objects on its own.
-	 *
+	 * 
 	 * @param privilege
 	 *            encapsulates privileged access to the Nachos machine.
 	 */
@@ -57,7 +55,7 @@ public final class TCB
 		 * either this is the first call to start(), or we're being called in
 		 * the context of another TCB. Since we only allow one TCB to run at a
 		 * time, no synchronization is necessary.
-		 *
+		 * 
 		 * The only way this assumption could be broken is if one of our
 		 * non-Nachos threads used the TCB code.
 		 */
@@ -83,7 +81,6 @@ public final class TCB
 		 * make sure that the current thread is bound to the current TCB. This
 		 * check can only fail if non-Nachos threads invoke start().
 		 */
-		
 		if (!isFirstTCB)
 			Lib.assertTrue(currentTCB.javaThread == Thread.currentThread());
 
@@ -93,7 +90,7 @@ public final class TCB
 		 * runningThreads, and we save the target closure.
 		 */
 		runningThreads.add(this);
-		
+
 		this.target = target;
 
 		if (!isFirstTCB)
@@ -139,7 +136,6 @@ public final class TCB
 			javaThread = Thread.currentThread();
 
 			/* All we have to do now is invoke threadroot() directly. */
-			
 			threadroot();
 		}
 	}
@@ -226,7 +222,7 @@ public final class TCB
 	/**
 	 * Test if the current JVM thread belongs to a Nachos TCB. The AWT event
 	 * dispatcher is an example of a non-Nachos thread.
-	 *
+	 * 
 	 * @return <tt>true</tt> if the current JVM thread is a Nachos thread.
 	 */
 	public static boolean isNachosThread()
@@ -248,7 +244,7 @@ public final class TCB
 			 * sleep. All we have to do is wake up the current TCB and then wait
 			 * to get woken up by contextSwitch() or destroy().
 			 */
-		
+
 			currentTCB.interrupt();
 			this.yield();
 		}
@@ -262,7 +258,7 @@ public final class TCB
 			currentTCB = this;
 			running = true;
 		}
-		
+
 		try
 		{
 			target.run();
@@ -387,7 +383,7 @@ public final class TCB
 	 * reference to the first TCB. After that, only <tt>yield()</tt> can change
 	 * <tt>currentTCB</tt> to the current TCB, and only after
 	 * <tt>waitForInterrupt()</tt> returns.
-	 *
+	 * 
 	 * <p>
 	 * Note that <tt>currentTCB.javaThread</tt> will not be the current thread
 	 * if the current thread is not bound to a TCB (this includes the threads

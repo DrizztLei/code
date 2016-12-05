@@ -1,4 +1,4 @@
-sudo emerge -av --update --deep --with-bdeps=y --newuse  \
+sudo emerge -q -av --update --deep --with-bdeps=y --newuse  \
 --autounmask-write @world
 #--autounmask-keep-masks @world
 #eix-update
