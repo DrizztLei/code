@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+
+<ns1:test id="XM30_Namespaces" xmlns:ns1="http://www.ibm.com/ILS/WDO3"
+          xmlns="http://www.ibm.com/ILS/WDO3"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.ibm.com/ILS/WDO3 test.xsd ">
+
+    <!-- Please do not change the xsi namespace declaration
+         or the schemaLocation attribute -->
+
+    <description>XML Namespaces Test</description>
+    <ns1:testQuestions>
+        <ns1:question id="Q1">
+            <ns1:questionText>
+                Which are true about XML Namespaces
+            </ns1:questionText>
+            <ns1:choices allowMultiple="Yes">
+                <ns2:choice id="A"
+                            xmlns:ns1="http://www.ibm.com/ILS/general"
+                            xmlns:ns2="http://www.ibm.com/ILS/WDO3">
+                    <ns2:choiceText>
+                        XML Namespaces are assocated with an XML Schema
+                    </ns2:choiceText>
+                    <ns2:correct>false</ns2:correct>
+                </ns2:choice>
+                <ns1:choice id="B">
+                    <ns1:choiceText>
+                        XML Namespaces can be dereferenced
+                    </ns1:choiceText>
+                    <ns1:correct>false</ns1:correct>
+                </ns1:choice>
+                <ns1:choice id="C">
+                    <ns1:choiceText>
+                        XML Namespaces are associated with a URI
+                    </ns1:choiceText>
+                    <ns1:correct>true</ns1:correct>
+                </ns1:choice>
+                <ns1:choice id="D">
+                    <ns1:choiceText></ns1:choiceText>
+                    <ns1:correct>false</ns1:correct>
+                </ns1:choice>
+            </ns1:choices>
+        </ns1:question>
+    </ns1:testQuestions>
+</ns1:test>

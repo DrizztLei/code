@@ -1,0 +1,56 @@
+package lda;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+
+import edu.stanford.nlp.util.Iterables;
+
+public class Main
+{
+	public static final int TYPE = 15;
+	public static final int NUMBER = 10;
+	public static final int SUM = 2;
+
+	public static String[][][] info = new String[TYPE][NUMBER][SUM];
+
+	public static ArrayList<String[][]> array = new ArrayList<>();
+
+	public static void main(String[] args) throws IOException
+	{
+
+		Corpus corpus = Corpus.load("data/mini");
+
+		LdaGibbsSampler ldaGibbsSampler = new LdaGibbsSampler(corpus.getDocument(), corpus.getVocabularySize());
+
+		ldaGibbsSampler.gibbs(TYPE);
+
+		double[][] phi = ldaGibbsSampler.getPhi();
+
+		Map<String, Double>[] topicMap = LdaUtil.translate(phi, corpus.getVocabulary(), 10);
+
+		Main.show(topicMap);
+
+		// LdaUtil.explain(topicMap);
+	}
+
+	public static void show(Map<String, Double>[] map)
+	{
+		int i = 0;
+		for (Map<String, Double> topicMap : map)
+		{
+
+			for (Map.Entry<String, Double> entry : topicMap.entrySet())
+			{
+				System.out.println(entry.getKey());
+				System.out.println(entry.getValue());
+				info[i][j][0] = entry.getKey();
+				info[i][j][1] = entry.getValue() + "";
+			}
+			System.out.println();
+		}
+	}
+}

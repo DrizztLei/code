@@ -1,0 +1,3876 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="chinanews" />
+<meta name="copyright" content="www.chinanews.com,版权所有" /> 
+<meta name="keywords" content="新闻,时事,时政,国际,国内,社会,法治,聚焦,评论,文化,教育,新视点,深度,网评,专题,环球,传播,论坛,图片,军事,焦点,排行,环保,校园,法治,奇闻,真情" />
+<meta name="description" content="中新网新闻中心是中新网最重要的频道之一，24小时滚动报道国内、国际及社会新闻。每日编发新闻数以万计。" />
+
+<title>中新网视频频道</title>
+
+<!--[883,73,1] published at 2016-12-26 13:21:37 from #10 by 王祎 designer:yuecaijing maker:liweiwei gongyi--> 
+<base target="_blank" />
+<!--<base href="http://www.chinanews.com/" />-->
+<link href="http://www.chinanews.com/part/shipin/6/42.css" type="text/css" rel="stylesheet" />
+
+<style>
+.banner_pages ul{padding-left:227px;}
+</style>
+<script src="http://www.chinanews.com/js/jquery1.4.js"></script>
+<script language="JavaScript">
+<!--
+document.domain = "chinanews.com"; 
+-->
+</script>
+
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        bp.src = '//push.zhanzhang.baidu.com/push.js';
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+<script type="text/javascript" src='http://www.chinanews.com/pv/js/pvnoju.js'></script>
+
+<script>
+function change1(){
+
+focusBox1('kakaFocus1');
+function focusBox1(o1){
+	if(!o1) return;
+
+	var w1=$("#kakaFocus1 .banner_pic").width(), $o1=$('#'+o1),i=0,l=0;arr1= [],t1= null,
+
+		$infoLi1 = $o1.find('.banner_info li'), len1= $infoLi1.length*2,
+		$ul1=$o1.find('.banner_pic>ul');
+	$ul1.append($ul1.html()).css({'width':len1*w1, 'left': -len1*w1/2});
+	$infoLi1.eq(0).addClass('current');
+	//add banner_pages element
+	arr1.push('<div class="banner_pages"><ul>');
+	$infoLi1.each(function(i){
+		if(i==0){
+			arr1.push('<li class="current"><span>'+ (i+1) +'</span></li>');
+		}else{
+			arr1.push('<li><span>'+ (i+1) +'</span></li>');
+		}
+	});
+	arr1.push('</ul></div>');
+	$o1.append(arr1.join(''));
+	var $pagesLi1 = $o1.find('.banner_pages li');
+	//mouse
+	$pagesLi1.children('span').click(function(){
+		var p1 = $pagesLi1.index($o1.find('.banner_pages li.current'));
+		i1 = $pagesLi1.children('span').index($(this));
+		if(i1==p1) return;
+		l1 = parseInt($ul1.css('left')) + w1*(p1-i1);
+		addCurrent1(i1,l1);
+		return false;
+	})
+	$o1.children('a.btn_prev').click(function(){
+		i1 = $pagesLi1.index($o1.find('.banner_pages li.current'));
+		(i1==0)? i1=(len1/2-1):i1--;
+		l1 = parseInt($ul1.css('left')) + w1;
+		addCurrent1(i1,l1);
+		return false;
+	})
+	$o1.children('a.btn_next').click(function(){
+		i1 = ($pagesLi1.index($o1.find('.banner_pages li.current'))+1)%(len1/2);
+		l1 = parseInt($ul1.css('left')) - w1;
+		addCurrent1(i1,l1);
+		return false;
+	})
+	//auto focus
+	t1 = setInterval(init1,8000);
+	$o1.hover(function(){
+		clearInterval(t1);
+	}, function(){
+		t1 = setInterval(init1,8000);
+	});
+	function init1(){
+		$o1.children('a.btn_next').trigger('click');
+	}
+	//add focus
+	function addCurrent1(i,l){
+		if($ul1.is(':animated')) return;
+		$ul1.animate({'left':l},500,function(){
+			$o1.children('.banner_count').text(i+1);
+			$infoLi1.not($infoLi1.eq(i).addClass('current')).removeClass('current');
+			$pagesLi1.not($pagesLi1.eq(i).addClass('current')).removeClass('current');
+			if(l== (1-len1)*w1){
+				$ul1.css({'left': (1-len1/2)*w1});
+			}else if(l== 0){
+				$ul1.css({'left': -len1*w1/2});
+			}
+		});
+	}
+}
+}
+
+$(document).ready(function(){
+	change1();
+
+})
+//tab
+function nTabs(thisObj,Num){
+if(thisObj.className == "active")return;
+var tabObj = thisObj.parentNode.id;
+var tabList = document.getElementById(tabObj).getElementsByTagName("li");
+for(i=0; i <tabList.length; i++)
+{
+  if (i == Num)
+  {
+   thisObj.className = "active"; 
+      document.getElementById(tabObj+"_Content"+i).style.display = "block";
+	   $(".new_right_title").addClass("ywtitle"+i);
+  }else{
+   tabList[i].className = "normal"; 
+   document.getElementById(tabObj+"_Content"+i).style.display = "none";
+   $(".new_right_title").removeClass("ywtitle"+i);
+  }
+} 
+}
+
+/*daohang huaguo*/
+$(document).ready(function(){
+
+	  function topnav1(){
+	var _show = null;
+	  var _hideTimer = null;
+	  var planItems = $('ul.c-fl-ul li.division');
+		planItems.each(function(index) {
+	    var li = $(this);
+		var div = li.find('div.navshow_div');
+			div.css("display","none");
+			li.bind('mouseenter',function() {
+				if (_show != null) {
+					clearTimeout(_show);
+				}
+				_show = setTimeout(function() {
+					$('ul.nav_navcon li').addClass('');
+
+					li.addClass('topnav_sel');
+				}, 0);
+				});
+			  li.bind('mouseleave', function() {
+					if (_show != null) {
+					clearTimeout(_show);
+				}
+				_hideTimer = setTimeout(function() {
+					li.removeClass('topnav_sel');
+
+				}, 0);
+				});
+			});
+	  };
+	topnav1();
+
+});
+   function search_select(id) {
+     document.getElementById("id7").className="dii7"+id;
+  }
+     function weibo(id) {
+     document.getElementById("id8").className="dii8"+id;
+  }
+
+ /*list滑过*/
+ $(document).ready(function(){
+	 var _show = null;
+	  var _hideTimer = null;
+	  var planItems = $('.news_list_ulbox ul li');
+	  var _tupian_li = $('.news_list_ulbox ul li._tupian_li');
+	 planItems.each(function(index) {
+	var li = $(this);
+		    var news_xgxw = li.find('div.news_xgxw .news_xgxw_a');
+			var sharenews=li.find('div.video_con1_title_right');
+			var news_xgxw_con=li.find('div.news_xgxw_con');
+			var planItems_tp = li.find('div.tupian_conul ul li');
+		    planItems_tp.each(function() {
+				  var tpli = $(this); 
+				  var tp_blackbg = tpli.find('div.tp_blackbg');
+
+				 tpli.bind('mouseenter',function() {
+					 tp_blackbg.hide();
+				  });
+
+				  tpli.bind('mouseleave',function() {
+					  tp_blackbg.show();
+				  });
+			 });
+
+	/*topnav*/
+
+		/**/
+		li.bind('mouseenter',function() {
+				if (_show != null) {
+					clearTimeout(_show);
+				}
+				_show = setTimeout(function() {
+					$('ul._commuity_nav li div.conbox').hide();
+					li.css('background','#eeeeee');
+					$(".module_advert_ul li").css('background','none');
+					_tupian_li.css('background','none');
+					sharenews.show('');
+				/**/
+
+				}, 0);
+				});
+			  li.bind('mouseleave', function() {
+					if (_show != null) {
+					clearTimeout(_show);
+				}
+				_hideTimer = setTimeout(function() {
+
+					li.css('background','none');
+					sharenews.hide('');
+
+				/**/
+
+				}, 0);
+				});
+		});
+
+});
+
+  $(function(){ 
+				 var total_value =  $("#total_page_total0").val();
+	 			//alert (total_value);
+				 if(total_value!=null && total_value!=''){
+				var page_html =  '<div style="width:100%;height:30px;background:#e8e8e8; border:1px solid #ebebeb;clear:both;margin-top:20px; line-height:30px; color:#919191; cursor:pointer; font-size:14px;text-align:center" onclick="ongetpage(2,300,0)">>>更多</div>';
+				$("#page_bar0").html(page_html);
+		//ongetpage(1,total_value);
+					 }
+			});
+
+//jsxw_sp
+	function js_jsxwssp(thisObj,Numa)
+	{
+		//alert(thisObj);
+		//alert(Numa);
+		var top1=$(document).scrollTop();
+		var left_heigt1=$("#enter_top").height();
+		var left_heigt2=$("#daodu").height();
+		var left_heigt3=$("#yaowen").height();
+		var left_heigt4=$("#shipin").height();
+		var left_heigt5=left_heigt1+left_heigt2+left_heigt3+left_heigt4;
+		var pw_heigth=$(window).height();
+
+		if(thisObj.className == "active")return;
+		var tabObj = thisObj.parentNode.id;
+		var tabList = document.getElementById(tabObj).getElementsByTagName("li");
+		for(i=0; i <tabList.length; i++)
+		{
+		if (i == Numa)
+		  {
+			  document.getElementById(tabObj+"_Con"+Numa).style.display = "block";
+			   document.getElementById("jsxw_sp_Con"+Numa).style.display = "block";
+			 // alert(Num);
+			  thisObj.className = "filter-selected"; 
+		     var scrollHeight= document.body.scrollHeight || document.documentElement.scrollHeight;
+
+			  $("#jsxwredbox_biglist2").hide();
+			  $("#jsxw_all_Con0").hide();
+			  createPageHtml(1,300,Numa);
+
+var tChannel = ''; 
+
+			 }else{
+		   document.getElementById(tabObj+"_Con"+i).style.display = "none";
+		   tabList[i].className = "normal"; 
+		  }
+		} 
+}
+
+function createPageHtml(page,total,Numa){
+    var page_html = '';
+
+	if(page!=1){
+		page_html = '';
+	}
+	var startPoint = 1;
+	var endPoint = 10;
+	if(page>=1 && page<=total/14){
+		page_html = page_html + '<div style="width:100%;height:30px;background:#e8e8e8;color:#919191;border:1px solid #ebebeb;clear:both;margin-top:20px; line-height:30px; cursor:pointer; font-size:14px;text-align:center" onclick="ongetpage('+(page+1)+','+total+','+Numa+')">>>更多　</div>';
+	}
+
+	$("#page_bar"+Numa).html(page_html);
+}
+function ongetpage(num,total,Numa){
+	//alert(num);
+  				var specialid= $("#specialid"+Numa).val();
+  				//alert (specialid);
+  				if(num==1){
+    				window.location.href=window.location.href;
+   					 return;
+ 				 }else if(num>1){
+					 if (Numa==0){
+
+						  //$.getScript("http://channel.chinanews.com/cns/s/channel:"+specialid+".shtml?pager="+(num-1)+"&pagenum=12", function(){
+						  $.getScript("http://channel.chinanews.com/video/showchannel?tid=4&currentpage="+(num-1)+"&pagenum=14", function(){
+				 var html = "";
+		 		var data = video_json;
+				//alert(data.totalpages);
+				if(data.videos.length==0)
+				{
+					alert('全部加载完！');
+				}
+		 for(var i=0;i<data.videos.length;i++){ 
+			var pubtime = data.videos[i].pubtime;
+			var title = data.videos[i].title;
+			var url = data.videos[i].url;
+			var pic = data.videos[i].img;
+			var content = data.videos[i].content;
+
+			if (pic !=''){
+
+			html = html+'<li><div class="bigpic_list"><div class="moren_right_nopic">'
+
++'<div class="intermoren_box"><div class="intermoren_left"><a href="'+url+'" target="_blank"><img src="'+pic+'"></a></div>'
++'<div class="intermoren_right"><div class="news_title"><a href="'+url+'" class="gray5" target="_blank">'+title+'</a></div> '
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div></div></div></div></li>';
+			}else{
+				html =html+'<li><div class="bigpic_list"><div class="moren_right_nopic">'
++'<div class="intermoren_box">'
++'<div class="intermoren_right intermoren_right1"><div class="news_title"><a href="'+url+'" class="gray5" target="_blank">'+title+'</a></div>'
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div> </div></div></div> </li>';
+				}
+
+		  }
+		//alert(html);
+                  $("#ent"+Numa).append(html);
+	});
+					 }
+					 else{
+					  //$.getScript("http://channel.chinanews.com/cns/s/"+specialid+".shtml?pager="+(num-1)+"&pagenum=12", function(){
+				 $.getScript("http://channel.chinanews.com/video/showchannel?tid=4&currentpage="+(num-1)+"&pagenum=14&channel1="+specialid, function(){
+
+				 var html = "";
+		 		var data = video_json;
+				//alert(data.totalpages);
+
+				if(data.videos.length==0)
+				{
+					alert('全部加载完！');
+				}
+		 for(var i=0;i<data.videos.length;i++){ 
+			var pubtime = data.videos[i].pubtime;
+			var title = data.videos[i].title;
+			var url = data.videos[i].url;
+			var pic = data.videos[i].img;
+			var content = data.videos[i].content;
+
+			if (pic !=''){
+
+			html = html+'<li><div class="bigpic_list"><div class="moren_right_nopic">'
+
++'<div class="intermoren_box"><div class="intermoren_left"><a href="'+url+'" target="_blank"><img src="'+pic+'"></a></div>'
++'<div class="intermoren_right"><div class="news_title"><a href="'+url+'" class="gray5" target="_blank">'+title+'</a></div> '
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div></div></div></div></li>';
+			}else{
+				html =html+'<li><div class="bigpic_list"><div class="moren_right_nopic">'
++'<div class="intermoren_box">'
++'<div class="intermoren_right intermoren_right1"><div class="news_title"><a href="'+url+'" class="gray5" target="_blank">'+title+'</a></div>'
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div> </div></div></div> </li>';
+				}
+
+		  }
+		//alert(html);
+                  $("#ent"+Numa).append(html);
+	});
+					 }
+	createPageHtml(num,total,Numa);
+
+  }
+  //alert(document.documentElement.scrollTop);
+ // $(document).scrollTop(0);
+//$(document).scrollTop()=0;
+}
+
+$(document).ready(function(){
+
+		$("#md_close").click(function(){
+			$("#full").hide();						  
+			})
+
+	});
+</script>
+
+<script>
+
+window.onscroll=function()
+{
+	var top=$(document).scrollTop();
+
+	var scrollHeight= document.body.scrollHeight || document.documentElement.scrollHeight;
+	var availHeight= document.body.availHeight || document.documentElement.availHeight;
+
+	var pw_heigth=$(window).height();
+	var right_heigt=$("#sticky_right").height();
+	var left_heigt=$("#sticky_left").height();
+
+	var index_topa=$("#index_topa").height();
+	var gg=$("#news_top_advert").height();
+
+	var topheight=index_topa+gg;
+
+if(scrollHeight>top+topheight){
+		$("#sticky_right").removeClass('sticky');
+		$("#sticky_right").removeClass('sticky0');
+		$("#sticky_right").addClass('sticky1');
+		}
+
+	if(top<=gg){
+		$("#js_N_nav").css("position","relative");
+		$("#jsxw_layer").css("position","relative");
+		$("#jsxw_layer").css("top","0");
+		$("#sticky_right2").css("height",0);
+		$("#sticky_right").removeClass('sticky');
+	    $("#sticky_right").removeClass('sticky0');
+		$("#sticky_right").addClass('sticky1');
+
+	}
+	if(top>gg){
+		$("#js_N_nav").css("position","fixed");
+		$("#js_N_nav").css("top","0");
+		$("#js_N_nav").css("z-index","9");
+	}
+	if (top<topheight){
+		$("#jsxw_layer").css("position","relative");
+		$("#jsxw_layer").css("top","0");
+
+		$("#sticky_right").removeClass('sticky');
+		$("#sticky_right").removeClass('sticky0');
+		$("#sticky_right").addClass('sticky1');
+	}
+	//alert(top);
+	//alert(pw_heigth);
+	//alert(left_heigt);
+	if(top>topheight){
+		//$('#default-p_30345810').css("top","0");
+		$("#jsxw_layer").css("position","fixed");
+		$("#jsxw_layer").css("top","44px");	
+	}
+
+	if(pw_heigth >= right_heigt+topheight-top && pw_heigth<left_heigt+topheight-top){
+		//alert(pw_heigth);
+		var cc=top+pw_heigth-right_heigt-topheight;
+		//alert(cc);
+		$("#sticky_right2").css("height",cc);
+
+	//if(right_heigt>=pw_heigth){
+		$("#sticky_right").removeClass('sticky');
+		$("#sticky_right").removeClass('sticky1');
+	    $("#sticky_right").addClass('sticky0');
+	//	}
+		//else{
+			//$("#sticky_right").removeClass('sticky');
+		   // $("#sticky_right").removeClass('sticky1');
+		   // $("#sticky_right").addClass('sticky0');
+		   // $(".sticky0").css('bottom',gaodu+'px');
+
+			//}
+
+		}
+
+		/*判断滚动条是否到底*/
+	// if(top + pw_heigth==scrollHeight){
+		//	alert(00);
+		//$("#sticky_right").removeClass('sticky0');
+		//$("#sticky_right").removeClass('sticky1');
+		//$("#sticky_right").addClass('sticky');
+
+		//}
+	if	(pw_heigth < right_heigt-top){
+		$("#sticky_right2").css("height",0);
+
+	}
+	//var top=$("body").scrollTop() 
+
+	//alert(top);
+
+};
+
+</script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+</head>
+
+<body>
+
+<!--右侧导航开始-->
+ <!--div id="full" class="index_layer ie6fixedBR" s-->
+<div id="full" class="index_layer ie6fixedBR">
+	 <div class="miandian_ewm">
+        <div class="miandian_ewm_layer"><a id="md_close"></a></div>
+         <div class="miandian_ewm_nr">
+
+              <div><img src="http://i8.chinanews.com/2014/sp/weixin.jpg"></div>
+        	  <p>中新网客户端
+点击或扫描下载</p>
+         </div>
+        </div>
+</div>
+ <!--div id="full" class="index_layer ie6fixedBR" e-->
+ <!--右侧导航结束-->
+
+ <!--div id="js_N_nav" class="index-nav" s-->
+<style>
+.index_icon14 {
+    background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F978DT20150907155559.png) no-repeat ;
+    display: block;
+    height: 13px;
+    width: 18px;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon14 {
+    background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F979DT20150907155559.png) no-repeat ;
+}
+.index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_mo.png) no-repeat;display:block;width:24px;height:19px;}
+ul.c-fl-ul .topnav_sel .index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_sel.png) no-repeat;}
+.index-nav-select-wide .index-nav-select-title-gzh{padding:0px 10px 0px 43px}
+
+</style>
+
+<div id="js_N_nav" class="index-nav" style="height:46px;">
+    <div class="index-nav-main clearfix">
+        <div id="stepflow01" class="c-fl">
+        	<ul class="c-fl-ul">
+            	<li class="division"><div class="index-nav-select    left">
+              	     <a href="http://www.chinanews.com" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon1"></em>中新网首页</a></div>
+                </li>
+
+                <li id="jrzmdiv" class="division"> <div class="index-nav-select    left">
+               		 <a href="http://www.chinanews.com/common/footer/sitemap.shtml" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon14"></em>网站地图</a> </div>
+                </li>
+
+               <li class="division"><div class="index-nav-select    left">
+                	<a href="http://mail.chinanews.com.cn/" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon12"></em>企业邮箱</a></div>
+               </li>
+
+               <li class="division"><div class="index-nav-select    left">
+               		 <a class="index-nav-select-title index-nav-entry-bgblack" href="http://www.chinaso.com/"><em class="index-nav-select-arr index_icon11"></em>中国搜索</a></div>
+               </li>
+             </ul>
+        </div>
+        <div class="c-fr">
+            <ul class="c-fl-ul">
+            	<li id="jrzmdiv1" class="division"> <div class="index-nav-select    left">
+                    <a class="index-nav-select-title index-nav-entry-bgblack" href="http://m.chinanews.com/home/"><em class="index-nav-select-arr index_icon4"></em>移动版</a></div>
+                 </li>
+                 <li id="jrzmdiv1" class="division"> <div class="index-nav-select    left">
+                     <a href="http://www.chinanews.com/app/chinanews/index.shtml" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon13"></em>客户端</a></div>
+                 </li>
+                  <li id="jrzmdiv1" class="division"> 
+				 <div class="index-nav-select left">
+                <div class="newpic"></div>
+                <a class="index-nav-select-title index-nav-entry-bgblack" href="http://www.chinanews.com/cns2012.shtml"><em class="index-nav-select-arr index_icon_gzh"></em>微信</a>
+
+             </div>
+             </li>
+                 <li id="jrzmdiv2" class="division"> <div class="index-nav-select  index-nav-app left ">
+                      <div style="_width:90px;" class="dii81" id="id8" onmouseover="weibo(0)" onmouseout="weibo(1)">
+                           <div id="navshow_div" class="index-nav-select-pop">
+                                <ul class="index-nav-select-list clearfix">
+                                    <!-- <li><a href="http://t.chinanews.com/"><span>中新职务微博</span></a></li>-->
+                                    <li><a href="http://weibo.com/chinanewsv"><span>中新网<em>新浪</em>法人微博</span></a></li>
+                                    <li><a href="http://t.qq.com/chinanews"><span>中新网<em>腾讯</em>法人微博</span></a></li>
+                                     <li><a href="http://weibo.com/u/3604378011"><span>中新社<em>新浪</em>法人微博</span></a></li>
+                                     <li><a href="http://t.qq.com/cns"><span>中新社<em>腾讯</em>法人微博</span></a></li>
+
+                                     <!--
+                                     <li><a href="http://1.t.qq.com/cns"><span>中新社<em >腾讯</em>法人微博</span></a></li>
+                                    <li><a href="http://chinanewsv.t.sohu.com/"><span>中新网<em >搜狐</em>法人微博</span></a></li>
+                                    <li><a href="http://t.163.com/chinanews"><span>中新网<em >网易</em>法人微博</span></a></li>-->
+
+                                </ul>
+                            </div>
+                        <a class=" p_relative index-nav-select-title1  index-nav-entry-bgblack " ><em class="index-nav-select-arr1"></em>
+                        <em class="index-nav-select-arr index_icon5"></em>微博
+                         </a>
+                        </div>
+                    </div>
+                 </li>
+                <li class="division"> <a href="http://www.ecns.cn/" class="index-nav-entry-wide index-nav-select-title left">English</a></li>
+               <!-- <li class="division">  <a href="http://big5.chinanews.com:80/" class="index-nav-entry-wide index-nav-select-title left">繁体</a></li>-->
+				<li class="division"><fjtignoreurl><a id="yx_style_nav" class="index-nav-entry-wide left" href="http://wza.chinanews.com/" style="color:#b21112">无障碍</a></fjtignoreurl></li>
+            </ul>
+
+        </div>  
+
+        <div class="clear"></div>  
+    </div>
+</div>
+<!--div id="js_N_nav" class="index-nav" e-->
+<!--导航结束-->
+
+<div id="index_topa">
+<div class="enter_top" id="enter_top">
+       <div class=" w1000 m_center">
+            <div id="top">
+        <!--[4,319,36] published at 2016-07-29 13:13:41 from #10 by 赵谦-->  
+<style>
+
+#top{width:1000px;}
+
+</style>
+
+        <a href="http://www.chinanews.com/scroll-news/news1.html" target="_blank">滚动</a>|
+        <a href="http://www.chinanews.com/china/" target="_blank">时政</a>|
+        <a href="http://world.chinanews.com/" target="_blank">国际</a>|
+        <a href="http://www.chinanews.com/mil/news.shtml" target="_blank">军事</a>|
+        <a href="http://www.chinanews.com/society/" target="_blank">社会</a>| <a href="http://www.chinanews.com/gangao/" target="_blank">港澳</a>|
+        <a href="http://www.chinanews.com/taiwan/" target="_blank">台湾</a>|
+        <a href="http://www.chinaqw.com/" target="_blank">侨网</a>|
+        <a href="http://www.chinanews.com/huaren/" target="_blank">华人</a>| <a href="http://finance.chinanews.com/" target="_blank">财经</a>|
+        <a href="http://business.chinanews.com/" target="_blank">产经</a>|
+        <a target="_blank" href="http://fortune.chinanews.com/">金融</a>|
+        <!--<a href="http://stock.chinanews.com/" target="_blank">证券</a>|
+        <a href="http://house.chinanews.com/" target="_blank">房产</a>|
+        <a href="http://energy.chinanews.com/" target="_blank">能源</a>|
+        <a href="http://it.chinanews.com/" target="_blank">IT</a>|-->
+        <a href="http://auto.chinanews.com/" target="_blank">汽车</a>|<!--<a href="http://game.chinanews.com/" target="_blank">游戏</a>|-->
+        <a href="http://ent.chinanews.com/">娱乐</a>|
+        <a href="http://sports.chinanews.com/" target="_blank">体育</a>|
+        <a href="http://cul.chinanews.com/" target="_blank">文化</a>|
+       <!-- <a href="http://health.chinanews.com/" target="_blank">健康</a>|-->
+       <a href="http://www.chinanews.com/theory/">理论</a>|
+        <a href="http://life.chinanews.com/" target="_blank">生活</a>|
+        <a href="http://photo.chinanews.com/" target="_blank">图片</a>|
+        <a href="http://www.chinanews.com/shipin/" target="_blank">视频</a>|
+        <a href="http://interview.chinanews.com/">访谈</a>
+
+
+        </div>
+
+<div style="width:1000px;margin:0 auto; margin-top:10px;" id="news_top_advert">
+     	 <div style="width:750px;float:left;height:90px;"><!-- 广告位Id：2241 广告位名称：视频首页 旗帜 类型：固定广告位 尺寸：750x90 -->
+<iframe id="ac_im86_2241" name="ac_im86_2241" src="http://me.afp.chinanews.com/a.htm?pv=1&sp=2241,1,90,750,0,0,1,9" width="750" height="90" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" ></iframe>
+<!--[4,175,370] published at 2016-03-30 14:20:51 from #10 by 郑振海--></div>
+         <div style="width:230px;float:right;height:90px;"><a href="http://www.icbc.com.cn/icbc/" target="_blank"><img src="http://www.chinanews.com/fileftp/2015/09/2015-09-01/U194P4T47D33299F967DT20150901150723.jpg" width="225" height="90" /></a>
+<!--[4,175,371] published at 2016-03-30 14:21:03 from #10 by 郑振海--></div>
+         <div class="clear"></div>  
+     </div>
+      <div class="enter_banner">
+            <div class="enter_logo"><a href="http://www.chinanews.com/shipin/"><img src="http://i8.chinanews.com/2016cns/video/2_03.jpg"/></a></div>
+            <div class="searchnav">
+                 <div class="enter_text"> 
+                         <div class="strip"><!--[4,248,1] published at 2016-12-26 13:01:01 from #202 by system-->
+2016年12月26日   星期一</div>
+                         <div class="strip"><!--[4,319,22] published at 2015-05-22 15:26:53 from #10 by 赵谦 --> 
+<style>
+#info img{ vertical-align:middle;padding:0 5px;}
+#info a{color:#333; text-decoration:none;font-size:12px;padding:0;}
+#info a:hover{color:#333; text-decoration:underline;}
+</style>
+
+<script type="text/javascript">
+function returndata(data) {
+    var parseData = "";
+    with(data.weatherinfo) {
+		parseData+="<a href='http://www.weather.com.cn/weather/101010100.shtml'>"+city+"</a> ";
+		//parseData+="<img width='20' src='http://www.weather.com.cn/m/i/weatherpic/29x20/" + img1 + "' title='中国天气网今日天气指数:" + weather+"' />",
+		parseData+="<a href='http://www.weather.com.cn/weather/101010100.shtml'>"+temp1+"-"+temp2+"</a>";
+		// parseData+="<a href='http://www.weather.com.cn/weather/101010100.shtml'>"+wind1+"</a>";
+
+    }
+    return parseData;
+}
+
+function getData(){
+	var htmlobj=$.ajax({
+        	type:'get',	
+        	async:false,
+			url:'/iframe/static/weather_json.html',
+			dataType: "json",
+			success:function(data){
+				//20150522注释
+				//$("#info").html(returndata(data));
+			}
+
+		});
+
+}
+
+$(document).ready(function(){
+	getData();
+
+});
+</script>
+
+<div id='info'></div> </div>           
+                    </div>
+                    <div class="searchinput right">
+                        <input type="text" value="请输入关键字" onclick="this.value='',this.style.color='#000'" name="q" id="q"  class="search_input" onkeydown="checksubmit()">
+
+                    <div class="search_listbox"> 
+
+                  					<!---->
+                     <script type="text/javascript"> 
+
+function checksubmit(){
+    var code = event.keyCode;
+    if(code == 13) submitFun();
+  }
+
+function submitFun() {
+
+var hotword=document.getElementsByName('q')[0].value;
+
+if (hotword==''){
+
+alert('请输入关键字!');
+
+return false;
+
+}
+else
+{
+
+$.ajax({
+  type: "GET",
+  url: "http://lc.chinanews.com:8090/rpc/pa.jsp?pid=1&paid=50&u=sousuo&aj="+encodeURI(Math.random()+ (new Date())),
+  dataType: "jsonp"
+});
+
+if(document.getElementsByName('s0')[0].value=='cns')
+{
+
+ window.open("http://sou.chinanews.com/search.do?q="+encodeURIComponent(hotword));
+ }
+ else if(document.getElementsByName('s0')[0].value=='baidu')
+ {
+ window.open("http://www.baidu.com/s?ie=utf-8&bs=%E4%B8+%9B%BD&sr=&z=&cl=3&f=8&wd="+encodeURIComponent(hotword)+"&ct=0");
+ }
+
+}
+
+}
+
+</script>  
+
+                <div style="_position:relative;padding:0px;margin:0px;" onmouseout="search_select(1)" onmouseover="search_select(0)" class="dii7" id="id7">
+                     <div  class="select_border">
+
+<div class="select_container">
+                     <select id="s0" name="s0"  class="selectnews"> 
+<option value="cns">中 新</option> 
+<option value="baidu">百 度</option> 
+
+</select> 
+</div>
+</div></div>      
+
+                    </div>
+                    <a  class="search_a" onclick="submitFun()">搜 索</a>
+					<div class="clear"></div>
+              </div>
+                    <div class="clear"></div>
+               </div>
+           <div class="clear"></div>
+        </div>
+
+  </div>
+        <div class="inter_navbox mt15" >
+             <div class="inter_nav" >
+                    <ul class="inter_nav_ul">                                                                                                                                    
+                      <li class="nav_sel"><a href="http://www.chinanews.com/shipin/m/gd/views.shtml">最新</a><em></em></li>
+                      <li><a href="http://www.chinanews.com/shipin/m/rd/views.shtml">热点</a><em></em></li>
+                      <li><a href="http://www.chinanews.com/shipin/m/gn/views.shtml">国内</a><em></em></li>
+                      <li><a href="http://www.chinanews.com/shipin/m/sh/views.shtml">社会</a><em></em></li>
+                      <li><a href="http://www.chinanews.com/shipin/m/gj/views.shtml">国际</a><em></em></li>
+                      <li><a href="http://www.chinanews.com/shipin/m/jq/views.shtml">军事</a><em></em></li>
+                      <li><a href="http://www.chinanews.com/shipin/m/wy/views.shtml">文娱</a><em></em></li>
+                      <li><a href="http://www.chinanews.com/shipin/m/tt/views.shtml">体育</a><em></em></li>
+                      <li><a href="http://www.chinanews.com/shipin/m/cj/views.shtml">财经</a><em></em></li>
+                      <li><a href="http://interview.chinanews.com/">访谈</a><em></em></li>
+                      <li><a href="http://www.chinanews.com/shipin/m/ga/views.shtml">港澳台侨</a><em></em></li>
+                      <li><a href="http://www.chinanews.com/shipin/minidocu.shtml">微视界</a><em></em></li>                         
+                      <li><a href="http://www.nea.chinanews.com/">东北亚电视网</a><em></em></li>
+
+               </ul>
+          </div>
+  </div>
+
+ <!--头部结束-->
+  <!--导读-->
+ <div class="w1000 m_center" id="daodu">
+ 	<div class="mt10">
+
+  <div class="enter_left">
+  <!-- sliderimg start -->
+      <div class="banner" id="kakaFocus1"> 
+                        <a class="btn_prev" id="lrbt_show1"  title="上一个" href="#">Previous</a> 
+                        <a class="btn_next" id="lrbt_show2"  title="下一个" href="#">Next</a> 
+                      <div class="banner_pic" id="gdt"> 
+                            <ul>
+
+		 <li><a href="http://www.chinanews.com/shipin/2016/12-26/news685250.shtml"><img width="645" height="327" src="http://www.chinanews.com/shipin/mian_pic/2016-12/U574P883T33D7119F774DT20161226112655.jpg" alt="【年终策划】2016年·还记得他们吗" /></a></li>
+
+		 <li><a href="http://www.chinanews.com/shipin/2016/12-25/news685209.shtml"><img width="645" height="327" src="http://www.chinanews.com/shipin/mian_pic/2016-12/U738P883T33D7118F774DT20161225185815.jpg" alt="俄罗斯国防部一架飞机坠毁于索契海岸附近" /></a></li>
+
+		 <li><a href="http://www.chinanews.com/shipin/2016/12-24/news685103.shtml"><img width="645" height="327" src="http://www.chinanews.com/shipin/mian_pic/2016-12/U738P883T33D7117F774DT20161224172612.jpg" alt="记者直击河北唐山烟花爆竹爆炸事故现场" /></a></li>
+
+                            </ul> 
+                      </div>
+                  <div class="banner_info">
+                            <ul>
+
+		 <li><a href="http://www.chinanews.com/shipin/2016/12-26/news685250.shtml">【年终策划】2016年·还记得他们吗</a></li>
+
+		 <li><a href="http://www.chinanews.com/shipin/2016/12-25/news685209.shtml">俄罗斯国防部一架飞机坠毁于索契海岸附近</a></li>
+
+		 <li><a href="http://www.chinanews.com/shipin/2016/12-24/news685103.shtml">记者直击河北唐山烟花爆竹爆炸事故现场</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="banner_info_bg"></div>
+
+                    </div>
+
+              <!-- sliderimg end -->
+
+    </div>
+    <div class="enter_right">
+
+        <div class="main_title ">
+
+                        <div class="life_title_text"><a href="http://www.chinanews.com/shipin/m/gd/views.shtml">热点推荐</a></div>
+                        <div class="new_right_titlejc" style="display:none;">
+                            <ul class="new_right_titlezhwh_ul" id="myTabhd_gd">
+                                <li onmouseover="nTabs(this,0);" class=" active"><a></a></li>
+                                <li onmouseover="nTabs(this,1);" class="normal"><a></a></li>
+                                <li onmouseover="nTabs(this,2);" class="normal"><a></a></li>
+                             </ul>
+                             <!--<div class="fanhui_bt"><a href="#"><img src="http://i8.chinanews.com/2014/sp/fanhui.jpg"></a></div>-->
+                             <div class="clear"></div>
+                       </div>
+
+      </div>
+              <div class="p10">
+             	<div id="myTabhd_gd_Content0">
+                	 <div class="mt10">
+                         <ul class="renwufc_ul_pic ">
+                     <li>
+                                   <div class="conlist_img"><a href="/shipin/2016/12-26/news685304.shtml"><img src="http://www.chinanews.com/shipin/2016/12-26/U568P883T4D685304F113DT20161226103408.jpg"></a></div>
+                                   <div class="title_text"><a href="/shipin/2016/12-26/news685304.shtml">揭秘鉴黄师：残疾人志愿参与 每天审核图片5000张</a></div>
+                            </li><li>
+                                   <div class="conlist_img"><a href="/shipin/2016/12-26/news685289.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/834880_sm.jpg"></a></div>
+                                   <div class="title_text"><a href="/shipin/2016/12-26/news685289.shtml">马儿发现被“骗”感情 失望调头就走</a></div>
+                            </li><li>
+                                   <div class="conlist_img"><a href="/shipin/2016/12-26/news685285.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/834873_sm.jpg"></a></div>
+                                   <div class="title_text"><a href="/shipin/2016/12-26/news685285.shtml">11岁男孩偷开汽车撞死路人逃逸 以为撞到树枝</a></div>
+                            </li>
+
+                         <div style=""><!--[883,34,57] published at 2016-10-24 10:42:53 from #202 by 574-->
+ <li>
+                                   <div class="conlist_img"><a href="http://www.chinanews.com/shipin/2016/10-24/news672899.shtml"><img src="/2012/part/home/U574P883T34D57F793DT20161024104253.jpg"></a></div>
+                                   <div class="title_text"><a href="http://www.chinanews.com/shipin/2016/10-24/news672899.shtml">系列纪录片《丝路新语》</a></div>
+                            </li></div>
+
+                                   <div class="clear"></div>
+                       </ul>
+                     </div> 
+                </div>
+                <div id="myTabhd_gd_Content1" style="display:none;">
+                	 <div class="mt10">
+                         <ul class="renwufc_ul_pic ">
+
+                               <li>
+                                   <div class="conlist_img"><a href="/shipin/2016/12-26/news685246.shtml"><img src="/shipin/2016/12-26/U574P883T4D685246F113DT20161226081157.jpg"></a></div>
+                                   <div class="title_text"><a href="/shipin/2016/12-26/news685246.shtml">俄国防部一架图-154飞机失事 黑匣子尚未发现</a></div>
+                            </li><li>
+                                   <div class="conlist_img"><a href="/shipin/2016/12-25/news685235.shtml"><img src="/shipin/2016/12-25/U738P883T4D685235F113DT20161225202814.jpg"></a></div>
+                                   <div class="title_text"><a href="/shipin/2016/12-25/news685235.shtml">俄国防部一飞机失事 莫斯科民众悼念遇难者</a></div>
+                            </li><li>
+                                   <div class="conlist_img"><a href="/shipin/2016/12-25/news685183.shtml"><img src="/shipin/2016/12-25/U738P883T4D685183F113DT20161225124538.jpg"></a></div>
+                                   <div class="title_text"><a href="/shipin/2016/12-25/news685183.shtml">女子吃醋上瘾 心情好喝老陈醋心情不好喝白醋</a></div>
+                            </li><li>
+                                   <div class="conlist_img"><a href="/shipin/2016/12-25/news685161.shtml"><img src="/shipin/2016/12-25/U738P883T4D685161F113DT20161225141804.jpg"></a></div>
+                                   <div class="title_text"><a href="/shipin/2016/12-25/news685161.shtml">成都老师自创“表情包试卷”走红</a></div>
+                            </li>
+
+                                   <div class="clear"></div>
+                       </ul>
+                     </div> 
+                </div>
+                <div id="myTabhd_gd_Content2" style="display:none;">
+                	 <div class="mt10">
+                         <ul class="renwufc_ul_pic ">
+
+                                 <li>
+                                   <div class="conlist_img"><a href="/shipin/2016/12-25/news685154.shtml"><img src="/shipin/2016/12-25/U738P883T4D685154F113DT20161225103437.jpg"></a></div>
+                                   <div class="title_text"><a href="/shipin/2016/12-25/news685154.shtml">什么仇什么怨 女司机怒砸环卫工手机被路人拍下</a></div>
+                            </li><li>
+                                   <div class="conlist_img"><a href="/shipin/2016/12-24/news685106.shtml"><img src="/shipin/2016/12-24/U738P883T4D685106F113DT20161224174614.jpg"></a></div>
+                                   <div class="title_text"><a href="/shipin/2016/12-24/news685106.shtml">奥斯卡加盟上海上港 转会费创纪录</a></div>
+                            </li><li>
+                                   <div class="conlist_img"><a href="/shipin/2016/12-24/news685027.shtml"><img src="/shipin/2016/12-24/U738P883T4D685027F113DT20161224142030.jpg"></a></div>
+                                   <div class="title_text"><a href="/shipin/2016/12-24/news685027.shtml">闯红灯真的会要命！监拍火车与汽车相撞瞬间</a></div>
+                            </li><li>
+                                   <div class="conlist_img"><a href="/shipin/2016/12-23/news684946.shtml"><img src="/shipin/2016/12-23/U666P883T4D684946F113DT20161223162631.jpg"></a></div>
+                                   <div class="title_text"><a href="/shipin/2016/12-23/news684946.shtml">实拍上海迪士尼表演出意外 女演员从空中跌落</a></div>
+                            </li>
+
+                                   <div class="clear"></div>
+                       </ul>
+                     </div> 
+                </div>
+             </div>
+	  </div>
+
+    <div class="clear"></div>
+    </div>
+ </div>
+  <!--导读结束-->
+   <div style="width:1000px;margin:0 auto; margin-top:10px;" id="news_top_advert">
+<!--[4,175,372] published at 2016-03-30 16:08:36 from #10 by 郑振海--></div>
+   </div>
+   </div>
+ <!--要闻-->
+<div class="w1000 m_center" id="yaowen">
+ 	<div class="mt10">
+
+        <div class="enter_main_left" id="sticky_left">
+        <!---->
+            <div  id="jsxw_layer" style="height:41px;" >
+              <div class="enter_listtitle">
+
+                      <div id="jsxwredbox_Con1" style="display:block;" class="enter_listtitle_layer">
+                       <ul class="tab-list" id="jsxw_sp">                                                                                                
+                                <li class="filter-item d-ib filter-selected" onClick="js_jsxwssp(this,0);">    
+                                    <a class="filter-name" >最新</a></li>
+                                <li class="filter-item d-ib" onClick="js_jsxwssp(this,1);" >    
+                                     <a class="filter-name" >热点</a></li>
+                                <li  class="filter-item d-ib" onClick="js_jsxwssp(this,2);">    
+                                    <a class="filter-name" >社会</a></li>
+                                <li  class="filter-item d-ib" onClick="js_jsxwssp(this,3);">    
+                                     <a class="filter-name" >国际</a></li>
+                                <li class="filter-item d-ib" onClick="js_jsxwssp(this,4);">    
+                                     <a class="filter-name" >军事</a></li>
+                               <li class="filter-item d-ib" onClick="js_jsxwssp(this,5);">    
+                                     <a class="filter-name" >文娱</a></li>
+                                <li class="filter-item d-ib" onClick="js_jsxwssp(this,6);">    
+                                     <a class="filter-name" >体育</a></li>
+                                <li class="filter-item d-ib" onClick="js_jsxwssp(this,7);">    
+                                     <a class="filter-name" >财经</a></li>
+                                <li class="filter-item d-ib" onClick="js_jsxwssp(this,8);" >    
+                                     <a class="filter-name" >访谈</a></li>
+                                <li class="filter-item d-ib" onClick="js_jsxwssp(this,9);" >    
+                                     <a class="filter-name" >港澳台侨</a></li>
+                             </ul>
+                             <!--<div class="fanhui_bt fanhui_bt1"><a href="#"><img src="http://i8.chinanews.com/2014/sp/fanhui.jpg"></a></div>-->
+                              <div class="clear"></div>
+                        </div>
+                      </div>
+          </div>
+
+                     <div class="news_list_ulbox">
+
+                          <!--视频新闻分类start--> 
+                          <!--社会s-->
+                         <div id="jsxw_sp_Con1" style="display:none;"><ul class="news_list_ul" id="ent1"><!--法治-->
+
+						<!--法治-->
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685332.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835182_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685332.shtml">保利集团回应“保利俱乐部涉黄被查”：商标被盗用</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:13 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685331.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835165_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685331.shtml">《中医药法》表决通过明年施行</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:13 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685329.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835160_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685329.shtml">超强台风“洛坦”登陆菲律宾</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:13 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685328.shtml"><img src="http://www.chinanews.com/shipin/2016/12-26/U574P883T4D685328F158DT20161226131701.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685328.shtml">中国第四批赴马里维和部队获最高奖</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:13 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685327.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835114_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685327.shtml">两人在喀麦隆发动自杀式袭击 数名平民受伤</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:13 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685316.shtml"><img src="http://www.chinanews.com/shipin/2016/12-26/U574P883T4D685316F158DT20161226130821.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685316.shtml">厦门马拉松一名猝死的参赛选手是“替跑者”</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:01 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685312.shtml"><img src="http://www.chinanews.com/shipin/2016/12-26/U574P883T4D685312F158DT20161226114505.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685312.shtml">“战神”轰－6K飞行员讲述南海战巡</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 11:02 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685309.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835041_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685309.shtml">零下30度冬泳是怎样一种体验 直击中国冬泳邀请赛</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 11:02 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685306.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835077_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685306.shtml">2016大演兵·空军：20系列加入空军战斗序列</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 10:57 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685305.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835028_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685305.shtml">查干湖冬捕拉开序幕 水下摄像机实拍冰下走网</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 10:41 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685304.shtml"><img src="http://www.chinanews.com/shipin/2016/12-26/U568P883T4D685304F158DT20161226103408.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685304.shtml">揭秘鉴黄师：残疾人志愿参与 每天审核图片5000张</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 10:34 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685302.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835050_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685302.shtml">男排联赛  山东3:1四川</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 09:49 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685301.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835049_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685301.shtml">福州国际马拉松赛  埃塞选手夺冠</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 09:49 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685300.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835048_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685300.shtml">乒超联赛女团  武汉3:1北京</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 09:49 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+		 <input type="hidden" name="specialid" id="specialid1" value="rd"/>
+                         <input type="hidden" name="total_page_total" id="total_page_total1" value="300"/></ul>
+                         <div class="news_lookmore"><div id="page_bar1"></div></div>
+                         </div>
+                         <!--社会e-->
+
+                          <!--法治s-->
+                         <div id="jsxw_sp_Con2" style="display:none;"><ul class="news_list_ul" id="ent2"><!--社会-->
+
+						<!--社会-->
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685317.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835113_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685317.shtml">多条交通路线年底贯通：兰渝铁路岷广段通车</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:01 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685311.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835062_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685311.shtml">利比亚客机遭劫持事件：两名劫机嫌疑人出庭受审</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 11:02 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-26/news685297.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-26/73906_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-26/news685297.shtml">年终盘点：2016之年度“惊喜录”</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 09:22 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-26/news685251.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-26/73808_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-26/news685251.shtml">铝制品起火不能用水灭 挂车烧成空架子</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 08:57 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685243.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-25/74010_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685243.shtml">重庆六岁男童圣诞前病逝 父亲捐其器官望救助他人</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 22:22 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685241.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-25/74005_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685241.shtml">重庆仙女山六千大学生狂欢 扮圣诞老人与驯鹿羊驼炫跑</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 22:08 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685240.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-25/74004_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685240.shtml">钢管舞者挑战严寒 楚楚“冻”人展健康原色</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 22:08 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685239.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-25/73994_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685239.shtml">重庆街头现“雪景” 市民“冰雪世界”中迎圣诞</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 22:08 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685238.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-25/74009_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685238.shtml">福建惠安成品鞋材仓库突发大火 黑烟蔽日火势凶猛</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 22:08 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685237.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-25/74007_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685237.shtml">重庆解放碑万人迎圣诞 警员备勤受民众围观称赞</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 21:00 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685204.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-25/73980_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/sh/shipin/cns/2016/12-25/news685204.shtml">云南野生动物屡遭伤害 警民合力救助“断腿”猕猴</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 16:44 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/sh/shipin/2016/12-25/news685189.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-25/834621_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/sh/shipin/2016/12-25/news685189.shtml">卫计委回应《高回扣下的高药价》报道：立即严查</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 14:13 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/sh/shipin/2016/12-25/news685182.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-25/834630_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/sh/shipin/2016/12-25/news685182.shtml">男子清晨开挖掘机抢银行 被当场抓获</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 12:39 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/sh/shipin/2016/12-25/news685150.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-25/834465_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/sh/shipin/2016/12-25/news685150.shtml">农民自掏24万元 将泥泞村道修成水泥路 </a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 10:07 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+		 <input type="hidden" name="specialid" id="specialid2" value="sh"/>
+                         <input type="hidden" name="total_page_total" id="total_page_total2" value="300"/></ul>
+                         <div class="news_lookmore"><div id="page_bar2"></div></div>
+                         </div>
+                         <!--法治e-->
+
+                         <!--国际s-->
+                         <div id="jsxw_sp_Con3" style="display:none;"><ul class="news_list_ul" id="ent3"><!--国际-->
+
+						<!--国际-->
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685326.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835159_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685326.shtml">突尼斯政党：柏林袭击案嫌犯对突“发动战争”</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:04 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685325.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835152_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685325.shtml">英女王发表圣诞讲话 致敬“平凡英雄”</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685324.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835137_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685324.shtml">墨西哥“烈焰火山”24小时内两次喷发</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685323.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835124_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685323.shtml">“萨德”入韩问题：部署地估价或于本周完成</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685322.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835122_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685322.shtml">韩“亲信干政”事件：执政党内“反朴派”将退党</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685321.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835121_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685321.shtml">韩“亲信干政”：看守所内举行第六轮国会听证</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685320.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835120_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685320.shtml">韩“亲信干政”：特检组搜查青瓦台前幕僚长住宅</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685319.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835119_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685319.shtml">安理会敦促以色列停止定居点活动 </a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685318.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835117_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685318.shtml">德国拆除二战炸弹 5万居民被疏散</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685298.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/834935_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685298.shtml">巴以再生摩擦 以色列总理强硬回应联合国决议</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 09:25 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685296.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/834940_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685296.shtml">尼日利亚总统宣布“博科圣地”被摧毁</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 09:16 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685295.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/834936_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685295.shtml">韩国独立检察组传唤“亲信干政”事件关键人物</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 09:16 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685294.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/834932_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685294.shtml">韩媒：崔顺实17年前就已“掌控”朴槿惠</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 09:16 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685293.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/834929_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685293.shtml">巴基斯坦释放220名印度渔民</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 09:16 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+		 <input type="hidden" name="specialid" id="specialid3" value="gj"/>
+                         <input type="hidden" name="total_page_total" id="total_page_total3" value="300"/></ul>
+                         <div class="news_lookmore"><div id="page_bar3"></div></div>
+                         </div>
+                         <!--国际e-->
+
+                         <!--军事s-->
+                         <div id="jsxw_sp_Con4" style="display:none;"><ul class="news_list_ul" id="ent4"><!--军事-->
+
+						<!--军事-->
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684959.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-23/73828_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684959.shtml">武警交通女兵：盛开在川藏线上的“雪莲花”</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 18:37 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/mil/shipin/cns/2016/12-23/news684868.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-23/73909_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/mil/shipin/cns/2016/12-23/news684868.shtml">武警特战队员训练：肩扛200多公斤圆木爬坡5公里</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 12:50 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-22/news684764.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-22/73899_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-22/news684764.shtml">福建泉州武警部队野营拉练 吹响冬季练兵“集结号”</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月22日 21:39 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-20/news684301.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-20/73795_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-20/news684301.shtml">“飞虎奇兵”影像展昆明展出 回忆曾经的峥嵘岁月</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月20日 21:31 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-20/news684294.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-20/73790_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-20/news684294.shtml">昆明飞虎队纪念馆开馆 “重现”飞虎队传奇</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月20日 20:50 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/gn/shipin/cns/2016/12-17/news683683.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-17/73690_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/gn/shipin/cns/2016/12-17/news683683.shtml">上海为共和国建立功勋的七位老兵举行集体葬礼</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月17日 19:43 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/mil/shipin/2016/12-11/news682132.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-11/826992_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/mil/shipin/2016/12-11/news682132.shtml">陆军：陆航旅组织跨昼夜极限飞行训练</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月11日 11:43 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/mil/shipin/2016/12-11/news682089.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-11/826932_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/mil/shipin/2016/12-11/news682089.shtml">国防部：严重关切日军机干扰中国正常训练</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月11日 10:13 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-02/news680577.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-02/822546_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-02/news680577.shtml">市民笔名“顺其自然”18年共捐款859万</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月2日 21:39 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/11-30/news680102.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/11-30/72901_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/11-30/news680102.shtml">探访中国第一航空发动机制造厂遗址：天然山洞别有洞天</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年11月30日 20:58 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/mil/shipin/2016/11-27/news679264.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/11-26/819245_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/mil/shipin/2016/11-27/news679264.shtml">转型发展新实践 空军精细化评估牵引实战</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年11月27日 11:21 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+		 <input type="hidden" name="specialid" id="specialid4" value="jq"/>
+                         <input type="hidden" name="total_page_total" id="total_page_total4" value="300"/></ul>
+                         <div class="news_lookmore"><div id="page_bar4"></div></div>
+                         </div>
+                         <!--军事e-->
+
+                         <!--文娱s-->
+                         <div id="jsxw_sp_Con5" style="display:none;"><ul class="news_list_ul" id="ent5"><!--文娱-->
+
+						<!--文娱-->
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-26/news685303.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-26/74002_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-26/news685303.shtml">成龙点评“小鲜肉”时代：真正的动作演员越来越少</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 10:26 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-26/news685299.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-26/74000_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-26/news685299.shtml">肖央现身成都宣传《情圣》 直言不会“单飞”</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 09:34 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/cul/shipin/cns/2016/12-25/news685244.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-25/73988_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/cul/shipin/cns/2016/12-25/news685244.shtml">创新跨界国宝艺术大家钞版纪念券上海面世</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 22:22 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/yl/shipin/cns/2016/12-25/news685242.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-25/73995_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/yl/shipin/cns/2016/12-25/news685242.shtml">成龙携新片亮相重庆献唱推广曲 坦言拳脚动作突破已很难</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 22:08 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685129.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-24/73957_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685129.shtml">江苏首家越剧博物馆开门迎客 传播戏剧文化精髓</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月24日 20:09 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685098.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-24/73953_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685098.shtml">“动感101圣诞奇妙派对”登陆上海迪士尼 明星互动狂欢</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月24日 16:55 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684989.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-23/73948_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684989.shtml">画家董希源红色写生之旅作品巡展龙岩站开幕</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 21:54 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684988.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-23/73914_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684988.shtml">探访西递冬至祭祀人文初祖轩辕黄帝</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 21:33 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684972.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-23/73922_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684972.shtml">温馨地铁书房现身杭州一号线 墨香传递引乘客驻足</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 19:38 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/yl/shipin/cns/2016/12-23/news684948.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-23/73912_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/yl/shipin/cns/2016/12-23/news684948.shtml">Angelababy出席《摆渡人》首映礼 笑称自己是胖子</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 16:49 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/cul/shipin/2016/12-23/news684864.shtml"><img src="http://www.chinanews.com/cul/shipin/2016/12-23/U655P883T4D684864F158DT20161223111718.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/cul/shipin/2016/12-23/news684864.shtml">爱情喜剧《爱情失格》首演 引导青年人正确爱情观</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 11:17 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-22/news684761.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-22/73894_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-22/news684761.shtml">展示拿破仑时期法国历史的微雕展亮相昆明</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月22日 20:59 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-22/news684743.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-22/73852_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-22/news684743.shtml">贵州办民族民间工艺展 120多位工艺大师集体亮相</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月22日 19:11 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/cul/shipin/cns/2016/12-22/news684675.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-22/73870_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/cul/shipin/cns/2016/12-22/news684675.shtml">百余名非遗传人百天打造万灯齐放</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月22日 15:23 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+		 <input type="hidden" name="specialid" id="specialid5" value="wy"/>
+                         <input type="hidden" name="total_page_total" id="total_page_total5" value="300"/></ul>
+                         <div class="news_lookmore"><div id="page_bar5"></div></div>
+                         </div>
+                         <!--文娱e-->
+
+                         <!--体育s-->
+                         <div id="jsxw_sp_Con6" style="display:none;">
+                <div >
+                    <div  >
+                     <ul class="news_list_ul" id="ent6">
+                    	<!--体育-->
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-22/news684667.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-22/73780_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-22/news684667.shtml">成都老外组织迷你NBA 无国界篮球引追捧</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月22日 14:07 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-18/news683841.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-18/73708_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-18/news683841.shtml">攀岩女队员勇夺TOP点超时 成绩无效称没有资格放弃</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月18日 19:06 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-18/news683809.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-18/73706_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-18/news683809.shtml">吉林松花江上演“隆冬”龙舟赛 中外选手感受别样激情</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月18日 16:28 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-17/news683687.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-17/73697_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-17/news683687.shtml">上合“昆马”开跑：导盲犬与主人合作 轻松跑完5公里</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月17日 21:43 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-17/news683685.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-17/73694_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-17/news683685.shtml">滑雪选手徐梦桃成就世界杯17冠 目标锁定下一届冬奥会</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月17日 20:14 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-13/news682628.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-13/73445_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-13/news682628.shtml">长江三峡国际越野赛开跑 中国选手征服巫山险峻陡峭赛道夺冠</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月13日 10:35 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-10/news682087.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-10/73373_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-10/news682087.shtml">短道速滑世界杯上海站：范可新遗憾丢金 武大靖起跑致胜</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月10日 22:48 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-10/news682086.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-10/73374_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-10/news682086.shtml">厦门半程马拉松赛鸣枪开跑 1.8万名选手参与角逐</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月10日 22:48 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-10/news682085.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-10/73369_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-10/news682085.shtml">第十四届广州“泰瑞·福克斯”慈善慢跑活动10日举行</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月10日 22:47 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-10/news682062.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-10/73346_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-10/news682062.shtml">中国单板滑雪高手长春炫技 “热雪90后”成焦点</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月10日 17:46 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-09/news681961.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-09/73326_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-09/news681961.shtml">11省高手贵州荔波赛陀螺 战况激烈</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月9日 20:21 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-09/news681933.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-09/73313_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-09/news681933.shtml">奥运冠军周洋不受伤病困扰 家乡力推冰上运动</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月9日 17:58 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-09/news681843.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-09/73302_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-09/news681843.shtml">河南体彩助学做公益  优秀贫困大学生获捐60万</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月9日 11:37 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-07/news681511.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-07/73201_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+<div class="news_title"><em><a href="http://www.chinanews.com/ty/shipin/cns/2016/12-07/news681511.shtml">美女武术冠军伤退创业 “跨界”普及“绅士运动”</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月7日 19:44 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+                         <input type="hidden" name="specialid" id="specialid6" value="sp"/>
+                         <input type="hidden" name="total_page_total" id="total_page_total6" value="300"/>
+
+                     </ul>
+                    <div class="news_lookmore">		<div id="page_bar6"></div>
+</div>
+                    </div>
+
+                </div>
+                 </div>
+                         <!--体育e-->
+
+                         <!--财经s-->
+                         <div id="jsxw_sp_Con7" style="display:none;">
+                <div >
+                    <div  >
+                     <ul class="news_list_ul" id="ent7">
+                    	<!--财经-->
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685099.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-24/73898_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685099.shtml">海南大力推动“医保漫游” 方便“候鸟人群”异地就医</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月24日 16:55 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685094.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-24/73941_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685094.shtml">百度李东旻：人工智能将颠覆传统地图</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月24日 16:54 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684990.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-23/73925_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684990.shtml">杭州首家互联网医疗全科中心 互联网+体验式医疗更人性化</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 22:06 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/it/shipin/2016/12-23/news684952.shtml"><img src="http://www.chinanews.com/it/shipin/2016/12-23/U310P883T4D684952F158DT20161223170158.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/it/shipin/2016/12-23/news684952.shtml">2016探知未来科普创新实验大赛落幕 作品将被中国科技馆收藏</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 17:01 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-22/news684760.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-22/73900_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-22/news684760.shtml">重庆正式出台网约车管理暂行办法 对驾驶员无户籍限制</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月22日 20:59 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-22/news684644.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-22/73857_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-22/news684644.shtml">百名飞手齐聚新疆哈密首届中国无人机航拍论坛开幕</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月22日 11:18 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-21/news684446.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-21/73801_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-21/news684446.shtml">网络点餐黑作坊追踪 “饿了么”已下线问题餐馆</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月21日 11:44 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-21/news684407.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-21/73794_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-21/news684407.shtml">南京楼市未现回暖 新房促销重回市场</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月21日 09:49 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-20/news684252.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-20/73765_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-20/news684252.shtml">且末机场通航 新疆民用机场达17个</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月20日 15:51 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-19/news683997.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-19/73730_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-19/news683997.shtml">中国酿出罕见冰葡萄酒 各国食客尝鲜盛赞</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月19日 15:02 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-19/news683951.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-19/73717_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-19/news683951.shtml">智能机器人抱团寻发展 百位中国服务机器人CEO聚重庆</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月19日 11:43 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-18/news683850.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-18/73711_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-18/news683850.shtml">海丝沿线国家学者聚首厦门 探讨东盟与海丝新机遇</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月18日 20:19 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/auto/shipin/cns/2016/12-18/news683834.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-18/73561_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/auto/shipin/cns/2016/12-18/news683834.shtml">共享单车热度未消 成都“共享”汽车火热来袭</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月18日 17:55 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-18/news683832.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-18/73700_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+
+                      <div class="news_title"><em><a href="http://www.chinanews.com/cj/shipin/cns/2016/12-18/news683832.shtml">财经高官学者建言2017年中国经济四大任务</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月18日 17:52 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+                         <input type="hidden" name="specialid" id="specialid7" value="sp"/>
+                         <input type="hidden" name="total_page_total" id="total_page_total7" value="300"/>
+
+                     </ul>
+                    <div class="news_lookmore">		<div id="page_bar7"></div>
+</div>
+                    </div>
+
+                </div>
+                 </div>
+                         <!--财经e-->
+
+                         <!--访谈s-->
+                         <div id="jsxw_sp_Con8" style="display:none;">
+                <div >
+                    <div  >
+                     <ul class="news_list_ul" id="ent8">
+                    	<!--访谈-->
+
+                         <input type="hidden" name="specialid" id="specialid8" value="sp"/>
+                         <input type="hidden" name="total_page_total" id="total_page_total8" value="300"/>
+
+                     </ul>
+                    <div class="news_lookmore">		<div id="page_bar8"></div>
+</div>
+                    </div>
+
+                </div>
+                 </div>
+                         <!--访谈e-->
+
+                         <!--港澳台侨s-->
+                         <div id="jsxw_sp_Con9" style="display:none;">
+                <div >
+                    <div  >
+                     <ul class="news_list_ul" id="ent9">
+                    	<!--社会-->
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685131.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-24/73930_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685131.shtml">海派中国画家作品展在上海开幕 展侨界艺术家中国梦</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月24日 20:50 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685105.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-24/73960_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685105.shtml">台湾台东县举行旅游推介会 邀湖南同胞深度慢游</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月24日 17:30 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685104.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-24/73956_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-24/news685104.shtml">海外华裔青少年四川遂宁寻根 亲手种植蔬菜感受传统农耕文化</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月24日 17:30 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684983.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-23/73929_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684983.shtml">探访侨乡福建晋江：台湾青年圆梦大陆文创园</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 21:12 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684971.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-23/73885_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/cns/2016/12-23/news684971.shtml">两岸退役将军聚首厦门挥毫泼墨演绎丹青</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 19:38 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/hr/shipin/cns/2016/12-23/news684947.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-23/73905_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/hr/shipin/cns/2016/12-23/news684947.shtml">2016海外华裔四川营青少年 都江堰寻根问祖感受中华文化</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 16:48 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/tw/shipin/2016/12-23/news684924.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-22/833272_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/tw/shipin/2016/12-23/news684924.shtml">台当局提高陆客赴台个人游限额遭批没用</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 14:42 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ga/shipin/2016/12-23/news684922.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-23/833473_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/ga/shipin/2016/12-23/news684922.shtml">香港拟设立初中基本法教育最低课时要求</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 14:38 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/tw/shipin/2016/12-23/news684917.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-23/833647_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/tw/shipin/2016/12-23/news684917.shtml">台“党产会”明年预算一毛未删</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 14:37 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/tw/shipin/2016/12-23/news684915.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-23/833644_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/tw/shipin/2016/12-23/news684915.shtml">冯世宽再抖“笑话” 称台军靠自己能突破解放军封锁</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 14:37 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/hr/shipin/2016/12-23/news684913.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-23/833704_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/hr/shipin/2016/12-23/news684913.shtml">加拿大：卑诗省省长开通中文微信公众号 聆听华人声音</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 14:36 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/hr/shipin/2016/12-23/news684912.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-23/833701_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/hr/shipin/2016/12-23/news684912.shtml">马来西亚：华裔青年轻信“零门槛贷款”上当受骗</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 14:36 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/hr/shipin/2016/12-23/news684909.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-23/833696_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/hr/shipin/2016/12-23/news684909.shtml">红透洛杉矶的上海滩红烧肉</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 14:36 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/hr/shipin/2016/12-23/news684906.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-23/833687_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/hr/shipin/2016/12-23/news684906.shtml">澳大利亚：心梗医治新突破 华裔医生攻克世界级医学难题</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月23日 14:36 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+                         <input type="hidden" name="specialid" id="specialid9" value="sp"/>
+                         <input type="hidden" name="total_page_total" id="total_page_total9" value="300"/>
+
+                     </ul>
+                    <div class="news_lookmore">		<div id="page_bar9"></div>
+</div>
+                    </div>
+
+                </div>
+                 </div>
+                         <!--港澳台侨e-->
+
+                            <!--视频新闻分类end-->
+                          <!--全部-->
+
+                             <div id="jsxw_sp_Con0" style="display:block;">
+                <div >
+                    <div  >
+                     <ul class="news_list_ul" id="ent0">
+
+                    <!--滚动新闻-->
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685332.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835182_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685332.shtml">保利集团回应“保利俱乐部涉黄被查”：商标被盗用</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:13 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685331.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835165_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685331.shtml">《中医药法》表决通过明年施行</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:13 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685329.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835160_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685329.shtml">超强台风“洛坦”登陆菲律宾</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:13 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685328.shtml"><img src="http://www.chinanews.com/shipin/2016/12-26/U574P883T4D685328F158DT20161226131701.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685328.shtml">中国第四批赴马里维和部队获最高奖</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:13 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685327.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835114_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685327.shtml">两人在喀麦隆发动自杀式袭击 数名平民受伤</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:13 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685326.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835159_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685326.shtml">突尼斯政党：柏林袭击案嫌犯对突“发动战争”</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:04 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685325.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835152_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685325.shtml">英女王发表圣诞讲话 致敬“平凡英雄”</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685324.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835137_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685324.shtml">墨西哥“烈焰火山”24小时内两次喷发</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685323.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835124_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685323.shtml">“萨德”入韩问题：部署地估价或于本周完成</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685322.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835122_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685322.shtml">韩“亲信干政”事件：执政党内“反朴派”将退党</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685321.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835121_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685321.shtml">韩“亲信干政”：看守所内举行第六轮国会听证</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685320.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835120_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685320.shtml">韩“亲信干政”：特检组搜查青瓦台前幕僚长住宅</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685319.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835119_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685319.shtml">安理会敦促以色列停止定居点活动 </a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/shipin/2016/12-26/news685318.shtml"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-26/835117_big.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_title"><em><a href="http://www.chinanews.com/shipin/2016/12-26/news685318.shtml">德国拆除二战炸弹 5万居民被疏散</a></em></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:03 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+                         <input type="hidden" name="specialid" id="specialid0" value="sp"/>
+                         <input type="hidden" name="total_page_total" id="total_page_total0" value="300"/>
+
+                     </ul>
+                    <div class="news_lookmore">		<div id="page_bar0"></div>
+</div>
+                    </div>
+
+                </div>
+                 </div>
+          </div>
+            <!---->
+      </div>
+
+        <div class="enter_main_right">
+        	<div class="pl-l pr-xs">
+             <div style="" class="sticky-pholder" id="sticky_right2"></div>
+             <div style="" class="sticky-rail-right-holder" id="sticky_right">
+         <div class="hkjg" style="margin-left:15px;">
+
+           <div style=""><!--[883,34,58] published at 2016-12-07 13:53:52 from #202 by 719-->
+<a href="http://www.chinanews.com/kong/z/bianjiceshi/index.shtml"><img src="http://www.chinanews.com/2012/part/home/U574P883T34D58F793DT20161108160748.jpg" /></a>
+<p style="padding-top:10px;">
+<a href="http://www.chinanews.com/sp/z/hangkongjiuguo/index.shtml"><img src="http://www.chinanews.com/2012/part/home/U574P883T34D58F804DT20161109142101.jpg" /></a>
+</p></div>
+         </div>
+         <div class="" style="margin-top:40px;">
+				<div class="main_title_r ">
+                   <div class="life_title_text"> <a href="http://www.chinanews.com/shipin/minidocu.shtml"><div class="layerimg"> <div class="weishijie"></div></div></a></div>
+                   <div class="life_title_more"><a href="http://www.chinanews.com/shipin/minidocu.shtml"><span>+</span>更多</a></div>
+
+                </div>
+                   <div class="p10">
+                         <div class="module_right_paihang ">
+                            <ul>
+                            <li>
+                                    <div class="leftimg"><a href="http://www.chinanews.com/shipin/wsj/2016/1220/wsj160.html"><img src="http://www.chinanews.com/shipin/2016/12-20/U615P883T4D684178F113DT20161220100505.jpg"></a></div>
+                                     <div class="righttext"><a href="http://www.chinanews.com/shipin/wsj/2016/1220/wsj160.html"><strong>魔性声优</strong></a></div>
+                                     <div class="clear"></div>
+                              </li><li>
+                                    <div class="leftimg"><a href="http://www.chinanews.com/shipin/wsj/2016/1213/wsj159.html"><img src="http://www.chinanews.com/shipin/2016/12-13/U616P883T4D682617F113DT20161213095415.jpg"></a></div>
+                                     <div class="righttext"><a href="http://www.chinanews.com/shipin/wsj/2016/1213/wsj159.html"><strong>爱宠“复活”计划</strong></a></div>
+                                     <div class="clear"></div>
+                              </li><li>
+                                    <div class="leftimg"><a href="http://www.chinanews.com/shipin/wsj/2016/1206/wsj158.html"><img src="http://www.chinanews.com/shipin/2016/12-06/U615P883T4D681086F113DT20161206103551.jpg"></a></div>
+                                     <div class="righttext"><a href="http://www.chinanews.com/shipin/wsj/2016/1206/wsj158.html"><strong>花房姑娘</strong></a></div>
+                                     <div class="clear"></div>
+                              </li>
+
+                             </ul>
+                              <div class="clear"></div>
+                       </div>
+                  </div>
+             </div>
+
+                <div style="width:340px;margin-top:5px;"><div style="position: relative; width: 340px;height: 120px;">
+
+<script type="text/javascript">
+var cpro_id="u2317330";
+(window["cproStyleApi"] = window["cproStyleApi"] || {})[cpro_id]={at:"3",rsi0:"340",rsi1:"120",pat:"6",tn:"baiduCustNativeAD",rss1:"#FFFFFF",conBW:"1",adp:"1",ptt:"2",ptc:"%E7%8C%9C%E4%BD%A0%E6%84%9F%E5%85%B4%E8%B6%A3",ptFS:"14",ptFC:"#000000",ptBC:"#cc0000",titFF:"%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91",titFS:"14",rss2:"#000000",titSU:"0",ptbg:"90",piw:"0",pih:"0",ptp:"0"}
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+
+<img width="30" height="17"  src="http://i8.chinanews.com/gg/160711/ad_4.png" style="position: absolute; right: 0px; bottom: 0px; z-index: 4; border: none; width: 30px; height: 17px;">
+</div>
+<!--[4,175,373] published at 2016-08-02 11:02:41 from #10 by 郑振海--></div>
+
+                     <!--<div class="pt10">
+                     <div class="main_title_r ">
+                           <div class="life_title_text"> <a href="http://interview.chinanews.com/"><div class="layerimg1"> <div class="fangtan"></div></div></a></div>
+                           <div class="life_title_more"><a href="http://interview.chinanews.com/"><span>+</span>更多</a></div>
+                       </div>
+                      <div class="p10">
+                      <div class="module_right_paihang ">
+                                    <ul>
+
+                        </ul>
+                                      <div class="clear"></div>
+                        </div>
+                       <div class="life_left_ulr mt10">
+                            <ul>
+
+                         </ul>
+                        </div>
+                      </div>
+               </div>-->
+
+               <div class="pt10">
+                       <div class="main_title_r ">
+
+                           <div class="life_title_text"><div class="layerimg2"> <div class="nanhaiyingye"></div></div></div>
+                           <div class="life_title_more"></div>
+                       </div>
+                      <div class="p10">
+                       <div class="module_right_ch ">
+                            <ul>
+                                 <!--[883,34,55] published at 2016-12-07 13:56:54 from #202 by 719-->
+<li>
+                                    <div class="leftimg"><a href="http://www.chinanews.com/shipin/2014/09-26/report523.shtml"><img src="http://www.chinanews.com/2012/part/home/U32P883T34D55F793DT20141028142028.jpg"></a></div>
+                                     <div class="righttext"><a href="http://www.chinanews.com/shipin/2014/09-26/report523.shtml"><strong>最佳嫌疑人  </strong></a>
+<a href="http://www.chinanews.com/shipin/2014/09-26/report523.shtml"><p>主演：苏有朋 陈乔恩</p></a>
+
+                                     </div>
+                                     <div class="clear"></div>
+                              </li>
+                                  <li>
+                                    <div class="leftimg"><a href="http://www.chinanews.com/shipin/2014/04-18/report430.shtml"><img src="http://www.chinanews.com/2012/part/home/U33P883T34D55F804DT20140911154235.jpg"></a></div>
+                                     <div class="righttext"><a href="http://www.chinanews.com/shipin/2014/04-18/report430.shtml"><strong>《雪殇·进藏英雄先遣连全纪实》</strong></a>
+<a href="http://www.chinanews.com/shipin/2014/04-18/report430.shtml"><p>纪录片</p></a>
+                                     </div>
+                                     <div class="clear"></div>
+                                  </li>
+                                  
+
+                         </ul>
+                              <div class="clear"></div>
+                        </div>
+                      </div>
+               </div>
+
+             <div style="display:none">
+                   <div class="main_title_r ">
+                       <div class="life_title_text"><a href="http://art.chinanews.com/">中国书画人物志</a></div>
+                       <div class="life_title_more"><a href="http://art.chinanews.com/"><span>+</span>更多</a></div>
+                   </div>
+                  <!--[883,34,52] published at 2014-09-11 14:53:40 from #202 by 33-->
+<div class="p10">
+                  <div class="module_right_paihang ">
+                                <ul>
+                                     <li>
+                                        <div class="leftimg"><a href="http://art.chinanews.com/news/2013/0427/260.shtml"><img src="/2012/part/home/U33P883T34D52F793DT20140911144708.jpg"></a></div>
+                                         <div class="righttext"> <a href="http://art.chinanews.com/news/2013/0427/260.shtml"><strong>崔振宽</strong></a>
+<span><a href=http://art.chinanews.com/news/2013/0427/260.shtml>中国当代著名山水画家</a></span>
+</div>
+                                         <div class="clear"></div>
+                                  </li>
+
+                    </ul>
+                                  <div class="clear"></div>
+                    </div>
+                   <div class="life_left_ulr1 mt10">
+                        <ul>
+			    <li><span><a href="http://art.chinanews.com/ss.shtml">山水卷</a></span> <a href="http://art.chinanews.com/news/2013/0427/259.shtml">当代山水画家郑百重</a></li>		
+<li><span><a href="http://art.chinanews.com/rw.shtml">人物卷</a></span> <a href="http://art.chinanews.com/news/2013/0422/258.shtml">当代著名人物画家何士扬</a></li>	
+
+<li><span><a href="http://art.chinanews.com/hn.shtml">花鸟卷</a></span> <a href="http://art.chinanews.com/news/2012/1224/134.shtml">古代著名花鸟画家朱耷</a></li>	
+
+<li><span><a href="http://art.chinanews.com/sf.shtml">书法卷</a></span> <a href="http://art.chinanews.com/sf.shtml">标准草书创始人于右任</a></li>			
+                     </ul>
+                    </div>
+                  </div>
+           </div> 
+
+              <div class="mt10">
+                   <div class="main_title_r ">
+                       <div class="life_title_text">排行榜</div>
+                       <div class="life_title_more"></div>
+                   </div>
+                  <div class="p10">
+                          <ul class="life_left_ul_ph">
+                             <li><a href="http://www.chinanews.com/shipin/2016/09-27/news669082.shtml" target="_blank" title="台风“鲇鱼”登陆台湾 冰箱被吹上马路滑行">台风“鲇鱼”登陆台湾 冰箱被吹上马路滑行</a></li><li><a href="http://www.chinanews.com/shipin/2016/09-27/news669083.shtml" target="_blank" title="游客北京一日游被扇耳光 5名嫌疑人被刑拘">游客北京一日游被扇耳光 5名嫌疑人被刑拘</a></li><li><a href="http://www.chinanews.com/shipin/cns/2016/09-27/news669050.shtml" target="_blank" title="港珠澳大桥贯通通车 珠海到香港仅需30分钟">港珠澳大桥贯通通车 珠海到香港仅需30分钟</a></li><li><a href="http://www.chinanews.com/sh/shipin/cns/2016/09-27/news669049.shtml" target="_blank" title="85后美女驯兽师和她的“白鲸宝宝”：亲吻中建立感情">85后美女驯兽师和她的“白鲸宝宝”：亲吻中建立感...</a></li><li><a href="http://www.chinanews.com/shipin/2016/09-27/news669092.shtml" target="_blank" title="男子开车时打电话 路口撞飞执勤交警">男子开车时打电话 路口撞飞执勤交警</a></li><li><a href="http://www.chinanews.com/shipin/2016/09-27/news669094.shtml" target="_blank" title="三兄弟欠款约2亿 三年拒不执行">三兄弟欠款约2亿 三年拒不执行</a></li><li><a href="http://www.chinanews.com/shipin/2016/09-28/news669110.shtml" target="_blank" title="深圳一幼儿园面条里漂蛆虫 儿童回家直喊肚子痛">深圳一幼儿园面条里漂蛆虫 儿童回家直喊肚子痛</a></li><li><a href="http://www.chinanews.com/shipin/2016/09-27/news669037.shtml" target="_blank" title="成人打掩护 孩子下手偷">成人打掩护 孩子下手偷</a></li><li><a href="http://www.chinanews.com/shipin/2016/09-27/news669091.shtml" target="_blank" title="男子醉酒撒泼 多辆汽车损毁严重">男子醉酒撒泼 多辆汽车损毁严重</a></li><li><a href="http://www.chinanews.com/shipin/2016/09-27/news669058.shtml" target="_blank" title="执着女贼只偷钙片 八次进药店拿走46瓶">执着女贼只偷钙片 八次进药店拿走46瓶</a></li>
+                          </ul>
+                  </div>
+              </div>
+              <div style="width:340px; margin-top:5px;">
+<!--[4,175,374] published at 2016-03-30 16:08:32 from #10 by 郑振海--></div>
+              <div class="mt10">
+     	       <div class="main_title_r ">
+                   <div class="life_title_text">合作专区</div>
+                   <div class="life_title_more"></div>
+               </div>
+              <div class="p10">
+                <div class="chinese_ggqq">
+                        <ul>
+                            <!--[883,34,53] published at 2014-09-11 15:28:16 from #202 by 33-->
+<li><a href="http://www.cntv.cn/"><img src="http://i2.chinanews.com/2012/video_interview/images/62.jpg"></a></li>
+<li><a href="http://www.hunantv.com/"><img src="http://i2.chinanews.com/2012/video_interview/images/63.jpg"></a></li>
+<li><a href="http://www.sctv.com/"><img src="http://i2.chinanews.com/2012/video_interview/images/66.jpg"></a></li>
+<li><a href="http://news.youku.com/"><img src="http://www.chinanews.com/fileftp/2012/12/2012-12-20/U33P4T47D24806F980DT20121220105351.jpg"></a></li>
+<li><a href="http://www.smg.cn/"><img src="http://i2.chinanews.com/2012/video_interview/images/64.jpg"></a></li>
+<li><a href="http://www.ku6.com/"><img src="http://www.chinanews.com/fileftp/2012/08/2012-08-27/U33P4T47D23767F968DT20120827140602.jpg"></a></li>
+<li><a href="http://www.gdtv.com.cn/"><img src="http://www.chinanews.com/part/spftp/17/2012-06-19/U33P883T17D79F405DT20120619095222.gif"></a></li>
+<li><a href="http://tv.sohu.com/paike/"><img src="http://www.chinanews.com/fileftp/2013/04/2013-04-23/1.gif"></a></li>
+<li><a href="http://www.sdtv.com.cn/"><img src="http://i2.chinanews.com/2012/video_interview/images/61.jpg"></a></li>
+<li><a href="http://www.cztv.com/"><img src="http://i2.chinanews.com/2012/video_interview/images/65.jpg"></a></li>
+<li><a href="http://www.gzstv.com/"><img src="http://i2.chinanews.com/2012/video_interview/images/67.jpg"></a></li>
+<li><a href="http://www.ahtv.cn/"><img src="http://i2.chinanews.com/2012/video_interview/images/68.jpg"></a></li>
+<li><a href="http://tv.81.cn/"><img src="http://www.chinanews.com/part/spftp/17/2012-09-21/U179P883T17D113F409DT20121101141719.jpg"></a></li>
+
+                      </ul>
+                       <div class="clear"></div>
+                     <p>
+                          <!--[883,34,54] published at 2014-09-11 15:34:31 from #202 by 33-->
+<a href="http://www.btv.com.cn/">北京电视台</a> | <a href="http://www.lntv.com.cn/">辽宁电视台</a> | <a href="http://www.setv.com.cn/cn_default/">东南电视台</a> <br> <a href="http://www.gxtv.com.cn/">广西电视台</a>	<a href="http://www.yntv.cn">云南电视台</a> | <a href="http://www.qhtv.cn/">青海电视台</a> | <a href="http://v.sina.com.cn/">新浪视频</a> <br> <a href="http://www.t-d.tv/">天地视频</a> | <a href="http://cen.ce.cn/">中经电视</a> | <a href="http://ftpd.youth.cn/">中国青年网视频</a> <br> <a href="http://www.taiwan.cn/shp/">视听中国</a> | <a href="http://docuchina.cntv.cn/">中国纪录片网</a> | <a href="http://www.woshitv.com/">天津网视</a>
+                     </p>
+                     <p class="lxfs mt5">
+                     <strong>联系方式</strong> <br/>
+    Email：cnstv@chinanews.com.cn <br/>
+    电话：8610 88311221    传真：8610 68998389
+                     </p>
+                   </div>
+                <!--[4,290,14] published at 2016-06-13 15:06:21 from #10 by 张晶,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+<div class="pagebottom">
+		<div class="pagebottom_nav pagebottom_nav1">
+
+         <a href="/common/footer/intro.shtml">关于我们</a><span>|</span> <a href="http://ad.chinanews.com.cn/">广告服务</a><span>|</span> <a href="/common/footer/sitemap.shtml">网站地图</a><div style="display:none;"><span>|</span> <a href="/common/footer/feedback.shtml">留言反馈</a> </div></div>
+
+        <div class="pagebottom_nr pagebottom_nr1">
+
+		<p>本网所刊载信息，不代表中新社和中新网观点</p>
+		<p>刊用本网稿件，务经书面授权<br/>违者将追究法律责任。</p>
+		<p>[<a href="/news/xuke.html">网上传播视听节目许可证（0106168）</a>] </p>
+        <p>[<a href="http://www.miibeian.gov.cn/">京ICP证040655号</a>] [<a href="http://www.miitbeian.gov.cn/">京ICP备05004340号-1</a>]</p>
+        <p>[京公网安备：110102003042]</p>
+<p style="font-family:arial;">Copyright &copy;1999-2016 chinanews.com. </p>
+<p style="font-family:arial;">All Rights Reserved</p>
+        
+        </div>
+  </div> 
+                <p style="position: absolute;margin-top: -17px;padding-left: 10px;   color: #bfbebe;">页面设计：刘鑫   前端制作：闫兆玉</p>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        </div>
+        <div class="clear"></div>
+
+    </div>
+    </div>
+ <!--要闻结束-->
+   
+<!--[4,175,375] published at 2016-03-30 15:43:30 from #10 by 郑振海-->
+
+</body>
+</html>

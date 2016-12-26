@@ -1,0 +1,3871 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="chinanews" />
+<meta name="copyright" content="www.chinanews.com,版权所有" />
+<meta name="keywords" content="新闻,港澳,港澳与内,地泛珠三角,视觉港澳,港澳概况">
+<meta name="description" content="中国新闻网港澳频道是知名的中文新闻门户网站频道，也是全球互联网中文新闻资讯最重要的原创内容供应商之一。依托中新社遍布全球的采编网络,每天24小时面向广大网民和网络媒体，快速、准确地提供文字、图片、视频等多样化的资讯服务。在新闻报道方面，中新网港澳频道及时准确，解释性报道角度独特，稿件被国内外网络媒体大量转载。">
+<title>中新港澳频道</title>
+
+<!--[4,536,1] published at 2016-12-26 11:30:57 from #10 by 丁文蕾,designer: maker:liweiwei zhangliqun -->
+
+<base target="_blank" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<script src="http://www.chinanews.com/js/jquery1.4.js"></script>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        bp.src = '//push.zhanzhang.baidu.com/push.js';
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    function nTabs(thisObj,Num){
+        if(thisObj.className == "active")return;
+        var tabObj = thisObj.parentNode.id;
+        var tabList = document.getElementById(tabObj).getElementsByTagName("li");
+        for(i=0; i <tabList.length; i++)
+        {
+            if (i == Num)
+            {
+                thisObj.className = "active";
+                document.getElementById(tabObj+"_Content"+i).style.display = "block";
+            }else{
+                tabList[i].className = "normal";
+                document.getElementById(tabObj+"_Content"+i).style.display = "none";
+            }
+        }
+    }
+</script>
+<script>
+function change1(){
+    focusBox1('kakaFocus1');
+    function focusBox1(o1){
+        if(!o1) return;
+        var w1=$("#kakaFocus1 .banner_pic").width(), $o1=$('#'+o1),i=0,l=0;arr1= [],t1= null,
+
+                $infoLi1 = $o1.find('.banner_info li'), len1= $infoLi1.length*2,
+                $ul1=$o1.find('.banner_pic>ul');
+        $ul1.append($ul1.html()).css({'width':len1*w1, 'left': -len1*w1/2});
+        $infoLi1.eq(0).addClass('current');
+        //add banner_pages element
+        arr1.push('<div class="banner_pages"><ul>');
+        $infoLi1.each(function(i){
+            if(i==0){
+                arr1.push('<li class="current"><span>'+ (i+1) +'</span></li>');
+            }else{
+                arr1.push('<li><span>'+ (i+1) +'</span></li>');
+            }
+        });
+        arr1.push('</ul></div>');
+        $o1.append(arr1.join(''));
+        var $pagesLi1 = $o1.find('.banner_pages li');
+        //mouse
+        $pagesLi1.children('span').click(function(){
+            var p1 = $pagesLi1.index($o1.find('.banner_pages li.current'));
+            i1 = $pagesLi1.children('span').index($(this));
+            if(i1==p1) return;
+            l1 = parseInt($ul1.css('left')) + w1*(p1-i1);
+            addCurrent1(i1,l1);
+            return false;
+        })
+        $o1.children('a.btn_prev').click(function(){
+            i1 = $pagesLi1.index($o1.find('.banner_pages li.current'));
+            (i1==0)? i1=(len1/2-1):i1--;
+            l1 = parseInt($ul1.css('left')) + w1;
+            addCurrent1(i1,l1);
+            return false;
+        })
+        $o1.children('a.btn_next').click(function(){
+            i1 = ($pagesLi1.index($o1.find('.banner_pages li.current'))+1)%(len1/2);
+            l1 = parseInt($ul1.css('left')) - w1;
+            addCurrent1(i1,l1);
+            return false;
+        })
+
+        //auto focus
+        t1 = setInterval(init1,8000);
+        $o1.hover(function(){
+            clearInterval(t1);
+        }, function(){
+            t1 = setInterval(init1,8000);
+        });
+        function init1(){
+            $o1.children('a.btn_next').trigger('click');
+        }
+        //add focus
+        function addCurrent1(i,l){
+            if($ul1.is(':animated')) return;
+            $ul1.animate({'left':l},500,function(){
+                $o1.children('.banner_count').text(i+1);
+                $infoLi1.not($infoLi1.eq(i).addClass('current')).removeClass('current');
+                $pagesLi1.not($pagesLi1.eq(i).addClass('current')).removeClass('current');
+                if(l== (1-len1)*w1){
+                    $ul1.css({'left': (1-len1/2)*w1});
+                }else if(l== 0){
+                    $ul1.css({'left': -len1*w1/2});
+                }
+            });
+        }
+    }
+}
+
+$(document).ready(function(){
+    change1();
+
+})
+
+$(document).ready(function(){
+
+    $(".showbox").mouseover(function(){
+
+        $(".btnbox .pre").show();
+        $(".btnbox .next").show();
+    });
+    $(".showbox").mouseout(function(){
+        // $(".btnbox .pre").hide();
+        //$(".btnbox .next").hide();
+    });
+    $("#md_close").click(function(){
+        $("#full").hide();
+    })
+
+});
+//tab
+function blog_nTabs(thisObjb,Numb){
+    if(thisObjb.className == "blog_sel")return;
+    var thisObjb = thisObjb.parentNode.id;
+    var tabList = document.getElementById(thisObjb).getElementsByTagName("li");
+    for(i=0; i <tabList.length; i++)
+    {
+        if (i == Numb)
+        {
+            tabList[Numb].className = "blog_sel";
+            document.getElementById(thisObjb+"_Content"+i).style.display = "block";
+        }else{
+            tabList[i].className = "normal";
+            document.getElementById(thisObjb+"_Content"+i).style.display = "none";
+        }
+    }
+}
+/*daohang huaguo*/
+$(document).ready(function(){
+
+    function topnav1(){
+        var _show = null;
+        var _hideTimer = null;
+        var planItems = $('ul.c-fl-ul li.division');
+        planItems.each(function(index) {
+            var li = $(this);
+            var div = li.find('div.navshow_div');
+            div.css("display","none");
+            li.bind('mouseenter',function() {
+                if (_show != null) {
+                    clearTimeout(_show);
+                }
+                _show = setTimeout(function() {
+                    $('ul.nav_navcon li').addClass('');
+
+                    li.addClass('topnav_sel');
+                }, 0);
+            });
+            li.bind('mouseleave', function() {
+                if (_show != null) {
+                    clearTimeout(_show);
+                }
+                _hideTimer = setTimeout(function() {
+                    li.removeClass('topnav_sel');
+
+                }, 0);
+            });
+
+        });
+    };
+    topnav1();
+
+});
+function search_select(id) {
+    document.getElementById("id7").className="dii7"+id;
+}
+function weibo(id) {
+    document.getElementById("id8").className="dii8"+id;
+}
+
+/*list滑过*/
+$(document).ready(function(){
+    var _show = null;
+    var _hideTimer = null;
+    var planItems = $('.news_list_ulbox ul li');
+    var _tupian_li = $('.news_list_ulbox ul li._tupian_li');
+    planItems.each(function(index) {
+        var li = $(this);
+        var news_xgxw = li.find('div.news_xgxw .news_xgxw_a');
+        var sharenews=li.find('div.video_con1_title_right');
+        var news_xgxw_con=li.find('div.news_xgxw_con');
+        var planItems_tp = li.find('div.tupian_conul ul li');
+        planItems_tp.each(function() {
+            var tpli = $(this);
+            var tp_blackbg = tpli.find('div.tp_blackbg');
+
+            tpli.bind('mouseenter',function() {
+                tp_blackbg.hide();
+            });
+
+            tpli.bind('mouseleave',function() {
+                tp_blackbg.show();
+            });
+        });
+
+        /*topnav*/
+
+        /**/
+        li.bind('mouseenter',function() {
+            if (_show != null) {
+                clearTimeout(_show);
+            }
+            _show = setTimeout(function() {
+                $('ul._commuity_nav li div.conbox').hide();
+                li.css('background','#eeeeee');
+                $(".module_advert_ul li").css('background','none');
+                _tupian_li.css('background','none');
+                sharenews.show('');
+                /**/
+
+            }, 0);
+        });
+        li.bind('mouseleave', function() {
+            if (_show != null) {
+                clearTimeout(_show);
+            }
+            _hideTimer = setTimeout(function() {
+
+                li.css('background','none');
+                sharenews.hide('');
+
+                /**/
+
+            }, 0);
+        });
+    });
+
+});
+
+$(function(){
+    var total_value =  $("#total_page_total0").val();
+    //alert (total_value);
+    if(total_value!=null && total_value!=''){
+        var page_html =  '<div style="width:100%;height:30px;border:1px solid #ebebeb;clear:both; line-height:30px; color:#979798; cursor:pointer; font-size:14px;text-align:center; background:#F0F0F0;" onclick="ongetpage(2,300,0)">>>显示更多新闻</div>';
+        $("#page_bar0").html(page_html);
+        //ongetpage(1,total_value);
+    }
+});
+
+//jsxw_sp
+function js_jsxwssp(thisObj,Numa)
+{
+    //alert(thisObj);
+    //alert(Numa);
+
+    var top=$(document).scrollTop();
+    var index_topa=$("#index_topa").height();
+    var gg=$("#news_top_advert").height();
+
+    var left_heigt1=$("#enter_top").height();
+    var left_heigt2=$("#yaowen").height();
+    var left_heigt3=$("#yaowen1").height();
+    var left_heigt5=left_heigt1+left_heigt2+left_heigt3+gg+45;
+    var pw_heigth=$(window).height();
+
+    if(thisObj.className == "active")return;
+    var tabObj = thisObj.parentNode.id;
+    var tabList = document.getElementById(tabObj).getElementsByTagName("li");
+    for(i=0; i <tabList.length; i++)
+    {
+        if (i == Numa)
+        {
+            document.getElementById(tabObj+"_Con"+Numa).style.display = "block";
+            document.getElementById("jsxw_sp_Con"+Numa).style.display = "block";
+            // alert(Num);
+            thisObj.className = "filter-selected";
+            var scrollHeight= document.body.scrollHeight || document.documentElement.scrollHeight;
+
+            $("#jsxwredbox_biglist2").hide();
+            $("#jsxw_all_Con0").hide();
+            createPageHtml(1,300,Numa);
+
+            var tChannel = '';
+
+        }else{
+            document.getElementById(tabObj+"_Con"+i).style.display = "none";
+            tabList[i].className = "normal";
+        }
+    }
+
+    var scrollback=left_heigt1+left_heigt2+left_heigt3-15;;
+    if(top>=left_heigt5){
+        $("html,body").animate({scrollTop:scrollback},1);
+
+    }
+
+}
+
+function createPageHtml(page,total,Numa){
+    var page_html = '';
+
+    if(page!=1){
+        page_html = '';
+    }
+    var startPoint = 1;
+    var endPoint = 10;
+
+    if(page>=1 && page<=total/20){
+        page_html = page_html + '<div style="width:100%;height:30px;border:1px solid #ebebeb;clear:both; line-height:30px; color:#979798; cursor:pointer; font-size:14px;text-align:center; background:#F0F0F0;" onclick="ongetpage(2,300,0)">>>显示更多新闻</div>';
+    }
+
+    $("#page_bar"+Numa).html(page_html);
+}
+function ongetpage(num,total,Numa){
+    //alert(num);
+    var specialid= $("#specialid"+Numa).val();
+    //alert (specialid);
+    if(num==1){
+        window.location.href=window.location.href;
+        return;
+    }else if(num>1){
+        if (Numa==0){
+            //全部滚动新闻
+            //http://channel.chinanews.com/cns/s/yl-mxnd.shtml?pager=0&pagenum=20
+            //pager=0是第一页，显示更多新闻是从pager=1开始
+            $.getScript("http://channel.chinanews.com/cns/s/channel:"+specialid+".shtml?pager="+(num-1)+"&pagenum=20", function(){
+                var html = "";
+                var data = specialcnsdata;
+                if(data.docs.length==0)
+                {
+                    alert('全部加载完！');
+                }
+                for(var i=0;i<data.docs.length;i++){
+
+                    var pubtime = specialcnsdata.docs[i].pubtime;
+                    var title = specialcnsdata.docs[i].title;
+                    var url = specialcnsdata.docs[i].url;
+                    var pic = specialcnsdata.docs[i].img_cns;
+                    var content = specialcnsdata.docs[i].content;
+                    //var content = '';
+
+                    if (pic !=''){
+
+                        html = html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
+
+                                +'<div class="intermoren_box"><div class="intermoren_left"><a href="'+url+'" target="_blank"><img src="'+pic+'"></a></div>'
+                                +'<div class="intermoren_right"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" target="_blank" class="blue">[详情]</a></div> '
+                                +'<div class="news_source"><div class="left">'+pubtime+'</div></div></div></div></div></div></li>';
+                    }else{
+                        html =html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
+                                +'<div class="intermoren_box">'
+                                +'<div class="intermoren_right intermoren_right1"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" class="blue" target="_blank">[详情]</a></div>'
+                                +'<div class="news_source"><div class="left">'+pubtime+'</div></div></div> </div></div></div> </li>';
+                    }
+
+                }
+                //alert(html);
+                $("#ent"+Numa).append(html);
+            });
+        }
+        else{
+
+            $.getScript("http://channel.chinanews.com/cns/s/"+specialid+".shtml?pager="+(num-1)+"&pagenum=20", function(){
+                var html = "";
+                var data = specialcnsdata;
+                if(data.docs.length==0)
+                {
+                    alert('全部加载完！');
+                }
+                for(var i=0;i<data.docs.length;i++){
+                    var pubtime = specialcnsdata.docs[i].pubtime;
+                    var title = specialcnsdata.docs[i].title;
+                    var url = specialcnsdata.docs[i].url;
+                    var pic = specialcnsdata.docs[i].img_cns;
+                    var content = specialcnsdata.docs[i].content;
+                    //var content = '';
+
+                    if (pic !=''){
+
+                        html = html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
+
+                                +'<div class="intermoren_box"><div class="intermoren_left"><a href="'+url+'" target="_blank"><img src="'+pic+'"></a></div>'
+                                +'<div class="intermoren_right"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" target="_blank" class="blue">[详情]</a></div> '
+                                +'<div class="news_source"><div class="left">'+pubtime+'</div></div></div></div></div></div></li>';
+                    }else{
+                        html =html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
+                                +'<div class="intermoren_box">'
+                                +'<div class="intermoren_right intermoren_right1"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" class="blue" target="_blank">[详情]</a></div>'
+                                +'<div class="news_source"><div class="left">'+pubtime+'</div></div></div> </div></div></div> </li>';
+                    }
+
+                }
+                //alert(html);
+                $("#ent"+Numa).append(html);
+            });
+        }
+        createPageHtml(num,total,Numa);
+
+    }
+    //alert(document.documentElement.scrollTop);
+    // $(document).scrollTop(0);
+//$(document).scrollTop()=0;
+}
+
+</script>
+<script>
+    window.onscroll=function()
+    {
+        var top=$(document).scrollTop();
+
+        var scrollHeight= document.body.scrollHeight || document.documentElement.scrollHeight;
+        var availHeight= document.body.availHeight || document.documentElement.availHeight;
+
+        var pw_heigth=$(window).height();
+        var right_heigt=$("#sticky_right").height();
+        var left_heigt=$("#sticky_left").height();
+
+        var index_topa=$("#index_topa").height();
+        var gg=$("#news_top_advert").height();
+
+        var topheight=index_topa+gg;
+
+        if(scrollHeight>top+topheight){
+            $("#sticky_right").removeClass('sticky');
+            $("#sticky_right").removeClass('sticky0');
+            $("#sticky_right").addClass('sticky1');
+        }
+
+        if(top<=gg){
+            $("#js_N_nav").css("position","relative");
+            $("#jsxw_layer").css("position","relative");
+            $("#jsxw_layer").css("top","0");
+            $("#sticky_right2").css("height",0);
+            $("#sticky_right").removeClass('sticky');
+            $("#sticky_right").removeClass('sticky0');
+            $("#sticky_right").addClass('sticky1');
+
+        }
+        if(top>gg){
+            $("#js_N_nav").css("position","fixed");
+            $("#js_N_nav").css("top","0");
+            $("#js_N_nav").css("z-index","9");
+        }
+        if (top<topheight){
+            $("#jsxw_layer").css("position","relative");
+            $("#jsxw_layer").css("top","0");
+
+            $("#sticky_right").removeClass('sticky');
+            $("#sticky_right").removeClass('sticky0');
+            $("#sticky_right").addClass('sticky1');
+        }
+        //alert(top);
+        //alert(pw_heigth);
+        //alert(left_heigt);
+        if(top>topheight){
+            //$('#default-p_30345810').css("top","0");
+            $("#jsxw_layer").css("position","fixed");
+            $("#jsxw_layer").css("top","44px");
+        }
+
+        if(pw_heigth >= right_heigt+topheight-top && pw_heigth<left_heigt+topheight-top){
+            //alert(pw_heigth);
+            var cc=top+pw_heigth-right_heigt-topheight;
+            //alert(cc);
+            $("#sticky_right2").css("height",cc);
+
+            //if(right_heigt>=pw_heigth){
+            $("#sticky_right").removeClass('sticky');
+            $("#sticky_right").removeClass('sticky1');
+            $("#sticky_right").addClass('sticky0');
+            //	}
+            //else{
+            //$("#sticky_right").removeClass('sticky');
+            // $("#sticky_right").removeClass('sticky1');
+            // $("#sticky_right").addClass('sticky0');
+            // $(".sticky0").css('bottom',gaodu+'px');
+
+            //}
+
+        }
+
+        /*判断滚动条是否到底*/
+        // if(top + pw_heigth==scrollHeight){
+        //	alert(00);
+        //$("#sticky_right").removeClass('sticky0');
+        //$("#sticky_right").removeClass('sticky1');
+        //$("#sticky_right").addClass('sticky');
+
+        //}
+        if	(pw_heigth < right_heigt-top){
+            $("#sticky_right2").css("height",0);
+
+        }
+        //var top=$("body").scrollTop()
+
+        //alert(top);
+
+    };
+
+</script>
+<style>
+html {
+    zoom: 1;
+}
+
+html * {
+    outline: 0;
+    zoom: 0;
+}
+
+html button::-moz-focus-inner {
+    border-color: transparent !important;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+input, select {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+body {
+    text-align: left;
+    font-family: '宋体', Arial, Tahoma, Verdana, STHeiTi, sans-serif, Helvetica, SimSun;
+    font-size: 12px;
+    color: #333;
+}
+
+body > div {
+    text-align: left;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+form, img, ul, ol, li, dl, dd, dt, p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+ol, ul, li, dd, dt {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+fieldset, a img {
+    border: 0;
+}
+
+input, select, textarea {
+    font-size: 12px;
+}
+
+input {
+    vertical-align: middle;
+}
+
+caption, th {
+    text-align: left;
+}
+
+table {
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+select, input {
+    vertical-align: middle;
+}
+
+.w1000 {
+    width: 1000px;
+}
+
+.w950 {
+    width: 950px;
+}
+
+.m_center {
+    margin: 0 auto;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.pt10 {
+    padding-top: 10px;
+}
+
+.mt5 {
+    margin-top: 5px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mt22 {
+    margin-top: 22px;
+}
+
+.clear {
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+a.blue {
+    color: #12619c;
+    text-decoration: none;
+}
+
+a.blue:hover {
+    color: #12619c;
+    text-decoration: underline;
+}
+
+a {
+    cursor: pointer;
+}
+
+.c-fl {
+    float: left;
+}
+
+.c-fr {
+    float: right;
+}
+
+/*二维码+返回顶部*/
+.ewm_box {
+    width: 103px;
+    display: block;
+    height: 150px;
+    padding: 0;
+    margin: 0 auto;
+    border: #dbdbdb 1px solid;
+    position: fixed;
+    background: #fff;
+    top: 300px;
+    right: 50%;
+    margin-right: -680px;
+}
+
+.ewm_box .closebt {
+    display: block;
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    right: -1px;
+    top: -1px;
+    background: url(http://i8.chinanews.com/2014/hwbz/images/close.jpg) no-repeat;
+}
+
+.ewm_boxp {
+    width: 84px;
+    margin: 0 auto;
+    padding-top: 24px;
+}
+
+.ewm_boxp p {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.index_layer_back {
+    position: fixed;
+    _position: absolute;
+    width: 60px;
+    right: 350px;
+    bottom: 167px;
+    _height: 50px;
+    z-index: 100;
+}
+
+.index_layerul .back a {
+    background: url(http://i6.chinanews.com/2013/news/images/t_top.jpg) no-repeat;
+    width: 60px;
+    height: 50px;
+    display: block;
+    overflow: hidden;
+    color: #444;
+}
+
+.gn_top {
+    background: #fff;
+}
+
+/**/
+.ibox {
+    width: 645px;
+    height: 256px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.ibox .titlebox {
+    float: left;
+    width: 150px;
+    font-size: 14px;
+    padding-bottom: 10px;
+    color: #222;
+}
+
+.ibox .showbox {
+    position: absolute;
+    left: 0;
+    width: 4550px;
+    height: 233px;
+}
+
+.ibox .showbox ul li {
+    float: left;
+    display: inline;
+    position: relative;
+}
+
+.ibox .showbox ul li .topimg {
+    display: block;
+    width: 379px;
+    height: 233px;
+    overflow: hidden;
+    margin: 0px 1px 0 0;
+}
+
+.ibox .showbox ul li .topimg1 {
+    display: block;
+    width: 264px;
+    height: 233px;
+    overflow: hidden;
+    margin: 0px 0px 0 1px;
+}
+
+.ibox .showbox ul li .topimg img {
+    display: block;
+    width: 379px;
+    height: 233px;
+    overflow: hidden;
+}
+
+.ibox .showbox ul li .topimg1 img {
+    display: block;
+    width: 264px;
+    height: 233px;
+    overflow: hidden;
+}
+
+.ibox .showbox ul li a {
+    display: block;
+    overflow: hidden;
+    color: #d5d5d5;
+}
+
+.ibox .showbox ul li .textlayer {
+    height: 54px;
+    width: 379px;
+    font-size: 22px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 11;
+}
+
+.ibox .showbox ul li .textlayer1 {
+    height: 54px;
+    width: 264px;
+}
+
+.ibox .showbox ul li .textlayer .bgbox {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 54px;
+    width: 379px;
+    background: #000;
+    filter: Alpha(Opacity=70);
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.ibox .showbox ul li .textlayer1 .bgbox {
+    height: 54px;
+    width: 264px;
+}
+
+.ibox .showbox ul li .textlayer p {
+    height: 54px;
+    width: 379px;
+    font-size: 22px;
+    position: relative;
+    z-index: 2;
+    line-height: 25px;
+    text-align: center;
+    overflow: Hidden;
+}
+
+.ibox .showbox ul li .textlayer1 p {
+    height: 54px;
+    width: 264px;
+}
+
+.ibox .showbox ul li p strong {
+    padding-top: 12px;
+    display: block;
+    font-weight: normal;
+    font-size: 16px;
+    font-family: microsoft yahei;
+    line-height: 28px;
+    height: 28px;
+    overflow: hidden;
+    color: #fff;
+}
+
+.ibox .showbox ul li .textlayer1 p strong {
+    padding-top: 12px;
+    display: block;
+    font-weight: normal;
+    font-size: 12px;
+    font-family: microsoft yahei;
+    line-height: 28px;
+    height: 28px;
+    overflow: hidden;
+    color: #fff;
+}
+
+.ibox .showbox ul li p span {
+    display: block;
+    padding-top: 5px;
+    font-size: 14px;
+    color: #d5d5d5;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+}
+
+.ibox .showbox ul li a:hover img {
+}
+
+.ibox .showbox ul li p strong a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.ibox .showbox ul li p strong a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.ibox .btnbox {
+    width: 645px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    height: 9px;
+
+    z-index: 3;
+
+}
+
+.ibox .btnbox .pre, .ibox .btnbox .next {
+    display: block;
+    width: 47px;
+    height: 48px;
+    overflow: hidden;
+    margin-top: 0;
+    text-indent: -9999px;
+    outline: none;
+    hide-focus: expression(this.hideFocus=true);
+    position: absolute;
+    bottom: 120px;
+    z-index: 9;
+}
+
+.ibox .btnbox .pre {
+    left: 8px;
+
+    background-image: url(http://i6.chinanews.com/2013/home/images/l_bt.png);
+}
+
+.ibox .btnbox .next {
+    right: 8px;
+
+    background-image: url(http://i6.chinanews.com/2013/home/images/r_bt.png);
+}
+
+.ibox span.num {
+    padding-left: 250px;
+    cursor: pointer;
+    display: block;
+}
+
+.ibox span.num {
+    line-height: 18px;
+}
+
+.ibox span.num li {
+    float: left;
+    margin-left: 16px;
+    display: block;
+    width: 48px;
+    height: 9px;
+    overflow: hidden;
+    background: url(http://i8.chinanews.com/2014/huaren/images/graymr.jpg) no-repeat;
+
+    text-indent: -9999px;
+    cursor: pointer;
+}
+
+.ibox span.num .numcur {
+    background: url(http://i8.chinanews.com/2014/huaren/images/redsel.jpg) no-repeat;
+}
+
+.index-nav {
+    background: none repeat scroll 0 0 #d7d7d7;
+    border-bottom: 2px solid #c6c6c6;
+    color: #fff;
+
+    line-height: 43px;
+
+    width: 100%;
+}
+
+.index-nav-main {
+    background: none repeat scroll 0 0 #d7d7d7;
+    width: 980px;
+    margin: 0 auto;
+}
+
+.index-nav a {
+    color: #3b5a88;
+}
+
+.index-nav a:hover {
+    color: #b21112;
+}
+
+.index-nav-select-arr {
+    left: 15px;
+    position: absolute;
+    top: 13px;
+    z-index: 10;
+}
+
+.index-nav-select-title1 {
+    padding: 0 20px 0 40px;
+    height: 44px;
+    float: left;
+    height: 44px;
+    outline: none;
+
+    line-height: 44px;
+    text-decoration: none;
+
+}
+
+.index-nav-select-title {
+    float: left;
+    height: 44px;
+    outline: none;
+    padding: 1px 15px 0;
+    line-height: 44px;
+    text-decoration: none;
+    padding: 0 10px 0 40px;
+}
+
+.index-nav-select-pop {
+    background: #fff;
+    border: 1px solid #cdcdcd;
+
+    -webkit-box-shadow: 0 0 8px #cdcdcd;
+    -moz-box-shadow: 0 0 8px #cdcdcd;
+    box-shadow: 0 0 8px #cdcdcd;
+    top: 44px;
+    width: 135px;
+    left: 0;
+    position: absolute;
+    z-index: 9;
+    padding-bottom: 5px;
+}
+
+.index-nav-select-pop em {
+    color: #f00;
+}
+
+.dii8 .index-nav-select-pop {
+    display: none;
+}
+
+.dii80 .index-nav-select-pop {
+    display: block;
+}
+
+.dii81 .index-nav-select-pop {
+    display: none;
+}
+
+.index-nav-select-list {
+    width: 135px;
+    padding: 6px 0;
+}
+
+.index-nav-select-list a:hover {
+    text-decoration: none;
+}
+
+.index-nav-select-list li {
+    float: left;
+    position: static;
+    border: 0;
+}
+
+.index-nav-select-list li a {
+    display: block;
+    padding: 0 10px;
+    position: relative;
+    z-index: 1;
+    _zoom: 1;
+}
+
+.index-nav-select-list li a span {
+    display: block;
+    cursor: pointer;
+    width: 115px;
+    height: 31px;
+    line-height: 31px;
+    border-bottom: 1px dashed #dcdddd;
+}
+
+.index-nav-select-list li a:hover span {
+    border-bottom: none;
+    padding-bottom: 1px;
+}
+
+.index-nav-select-list li.last a span {
+    border-bottom: none;
+}
+
+.index-nav-select-list li.last a:hover span {
+    padding-bottom: 0;
+}
+
+.index-nav-select-list li a, .index-nav-select-list li a:visited {
+    color: #585858;
+}
+
+.index-nav-select-list li a:hover {
+    color: #252525;
+    background: #f2f2f2;
+    padding-top: 1px;
+    margin-top: -1px;
+}
+
+.index-nav-select-list li a:hover span {
+    background: none;
+}
+
+.index-nav-select-title {
+    _padding: 0 5px 0 40px
+}
+
+.index-nav-select {
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    z-index: 4;
+
+}
+
+.index-nav-entry-wide {
+    padding: 0 10px;
+}
+
+.c-fl .index-nav-select {
+    _width: 106px;
+}
+
+.c-fr .index-nav-select {
+    _width: 85px;
+}
+
+.dii7 .pt2 {
+    display: none;
+}
+
+.dii70 .pt2 {
+    background: none repeat scroll 0 0 #fff;
+    display: block;
+}
+
+.dii71 .pt2 {
+    display: none;
+}
+
+.dii8 .ntes-nav-select-pop {
+    display: none;
+}
+
+.dii80 .ntes-nav-select-pop {
+    display: block;
+}
+
+.dii81 .ntes-nav-select-pop {
+    display: none;
+}
+
+.splive {
+    background-image: url("http://www.chinanews.com/fileftp/2011/09/2011-09-16/U32P4T47D19722F981DT20110917113710.gif");
+    background-position: left center;
+    background-repeat: no-repeat;
+    height: 24px;
+    padding-left: 21px;
+    text-decoration: none;
+}
+
+.ptv {
+    background-image: url("http://www.chinanews.com/fileftp/2010/11/2010-11-05/U32P4T47D15940F968DT20101105151950.gif");
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 18px;
+}
+
+.splogo {
+    background-image: url("http://www.chinanews.com/fileftp/2010/11/2010-11-05/U32P4T47D15940F968DT20101105151950.gif");
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding-right: 20px;
+}
+
+.piclogo {
+    background-image: url("http://www.chinanews.com/fileftp/2013/04/2013-04-07/U33P4T47D25854F980DT20130407144633.jpg");
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+
+.index_icon1, .index_icon2, .index_icon3, .index_icon4, .index_icon5 {
+    background: url("http://i2.chinanews.com/2013/news/newnc/images/icon_img_blue.jpg") no-repeat;
+    display: block;
+}
+
+.index_icon1 {
+    background-position: 0 0;
+    height: 18px;
+    width: 20px;
+}
+
+.index_icon2 {
+    background-position: 0 -23px;
+    height: 18px;
+    width: 20px;
+}
+
+.index_icon3 {
+    background-position: 0 -46px;
+    height: 14px;
+    width: 22px;
+}
+
+.index_icon4 {
+    background-position: 0 -66px;
+    height: 19px;
+    width: 14px;
+}
+
+.index_icon5 {
+    background-position: 0 -91px;
+    height: 19px;
+    width: 21px;
+}
+
+.c-fl-ul li {
+    float: left;
+}
+
+.topnav_sel {
+    background: none repeat scroll 0 0 #f5f7f7;
+}
+
+.topnav_sel a {
+    color: #b21112;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon1 {
+    background: url(http://i3.chinanews.com/2013/home/images/blue/sy.jpg) no-repeat;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon2 {
+    background: url("http://i2.chinanews.com/2013/home/images/blue/zm.jpg") no-repeat;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon3 {
+    background: url("http://i2.chinanews.com/2013/home/images/blue/yx.jpg") no-repeat;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon4 {
+    background: url("http://i3.chinanews.com/2013/home/images/blue/sj.jpg") no-repeat;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon5 {
+    background: url("http://i2.chinanews.com/2013/home/images/blue/wb.jpg") no-repeat;
+}
+
+.index_icon13 {
+    background: url("http://i2.chinanews.com/2013/news/newnc/images/n3.jpg") no-repeat;
+    display: block;
+    height: 19px;
+    width: 19px;
+}
+
+.index_icon11 {
+    background: url("http://i2.chinanews.com/2013/news/newnc/images/n1.jpg") no-repeat;
+    display: block;
+    height: 20px;
+    width: 20px;
+}
+
+.index_icon12 {
+    background: url("http://i2.chinanews.com/2013/news/newnc/images/n2.jpg") no-repeat;
+    display: block;
+    height: 15px;
+    width: 15px;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon11 {
+    background: url("http://i2.chinanews.com/2013/news/newnc/images/n1sel.jpg") no-repeat;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon12 {
+    background: url("http://i2.chinanews.com/2013/news/newnc/images/n2sel.jpg") no-repeat;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon13 {
+    background: url("http://i2.chinanews.com/2013/news/newnc/images/n3sel.jpg") no-repeat;
+}
+
+ul.c-fl-ul .topnav_sel .index-nav-select-arr1 {
+    border-color: #c20000 transparent transparent;
+}
+
+.index-nav-select-arr1 {
+    border-color: #3c5a88 transparent transparent;
+    border-style: solid dashed dashed;
+    border-width: 4px 4px 0;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    position: absolute;
+    right: 5px;
+    top: 20px;
+    width: 0;
+    z-index: 10;
+}
+
+.index_layer {
+    position: fixed;
+    _position: absolute;
+    width: 110px;
+    height: 150px;
+    right: 310px;
+    top: 225px;
+    top: 225px;
+    _height: 255px;
+    z-index: 100;
+
+    background: #fff;
+}
+
+.miandian_ewm {
+    width: 108px;
+    border: #dbdbdb 1px solid;
+    position: relative;
+}
+
+.miandian_ewm_layer {
+    position: absolute;
+    right: -1px;
+    top: -1px;
+    width: 19px;
+    height: 19px;
+}
+
+.miandian_ewm_layer a {
+    width: 19px;
+    height: 19px;
+    display: block;
+    background: url(http://i8.chinanews.com/2014/huaren/images/close.jpg) no-repeat;
+}
+
+.miandian_ewm_nr {
+    width: 86px;
+    margin: 0px auto;
+    padding: 25px 0 10px;
+}
+
+.miandian_ewm_nr .toptext {
+    color: #fff;
+    font-size: 14px;
+    font-family: microsoft yahei;
+    padding-bottom: 8px;
+}
+
+.miandian_ewm_nr .toptext span {
+    color: #eee06c;
+}
+
+.miandian_ewm_nr p {
+    color: #727272;
+    font-size: 12px;
+    padding-top: 6px;
+    text-align: center;
+}
+
+#top {
+
+    color: #959595;
+    font-size: 14px;
+    letter-spacing: 0;
+    margin: 0px auto 0;
+    padding: 10px 0 0 0;
+    text-align: center;
+    width: 980px;
+    height: 16px;
+    overflow: hidden;
+}
+
+#top a {
+    color: #959595;
+    text-decoration: none;
+}
+
+#top a:link {
+    color: #959595;
+    text-decoration: none;
+}
+
+#top a:hover {
+    color: #959595;
+    text-decoration: underline;
+}
+
+#top a:visited {
+    color: #959595;
+    text-decoration: none;
+}
+
+.enter_banner {
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.enter_logo {
+    width: 160px;
+    height: 51px;
+    float: left;
+    padding: 0px 0 0 3px;
+}
+
+.searchnav {
+    float: right;
+    width: 810px;
+    padding-top: 12px;
+}
+
+.searchnav .left .strip {
+    color: #000;
+}
+
+.advert_top {
+    float: right;
+    width: 750px;
+    height: 89px;
+}
+
+.advert_top img {
+    width: 750px;
+    height: 89px;
+}
+
+.enter_text {
+    float: left;
+    width: 294px;
+}
+
+.strip {
+    float: left;
+    line-height: 25px;
+    color: #333;
+    padding-left: 26px;
+}
+
+.strip span {
+    float: left;
+}
+
+.strip .sunshine {
+    margin: 3px 1px 0;
+}
+
+.searchinput {
+    width: 335px;
+    float: right;
+}
+
+.searchinput .search_input {
+    border: #dedede 1px solid;
+    width: 180px;
+    height: 22px;
+    padding: 0 5px;
+    background: #fff;
+    color: #000;
+    line-height: 22px;
+    float: left;
+}
+
+.searchinput .search_a {
+    line-height: 24px;
+    text-align: center;
+    color: #fff;
+    margin-left: 10px;
+    background: #b21112;
+    float: left;
+    display: block;
+    width: 70px;
+    height: 24px;
+}
+
+.searchinput .search_a:hover {
+    color: #fff;
+    background: #b21112;
+    text-decoration: none;
+}
+
+.search_listbox {
+    float: left;
+    position: relative;
+    z-index: 2;
+    width: 60px;
+}
+
+.searchinput .search_listinput {
+    border: none;
+    width: 30px;
+    height: 22px;
+    padding: 0 5px;
+    background: #fff;
+    color: #a0a0a0;
+    line-height: 22px;
+    float: left;
+}
+
+.search_listinput a {
+    color: #fff;
+}
+
+.search_listinput a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.searchinput .search_list {
+    float: left;
+    background: url(http://i8.chinanews.com/2014/huaren/images/serach_b.jpg) no-repeat;
+    display: block;
+    width: 19px;
+    height: 19px;
+    margin: 1px 1px 0 0
+}
+
+.inter_navbox {
+    width: 100%;
+    background: url(http://www.chinanews.com/fileftp/2016/07/2016-07-08/U674P4T47D35692F976DT20160712091107.jpg) no-repeat center top;
+    height: 44px;
+}
+
+.inter_nav {
+    height: 44px;
+    width: 1000px;
+    margin: 10px auto;
+}
+
+.inter_nav_ul {
+}
+
+.inter_nav_ul li {
+    float: left;
+    line-height: 44px;
+    padding: 0 30px;
+    font-size: 18px;
+    font-family: microsoft yahei;
+    position: relative;
+    background: url(http://www.chinanews.com/fileftp/2016/07/2016-07-08/U674P4T47D35692F977DT20160712092647.jpg) no-repeat right center
+}
+
+.inter_nav_ul li a {
+    color: #fff;
+}
+
+.inter_nav_ul li a:Hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.enter_top {
+    width: 100%;
+    height: 244px;
+
+}
+
+/**/
+.enter_left {
+    width: 645px;
+    float: left;
+}
+
+.enter_right {
+    width: 340px;
+    float: right;
+    *display: inline-block;
+    *overflow: hidden;
+}
+
+.xwzxdd-dbt {
+
+}
+
+.xwzxdd-dbt h1 {
+    color: #3577c6;
+    font-family: microsoft yahei, "黑体";
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 30px;
+}
+
+.xwzxdd-dbt h1 a {
+    color: #3577c6;
+    text-decoration: none;
+}
+
+.xwzxdd-dbt h1 a:hover {
+    color: #3577c6;
+    text-decoration: none;
+}
+
+.xwzxdd-xbt {
+    color: #aaaaaa;
+    line-height: 21px;
+    padding-top: 4px;
+    text-indent: 2em;
+
+}
+
+.xwzxdd-xbt a {
+    color: #aaaaaa;
+    text-decoration: none;
+}
+
+.xwzxdd-xbt a:hover {
+    color: #aaaaaa;
+
+    text-decoration: none;
+}
+
+.xwzxdd-xbt span {
+    padding: 0 10px;
+}
+
+.xwzxdd-dbt1 {
+
+}
+
+.xwzxdd-dbt1 h2 {
+    color: #3577c6;
+    font-size: 14px;
+    font-weight: bold;
+
+}
+
+.xwzxdd-dbt1 h2 a {
+    color: #3577c6;
+    text-decoration: none;
+}
+
+.xwzxdd-dbt1 h2 a:hover {
+    color: #3577c6;
+    text-decoration: none;
+}
+
+.xwzxdd-xbt1 {
+    color: #aaaaaa;
+    line-height: 21px;
+    text-indent: 2em;
+    padding-top: 2px;
+}
+
+.xwzxdd-xbt1 a {
+    color: #aaaaaa;
+    text-decoration: none;
+}
+
+.xwzxdd-xbt1 a:hover {
+    color: #aaaaaa;
+
+    text-decoration: none;
+}
+
+.xwzxdd-xbt1 span {
+    padding: 0 10px;
+}
+
+/**/
+
+.chihe_img3 {
+    background: Url(http://i8.chinanews.com/2014/huaren/images/yw.jpg) no-repeat;
+    width: 56px;
+    height: 18px;
+    display: block;
+}
+
+.life_left_ul_zc {
+}
+
+.life_left_ul_zc li {
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+    padding-left: 26px;
+    background: url(http://www.chinanews.com/fileftp/2010/11/2010-11-05/U32P4T47D15940F968DT20101105151950.gif) no-repeat 5px 7px;
+}
+
+.enter_title {
+}
+
+.life_title_chihe {
+    height: 23px;
+    position: relative;
+    line-height: 23px;
+}
+
+.life_title_chihe_img {
+    height: 18px;
+    position: absolute;
+    left: 0px;
+    bottom: -2px;
+    overflow: hidden;
+}
+
+.life_title_chihe_text {
+    float: left;
+    width: 90px;
+    height: 23px;
+    display: block;
+    background: url(http://www.chinanews.com/fileftp/2016/03/2016-03-30/U435P4T47D34684F977DT20160415100752.jpg) no-repeat;
+    color: #fff;
+    font-size: 14px;
+    line-height: 23px;
+    text-align: left;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.life_title_chihe_text span {
+    color: #3577c6;
+    padding-left: 10px;
+}
+
+.life_title_chihe_more {
+    line-height: 20px;
+    float: right;
+    padding-right: 5px;
+}
+
+.life_title_chihe_more a {
+    color: #888;
+}
+
+.life_title_chihe_more a:hover {
+    color: #888;
+}
+
+.life_title_chihe_text a {
+    color: #fff;
+}
+
+.life_title_chihe_text a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.life_left_ul {
+}
+
+.life_left_ul li {
+    height: 33px;
+    line-height: 33px;
+    font-size: 14px;
+    background: url(http://i8.chinanews.com/2014/huaren/images/blue.jpg) no-repeat 0px 13px;
+    padding-left: 10px;
+}
+
+.life_left_ulr {
+}
+
+.life_left_ulr li {
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+    background: url(http://i8.chinanews.com/2014/huaren/images/blue.jpg) no-repeat 2px 13px;
+    padding-left: 10px;
+}
+
+.life_left_ul_ph {
+    background: url(http://i8.chinanews.com/2014/huaren/images/icon.jpg) no-repeat 8px 8px;
+}
+
+.life_left_ul_ph li {
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    padding-left: 30px;
+    overflow: hidden;
+}
+
+.chinese_line {
+    border-bottom: #c5c6c7 1px dotted;
+    padding-bottom: 23px;
+    padding-bottom: 20px \0;
+    *padding-bottom: 20px;
+}
+
+.p10 {
+    padding: 10px;
+}
+
+.enter_right_l {
+    width: 350px;
+    float: left;
+}
+
+.enter_right_r {
+    width: 280px;
+    float: right;
+}
+
+.module_right_paihang {
+    padding-bottom: 12px;
+}
+
+.module_right_paihang .leftimg {
+    float: Left;
+    width: 130px;
+    position: relative;
+    height: 96px;
+    overflow: HIdden;
+    border: #ffffff 1px solid;
+}
+
+.module_right_paihang .leftimg img {
+    width: 130px;
+
+    height: 96px;
+}
+
+.module_right_paihang .righttext {
+    padding-left: 10px;
+    float: left;
+    width: 136px;
+}
+
+.module_right_paihang strong {
+    display: block;
+    padding-bottom: 11px;
+    font-size: 14px;
+    color: #3577c6;
+
+}
+
+.module_right_paihang .righttext a {
+    color: #aaa;
+    font-weight: normal;
+}
+
+.module_right_paihang .righttext a:Hover {
+
+    font-weight: normal;
+}
+
+.module_right_paihang .righttext p {
+    color: #aaa;
+    font-size: 12px;
+    line-height: 22px;
+
+}
+
+/*********导读******/
+.enter_leftt {
+    width: 400px;
+    float: left;
+}
+
+.enter_rightt {
+    width: 584px;
+    float: right;
+}
+
+/*即时新闻*/
+.jsxwtt {
+    font-size: 17px;
+    line-height: 40px;
+    font-weight:bold;
+}
+
+.jsxwtt2 {
+    margin-top: 10px;
+}
+
+.jsxwtt a {
+    color: #2C2C2C;
+    font-family: "microsoft yahei";
+}
+
+.jsxwlist {
+
+}
+
+.jsxwlist li {
+    line-height: 30px;
+    font-size: 14px;
+    background: url(http://i8.chinanews.com/2014/cul/dot_gray.jpg) no-repeat 7px 13px;
+    padding-left: 17px;
+}
+
+.jsxwlist li a {
+    color: #484848;
+}
+
+/*主题图*/
+.banner {
+    position: relative;
+    width: 584px;
+    height: 345px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.banner_pic {
+    position: relative;
+    width: 584px;
+    height: 319px;
+    overflow: hidden;
+    margin: 0 auto 0;
+}
+
+.banner_pic ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 99999px;
+
+    height: 329px;
+}
+
+.banner_pic ul li {
+    float: left;
+    width: 584px;
+
+}
+
+.banner_pic ul li img{
+    width: 584px;
+    height:320px;
+
+}
+
+.banner a.btn_prev, .banner a.btn_next {
+    display: block;
+    width: 16px;
+    height: 31px;
+    overflow: hidden;
+    margin-top: 0;
+    text-indent: -9999px;
+    outline: none;
+    hide-focus: expression(this.hideFocus=true);
+    position: absolute;
+    bottom: 32px;
+    z-index: 5;
+    background-repeat: no-repeat;
+}
+
+.banner a.btn_prev {
+    left: 8px;
+    background-image: url(http://i8.chinanews.com/2014/cul/left_a.gif);
+}
+
+.banner a.btn_next {
+    right: 8px;
+    background-image: url(http://i8.chinanews.com/2014/cul/right_a.gif);
+}
+
+.banner_info_bg {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    width: 584px;
+
+    height: 45px;
+    overflow: hidden;
+    background: #000;
+    filter: Alpha(Opacity=40);
+    opacity: .4;
+}
+
+.banner_info {
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+    width: 564px;
+
+    height: 45px;
+    overflow: hidden;
+    z-index: 2;
+    text-align: left;
+
+}
+
+.banner_info li {
+    display: none;
+    padding: 0 10px;
+    line-height: 45px;
+    height: 45px;
+    overflow: hidden;
+    text-align: center;
+
+}
+
+.banner_info li.current {
+    display: block;
+}
+
+.banner_info li a {
+    color: #fff;
+    font-size: 18px;
+    font-family: microsoft yahei;
+    text-decoration: none;
+}
+
+.banner_info li .ext, .banner_info li .ext a {
+    color: #999;
+}
+
+span.pipe {
+    padding: 0 6px;
+}
+
+.banner_pages {
+    position: absolute;
+    left: 0px;
+    bottom: 8px;
+    height: 10px;
+    overflow: hidden;
+    z-index: 3;
+    width: 584px;
+
+}
+
+.banner_pages ul {
+    padding-left: 200px;
+}
+
+.banner_pages li {
+    float: left;
+    margin-left: 16px;
+}
+
+.banner_pages li span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    overflow: hidden;
+    background: url(http://www.chinanews.com/fileftp/2016/07/2016-07-08/U674P4T47D35692F972DT20160712091107.jpg) no-repeat;
+
+    text-indent: -9999px;
+    cursor: pointer;
+}
+
+.banner_pages li.current span {
+    background: url(http://www.chinanews.com/fileftp/2016/07/2016-07-08/U674P4T47D35692F971DT20160712091107.jpg) no-repeat;
+    width: 47px;
+    height: 10px;
+}
+
+/****精选海外出国****/
+.yaowen {
+    width: 1000px;
+    height: 245px;
+    margin: 10px auto 0 auto;
+    padding-top: 5px;
+}
+
+.jingxuan, .haiwai, .chuguo {
+    float: left;
+}
+
+.jingxuan {
+    width: 400px;
+}
+
+.chuguo {
+    width: 340px;
+}
+
+.lmbt {
+    width: 400px;
+    height: 40px;
+    background: #F9F9F9;
+}
+
+.lmbt2 {
+    width: 340px;
+}
+
+.lmbt .left {
+    width: 110px;
+    height: 40px;
+    font-size: 18px;
+    line-height: 38px;
+    text-align: center;
+    font-family: "microsoft yahei";
+    border-top: 2px solid #004477;
+    border-right: 1px solid #ddd;
+}
+
+.lmbt .left a {
+    color: #004477;
+}
+
+.lmbt .left a:hover {
+    text-decoration: none;
+}
+
+.lmbt .right {
+    width: 246px;
+    height: 40px;
+    line-height: 44px;
+    padding-right: 10px;
+    text-align: right;
+    font-size: 12px;
+}
+
+.lmbt .right a {
+    color: #A8A8A8;
+}
+
+.bluelist {
+    width: 400px;
+    padding-top: 10px;
+}
+
+.bluelist li {
+    font-size: 14px;
+    line-height: 32px;
+    padding-left: 20px;
+    background: url(http://www.chinanews.com/fileftp/2016/07/2016-07-08/U674P4T47D35692F973DT20160712091107.jpg) no-repeat 10px 11px;
+}
+
+.bluelist li a {
+    color: #484848;
+}
+
+.bluelist1 {
+    width: 340px;
+    padding-top: 10px;
+}
+
+.bluelist1 li {
+    font-size: 14px;
+    line-height: 32px;
+    padding-left: 20px;
+    background: url(http://www.chinanews.com/fileftp/2016/07/2016-07-08/U674P4T47D35692F973DT20160712091107.jpg) no-repeat 10px 11px;
+    width:340px; height:32px; overflow:hidden;
+}
+
+.bluelist1 li a {
+    color: #484848;
+}
+
+.haiwai {
+    width: 230px;
+    margin: 0 15px;
+
+}
+
+.haiwai .lmbt {
+    width: 230px;
+}
+
+.haiwai .lmbt .left {
+    background: none;
+    width: 70px;
+}
+
+.haiwai .lmbt .left a {
+    color: #3577C6;
+}
+
+.haiwai .lmbt .right {
+    width: 110px;
+    border-bottom: none;
+}
+
+.haiwai .lmbt .right a {
+    line-height: 42px;
+}
+
+.pictext {
+    padding-top: 15px;
+    height: 70px;
+    width: 230px;
+}
+
+.leftimg {
+    float: Left;
+    width: 98px;
+    height: 68px;
+    overflow: HIdden;
+    border: 1px solid #E5E5E5;
+}
+
+.righttext {
+    width: 120px;
+    padding-left: 10px;
+    float: left;
+}
+
+.righttext a {
+    color: #1D4992;
+    font-size: 14px;
+}
+
+.righttext p {
+    padding-top: 5px;
+    line-height: 20px;
+    color: #2D2D2D;
+}
+
+.righttext p a {
+    color: #1D4992;
+    font-size: 12px;
+}
+.renwulist{
+    width: 230px;
+}
+.renwulist li{
+    margin-top: 12px;
+    font-size: 14px;
+    color: #484848;
+    background: url(http://www.chinanews.com/fileftp/2016/07/2016-07-08/U674P4T47D35692F974DT20160712091107.jpg) no-repeat 0px 10px;
+    padding-left: 10px;
+    width:230px;
+    height:24px;
+    line-height:24px;
+    overflow:hidden;
+}
+.chuguo .left{
+    width: 133px;
+}
+.chuguo .right{
+    width: 100px;
+}
+/********正文*******/
+.enter_main_left {
+    float: left;
+    width: 645px;
+}
+
+.enter_main_right {
+    float: right;
+    width: 340px;
+}
+
+#jsxw_layer {
+    width: 645px;
+}
+
+.main_title_r {
+    height: 32px;
+    position: relative;
+    border-top: #e0763c 5px solid;
+}
+
+.main_title_r .life_title_text {
+    float: left;
+    color: #e0763c;
+    font-size: 20px;
+    line-height: 32px;
+    padding-left: 10px;
+    font-family: microsoft yahei;
+    width: 95px;
+}
+
+.main_title_r .life_title_more {
+    line-height: 32px;
+    float: right;
+    padding-right: 5px;
+}
+
+.main_title_r .life_title_more span {
+    font-size: 20px;
+    padding: 0 3px 0 0;
+    vertical-align: middle;
+}
+
+.main_title_r .life_title_more a {
+    color: #888;
+    ine-height: 30px;
+}
+
+.main_title_r .life_title_more a:hover {
+    color: #888;
+    text-decoration: none;
+}
+
+.enter_main_rightc {
+    width: 318px;
+    margin: 0 auto;
+}
+
+.life_fashion_img_pic {
+    width: 318px;
+    height: 190px;
+    position: relative;
+}
+
+.life_fashion_img_pic .life_fashion_imgtp_zc {
+    width: 318px;
+    height: 190px;
+}
+
+.life_fashion_img_pic .life_fashion_imgtp_zc img {
+    width: 318px;
+    height: 190px;
+}
+
+.life_fashion_img_pic .life_fashion_imgbg_zhichang {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 33px;
+    background-color: #e0763c;
+    filter: Alpha(Opacity=70);
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.life_fashion_img_pic .life_fashion_imgtext {
+    width: 318px;
+    height: 33px;
+    position: absolute;
+    bottom: 0;
+    bottom: 0px;
+    line-height: 33px;
+    color: #fff;
+    z-index: 1;
+
+    font-size: 18px;
+    text-align: center;
+    font-family: microsoft yahei;
+}
+
+.life_fashion_img_pic .life_fashion_imgtext a {
+    color: #fff;
+}
+
+.life_fashion_img_pic .life_fashion_imgtext a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.renwufc_ul_pic {
+    width: 318px;
+}
+
+.renwufc_ul_pic li {
+    width: 150px;
+    float: left;
+    margin: 0px 4px 14px 4px;
+    _margin: 0px 2px 14px 4px;
+}
+
+.renwufc_ul_pic li .conlist_img {
+    width: 150px;
+    height: 100px;
+    position: relative;
+}
+
+.renwufc_ul_pic li .conlist_img img {
+    width: 150px;
+    height: 100px;
+}
+
+.renwufc_ul_pic li .title_text {
+    padding-top: 7px;
+    overflow: Hidden;
+    height: 18px;
+    overflow: Hidden;
+    line-height: 18px;
+}
+
+.news_list_ul {
+    width: 645px;
+}
+
+.news_list_ul li {
+    border-bottom: #6f7074 1px dotted;
+    cursor: pointer;
+    padding: 20px 0
+}
+
+.news_list_ul li .moren_list {
+    padding: 10px;
+}
+
+.news_list_ul li .biaoti_list {
+    padding: 10px;
+}
+
+.news_list_ul li .bigpic_list {
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.news_list_ul li .moren_left {
+    float: left;
+    width: 486px;
+}
+
+.news_list_ul li .moren_right {
+    float: right;
+    width: 130px;
+    height: 95px;
+    margin-top: 36px;
+}
+
+.news_list_ul li .moren_right img {
+    width: 130px;
+    height: 95px
+}
+
+.news_list_ul li .intermoren_box {
+    padding-top: 7px;
+}
+
+.news_list_ul li .intermoren_left {
+    float: left;
+    width: 180px;
+    margin-top: 5px;
+}
+
+.news_list_ul li .intermoren_left img {
+    width: 180px;
+    height: 120px;
+}
+
+.news_list_ul li .intermoren_right {
+    float: right;
+    width: 445px;
+}
+
+.news_list_ul li .intermoren_right1 {
+    float: right;
+    width: 645px;
+}
+
+.news_list_ul li .news_title {
+    font-size: 20px;
+    font-family: microsoft yahei, "黑体";
+    color: #000
+}
+
+.news_list_ul li .news_title em {
+    font-style: normal;
+}
+
+.news_list_ul li .news_title .news_title_img {
+    float: left;
+    padding-top: 3px;
+}
+
+.news_list_ul li .news_title .news_title_img img {
+    vertical-align: middle;
+}
+
+.news_list_ul li .news_title .news_title_text {
+    float: left;
+    padding-left: 10px;
+}
+
+.news_list_ul li .news_title a {
+    color: #333;
+    text-decoration: none;
+}
+
+.news_list_ul li .news_title a:hover {
+    color: #fff;
+    background: #6aa6f4;
+    text-decoration: none;
+}
+
+.news_list_ul li .news_source {
+    font-size: 12px;
+    color: #8e8e8e;
+    padding: 7px 0 0;
+    height: 24px;
+    line-height: 24px;
+}
+
+.news_list_ul li .news_content {
+    font-size: 14px;
+    color: #282828;
+    line-height: 28px;
+}
+
+.news_list_ul li .news_content a.gray5:hover {
+    text-decoration: none;
+}
+
+.news_list_ul li .news_xgxw {
+    font-size: 12px;
+    color: #12619c;
+    padding-top: 10px;
+}
+
+.news_list_ul li .news_xgxw img {
+    padding-left: 5px;
+}
+
+.news_list_ul li .news_xgxw a.news_xgxw_a {
+    display: block;
+    width: 73px;
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+}
+
+.news_list_ul li .news_xgxw a.news_xgxw_asel {
+    width: 73px;
+    display: block;
+    line-height: 23px;
+    text-align: center;
+    height: 23px;
+    background: #f5f3ff;
+    border: #eaeaea 1px solid;
+}
+
+.news_list_ul li .news_xgxw_con {
+    width: 638px;
+    background: #edf4fa;
+}
+
+.news_list_ul li .news_xgxw_con .righttext {
+    width: 628px;
+    padding: 10px;
+}
+
+.news_list_ul li .news_xgxw_con .righttext li {
+    border: none;
+    padding: 0px;
+}
+
+.news_list_ul li .biaoti_list .moren_right {
+    margin-top: 0px;
+}
+
+.news_list_ul li .biaoti_list .moren_left .news_content_tupian {
+    font-family: microsoft yahei;
+    font-size: 13px;
+    color: #c5c3c4;
+}
+
+.news_list_ul li .bigpic_list .moren_left {
+    float: left;
+    width: 300px;
+    height: 190px;
+}
+
+.news_list_ul li .bigpic_list .moren_right {
+    float: right;
+    width: 312px;
+    margin-top: 10px;
+    height: auto;
+    _margin-top: 5px;
+}
+
+.news_list_ul li .bigpic_list .moren_right_nopic {
+    width: 645px;
+    padding: 0 0 10px 0;
+    height: auto;
+}
+
+.news_list_ul li .tupian_bigpic_list .moren_left {
+    float: left;
+    width: 400px;
+    height: 190px;
+}
+
+.news_list_ul li .tupian_bigpic_list .moren_right {
+    float: right;
+    width: 240px;
+    margin-top: 10px;
+    height: auto;
+    _margin-top: 5px;
+}
+
+.news_list_ul li .tupian_bigpic_list .moren_right .news_title {
+    height: auto;
+    color: #062175;
+    font-size: 18px;
+}
+
+.news_list_ul li .tupian_bigpic_list .moren_right .news_title a {
+    color: #062175;
+}
+
+.news_list_ul li .tupian_bigpic_list .moren_right .news_title a:hover {
+    color: #062175;
+    text-decoration: none;
+}
+
+.news_list_ul li .tupian_bigpic_list .moren_right .news_title a:hover {
+    color: #062175;
+    text-decoration: none;
+}
+
+.news_list_ul li .tupian_bigpic_list .moren_right .news_content {
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.news_list_ul li .tupian_bigpic_list .moren_right .news_source {
+    padding: 0px;
+}
+
+.news_list_ul li .tupian_conul ul li {
+    float: left;
+    width: 80px;
+    height: 55px;
+    margin-right: 15px;
+    position: relative;
+    border-bottom: none;
+}
+
+.news_list_ul li .tupian_conul ul li img {
+    width: 80px;
+    height: 55px;
+}
+
+.news_list_ul li .tupian_conul ul li .tp_blackbg {
+    width: 80px;
+    height: 55px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: #000;
+    filter: Alpha(Opacity=30);
+    opacity: 0.3;
+}
+
+.news_list_ul li .bigpic_list .news_content_tupian {
+    line-height: 28px;
+    font-family: microsoft yahei;
+    font-size: 13px;
+    color: #c5c3c4;
+}
+
+.news_lookmore {
+    width: 645px;
+    height: 30px;
+    background: #f1f1f1;
+    color: #e0763c;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 35px;
+}
+
+.news_lookmore a {
+    color: #e0763c;
+}
+
+.news_lookmore a:Hover {
+    color: #e0763c;
+}
+
+.tab-list {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ddd;
+    background: #f9f9f9;
+}
+
+.tab-list li {
+    float: left;
+    color: #333;
+    font-size: 14px;
+    line-height: 38px;
+}
+
+.tab-list li a {
+    color: #333;
+}
+
+.tab-list .filter-selected {
+    color: #fff;
+    font-size: 14px;
+    line-height: 38px;
+    height: 38px;
+    border-bottom: 1px solid #f9f9f9;
+    border-top: 2px solid #004477;
+    border-right: 1px solid #ddd;
+    width: 70px;
+    text-align: center;
+}
+
+.tab-list .filter-selected a {
+    color: #004477;
+    font-size: 18px;
+    height: 40px;
+    display: inline-block;
+    font-family: "microsoft yahei";
+}
+
+/*正文右侧*/
+.sticky{ position:fixed;bottom:150px;}
+.sticky0{ position:fixed;bottom:0px;width:340px;}
+.sticky1{ position:relative;top:0px;}
+
+.enter_main_right {
+    width: 340px;
+    border-left: 1px solid #ddd;
+}
+
+.lmbt .left2 {
+    width: 80px;
+    background: none;
+    border-bottom: 2px solid #E60012;
+}
+
+.lmbt .left2 a {
+    line-height: 40px;
+    text-align: center;
+}
+
+.qiaojie .lmbt, .spbb .lmbt, .rdph .lmbt {
+    height: 40px;
+}
+
+.qiaojie .left, .spbb .left, .rdph .left {
+    height: 40px;
+}
+.spbb .lmbt,.qiaojie .lmbt,.rdph .lmbt{
+    border-bottom: 1px solid #ddd;
+}
+.spbb .left,.qiaojie .left,.rdph .left{
+    width: 78px;
+    border: none;
+    border-left:2px solid #004477 ;
+    line-height: 40px;
+}
+.qiaojie .left,.rdph .left{
+    width: 100px;
+}
+.lmbt .right2 {
+    width: 220px;
+    height: 40px;
+}
+
+.right2 a {
+    line-height: 44px;
+}
+
+.spbb {
+    width: 340px;
+}
+
+.splist li {
+    width: 132px;
+    height: 105px;
+}
+
+.splist .conlist_img {
+    width: 130px;
+    height: 80px;
+    position: relative;
+}
+
+.splist {
+    padding: 20px 0 10px 15px;
+}
+
+.splist li {
+    float: left;
+    padding: 0 20px 15px 10px;
+}
+
+.splist .conlist_img img {
+    width: 130px;
+    height: 80px;
+}
+
+.splist li .title_text {
+    margin-top: 1px;
+    line-height: 24px;
+    height: 24px;
+    width: 130px;
+    overflow: Hidden;
+    text-align: center;
+    background: #2A2A2A;
+}
+
+.splist li .title_text a {
+    color: #fff;
+}
+.gabk{
+    width: 330px;
+    height: 40px;
+    padding-left: 10px;
+    color: #004477;
+    font-size: 20px;
+    line-height: 40px;
+    font-family: "microsoft yahei";
+    border-left: 2px solid #004477;
+    border-bottom: 1px solid #ddd;
+    background: #f9f9f9;
+}
+.new_right_title {
+
+    height:28px;
+
+    padding-bottom:9px;
+
+    border-bottom:#e5e5e5 1px solid;
+    position:relative;
+    font-family:microsoft yahei;
+}
+
+.new_right_titleul {
+    position:absolute;
+    left:0px;
+    top:0px;
+    font-size:16px;
+}
+.new_right_titleul li {
+    cursor:pointer;
+    height:28px;
+    width: 90px;
+    line-height:28px;
+    text-align:center;
+    float:left;
+
+}
+.new_right_titleul li  a:Hover{ text-decoration:none;}
+.new_right_titleul li.normal {
+    color:#484848;
+    text-align:center;
+}
+.new_right_titleul li.normal a{color:#484848;}
+.new_right_titleul li.active a{color:#000;}
+.new_right_titleul li.active {
+    background:url(http://www.chinanews.com/fileftp/2016/07/2016-07-08/U674P4T47D35692F975DT20160712091107.jpg) no-repeat;
+    color:#004477;
+}
+.zlk_left_ul{}
+.zlk_left_ul li{height:23px;line-height:23px;font-size:12px;background:url(http://www.chinanews.com/fileftp/2016/07/2016-07-08/U674P4T47D35692F974DT20160712091107.jpg) no-repeat 2px 10px;padding-left:11px;}
+.zlk_left_ul li a{color:#484848;padding:1px 3px;}
+.zlk_left_ul li a:hover{color:#fff;background:#5c5c5c; text-decoration:none;}
+.pagebottom {
+    color: #3b5a88;
+    margin: 0 auto;
+    padding:  0;
+    width: 100%;
+}
+.pagebottom a {
+    color: #3b5a88;
+}
+.pagebottom_a a{font-size:14px;color:#777777;font-weight:bold;font-family:"宋体";}
+.pagebottom_p p {color:#787878;}
+
+.pagebottom_nav {
+    background:#cecece;
+    height:39px;
+    line-height: 39px;
+
+    text-align: center;
+}
+.pagebottom_nav span {padding: 0 10px;}
+.pagebottom_nav1 span {padding: 0 2px;}
+.pagebottom_nr{padding:20px 0px 20px 10px;background:#e4e4e4;color:#545972;}
+.pagebottom_nr1{padding-left:10px;padding-right:0px;}
+.pagebottom_nr a{color:#545972; text-decoration:none;}
+.pagebottom_nr a:hover{color:#545972; text-decoration:underline;}
+
+.pagebottom p {
+    line-height: 24px;
+
+}
+
+.small_video {
+    position:absolute;
+    left:68px;
+    top:22px;
+    background: url(http://i8.chinanews.com/gj/img/video.png) no-repeat scroll 0 0 transparent;
+    height: 35px;
+    width: 30px;
+}
+
+</style><style type="text/css">
+    .xwzxdd-dbt h1{font-size: 17px;font-weight: bold;}
+    .life_left_ulr li{overflow: hidden;}
+    .news_lookmore {
+        background: none repeat scroll 0 0 #f1f1f1;
+        color: #e0763c;
+        font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 12px;
+        text-align: center;
+        width: 645px;
+        padding:0px;
+    }
+    body,td,th {
+        font-family: "宋体", Arial, Tahoma, Verdana, STHeiTi, sans-serif, Helvetica, SimSun;
+    }
+
+    .enter_text {
+        float: left;
+        width: 394px;
+    }
+    .menuTop{ top: 247px;}
+    .selectnews {
+        line-height: 22px;
+        color: #666;
+        border: 1px solid #DEDEDE;
+        margin-left: -1px;
+        font-size: 13px;
+        width: 60px;
+        padding: 2px 2px 2px 0px;
+    }
+</style>
+</head>
+
+<body id="inter_top">
+<div id="index_topa">
+<!--右侧导航开始-->
+
+<script>
+    $(document).ready(function(){
+
+        $("#closebt").click(function(){
+            $(".ewm_box").hide();
+        })
+
+    });
+</script>
+<div class="ewm_box">
+    <a class="closebt" id="closebt"></a>
+    <div class="ewm_boxp">
+        <div class="beijing"><img src="http://i8.chinanews.com/2014/hwbz/images/ewm.jpg"/></div>
+        <p>中新网客户端</br>
+            点击或扫描下载</p>
+    </div>
+</div>
+<div class="index_layer_back ie6fixedBR" id="newsbacktop">
+    <ul class="index_layerul">
+
+        <li class="back" style="height:50px;"><div class="back-to-top" title="Back To Top">
+            <a id="backtop" href="#inter_top" target="_self"></a>
+        </div></li>
+
+    </ul>
+</div>
+<Script>
+    (function() {
+        var backToTopTxt = $(".index_layer_back").html(),
+                backToTopEle = backToTopTxt, backToTopFun = function() {
+                    var stback1 = $(document).scrollTop(), winh = $(window).height();
+                    (stback1>0)? $(".index_layer_back").show(): $(".index_layer_back").hide();
+                    //IE6下的定位
+                    if (!window.XMLHttpRequest) {
+                        $(".index_layer_back").css("top", stback1 + winh - 550);
+                    }
+                };
+        $(window).bind("scroll", backToTopFun);
+        backToTopFun();
+
+    })();
+    var screenwidth=$(window).width(); //浏览器当前窗口可视区域宽度
+    //$("#layer").css("right",((screenwidth -1004) /2)-100);
+
+    Box1=document.getElementById("newsbacktop");
+
+    Box1.style.right = ((screenwidth -1004) /2)-80 + "px";
+
+    if(screenwidth <= 1024){
+        Box.style.right =0+"px";
+        Box1.style.right =0+"px";
+    }
+
+    $(window).resize(function() {
+        var screenwidth=$(window).width(); //浏览器当前窗口可视区域宽度
+//$("#layer").css("right",((screenwidth -1004) /2)-100);
+
+        Box1=document.getElementById("newsbacktop");
+
+        Box1.style.right = ((screenwidth -1004) /2)-80 + "px";
+        if(screenwidth <= 1024){
+            Box.style.right =0+"px";
+            Box1.style.right =0+"px";
+        }
+    });
+</Script>
+
+<!--右侧导航结束-->
+<!--div id="js_N_nav" class="index-nav" s-->
+<style>
+    .index_icon14 {
+        background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F978DT20150907155559.png) no-repeat ;
+        display: block;
+        height: 13px;
+        width: 18px;
+    }
+
+    ul.c-fl-ul .topnav_sel .index_icon14 {
+        background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F979DT20150907155559.png) no-repeat ;
+    }
+    .index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_mo.png) no-repeat;display:block;width:24px;height:19px;}
+    ul.c-fl-ul .topnav_sel .index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_sel.png) no-repeat;}
+    .index-nav-select-wide .index-nav-select-title-gzh{padding:0px 10px 0px 43px}
+
+</style>
+
+<style>
+.index_icon14 {
+    background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F978DT20150907155559.png) no-repeat ;
+    display: block;
+    height: 13px;
+    width: 18px;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon14 {
+    background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F979DT20150907155559.png) no-repeat ;
+}
+.index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_mo.png) no-repeat;display:block;width:24px;height:19px;}
+ul.c-fl-ul .topnav_sel .index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_sel.png) no-repeat;}
+.index-nav-select-wide .index-nav-select-title-gzh{padding:0px 10px 0px 43px}
+
+</style>
+
+<div id="js_N_nav" class="index-nav" style="height:46px;">
+    <div class="index-nav-main clearfix">
+        <div id="stepflow01" class="c-fl">
+        	<ul class="c-fl-ul">
+            	<li class="division"><div class="index-nav-select    left">
+              	     <a href="http://www.chinanews.com" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon1"></em>中新网首页</a></div>
+                </li>
+
+                <li id="jrzmdiv" class="division"> <div class="index-nav-select    left">
+               		 <a href="http://www.chinanews.com/common/footer/sitemap.shtml" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon14"></em>网站地图</a> </div>
+                </li>
+
+               <li class="division"><div class="index-nav-select    left">
+                	<a href="http://mail.chinanews.com.cn/" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon12"></em>企业邮箱</a></div>
+               </li>
+
+               <li class="division"><div class="index-nav-select    left">
+               		 <a class="index-nav-select-title index-nav-entry-bgblack" href="http://www.chinaso.com/"><em class="index-nav-select-arr index_icon11"></em>中国搜索</a></div>
+               </li>
+             </ul>
+        </div>
+        <div class="c-fr">
+            <ul class="c-fl-ul">
+            	<li id="jrzmdiv1" class="division"> <div class="index-nav-select    left">
+                    <a class="index-nav-select-title index-nav-entry-bgblack" href="http://m.chinanews.com/home/"><em class="index-nav-select-arr index_icon4"></em>移动版</a></div>
+                 </li>
+                 <li id="jrzmdiv1" class="division"> <div class="index-nav-select    left">
+                     <a href="http://www.chinanews.com/app/chinanews/index.shtml" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon13"></em>客户端</a></div>
+                 </li>
+                  <li id="jrzmdiv1" class="division"> 
+				 <div class="index-nav-select left">
+                <div class="newpic"></div>
+                <a class="index-nav-select-title index-nav-entry-bgblack" href="http://www.chinanews.com/cns2012.shtml"><em class="index-nav-select-arr index_icon_gzh"></em>微信</a>
+
+             </div>
+             </li>
+                 <li id="jrzmdiv2" class="division"> <div class="index-nav-select  index-nav-app left ">
+                      <div style="_width:90px;" class="dii81" id="id8" onmouseover="weibo(0)" onmouseout="weibo(1)">
+                           <div id="navshow_div" class="index-nav-select-pop">
+                                <ul class="index-nav-select-list clearfix">
+                                    <!-- <li><a href="http://t.chinanews.com/"><span>中新职务微博</span></a></li>-->
+                                    <li><a href="http://weibo.com/chinanewsv"><span>中新网<em>新浪</em>法人微博</span></a></li>
+                                    <li><a href="http://t.qq.com/chinanews"><span>中新网<em>腾讯</em>法人微博</span></a></li>
+                                     <li><a href="http://weibo.com/u/3604378011"><span>中新社<em>新浪</em>法人微博</span></a></li>
+                                     <li><a href="http://t.qq.com/cns"><span>中新社<em>腾讯</em>法人微博</span></a></li>
+
+                                     <!--
+                                     <li><a href="http://1.t.qq.com/cns"><span>中新社<em >腾讯</em>法人微博</span></a></li>
+                                    <li><a href="http://chinanewsv.t.sohu.com/"><span>中新网<em >搜狐</em>法人微博</span></a></li>
+                                    <li><a href="http://t.163.com/chinanews"><span>中新网<em >网易</em>法人微博</span></a></li>-->
+
+                                </ul>
+                            </div>
+                        <a class=" p_relative index-nav-select-title1  index-nav-entry-bgblack " ><em class="index-nav-select-arr1"></em>
+                        <em class="index-nav-select-arr index_icon5"></em>微博
+                         </a>
+                        </div>
+                    </div>
+                 </li>
+                <li class="division"> <a href="http://www.ecns.cn/" class="index-nav-entry-wide index-nav-select-title left">English</a></li>
+               <!-- <li class="division">  <a href="http://big5.chinanews.com:80/" class="index-nav-entry-wide index-nav-select-title left">繁体</a></li>-->
+				<li class="division"><fjtignoreurl><a id="yx_style_nav" class="index-nav-entry-wide left" href="http://wza.chinanews.com/" style="color:#b21112">无障碍</a></fjtignoreurl></li>
+            </ul>
+
+        </div>  
+
+        <div class="clear"></div>  
+    </div>
+</div>
+
+<!--div id="js_N_nav" class="index-nav" e-->
+<div class="enter_top" id="enter_top">
+    <div class=" w1000 m_center">
+        <div id="top">
+            <!--[4,319,36] published at 2016-07-29 13:13:41 from #10 by 赵谦-->  
+<style>
+
+#top{width:1000px;}
+
+</style>
+
+        <a href="http://www.chinanews.com/scroll-news/news1.html" target="_blank">滚动</a>|
+        <a href="http://www.chinanews.com/china/" target="_blank">时政</a>|
+        <a href="http://world.chinanews.com/" target="_blank">国际</a>|
+        <a href="http://www.chinanews.com/mil/news.shtml" target="_blank">军事</a>|
+        <a href="http://www.chinanews.com/society/" target="_blank">社会</a>| <a href="http://www.chinanews.com/gangao/" target="_blank">港澳</a>|
+        <a href="http://www.chinanews.com/taiwan/" target="_blank">台湾</a>|
+        <a href="http://www.chinaqw.com/" target="_blank">侨网</a>|
+        <a href="http://www.chinanews.com/huaren/" target="_blank">华人</a>| <a href="http://finance.chinanews.com/" target="_blank">财经</a>|
+        <a href="http://business.chinanews.com/" target="_blank">产经</a>|
+        <a target="_blank" href="http://fortune.chinanews.com/">金融</a>|
+        <!--<a href="http://stock.chinanews.com/" target="_blank">证券</a>|
+        <a href="http://house.chinanews.com/" target="_blank">房产</a>|
+        <a href="http://energy.chinanews.com/" target="_blank">能源</a>|
+        <a href="http://it.chinanews.com/" target="_blank">IT</a>|-->
+        <a href="http://auto.chinanews.com/" target="_blank">汽车</a>|<!--<a href="http://game.chinanews.com/" target="_blank">游戏</a>|-->
+        <a href="http://ent.chinanews.com/">娱乐</a>|
+        <a href="http://sports.chinanews.com/" target="_blank">体育</a>|
+        <a href="http://cul.chinanews.com/" target="_blank">文化</a>|
+       <!-- <a href="http://health.chinanews.com/" target="_blank">健康</a>|-->
+       <a href="http://www.chinanews.com/theory/">理论</a>|
+        <a href="http://life.chinanews.com/" target="_blank">生活</a>|
+        <a href="http://photo.chinanews.com/" target="_blank">图片</a>|
+        <a href="http://www.chinanews.com/shipin/" target="_blank">视频</a>|
+        <a href="http://interview.chinanews.com/">访谈</a>
+
+        </div>
+
+        <div style="width:1000px;margin:0 auto; margin-top:10px;" > <a href="http://www.chinaqw.com/"><img src="http://i8.chinanews.com/gg/yichuanmei/creative/u2/591/3yvu1win.n10_201479.jpg" width="1000" height="90" border="0"></a>
+<!--[4,175,341] published at 2016-03-22 14:35:30 from #10 by 郑振海--></div>
+        <div class="enter_banner">
+            <div class="enter_logo"><a><img src="http://www.chinanews.com/fileftp/2016/07/2016-07-21/U435P4T47D35959F968DT20160721101521.jpg"/></a></div>
+            <div class="searchnav">
+                <div class="enter_text">
+                    <div class="strip">
+                        <!--[4,248,1] published at 2016-12-26 13:01:01 from #202 by system-->
+2016年12月26日   星期一
+                    </div>
+                    <div class="strip" style="width:150px;overflow:HIdden;">
+                        <!--[4,319,22] published at 2015-05-22 15:26:53 from #10 by 赵谦 --> 
+<style>
+#info img{ vertical-align:middle;padding:0 5px;}
+#info a{color:#333; text-decoration:none;font-size:12px;padding:0;}
+#info a:hover{color:#333; text-decoration:underline;}
+</style>
+
+<script type="text/javascript">
+function returndata(data) {
+    var parseData = "";
+    with(data.weatherinfo) {
+		parseData+="<a href='http://www.weather.com.cn/weather/101010100.shtml'>"+city+"</a> ";
+		//parseData+="<img width='20' src='http://www.weather.com.cn/m/i/weatherpic/29x20/" + img1 + "' title='中国天气网今日天气指数:" + weather+"' />",
+		parseData+="<a href='http://www.weather.com.cn/weather/101010100.shtml'>"+temp1+"-"+temp2+"</a>";
+		// parseData+="<a href='http://www.weather.com.cn/weather/101010100.shtml'>"+wind1+"</a>";
+
+    }
+    return parseData;
+}
+
+function getData(){
+	var htmlobj=$.ajax({
+        	type:'get',	
+        	async:false,
+			url:'/iframe/static/weather_json.html',
+			dataType: "json",
+			success:function(data){
+				//20150522注释
+				//$("#info").html(returndata(data));
+			}
+
+		});
+
+}
+
+$(document).ready(function(){
+	getData();
+
+});
+</script>
+
+<div id='info'></div>
+                    </div>
+
+                    </script><script><script type="text/javascript">
+                    function returndata(data) {
+                        var parseData = "";
+                        with(data.weatherinfo) {
+                            parseData+="&lt;a href='http://www.weather.com.cn/weather/101010100.shtml'&gt;"+city+"&lt;/a&gt; ";
+                            //parseData+="&lt;img width='20' src='http://www.weather.com.cn/m/i/weatherpic/29x20/" + img1 + "' title='中国天气网今日天气指数:" + weather+"' /&gt;",
+                            parseData+="&lt;a href='http://www.weather.com.cn/weather/101010100.shtml'&gt;"+temp1+"-"+temp2+"&lt;/a&gt;";
+                            // parseData+="&lt;a href='http://www.weather.com.cn/weather/101010100.shtml'&gt;"+wind1+"&lt;/a&gt;";
+
+                        }
+                        return parseData;
+                    }
+
+                    function getData(){
+                        var htmlobj=$.ajax({
+                            type:'get',
+                            async:false,
+                            url:'/iframe/static/weather_json.html',
+                            dataType: "json",
+                            success:function(data){
+
+                                $("#info").html(returndata(data));
+                            }
+
+                        });
+
+                    }
+
+                    $(document).ready(function(){
+                        getData();
+
+                    });</script>
+                </div>
+                <div class="searchinput right">
+
+                    <input type="text" value="请输入关键字" onclick="this.value='',this.style.color='#000'" name="q" id="q"  class="search_input" onkeydown="checksubmit()">
+
+                    <div class="search_listbox"> 
+
+                  					<!---->
+                     <script type="text/javascript"> 
+
+function checksubmit(){
+    var code = event.keyCode;
+    if(code == 13) submitFun();
+  }
+
+function submitFun() {
+
+var hotword=document.getElementsByName('q')[0].value;
+
+if (hotword==''){
+
+alert('请输入关键字!');
+
+return false;
+
+}
+else
+{
+
+$.ajax({
+  type: "GET",
+  url: "http://lc.chinanews.com:8090/rpc/pa.jsp?pid=1&paid=50&u=sousuo&aj="+encodeURI(Math.random()+ (new Date())),
+  dataType: "jsonp"
+});
+
+if(document.getElementsByName('s0')[0].value=='cns')
+{
+
+ window.open("http://sou.chinanews.com/search.do?q="+encodeURIComponent(hotword));
+ }
+ else if(document.getElementsByName('s0')[0].value=='baidu')
+ {
+ window.open("http://www.baidu.com/s?ie=utf-8&bs=%E4%B8+%9B%BD&sr=&z=&cl=3&f=8&wd="+encodeURIComponent(hotword)+"&ct=0");
+ }
+
+}
+
+}
+
+</script>  
+
+                <div style="_position:relative;padding:0px;margin:0px;" onmouseout="search_select(1)" onmouseover="search_select(0)" class="dii7" id="id7">
+                     <div  class="select_border">
+
+<div class="select_container">
+                     <select id="s0" name="s0"  class="selectnews"> 
+<option value="cns">中 新</option> 
+<option value="baidu">百 度</option> 
+
+</select> 
+</div>
+</div></div>      
+
+                    </div>
+                    <a  class="search_a" onclick="submitFun()">搜 索</a>
+					<div class="clear"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+    <div class="inter_navbox" >
+        <div class="inter_nav" >
+            <ul class="inter_nav_ul">
+                <li style="padding-left: 28px"><a href="http://www.chinanews.com/compatriot.shtml">即时新闻</a></li>
+                <li><a href="http://channel.chinanews.com/cns/cl/ga-stwx.shtml">社会百态</a></li>
+                <li><a href="http://channel.chinanews.com/cns/cl/ga-zmrs.shtml">人物</a></li>
+                <li><a href="http://channel.chinanews.com/cns/cl/ga-gaynd.shtml">港澳与内地</a></li>
+                <li><a href="http://channel.chinanews.com/cns/cl/ga-sp.shtml">视频</a></li>
+                <li><a href="http://channel.chinanews.com/cns/cl/ga-sszqf.shtml">时事播报</a><em></em></li>
+                <li><a href="http://channel.chinanews.com/cns/cl/ga-cjxw.shtml">港澳财经</a></li>
+                <li style="background: none;padding-right: 0px;"><a href="#baike" target="_self">港澳百科</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--头部结束-->
+
+<!--导读：即时新闻+主题图-->
+<div class="w1000 m_center" id="daodu">
+    <div class="mt10">
+        <div class="enter_leftt">
+            <div class="jsxw">
+                <h2 class="jsxwtt"><li><a href="http://www.chinanews.com/ga/2016/12-26/8104740.shtml">纪念“香港沦陷”75周年 港团体吁关注慰安妇</a></li></h2>
+                <ul class="jsxwlist">
+                    <li><a href="http://www.chinanews.com/ga/2016/12-26/8104752.shtml">外媒：香港筹建故宫文化博物馆 庆祝香港回归20周年</a></li><li><a href="http://www.chinanews.com/ga/2016/12-26/8104708.shtml">香港圣诞节发生三车连撞事故 42人受伤（图）</a></li><li><a href="http://www.chinanews.com/ga/2016/12-25/8104315.shtml">北海道大雪致500港澳同胞被困机场 中国数航班支援</a></li><li><a href="http://www.chinanews.com/ga/2016/12-25/8104283.shtml">香港“投资侠”力拓新经济 助当地青年到内地发展</a></li>
+                </ul>
+            </div>
+            <div class="jsxw">
+                <h2 class="jsxwtt jsxwtt2"><li><a href="http://www.chinanews.com/ga/2016/12-26/8104551.shtml">500名港澳同胞因北海道暴雪滞留机场 已顺利回家</a></li></h2>
+                <ul class="jsxwlist">
+                    <li><a href="http://www.chinanews.com/ga/2016/12-25/8104253.shtml">香港公路三车相撞40多伤 货柜车尾板撞至凹陷</a></li><li><a href="http://www.chinanews.com/ga/2016/12-23/8102741.shtml">圣诞节促零售复苏 香港商场料人均消费升10%</a></li><li><a href="http://www.chinanews.com/ga/2016/12-23/8102633.shtml">香港人均日弃1.39公斤废物 港府:与经济蓬勃有关</a></li><li><a href="http://www.chinanews.com/ga/2016/12-23/8102533.shtml">前海深港青年梦工场：北上创业梦想“孵化器”</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="enter_rightt">
+            <!-- sliderimg start -->
+            <div class="banner" id="kakaFocus1">
+                <a class="btn_prev" id="lrbt_show1" title="上一个" href="#">Previous</a>
+                <a class="btn_next" id="lrbt_show2" title="下一个" href="#">Next</a>
+
+                <div class="banner_pic" id="gdt"> 
+		<ul>
+			<li><a href="http://www.chinanews.com/ga/2016/12-26/8104708.shtml"><img width="584" height="319" src="http://www.chinanews.com/gangao/part/2009/U348P4T375D54F11589DT20161226112840.png" alt="香港圣诞节发生三车连撞事故 42人受伤" /></a></li>
+			<li><a href="http://www.chinanews.com/ga/2016/12-26/8104698.shtml"><img width="584" height="319" src="http://www.chinanews.com/gangao/part/2009/U348P4T375D54F11634DT20161226113052.png" alt="香港低收入在职家庭津贴批受惠人数超10万人" /></a></li>
+
+		</ul> 
+	</div>
+	<div class="banner_info">
+		<ul>
+			<li><a href="http://www.chinanews.com/ga/2016/12-26/8104708.shtml">香港圣诞节发生三车连撞事故 42人受伤</a></li>
+			<li><a href="http://www.chinanews.com/ga/2016/12-26/8104698.shtml">香港低收入在职家庭津贴批受惠人数超10万人</a></li>
+
+		</ul>
+	</div>
+
+                <div class="banner_info_bg"></div>
+            </div>
+            <!-- sliderimg end -->
+        </div>
+
+        <div class="clear"></div>
+    </div>
+</div>
+<!--导读结束-->
+
+<!--精选海外出国-->
+<div class="yaowen">
+    <div class="jingxuan">
+        <div class="lmbt">
+            <div class="left"><a href="http://channel.chinanews.com/cns/cl/ga-stwx.shtml">社会百态</a></div>
+            <div class="right"><a href="http://channel.chinanews.com/cns/cl/ga-stwx.shtml"><span style="font-family: '宋体';">十</span>更多</a></div>
+        </div>
+        <div class="clear"></div>
+        <ul class="bluelist">
+            <li><a href="http://www.chinanews.com/ga/2016/12-26/8104708.shtml">香港圣诞节发生三车连撞事故 42人受伤（图）</a></li><li><a href="http://www.chinanews.com/ga/2016/12-25/8104305.shtml">香港市民圣诞节传爱心</a></li><li><a href="http://www.chinanews.com/ga/2016/12-25/8104253.shtml">香港公路三车相撞40多伤 货柜车尾板撞至凹陷</a></li><li><a href="http://www.chinanews.com/ga/2016/12-24/8103697.shtml">特写：香港圣诞丰富多彩 吃购游玩应有尽有</a></li><li><a href="http://www.chinanews.com/ga/2016/12-22/8101651.shtml">港铁因有人闯入路轨范围致列车服务受阻 已逐步恢复</a></li><li><a href="http://www.chinanews.com/ga/2016/12-22/8101289.shtml">对腐败“零容忍”香港廉政公署反贪防腐不问公私</a></li><li><a href="http://www.chinanews.com/ga/2016/12-21/8100868.shtml">香港人的冬至餐桌：要“吉”也要“生财”</a></li>
+        </ul>
+    </div>
+    <div class="haiwai">
+        <div class="lmbt">
+            <div class="left"><a href="http://channel.chinanews.com/cns/cl/ga-zmrs.shtml">人物</a></div>
+            <div class="right"><a href="http://channel.chinanews.com/cns/cl/ga-zmrs.shtml"><span style="font-family: '宋体';">十</span>更多</a></div>
+        </div>
+        <div class="clear"></div>
+        <div class="mt10">
+            <div class="leftimg">
+                          <a href="http://www.chinanews.com/ga/2016/12-22/8102256.shtml"><img src="http://www.chinanews.com/gangao/part/2009/U587P4T375D71F11589DT20161223144810.jpg"></a>
+                  </div>
+                       <div class="righttext">
+                        <a href="http://www.chinanews.com/ga/2016/12-22/8102256.shtml"><strong>梁振英：香港经济增长缓慢 须好好掌握“一带一路”新机遇 </strong></a>
+                      </div>
+<div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <ul class="renwulist">
+            <li><a href="http://www.chinanews.com/ga/2016/12-19/8098517.shtml">董建华：中国模式的治理制度值得共同维护支持</a></li><li><a href="http://www.chinanews.com/ga/2016/12-12/8091136.shtml">香港特区财政司司长曾俊华请辞 行政长官收到辞呈</a></li><li><a href="http://www.chinanews.com/ga/2016/12-02/8082281.shtml">崔世安：严格按照宪法和基本法履职施政</a></li><li><a href="http://www.chinanews.com/ga/2016/11-10/8058455.shtml">纪录片《孙中山香江岁月》在港推出</a></li>
+        </ul>
+    </div>
+    <div class="chuguo">
+        <div class="lmbt lmbt2">
+            <div class="left"><a href="http://channel.chinanews.com/cns/cl/ga-gaynd.shtml">港澳与内地</a></div>
+            <div class="right"><a href="http://channel.chinanews.com/cns/cl/ga-gaynd.shtml"><span style="font-family: '宋体';">十</span>更多</a></div>
+        </div>
+        <div class="clear"></div>
+        <ul class="bluelist">
+            <li><a href="http://www.chinanews.com/ga/2016/12-26/8104752.shtml">外媒：香港筹建故宫文化博物馆 庆祝香港回归20周年</a></li><li><a href="http://www.chinanews.com/ga/2016/12-25/8104324.shtml">香港“校园艺术大使”开启四川文化之旅</a></li><li><a href="http://www.chinanews.com/ga/2016/12-25/8104283.shtml">香港“投资侠”力拓新经济 助当地青年到内地发展</a></li><li><a href="http://www.chinanews.com/ga/2016/12-23/8102533.shtml">前海深港青年梦工场：北上创业梦想“孵化器”</a></li><li><a href="http://www.chinanews.com/ga/2016/12-22/8101784.shtml">香港拟设立初中基本法教育最低课时要求</a></li><li><a href="http://www.chinanews.com/ga/2016/12-22/8101109.shtml">基本法将纳入香港初中课程 使学生深入了解一国两制</a></li><li><a href="http://www.chinanews.com/ga/2016/12-21/8100343.shtml">香港青年夺广州双创大赛最高奖 获800万风投资金</a></li>
+        </ul>
+    </div>
+</div>
+<!--精选海外出国结束-->
+</div>
+
+<!--正文开始-->
+<div class="w1000 m_center">
+    <div>
+        <div class="enter_main_left" id="sticky_left">
+            <div id="jsxw_layer">
+                <div id="jsxwredbox_Con1" style="display:block;">
+                    <ul class="tab-list" id="jsxw_sp">
+                        <li class="filter-selected">
+                            <a class="filter-name">最新</a></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!---->
+            <div class="news_list_ulbox">
+                <div id="jsxw_sp_Con0" style="display:block;">
+
+                    <ul class="news_list_ul" id="ent0">
+
+                        <!--滚动新闻-->
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/ga/2016/12-26/8104752.shtml">外媒：香港筹建故宫文化博物馆 庆祝香港回归20周年</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/ga/2016/12-26/8104752.shtml" class="gray5">
+参考消息网12月26日报道 外媒称，香港媒体消息显示，故宫博物院23日与香港西九文化区管理局签署协议，共同决定兴建香港故宫文化博物馆。
+
+据埃菲社12月24日报道称，双方负责人在北京签署了一份合作备忘录。该项目将耗资35亿港元(1港元约合0.89元人...</a><a href="http://www.chinanews.com/ga/2016/12-26/8104752.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 11:00 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/ga/2016/12-26/8104740.shtml">纪念“香港沦陷”75周年 港团体吁关注慰安妇</a></em></div>
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ga/2016/12-26/8104740.shtml"><img src="http://www.chinanews.com/ga/2016/12-26/U348P4T8D8104740F107DT20161226105141.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_content"><a class="gray5" href="http://www.chinanews.com/ga/2016/12-26/8104740.shtml">
+中新网12月26日电  据香港《大公报》报道，昨日(25日)是圣诞节，适逢“香港沦陷”75周年纪念日，有民间团体在香港大会堂进行“香港也有‘慰安妇’”分享会，该组织召集人李美娜称，在三年零八...</a><a class="blue" href="http://www.chinanews.com/ga/2016/12-26/8104740.shtml">[详情]</a></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 10:51 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/ga/2016/12-26/8104708.shtml">香港圣诞节发生三车连撞事故 42人受伤（图）</a></em></div>
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ga/2016/12-26/8104708.shtml"><img src="http://www.chinanews.com/ga/2016/12-26/U348P4T8D8104708F107DT20161226103208.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_content"><a class="gray5" href="http://www.chinanews.com/ga/2016/12-26/8104708.shtml">
+中新网12月26日电  据香港《大公报》报道，近年多次发生严重车祸的香港元朗新田公路，昨日(25日)圣诞节发生三车“串烧”严重交通意外，一辆货柜车疑坏车“抛锚”在慢线上，遭尾随一辆收掣不及...</a><a class="blue" href="http://www.chinanews.com/ga/2016/12-26/8104708.shtml">[详情]</a></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 10:32 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/ga/2016/12-26/8104698.shtml">香港低收入在职家庭津贴批受惠人数超10万人（图）</a></em></div>
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/ga/2016/12-26/8104698.shtml"><img src="http://www.chinanews.com/ga/2016/12-26/U348P4T8D8104698F107DT20161226103639.png" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_content"><a class="gray5" href="http://www.chinanews.com/ga/2016/12-26/8104698.shtml">
+中新网12月26日电  据香港《大公报》报道，香港劳工及福利局局长张建宗最新网志指，“低收入在职家庭津贴”重点是支持儿童，截至本月23日，计划共批出逾3.79亿元(港币，下同)，受惠家庭逾2.8万...</a><a class="blue" href="http://www.chinanews.com/ga/2016/12-26/8104698.shtml">[详情]</a></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 10:25 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/ga/2016/12-26/8104551.shtml">500名港澳同胞因北海道暴雪滞留机场 已顺利回家</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/ga/2016/12-26/8104551.shtml" class="gray5">
+
+央广网北京12月26日消息 据中国之声《新闻纵横》报道，12月22和23号两天，日本北海道降下了50年不遇的特大暴雪，造成陆路、空路交通全面瘫痪。罕见暴雪也导致了北海道最大城市札幌的新千岁机场长时间关闭，众多航班被取消，数千人滞留，其中港澳同...</a><a href="http://www.chinanews.com/ga/2016/12-26/8104551.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 09:09 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/ga/2016/12-25/8104381.shtml">特写：勿忘75年前日军侵港“黑色圣诞”</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/ga/2016/12-25/8104381.shtml" class="gray5">
+
+新华社香港12月25日电(记者郜婕)12月25日对香港人而言，不只是圣诞节，更承载一段不容遗忘的历史：75年前的这一天，香港遭日军攻陷，从此开始“3年零8个月的沦陷”。据史料记载，日军占领期间滥杀平民、强奸女性，给香港带来一段“黑色记忆”。
+...</a><a href="http://www.chinanews.com/ga/2016/12-25/8104381.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 22:25 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/ga/2016/12-25/8104324.shtml">香港“校园艺术大使”开启四川文化之旅</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/ga/2016/12-25/8104324.shtml" class="gray5">
+
+中新社成都12月25日电 (王鹏)2016香港校园艺术大使内地文化交流活动——四川文化之旅25日下午在四川省文物考古研究院拉开帷幕，28位来自22所香港中学和高校的青年学生开启首届四川文化之旅。
+
+据介绍，香港校园艺术大使内地文化交流活动今年系首...</a><a href="http://www.chinanews.com/ga/2016/12-25/8104324.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 19:57 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/ga/2016/12-25/8104305.shtml">香港市民圣诞节传爱心</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/ga/2016/12-25/8104305.shtml" class="gray5">
+
+中新社香港12月25日电 25日是圣诞节，香港多数人享受购物、美食愉悦的时候，也有香港市民趁着假期做义工、行善事，有的到访儿童医院，为病童举行圣诞派对，有的向长者派发食品，嘘寒问暖。
+
+每逢圣诞节，香港岛大口环根德公爵夫人儿童医院均会邀...</a><a href="http://www.chinanews.com/ga/2016/12-25/8104305.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 19:46 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/ga/2016/12-25/8104315.shtml">北海道大雪致500港澳同胞被困机场 中国数航班支援</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/ga/2016/12-25/8104315.shtml" class="gray5">
+
+12月22、23日，日本北海道遭遇特大暴雪，导致陆路、空路交通全面瘫痪，众多航班被取消，数千人滞留机场，其中包括约500名香港和澳门特区同胞。
+
+25日中午，中国驻札幌总领事馆救援车队克服交通受阻等困难，携带食品和饮用水赶赴机场，着手开展安...</a><a href="http://www.chinanews.com/ga/2016/12-25/8104315.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 19:32 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/ga/2016/12-25/8104283.shtml">香港“投资侠”力拓新经济 助当地青年到内地发展</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/ga/2016/12-25/8104283.shtml" class="gray5">
+
+香港金融青年会主席张永康
+
+中新网12月25日电据大公网报道，近年互联网体育领域多次被一家企业刷屏：新三板非金融股市值最高企业，斥资9.6亿(人民币，下同)收购畅游云端，主导成立中国移动电竞联盟。董事中有一位来自香港的投资人，他就是张...</a><a href="http://www.chinanews.com/ga/2016/12-25/8104283.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月25日 19:09 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+                        <input type="hidden" name="specialid" id="specialid0" value="ga"/>
+                        <input type="hidden" name="total_page_total" id="total_page_total0" value="300"/>
+                    </ul>
+                    <div class="news_lookmore">
+                        <div id="page_bar0">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---->
+
+        <div class="enter_main_right">
+            <div style="" class="sticky-pholder" id="sticky_right2"></div>
+            <div style="" class="sticky-rail-right-holder" id="sticky_right">
+                <div class="spbb">
+                    <div class="lmbt lmbt2">
+                        <div class="left left2"><a href="http://channel.chinanews.com/cns/cl/ga-sp.shtml">视频</a></div>
+                        <div class="right right2"><a href="http://channel.chinanews.com/cns/cl/ga-sp.shtml"><span style="font-family: '宋体';">十</span>更多</a></div>
+                    </div>
+                    <ul class="splist">
+                        <li>
+                            <div class="conlist_img">
+                                <a href="http://www.chinanews.com/ga/shipin/2016/12-23/news684922.shtml" target="_blank"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-23/833473_sm.jpg" width="130" height="80"></a><div class="small_video"></div></div>
+
+                            <div class="title_text">
+                                <a href="http://www.chinanews.com/ga/shipin/2016/12-23/news684922.shtml">香港拟设立初中基本法教育最低课时要求</a>
+                            </div>
+                        </li><li>
+                            <div class="conlist_img">
+                                <a href="http://www.chinanews.com/ga/shipin/2016/12-22/news684724.shtml" target="_blank"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-21/832566_sm.jpg" width="130" height="80"></a><div class="small_video"></div></div>
+
+                            <div class="title_text">
+                                <a href="http://www.chinanews.com/ga/shipin/2016/12-22/news684724.shtml">澳门隆重庆祝回归祖国17周年</a>
+                            </div>
+                        </li><li>
+                            <div class="conlist_img">
+                                <a href="http://www.chinanews.com/ga/shipin/2016/12-22/news684723.shtml" target="_blank"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-21/832659_sm.jpg" width="130" height="80"></a><div class="small_video"></div></div>
+
+                            <div class="title_text">
+                                <a href="http://www.chinanews.com/ga/shipin/2016/12-22/news684723.shtml">香港：驻军官兵进社区慰老爱幼</a>
+                            </div>
+                        </li><li>
+                            <div class="conlist_img">
+                                <a href="http://www.chinanews.com/ga/shipin/2016/12-22/news684706.shtml" target="_blank"><img src="http://i2.chinanews.com/simg/tvmimg/2016/12-22/832901_sm.jpg" width="130" height="80"></a><div class="small_video"></div></div>
+
+                            <div class="title_text">
+                                <a href="http://www.chinanews.com/ga/shipin/2016/12-22/news684706.shtml">香港：一男子确诊H7N9禽流感 现已隔离治疗</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="qiaojie mt5">
+                    <div class="lmbt lmbt2">
+                        <div class="left left2"><a href="http://channel.chinanews.com/cns/cl/ga-sszqf.shtml">时事播报</a></div>
+                        <div class="right right2"><a href="http://channel.chinanews.com/cns/cl/ga-sszqf.shtml"><span style="font-family: '宋体';">十</span>更多</a></div>
+                    </div>
+                    <div class="clear"></div>
+                    <ul class="bluelist">
+                        <li><a href="http://www.chinanews.com/ga/2016/12-26/8104740.shtml">纪念“香港沦陷”75周年 港团体吁关注慰安妇</a></li><li><a href="http://www.chinanews.com/ga/2016/12-26/8104698.shtml">香港低收入在职家庭津贴批受惠人数超10万人（图）</a></li><li><a href="http://www.chinanews.com/ga/2016/12-26/8104551.shtml">500名港澳同胞因北海道暴雪滞留机场 已顺利回家</a></li><li><a href="http://www.chinanews.com/ga/2016/12-23/8103365.shtml">澳门特区过去五年人口增加近十万</a></li><li><a href="http://www.chinanews.com/ga/2016/12-23/8102995.shtml">香港特区第五届行政长官选举提名期2017年2月14日开始</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="qiaojie mt15">
+                    <div class="lmbt lmbt2">
+                        <div class="left left2"><a href="http://channel.chinanews.com/cns/cl/ga-cjxw.shtml">港澳财经</a></div>
+                        <div class="right right2"><a href="http://channel.chinanews.com/cns/cl/ga-cjxw.shtml"><span style="font-family: '宋体';">十</span>更多</a></div>
+                    </div>
+                    <div class="clear"></div>
+                    <ul class="bluelist">
+                        <li><a href="http://www.chinanews.com/ga/2016/12-23/8103359.shtml">粤港澳工贸展登陆广州 荔园嘉年华受欢迎(组图)</a></li><li><a href="http://www.chinanews.com/ga/2016/12-23/8103280.shtml">港股本周接连走低 累挫近450点</a></li><li><a href="http://www.chinanews.com/ga/2016/12-23/8102741.shtml">圣诞节促零售复苏 香港商场料人均消费升10%</a></li><li><a href="http://www.chinanews.com/ga/2016/12-23/8102651.shtml">港媒：香港旅游业欲“回春”应开发新旅游产品</a></li><li><a href="http://www.chinanews.com/ga/2016/12-22/8102256.shtml">梁振英：香港经济增长缓慢 须好好掌握“一带一路”新机遇</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="rdph mt15">
+                    <div class="lmbt lmbt2">
+                        <div class="left left2"><a>热点排行</a></div>
+                        <div class="right right2"></div>
+                    </div>
+                    <ul class="life_left_ul_ph mt10">
+                        <li><a href="http://www.chinanews.com/ga/2016/12-23/8103359.shtml" target="_blank" title="粤港澳工贸展登陆广州 荔园嘉年华受欢迎(组图)">粤港澳工贸展登陆广州 荔园嘉年华受欢迎(组图)</a></li><li><a href="http://www.chinanews.com/ga/2016/12-24/8103875.shtml" target="_blank" title="通讯：圣诞到香港来看“雪”">通讯：圣诞到香港来看“雪”</a></li><li><a href="http://www.chinanews.com/ga/2016/12-24/8103806.shtml" target="_blank" title="香港圣诞节长假展开 零售业期待、餐饮业看淡">香港圣诞节长假展开 零售业期待、餐饮业看淡</a></li><li><a href="http://www.chinanews.com/ga/2016/12-23/8103365.shtml" target="_blank" title="澳门特区过去五年人口增加近十万">澳门特区过去五年人口增加近十万</a></li><li><a href="http://www.chinanews.com/ga/2016/12-24/8103850.shtml" target="_blank" title="澳门首例感染H7N9男子结束隔离医学观察">澳门首例感染H7N9男子结束隔离医学观察</a></li><li><a href="http://www.chinanews.com/ga/2016/12-24/8103794.shtml" target="_blank" title="梁振英：为青年人提供更多更好的服务">梁振英：为青年人提供更多更好的服务</a></li><li><a href="http://www.chinanews.com/ga/2016/12-23/8102995.shtml" target="_blank" title="香港特区第五届行政长官选举提名期2017年2月14日开始">香港特区第五届行政长官选举提名期2017年2月14日开始</a></li><li><a href="http://www.chinanews.com/ga/2016/12-24/8103697.shtml" target="_blank" title="特写：香港圣诞丰富多彩 吃购游玩应有尽有">特写：香港圣诞丰富多彩 吃购游玩应有尽有</a></li><li><a href="http://www.chinanews.com/ga/2016/12-25/8104315.shtml" target="_blank" title="北海道大雪致500港澳同胞被困机场 中国数航班支援">北海道大雪致500港澳同胞被困机场 中国数航班支援</a></li><li><a href="http://www.chinanews.com/ga/2016/12-25/8104381.shtml" target="_blank" title="特写：勿忘75年前日军侵港“黑色圣诞”">特写：勿忘75年前日军侵港“黑色圣诞”</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <a name="#baike"></a>
+                <div class="mt15">
+                    <div class="gabk">
+                        港澳百科
+                    </div>
+                    <!--港澳概况-->
+                    <div class="new_right_title mt15">
+                        <ul id="myTabhd" class="new_right_titleul left">
+                            <li class="active" onmouseover="nTabs(this,0);"><a class="kkc">港澳概况</a></li>
+                            <li class="normal" onmouseover="nTabs(this,1);"><a class="kkc">国民须知</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="p10" style="padding-bottom:0;padding-top: 8px;">
+                        <div style="display: block;" id="myTabhd_Content0">
+                            <div class="zlk_left_ul">
+                                <ul>
+                                     <li>[香港]<a href="http://www.chinanews.com/ga/zlg/news/2009/04-03/1632295.shtml">概况</a><a href="http://www.chinanews.com/ga/zlg/news/2009/04-03/1632295.shtml">历史</a><a href="http://www.chinanews.com/ga/zlg/news/2009/04-03/1632297.shtml">区旗</a><a href="http://www.chinanews.com/ga/zlg/news/2009/04-03/1632297.shtml">区徽</a></li>
+<li>[澳门]<a href="http://www.chinanews.com/ga/zlg/news/2009/04-03/1632304.shtml">地理历史</a><a href="http://www.chinanews.com/ga/zlg/news/2009/03-31/1626704.shtml">现代化建设</a><a href="http://www.chinanews.com/ga/zlg/news/2009/03-31/1626701.shtml">博彩业</a><a href="http://www.chinanews.com/ga/zlg/news/2009/03-31/1626696.shtml">对外关系</a></li>
+<li>[人物]<a href="http://www.chinanews.com/ga/2012/03-25/3770555.shtml">梁振英</a><a href="http://www.chinanews.com/ga/2014/08-31/6547304.shtml">崔世安</a><a href="http://www.chinanews.com/ga/2015/04-01/7176969.shtml">董建华</a><a href="http://www.chinanews.com/ga/2015/04-01/7176985.shtml">何厚铧</a></li>
+<li>[景区]<a href="http://www.chinanews.com/ga/kong/news/2008/08-04/1335087.shtml">金紫荆广场</a><a href="http://www.chinanews.com/ga/kong/news/2008/08-04/1334935.shtml">太平山顶</a><a href="http://www.chinanews.com/ga/zlg/news/2009/04-01/1628437.shtml">沙田马场</a><a href="http://www.chinanews.com/ga/gamy/news/2009/03-27/1621522.shtml">妈阁庙</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="display: none;" id="myTabhd_Content1" class="none">
+                            <div class="zlk_left_ul">
+                                <ul>
+                                    <li><a href="http://www.chinanews.com/ga/2012/06-28/3993160.shtml">香港回归十五年大事记</a></li>
+    <li><a href="http://www.chinanews.com.cn/n/2004-02-19/26/403948.html">邓小平关于“一国两制”的谈话</a></li>
+    <li><a href="http://www.chinanews.com.cn/ga/kong/news/2007/05-30/946993.shtml">香港的割让与香港问题谈判、回归</a></li>
+    <li><a href="http://www.chinanews.com.cn/hb/news/2008/10-13/1409707.shtml">学者解读香港问题：理解中国的钥匙</a></li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--港澳概况-->
+                    <!--体制机构-->
+                    <div class="mt10">
+                        <div class="new_right_title ">
+                            <ul id="myTabhd_tzjg" class="new_right_titleul left">
+                                <li class="active" onmouseover="nTabs(this,0);"><a>体制机构 </a></li>
+                                <li class="normal" onmouseover="nTabs(this,1);"><a>法律法规</a></li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="p10" style="padding-bottom:0;padding-top: 8px;">
+                            <div style="display: block;" id="myTabhd_tzjg_Content0">
+                                <div class="zlk_left_ul">
+                                    <ul>
+                                        <li>[香港]<a href="http://www.chinanews.com/ga/2012/03-25/3770555.shtml">行政长官</a><a href="http://www.chinanews.com/ga/zlg/news/2009/04-01/1628610.shtml">立法会</a><a href="http://www.chinanews.com/ga/zlg/news/2009/04-01/1628638.shtml">行政会议</a></li>
+                        <li>[澳门]<a href="http://www.chinanews.com/ga/zlg/news/2009/04-01/1628688.shtml">行政长官</a><a href="http://www.chinanews.com/ga/zlg/news/2009/04-01/1628694.shtml">立法会</a><a href="http://www.chinanews.com/ga/zlg/news/2009/04-01/1628690.shtml">行政会</a></li>
+                        <li>[中央政府驻港澳机构]<a href="http://www.locpg.gov.cn/">香港中联办</a><a href="http://www.zlb.gov.cn/">澳门中联办</a></li>
+                        <li>[外交部派驻机构]<a href="http://www.fmcoprc.gov.hk/chn/">驻港公署</a><a href="http://www.fmcoprc.gov.mo/chn/">驻澳门公署</a></li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div style="display: none;" id="myTabhd_tzjg_Content1" class="none">
+                                <div class="zlk_left_ul">
+                                    <ul>
+                                           <li><a target="_blank" href="http://www.chinanews.com.cn/ga/flfg/news/2009/03-26/1620001.shtml">香港特别行政区基本法</a></li>
+      <li><a target="_blank" href="http://www.chinanews.com.cn/ga/flfg/news/2009/03-26/1620010.shtml">澳门特别行政区基本法</a></li>
+      <li><a target="_blank" href="http://www.chinanews.com.cn/ga/flfg/news/2009/03-26/1620015.shtml">香港特别行政区驻军法</a></li>
+      <li><a target="_blank" href="http://www.chinanews.com.cn/ga/flfg/news/2009/03-26/1620018.shtml">澳门特别行政区驻军法</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--体制机构-->
+                    <!--风俗人情-->
+                    <div class="mt10">
+                        <div class="new_right_title ">
+                            <ul id="myTabhd_fsrq" class="new_right_titleul left">
+                                <li class="active" onmouseover="nTabs(this,0);"><a>风俗人情 </a></li>
+                                <li class="normal" onmouseover="nTabs(this,1);"><a>文献条约</a></li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="p10" style="padding-bottom:0;padding-top: 8px;">
+                            <div style="display: block;" id="myTabhd_fsrq_Content0">
+                                <div class="zlk_left_ul">
+                                    <ul>
+                                        <li><a href="http://www.chinanews.com.cn/ga/2010/09-02/2506365.shtml">都市民俗 别样风景:扫描香港潮州人"盂兰胜会"</a></li>
+    <li><a href="http://www.chinanews.com.cn/ga/zlg/news/2009/03-27/1621447.shtml">澳门年俗:谢灶 利市 开年</a></li>
+    <li><a href="http://www.chinanews.com.cn/ga/zlg/news/2009/03-27/1621456.shtml">典当行：澳门别样的风景</a></li>
+    <li><a href="http://www.chinanews.com.cn/ga/zlg/news/2009/03-27/1621467.shtml">澳门有这样一个公休日&mdash;&mdash;浴佛节</a></li>
+  </ul>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div style="display: none;" id="myTabhd_fsrq_Content1" class="none">
+                                <div class="zlk_left_ul">
+                                    <ul>
+                                        <li><a target="_blank" href="http://www.chinanews.com.cn/ga/wxty/news/2009/03-26/1620055.shtml">中葡关于澳门问题的联合声明</a></li>
+      <li><a target="_blank" href="http://www.chinanews.com.cn/ga/news/2009/03-26/1620061.shtml">中英关于香港问题的联合声明</a></li>
+      <li><a target="_blank" href="http://www.chinanews.com.cn/ga/wxty/news/2009/03-26/1620053.shtml">回归后香港涉台问题基本原则政策</a></li>
+      <li><a target="_blank" href="http://www.chinanews.com.cn/ga/flfg/news/2009/03-26/1620052.shtml">回归后澳门涉台问题基本原则政策</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--风俗人情-->
+                </div>
+                <!--[4,290,14] published at 2016-06-13 15:06:21 from #10 by 张晶,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+<div class="pagebottom">
+		<div class="pagebottom_nav pagebottom_nav1">
+
+         <a href="/common/footer/intro.shtml">关于我们</a><span>|</span> <a href="http://ad.chinanews.com.cn/">广告服务</a><span>|</span> <a href="/common/footer/sitemap.shtml">网站地图</a><div style="display:none;"><span>|</span> <a href="/common/footer/feedback.shtml">留言反馈</a> </div></div>
+
+        <div class="pagebottom_nr pagebottom_nr1">
+
+		<p>本网所刊载信息，不代表中新社和中新网观点</p>
+		<p>刊用本网稿件，务经书面授权<br/>违者将追究法律责任。</p>
+		<p>[<a href="/news/xuke.html">网上传播视听节目许可证（0106168）</a>] </p>
+        <p>[<a href="http://www.miibeian.gov.cn/">京ICP证040655号</a>] [<a href="http://www.miitbeian.gov.cn/">京ICP备05004340号-1</a>]</p>
+        <p>[京公网安备：110102003042]</p>
+<p style="font-family:arial;">Copyright &copy;1999-2016 chinanews.com. </p>
+<p style="font-family:arial;">All Rights Reserved</p>
+        
+        </div>
+  </div>
+
+                <div style="padding-left: 10px; color: #bfbebe; background:#e4e4e4; height:20px; line-height:20px;">页面设计：刘鑫   前端制作：刘志欣</div>            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <!--正文结束-->
+</div>
+<!--正文结束-->
+
+</body>
+</html>

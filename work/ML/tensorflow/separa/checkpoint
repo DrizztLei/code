@@ -1,0 +1,2 @@
+model_checkpoint_path: "model-eval-acc-0.16796875-loss--2.42813640571.model"
+all_model_checkpoint_paths: "model-eval-acc-0.16796875-loss--2.42813640571.model"

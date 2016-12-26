@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src" />
+	<classpathentry kind="con"
+		path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.0">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con"
+		path="org.eclipse.jst.j2ee.internal.web.container" />
+	<classpathentry kind="con"
+		path="org.eclipse.jst.j2ee.internal.module.container" />
+	<classpathentry kind="con"
+		path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/icedtea-bin-3.2.0" />
+	<classpathentry kind="con"
+		path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3" />
+	<classpathentry kind="con"
+		path="org.eclipse.jdt.launching.JRE_CONTAINER" />
+	<classpathentry kind="lib"
+		path="/home/elvis/Downloads/apache/apache-tomcat-8.0.38.zip" />
+	<classpathentry kind="lib"
+		path="/home/elvis/work/java/LDA/lib/stanford-corenlp.jar" />
+	<classpathentry kind="lib"
+		path="/home/elvis/work/java/LDA/lib/json.org.jar" />
+	<classpathentry kind="lib"
+		path="/home/elvis/environment/computational-journalism/CoreNLP/cn/stanford-chinese-corenlp-2016-10-31-models.jar" />
+	<classpathentry kind="lib"
+		path="/home/elvis/environment/computational-journalism/CoreNLP/en/stanford-english-corenlp-2016-10-31-models.jar" />
+	<classpathentry kind="output" path="build/classes" />
+</classpath>

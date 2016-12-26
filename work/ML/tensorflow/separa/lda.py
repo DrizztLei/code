@@ -13,7 +13,6 @@ FILENAME = "/home/elvis/work/ML/tensorflow/separa/pca_svm.txt"
 
 util = tool.tool()
 
-
 data, label = tool.parse_data(SIZE, IMAGE_SIZE, NUM_CHANNEL, LABEL)
 data, label = tool.alignment_data(data=data, label=label, LABEL=LABEL, BASE_DIVIDE=BASE_DIVIDE)
 data = tool.min_max_normalization(data)
@@ -33,12 +32,19 @@ train_data, train_label = tool.random_shuffle(train_data, train_label)
 eval_data, eval_label = tool.random_shuffle(eval_data, eval_label)
 
 print ("lda ready")
+
 """
 argv = int(sys.argv[1])
 feature = argv
 """
+
 feature = 41
 lda = LinearDiscriminantAnalysis(n_components=41)
+print(train_data.shape)
+print(train_label.shape)
+print(train_label)
+raw_input()
+
 lda.fit(train_data, train_label)
 print ("lda done")
 
@@ -50,6 +56,8 @@ matrix = np.ndarray([SIZE, feature])
 for i in range(data.shape[0]):
         data_T = np.reshape(data[i], [1, -1])
         matrix[i] = lda.transform(data_T)
+        print (matrix[x])
+        raw_input()
 
 data_length = data.shape[0]
 f = file(name=FILENAME, mode="w+")

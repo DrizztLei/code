@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="test">
+        <xsd:annotation>
+            <xsd:documentation>
+            
+The rules for documents that match this DTD are:
+            
+test [ id ]
+            description
+            testQuestions
+            question [ id ]: One or more
+            questionText: Required
+            choices [ allowMultiple ]: [ allowMultiple must be "Yes or "No" ]
+            choice [ id ]: One or more
+            choiceText
+            correct: Must be "Yes" or "No"
+            
+Note: The ordering of "choiceText" and "correct" may vary
+            
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs="1">
+                <xsd:element ref="description" minOccurs="1" maxOccurs="1"/>
+                <xsd:element ref="testQuestions" minOccurs="1" maxOccurs="1"/>
+            </xsd:sequence>
+            <xsd:attribute name="id" type ="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="description" type="xsd:string"/>
+    <xsd:element name="testQuestions">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="question" minOccurs="1" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="question">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs="1">
+                <xsd:element ref="questionText" minOccurs="1" maxOccurs="1"/>
+                <xsd:element ref="choices" minOccurs="1" maxOccurs="1"/>
+            </xsd:sequence>
+            <xsd:attribute name="id" type ="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="questionText" type="xsd:string"/>
+    <xsd:element name="choices">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="choice" minOccurs="1" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute name="allowMultiple" default="No">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Yes"/>
+                        <xsd:enumeration value="No"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="choice">
+        <xsd:complexType>
+            <xsd:choice minOccurs="1" maxOccurs="1">
+                <xsd:sequence minOccurs="1" maxOccurs="1">
+                    <xsd:element ref="choiceText" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element ref="correct" minOccurs="1" maxOccurs="1"/>
+                </xsd:sequence>
+                <xsd:sequence minOccurs="1" maxOccurs="1">
+                    <xsd:element ref="correct" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element ref="choiceText" minOccurs="1" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:choice>
+            <xsd:attribute name="id" type ="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="choiceText" type="xsd:string"/>
+    <xsd:element name="correct" type="xsd:string"/>
+</xsd:schema>
+

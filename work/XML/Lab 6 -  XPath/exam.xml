@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- On-Line Exam, XPath Exercise -->
+<test id="XML30-XPATH">
+	<description>XML Path language test</description>
+	<testQuestions>
+		<!-- Question 1 -->
+		<question id="Q1">
+			<questionText>
+				Which of the following are part of the XPath "step"
+				syntax:
+			</questionText>
+			<choices allowMultiple="Yes">
+				<choice id="A">
+					<choiceText>Predicate</choiceText>
+					<correct>Yes</correct>
+				</choice>
+				<choice id="B">
+					<choiceText>AxisName</choiceText>
+					<correct>Yes</correct>
+				</choice>
+				<choice id="C">
+					<choiceText>Ancestor</choiceText>
+					<correct>No</correct>
+				</choice>
+				<choice id="D">
+					<choiceText>Ceiling</choiceText>
+					<correct>No</correct>
+				</choice>
+				<choice id="E">
+					<choiceText>NodeTest</choiceText>
+					<correct>Yes</correct>
+				</choice>
+			</choices>
+		</question>
+		<!-- Question 2 -->
+		<question id="Q2">
+			<questionText>
+				The Axis shorthand notation of "//" indicates what:
+			</questionText>
+			<choices allowMultiple="No">
+				<choice id="A">
+					<choiceText>Ancestor</choiceText>
+					<correct>No</correct>
+				</choice>
+				<choice id="B">
+					<choiceText>Parent</choiceText>
+					<correct>No</correct>
+				</choice>
+				<choice id="C">
+					<choiceText>Ancestor-or-self</choiceText>
+					<correct>No</correct>
+				</choice>
+				<choice id="D">
+					<choiceText>Descendant-or-self</choiceText>
+					<correct>Yes</correct>
+				</choice>
+			</choices>
+		</question>
+		<!-- Question 3 -->
+		<question id="Q3">
+			<questionText>
+				Which XPath statement will return the number of
+				questions on a test:
+			</questionText>
+			<choices allowMultiple="No">
+				<choice id="A">
+					<correct>Yes</correct>
+					<choiceText>count(/test/question)</choiceText>
+				</choice>
+				<choice id="B">
+					<correct>No</correct>
+					<choiceText>/test/question/count()</choiceText>
+				</choice>
+				<choice id="C">
+					<correct>No</correct>
+					<choiceText>/test[count(question)]</choiceText>
+				</choice>
+				<choice id="D">
+					<correct>No</correct>
+					<choiceText>None of the above</choiceText>
+				</choice>
+			</choices>
+		</question>
+		<!-- Question 4 -->
+		<question id="Q4">
+			<questionText>
+				The result of "transform("xpath!", "tax!hp", "m
+				Hmoi") is:
+			</questionText>
+			<choices allowMultiple="No">
+				<choice id="A">
+					<correct>No</correct>
+					<choiceText>moi!patH</choiceText>
+				</choice>
+				<choice id="B">
+					<correct>No</correct>
+					<choiceText>tax!path</choiceText>
+				</choice>
+				<choice id="C">
+					<correct>No</correct>
+					<choiceText>tax!Hp</choiceText>
+				</choice>
+				<choice id="D">
+					<correct>Yes</correct>
+					<choiceText>Hi mom</choiceText>
+				</choice>
+			</choices>
+		</question>
+		<!-- Question 5 -->
+		<question id="Q5">
+			<questionText>
+				The following XPath statement will result in --
+				/news/story[@year='2001']/self::node()[contains(text,'IBM')]/
+			</questionText>
+			<choices allowMultiple="No">
+				<choice id="A">
+					<correct>Yes</correct>
+					<choiceText>
+						All 2001 news stories that contain 'IBM'
+						inside the text element
+					</choiceText>
+				</choice>
+				<choice id="B">
+					<correct>No</correct>
+					<choiceText>
+						All new stories with a year element = 2001
+						and a text element of 'IBM'
+					</choiceText>
+				</choice>
+				<choice id="C">
+					<correct>No</correct>
+					<choiceText>
+						Any news story with either 'IBM' or '2001' in
+						its text
+					</choiceText>
+				</choice>
+				<choice id="D">
+					<correct>No</correct>
+					<choiceText>
+						All 2001 news stories from 2001 that contain
+						the letters 'IBM' in any order
+					</choiceText>
+				</choice>
+				<choice id="E">
+					<correct>No</correct>
+					<choiceText>
+						Errors, as this is an invalid XPath
+						statement
+					</choiceText>
+				</choice>
+			</choices>
+		</question>
+	</testQuestions>
+</test>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Basic XML Exercise
+
+Create a "well-formed" XML file using the element and attribute name
+listed below. Elements requiring Attributes are shown as element[attr]
+
+
+test [ id ]          (Root Element)
+description
+testQuestions
+question [ id ]: One or more
+questionText: Required
+choices [ allowMultiple ]: allowMultiple must be "Yes or "No"
+choice [ id ]: One or more
+choiceText
+correct: Must be "Yes" or "No"
+
+Notes:
+- The "allowMultiple" attribute has a "Yes" or "No" value.
+- The choice's "id" attribute has a character value.
+- The "correct" element has a "Yes" or "No" value.
+
+The ordering of "choiceText" and "correct" may vary
+-->
+
+<test id="XM30">
+    <description>Introduction to XML</description>
+    <testQuestions>
+        <question id="Q1">
+            <questionText>
+                How can XML documents be transformed?
+            </questionText>
+            <choices allowMultiple="No">
+                <choice id="A">
+                    <choiceText>XPath</choiceText>
+                    <correct>Yes</correct>
+                </choice>
+                <choice id="B">
+                    <choiceText>XSLT</choiceText>
+                    <correct>No</correct>
+                </choice>
+                <choice id="C">
+                    <choiceText>Notepad</choiceText>
+                    <correct>No</correct>
+                </choice>
+                <choice id="D">
+                    <choiceText>Xatran</choiceText>
+                    <correct>No</correct>
+                </choice>
+                <choice id="E">
+                    <choiceText>Zeus</choiceText>
+                    <correct>No</correct>
+                </choice>
+            </choices>
+        </question>
+
+        <question id="Q2">
+            <questionText>What are valid XSLT intructions?</questionText>
+            <choices allowMultiple="Yes">
+                <choice id="A">
+                    <choiceText>&amp;lt;xsl:choose</choiceText>
+                    <correct>Yes</correct>
+                </choice>
+                <choice id="B">
+                    <choiceText>&amp;lt;xsl:define</choiceText>
+                    <correct>No</correct>
+                </choice>
+                <choice id="C">
+                    <choiceText>&amp;lt;xsl:copy</choiceText>
+                    <correct>Yes</correct>
+                </choice>
+                <choice id="D">
+                    <choiceText>&amp;lt;xsl:deflate</choiceText>
+                    <correct>No</correct>
+                </choice>
+                <choice id="E">
+                    <choiceText>&amp;lt;xsl:text</choiceText>
+                    <correct>Yes</correct>
+                </choice>
+            </choices>
+        </question>
+    </testQuestions>
+</test>
+<!-- End of File -->

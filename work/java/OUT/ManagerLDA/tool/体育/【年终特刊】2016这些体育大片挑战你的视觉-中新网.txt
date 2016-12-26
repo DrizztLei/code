@@ -1,0 +1,16 @@
+2016是体育大年，欧洲杯的余热还未消散，奥运会的呐喊又接踵而至。看运动健儿们上天下海，与风浪共舞；肆意狂奔，释放无限活力。他们在赛场上的专注和喜怒哀乐，都在这一张张定格了精彩瞬间的照片上展露无遗。下面就跟着我们的视角，来感受体育的激情与狂热。当地时间2016年5月15日，葡萄牙里斯本光明球场，本菲卡4-1击败国民队，第三次捧起葡超联赛冠军奖杯。本菲卡门将保罗·洛佩斯爬上球门横梁，高举冠军奖杯，与队友和球迷共享胜利的喜悦。
+<!--
+var adMessage=[]
+ function closeBanner(){
+	  document.getElementById("Ad0").style.display="none";
+  };
+ function closeBanner1(){
+	  document.getElementById("Ad2").style.display="none";
+  };
+// -->
+
+
+
+document.write=temp;
+
+

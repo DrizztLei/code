@@ -1,0 +1,16 @@
+　　万物有灵且美，动物和人类一样，有生命、有爱、也有喜怒哀乐。定格动物世界令人捧腹的画面，我们推荐2016年这些“表情帝”和“段子手”，希望大家能在欢笑中发现生灵的美好。　　当地时间11月1日，参加演出的骆驼“演员”冷不丁和美女来了个“亲密互动”。TIMOTHY A. CLARY/AFP
+<!--
+var adMessage=[]
+ function closeBanner(){
+	  document.getElementById("Ad0").style.display="none";
+  };
+ function closeBanner1(){
+	  document.getElementById("Ad2").style.display="none";
+  };
+// -->
+
+
+
+document.write=temp;
+
+

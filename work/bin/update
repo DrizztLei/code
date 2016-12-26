@@ -1,5 +1,5 @@
 sudo emerge -q -av --update --deep --with-bdeps=y --newuse  \
---autounmask-write @world
+--autounmask-write @world --verbose-conflicts
 #--autounmask-keep-masks @world
 #eix-update
 #--autounmask-write @world

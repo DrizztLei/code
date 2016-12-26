@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+Basic XML Exercise
+
+Create a "well-formed" XML file using the element and attribute name
+listed below. Elements requiring Attributes are shown as element[attr]
+
+test [ id ]          (Root Element)
+  description
+  testQuestions
+    question [ id ]
+      questionText
+      choices [ allowMultiple ]
+        choice [ id ]
+          choiceText
+          correct
+
+Notes:
+- The "allowMultiple" attribute has a "Yes" or "No" value.
+- The choice's "id" attribute has a numeric value.
+- The "correct" element has a "Yes" or "No" value.
+
+The text data from the sample has been pre-populated below. Create the
+open and close element tags. Make sure all elements are properly nested.
+-->
+
+<test id="XM30">
+   <description>Introduction to XML</description>
+   <testQuestions>
+      <question id="Q1">
+         <questionText>Basic XML consists of</questionText>
+         <choices allowMultiple="No">
+            <choice id="A">
+               <choiceText>
+                  Hierarchical structure of tagged elements,
+                  attributes and text
+               </choiceText>
+               <correct>Yes</correct>
+            </choice>
+            <choice id="B">
+               <choiceText>
+                  All the HTML tags plus a set of new XML only tags
+               </choiceText>
+               <correct>No</correct>
+            </choice>
+            <choice id="C">
+               <choiceText>
+                  Object oriented structure of rows and columns
+               </choiceText>
+               <correct>No</correct>
+            </choice>
+            <choice id="D">
+               <choiceText>
+                  Processing instructions (PI's) for text data
+               </choiceText>
+               <correct>No</correct>
+            </choice>
+            <choice id="E">
+               <choiceText>
+                  Textual data with tags for visual presentation
+               </choiceText>
+               <correct>No</correct>
+            </choice>
+         </choices>
+      </question>
+   </testQuestions>
+</test>
+<!-- End of File -->

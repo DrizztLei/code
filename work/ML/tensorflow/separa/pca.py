@@ -1,4 +1,5 @@
 from sklearn.decomposition import PCA
+from sklearn.externals import joblib
 import tool as tool
 import numpy as np
 
@@ -40,6 +41,7 @@ feature = argv
 
 pca = PCA(n_components=FEATURE, whiten=True)
 pca.fit(train_data, train_label)
+joblib.dump(pca, "pca.model")
 print ("pca done")
 
 out = pca.predict(eval_data)

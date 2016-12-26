@@ -1,0 +1,69 @@
+package lda;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Map;
+
+public class Main
+{
+	public static final int TYPE = 15;
+	public static final int NUMBER = 10;
+	public static final int SUM = 2;
+	public static final int RANK = 6;
+
+	public static String[][][] info = new String[TYPE][NUMBER][SUM];
+
+	public static ArrayList<String[][]> array = new ArrayList<>();
+
+	public static void main(String[] args) throws IOException
+	{
+		Corpus.TYPE = TYPE;
+		Corpus.NUMBER = NUMBER;
+		Corpus.SUM = SUM;
+		Corpus.RANK = RANK;
+		Corpus corpus = Corpus.load("data/mini");
+
+		
+		LdaGibbsSampler ldaGibbsSampler = new LdaGibbsSampler(corpus.getDocument(), corpus.getVocabularySize());
+		
+		ldaGibbsSampler.gibbs(TYPE);
+		
+		double[][] phi = ldaGibbsSampler.getPhi();
+		
+		for(int i = 0 ; i < corpus.documentName.size(); i++)
+		{
+			System.out.println(corpus.documentName.get(i));
+		}
+
+		Map<String, Double>[] topicMap = LdaUtil.translate(phi, corpus.getVocabulary(), NUMBER);
+		Main.show(topicMap);
+		 
+		for (int i = 0; i < TYPE; i++)
+		{
+			System.out.println("STEP " + i);
+			for (int j = 0; j < NUMBER; j++)
+			{
+				for (int k = 0; k < SUM; k++)
+				{
+					System.out.println(info[i][j][k]);
+				}
+			}
+		}
+	}
+
+	public static void show(Map<String, Double>[] map)
+	{
+		int i = 0;
+		for (Map<String, Double> topicMap : map)
+		{
+			int j = 0;
+			for (Map.Entry<String, Double> entry : topicMap.entrySet())
+			{
+				info[i][j][0] = entry.getKey();
+				info[i][j][1] = entry.getValue() + "";
+				j++;
+			}
+			i++;
+		}
+	}
+}

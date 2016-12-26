@@ -1,0 +1,63 @@
+body{
+	text-align: center;
+}
+
+h1{
+	margin-top: 200px;
+	font-family: "黑体";
+	text-align: center;
+}
+
+input{
+	border-radius: 5px;
+	background:transparent;
+	height: 30px;
+	width: 220px;
+}
+
+p{
+	text-align: left;
+	background: transparent;
+	overflow-y:auto;
+	border: 0;
+	width: 100%; 
+	height: auto; 
+	margin: 5px;
+    resize: none;
+}
+
+#detail_title{
+	font-size: larger;
+	font-weight: bold;
+	
+	text-align: center;
+	padding-bottom: 0px;   
+    margin-bottom: 0px;  
+    margin-top: 10px;
+    overflow: hidden; 
+}
+
+#detail_keyword{
+	color: blue;
+	font-weight: bold ;
+	text-align: center;
+	padding-bottom: 0px;   
+    margin-bottom: 0px;  
+    overflow: hidden; 
+}
+
+#detail_summary{
+	color: #2F3238;
+	padding-bottom: 5px;   
+    margin: 20px;  
+    overflow: hidden; 
+    height: 100px;
+    text-indent: 25px;
+}
+
+#detail_text{
+	padding-bottom: 5px;   
+    margin: 25px;  
+    overflow: hidden; 
+    text-indent: 25px;
+}

@@ -12,5 +12,6 @@
 	<classpathentry kind="lib" path="/home/elvis/work/java/Philips/libs/huesdkresources.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/json.org.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/icedtea-bin-3.2.0"/>
+	<classpathentry kind="lib" path="/home/elvis/Downloads/apache/apache-tomcat-8.0.38.zip"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

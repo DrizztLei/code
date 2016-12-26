@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+		<title>Topic Search</title>
+		<script>
+			function keydownEvent() {
+		         var e = window.event || arguments.callee.caller.arguments[0];
+		         if (e && e.keyCode == 13 )
+		         {
+		             //alert("您按回车键了");
+		             window.location.href='search_result.html';
+		         }
+            }
+		</script>
+	</head>
+	<body style="background-color: #ebffe5" >
+		<section style="margin-top: 80px">
+				<h2 >Topic Searching</h2>
+				<span>
+					<form action="http://localhost:8080/ManagerLDA/findTopic" method="post">
+						<input type="text" name="content"  style="font-size: 40%;margin-left: 20px;width: 200px;height: 20px"  value="" />
+						<input type="submit" value="search"  style="width:70px;margin-left: 30px;font-size: 40%;height: 26px"/><br/>
+						<div style="width: 80%">
+							<input type="radio" name="group" value="topic"  style="width: auto;margin-left: 120px;"/> topic
+						    <input type="radio" name="group" value="file" style="width: auto;margin-left: 3%"/>file
+							<input type="radio" name="group" value="show" style="width: auto;margin-left: 3%"/>show
+							<input type="radio" name="group" value="doc" style="width: auto;margin-left: 3%"/>doc
+						</div>
+					</form>
+				</span>
+		</section>
+	</body>
+</html>

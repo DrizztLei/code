@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+   fix the Namespace declaration and schemaLocation to
+   reflect your chosen URI
+-->
+
+<test 
+   xmlns="http://www.mycorp.com/Schema/Test"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.mycorp.com/Schema/Test test.xsd"
+   id="t1">
+   <description/>
+   <testQuestions>
+      <question id="q1">
+         <questionText>This is a dummy test question</questionText>
+         <choices>
+            <choice id="c1">
+               <choiceText>True</choiceText>
+               <correct>Yes</correct>
+            </choice>
+            <choice id="c2">
+               <choiceText>False</choiceText>
+               <correct>No</correct>
+            </choice>
+         </choices>
+      </question>
+   </testQuestions>
+</test>

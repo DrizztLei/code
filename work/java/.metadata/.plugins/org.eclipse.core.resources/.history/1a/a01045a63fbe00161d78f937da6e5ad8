@@ -1,0 +1,48 @@
+package lda;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+
+import edu.stanford.nlp.util.Iterables;
+
+public class Main
+{
+	Map<String, double> map;
+	
+	public static void main(String[] args) throws IOException
+	{
+
+		Corpus corpus = Corpus.load("data/mini");
+
+		LdaGibbsSampler ldaGibbsSampler = new LdaGibbsSampler(corpus.getDocument(), corpus.getVocabularySize());
+
+		ldaGibbsSampler.gibbs(15);
+
+		double[][] phi = ldaGibbsSampler.getPhi();
+
+		Map<String, Double>[] topicMap = LdaUtil.translate(phi, corpus.getVocabulary(), 10);
+
+		Main.show(topicMap);
+
+		// LdaUtil.explain(topicMap);
+	}
+
+	public static void show(Map<String, Double>[] map)
+	{
+		int i = 0;
+		for (Map<String, Double> topicMap : map)
+		{
+			System.out.printf("topic %d :\n", i++);
+			for (Map.Entry<String, Double> entry : topicMap.entrySet())
+			{
+				System.out.println(entry.getKey());
+				System.out.println(entry.getValue());
+			}
+			System.out.println();
+		}
+	}
+}

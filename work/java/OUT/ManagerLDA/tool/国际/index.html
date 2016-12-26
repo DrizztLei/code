@@ -1,0 +1,1659 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="keywords" content="新闻,国际,中外观察,国际人物,国际图片,环球趣闻,亚太,美洲,欧洲">
+<meta name="description" content="中国新闻网国际频道是知名的中文新闻门户网站频道，也是全球互联网中文新闻资讯最重要的原创内容供应商之一。依托中新社遍布全球的采编网络,每天24小时面向广大网民和网络媒体，快速、准确地提供文字、图片、视频等多样化的资讯服务。在新闻报道方面，中新网国际频道及时准确，解释性报道角度独特，稿件被国内外网络媒体大量转载。">
+<base target="_blank" />
+
+<title>中新国际频道</title>
+
+<!--[4,532,1] published at 2016-12-26 13:28:44 from #10 by 李夏君 ,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+
+<link href="http://i2.chinanews.com/2012/mil/css/base/base.css" rel="stylesheet" type="text/css" />
+
+<link href="http://www.chinanews.com/test/fabu/2016-07-13/951.css" rel="stylesheet" type="text/css" />
+
+<!--[if lt IE 6]>
+
+<style>
+/* 除IE6浏览器的通用方法 */
+.ie6fixedBR1{position:fixed;right:300px;bottom:0}
+/* IE6浏览器的特有方法 */
+/* 修正IE6振动bug */
+* html,* html body{background-image:url(about:blank);background-attachment:fixed}
+* html .ie6fixedBR1{position:absolute;left:expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-this.offsetWidth)-(parseInt(this.currentStyle.marginLeft,10)||0)-(parseInt(this.currentStyle.marginRight,10)||0));top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)-30))}
+</style>
+<![endif]-->
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+</head>
+
+<script src="http://www.chinanews.com/js/jquery1.4.js"></script>
+
+<script language="JavaScript">
+<!--
+document.domain = "chinanews.com"; 
+-->
+</script>
+
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        bp.src = '//push.zhanzhang.baidu.com/push.js';
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+<script type="text/javascript" src='http://www.chinanews.com/pv/js/pvnoju.js'></script>
+
+
+
+<script>
+
+function focusBox(o){
+	if(!o) return;
+	var w=584, $o=$('#'+o),i=0,l=0;arr= [],t= null,
+		$infoLi = $o.find('.banner_info li'), len= $infoLi.length*2,
+		$ul=$o.find('.banner_pic>ul');
+	$ul.append($ul.html()).css({'width':len*w, 'left': -len*w/2});
+	$infoLi.eq(0).addClass('current');
+	//add banner_pages element
+	arr.push('<div class="banner_pages"><ul>');
+	$infoLi.each(function(i){
+		if(i==0){
+			arr.push('<li class="current"><span>'+ (i+1) +'</span></li>');
+		}else{
+			arr.push('<li><span>'+ (i+1) +'</span></li>');
+		}
+	});
+	arr.push('</ul></div>');
+	$o.append(arr.join(''));
+	var $pagesLi = $o.find('.banner_pages li');
+	//mouse
+	$pagesLi.children('span').click(function(){
+		var p = $pagesLi.index($o.find('.banner_pages li.current'));
+		i = $pagesLi.children('span').index($(this));
+		if(i==p) return;
+		l = parseInt($ul.css('left')) + w*(p-i);
+		addCurrent(i,l);
+		return false;
+	})
+	if(len>2){
+		$("#lrbt_show1").show();
+		$("#lrbt_show2").show();
+		$o.children('a.btn_prev').click(function(){
+			i = $pagesLi.index($o.find('.banner_pages li.current'));
+			(i==0)? i=(len/2-1):i--;
+			l = parseInt($ul.css('left')) + w;
+			addCurrent(i,l);
+			return false;
+		})
+		$o.children('a.btn_next').click(function(){
+			i = ($pagesLi.index($o.find('.banner_pages li.current'))+1)%(len/2);
+			l = parseInt($ul.css('left')) - w;
+			addCurrent(i,l);
+			return false;
+		})
+
+	}else{
+		$("#lrbt_show1").hide();
+		$("#lrbt_show2").hide();
+	}
+
+	//auto focus
+	t = setInterval(init,8000);
+	$o.hover(function(){
+		clearInterval(t);
+	}, function(){
+		if(len>2){
+			t = setInterval(init,8000);
+		}
+
+	});
+	function init(){
+		$o.children('a.btn_next').trigger('click');
+	}
+	//add focus
+	function addCurrent(i,l){
+		if($ul.is(':animated')) return;
+		$ul.animate({'left':l},500,function(){
+			$o.children('.banner_count').text(i+1);
+			$infoLi.not($infoLi.eq(i).addClass('current')).removeClass('current');
+			$pagesLi.not($pagesLi.eq(i).addClass('current')).removeClass('current');
+			if(l== (1-len)*w){
+				$ul.css({'left': (1-len/2)*w});
+			}else if(l== 0){
+				$ul.css({'left': -len*w/2});
+			}
+		});
+	}
+}
+
+$(function(){
+	focusBox('kakaFocus');
+})
+
+</script>
+
+<script>
+
+// JavaScript Document
+
+/*daohang huaguo*/
+$(document).ready(function(){
+
+	  function topnav1(){
+	var _show = null;
+	  var _hideTimer = null;
+	  var planItems = $('ul.c-fl-ul li.division');
+		planItems.each(function(index) {
+	    var li = $(this);
+		var div = li.find('div.navshow_div');
+			div.css("display","none");
+			li.bind('mouseenter',function() {
+				if (_show != null) {
+					clearTimeout(_show);
+				}
+				_show = setTimeout(function() {
+					$('ul.nav_navcon li').addClass('');
+
+					li.addClass('topnav_sel');
+				}, 200);
+				});
+			  li.bind('mouseleave', function() {
+					if (_show != null) {
+					clearTimeout(_show);
+				}
+				_hideTimer = setTimeout(function() {
+					li.removeClass('topnav_sel');
+
+				}, 200);
+				});
+			});
+	  };
+	topnav1();
+
+});
+
+ //tab
+function blog_nTabs(thisObjb,Numb){
+if(thisObjb.className == "blog_sel")return;
+var thisObjb = thisObjb.parentNode.id;
+var tabList = document.getElementById(thisObjb).getElementsByTagName("li");
+for(i=0; i <tabList.length; i++)
+{
+  if (i == Numb)
+  {
+   tabList[Numb].className = "blog_sel"; 
+      document.getElementById(thisObjb+"_Content"+i).style.display = "block";
+  }else{
+   tabList[i].className = "normal"; 
+   document.getElementById(thisObjb+"_Content"+i).style.display = "none";
+  }
+} 
+}
+/**/
+function didi(id) {
+     document.getElementById("id").className="di"+id;
+  }
+
+function did(id) {
+     document.getElementById("id1").className="dii"+id;
+  }
+
+function did1(id) {
+     document.getElementById("id2").className="dii1"+id;
+  }
+  function did2(id) {
+     document.getElementById("id3").className="dii2"+id;
+  }
+   function did3(id) {
+     document.getElementById("id4").className="dii3"+id;
+   }
+     function did4(id) {
+     document.getElementById("id5").className="dii4"+id;
+  }
+     function did5(id) {
+     document.getElementById("id6").className="dii5"+id;
+  }
+   function search_select(id) {
+     document.getElementById("id7").className="dii7"+id;
+  }
+     function weibo(id) {
+     document.getElementById("id8").className="dii8"+id;
+  }
+   function search_jsxw(id) {
+     document.getElementById("idjsxw").className="diijsxw"+id;
+  }
+/*small daohang show*/
+
+/**/
+ /*list滑过*/
+ $(document).ready(function(){
+	 var _show = null;
+	  var _hideTimer = null;
+	  var planItems = $('.news_list_ulbox ul li');
+	  var _tupian_li = $('.news_list_ulbox ul li._tupian_li');
+	 planItems.each(function(index) {
+	var li = $(this);
+		    var news_xgxw = li.find('div.news_xgxw .news_xgxw_a');
+			var sharenews=li.find('div.video_con1_title_right');
+			var news_xgxw_con=li.find('div.news_xgxw_con');
+			var planItems_tp = li.find('div.tupian_conul ul li');
+		    planItems_tp.each(function() {
+				  var tpli = $(this); 
+				  var tp_blackbg = tpli.find('div.tp_blackbg');
+
+				 tpli.bind('mouseenter',function() {
+					 tp_blackbg.hide();
+				  });
+
+				  tpli.bind('mouseleave',function() {
+					  tp_blackbg.show();
+				  });
+			 });
+
+	/*topnav*/
+
+		/**/
+		li.bind('mouseenter',function() {
+				if (_show != null) {
+					clearTimeout(_show);
+				}
+				_show = setTimeout(function() {
+					$('ul._commuity_nav li div.conbox').hide();
+					li.css('background','#eeeeee');
+					$(".module_advert_ul li").css('background','none');
+					_tupian_li.css('background','none');
+					sharenews.show('');
+				/**/
+
+				}, 500);
+				});
+			  li.bind('mouseleave', function() {
+					if (_show != null) {
+					clearTimeout(_show);
+				}
+				_hideTimer = setTimeout(function() {
+
+					li.css('background','none');
+					sharenews.hide('');
+
+				/**/
+
+				}, 500);
+				});
+
+		});
+
+});
+
+$(function(){ 
+				 var total_value =  $("#total_page_total0").val();
+	 			//alert (total_value);
+				 if(total_value!=null && total_value!=''){
+				var page_html =  '<div style="background-color:#f0f0f0;width:100%;height:30px;border:1px solid #ebebeb;clear:both;margin-top:20px; line-height:30px; color:#979798; cursor:pointer; font-size:14px;text-align:center" onclick="ongetpage(2,300,0)">>>显示更多新闻</div>';
+				$("#page_bar0").html(page_html);
+		//ongetpage(1,total_value);
+					 }
+			});
+
+//jsxw_sp
+	function js_jsxwssp(thisObj,Numa)
+	{
+		//alert(thisObj);
+		//alert(Numa);
+		var top=$(document).scrollTop();
+		var left_heigt1=$("#enter_top").height();
+		var left_heigt2=$("#daodu").height();
+		var left_heigt3=$("#yaowen").height();
+		var left_heigt4=$("#shipin").height();
+		var left_heigt5=left_heigt1+left_heigt2+left_heigt3+left_heigt4;
+		var pw_heigth=$(window).height();
+
+		if(thisObj.className == "active")return;
+		var tabObj = thisObj.parentNode.id;
+		var tabList = document.getElementById(tabObj).getElementsByTagName("li");
+		for(i=0; i <tabList.length; i++)
+		{
+		if (i == Numa)
+		  {
+			  document.getElementById(tabObj+"_Con"+Numa).style.display = "block";
+			   document.getElementById("jsxw_sp_Con"+Numa).style.display = "block";
+			 // alert(Num);
+			  thisObj.className = "filter-selected"; 
+		     var scrollHeight= document.body.scrollHeight || document.documentElement.scrollHeight;
+
+			  $("#jsxwredbox_biglist2").hide();
+			  $("#jsxw_all_Con0").hide();
+			  createPageHtml(1,300,Numa);
+
+var tChannel = ''; 
+
+			 }else{
+		   document.getElementById(tabObj+"_Con"+i).style.display = "none";
+		   tabList[i].className = "normal"; 
+		  }
+		} 
+}
+
+function createPageHtml(page,total,Numa){
+    var page_html = '';
+
+	if(page!=1){
+		page_html = '';
+	}
+	var startPoint = 1;
+	var endPoint = 10;
+
+	if(page>=1 && page<=total/20){
+		page_html = page_html + '<div style="background-color:#f0f0f0;width:100%;height:30px;border:1px solid #ebebeb;clear:both;margin-top:20px; line-height:30px; color:#979798; cursor:pointer; font-size:14px;text-align:center" onclick="ongetpage('+(page+1)+','+total+','+Numa+')">>>显示更多新闻</div>';
+	}
+
+	$("#page_bar"+Numa).html(page_html);
+}
+function ongetpage(num,total,Numa){
+	//alert(num);
+  				var specialid= $("#specialid"+Numa).val();
+  				//alert (specialid);
+  				if(num==1){
+    				window.location.href=window.location.href;
+   					 return;
+ 				 }else if(num>1){
+					 if (Numa==0){
+						 //全部滚动新闻
+						 //http://channel.chinanews.com/cns/s/yl-mxnd.shtml?pager=0&pagenum=20
+						 //pager=0是第一页，显示更多新闻是从pager=1开始 
+						  $.getScript("http://channel.chinanews.com/cns/s/channel:"+specialid+".shtml?pager="+(num-1)+"&pagenum=20", function(){
+				 var html = "";
+		 		var data = specialcnsdata;
+				if(data.docs.length==0)
+				{
+					alert('全部加载完！');
+				}
+		 for(var i=0;i<data.docs.length;i++){ 
+			var pubtime = specialcnsdata.docs[i].pubtime;
+			var title = specialcnsdata.docs[i].title;
+			var url = specialcnsdata.docs[i].url;
+			var pic = specialcnsdata.docs[i].img_cns;
+			var content = specialcnsdata.docs[i].content;
+			//var content = '';
+
+			if (pic !=''){
+
+			html = html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
+
++'<div class="intermoren_box"><div class="intermoren_left"><a href="'+url+'" target="_blank"><img src="'+pic+'"></a></div>'
++'<div class="intermoren_right"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" target="_blank" class="blue">[详情]</a></div> '
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div></div></div></div></li>';
+			}else{
+				html =html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
++'<div class="intermoren_box">'
++'<div class="intermoren_right intermoren_right1"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" class="blue" target="_blank">[详情]</a></div>'
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div> </div></div></div> </li>';
+				}
+
+		  }
+		//alert(html);
+                  $("#ent"+Numa).append(html);
+	});
+					 }
+					 else{
+
+   				 $.getScript("http://channel.chinanews.com/cns/s/"+specialid+".shtml?pager="+(num-1)+"&pagenum=20", function(){
+				 var html = "";
+		 		var data = specialcnsdata;
+				if(data.docs.length==0)
+				{
+					alert('全部加载完！');
+				}
+		 for(var i=0;i<data.docs.length;i++){ 
+			var pubtime = specialcnsdata.docs[i].pubtime;
+			var title = specialcnsdata.docs[i].title;
+			var url = specialcnsdata.docs[i].url;
+			var pic = specialcnsdata.docs[i].img_cns;
+			var content = specialcnsdata.docs[i].content;
+			//var content = '';
+
+			if (pic !=''){
+
+			html = html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
+
++'<div class="intermoren_box"><div class="intermoren_left"><a href="'+url+'" target="_blank"><img src="'+pic+'"></a></div>'
++'<div class="intermoren_right"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" target="_blank" class="blue">[详情]</a></div> '
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div></div></div></div></li>';
+			}else{
+				html =html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
++'<div class="intermoren_box">'
++'<div class="intermoren_right intermoren_right1"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" class="blue" target="_blank">[详情]</a></div>'
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div> </div></div></div> </li>';
+				}
+
+		  }
+		//alert(html);
+                  $("#ent"+Numa).append(html);
+	});
+					 }
+	createPageHtml(num,total,Numa);
+
+  }
+  //alert(document.documentElement.scrollTop);
+ // $(document).scrollTop(0);
+//$(document).scrollTop()=0;
+}
+
+window.onscroll=function()
+{
+	var top=$(document).scrollTop();
+
+	var scrollHeight= document.body.scrollHeight || document.documentElement.scrollHeight;
+	var availHeight= document.body.availHeight || document.documentElement.availHeight;
+
+	var pw_heigth=$(window).height();
+	var right_heigt=$("#sticky_right").height();
+	var left_heigt=$("#sticky_left").height();
+
+	var index_topa=$("#index_topa").height();
+	var gg=$("#news_top_advert").height();
+
+	var topheight=index_topa+gg;
+
+if(scrollHeight>top+topheight){
+		$("#sticky_right").removeClass('sticky');
+		$("#sticky_right").removeClass('sticky0');
+		$("#sticky_right").addClass('sticky1');
+		}
+
+	if(top<=gg){
+		$("#js_N_nav").css("position","relative");
+		$("#jsxw_layer").css("position","relative");
+		$("#jsxw_layer").css("top","0");
+		$("#sticky_right2").css("height",0);
+		$("#sticky_right").removeClass('sticky');
+	    $("#sticky_right").removeClass('sticky0');
+		$("#sticky_right").addClass('sticky1');
+
+	}
+	if(top>gg){
+		$("#js_N_nav").css("position","fixed");
+		$("#js_N_nav").css("top","0");
+		$("#js_N_nav").css("z-index","9");
+	}
+	if (top<topheight){
+		$("#jsxw_layer").css("position","relative");
+		$("#jsxw_layer").css("top","0");
+
+		$("#sticky_right").removeClass('sticky');
+		$("#sticky_right").removeClass('sticky0');
+		$("#sticky_right").addClass('sticky1');
+	}
+	//alert(top);
+	//alert(pw_heigth);
+	//alert(left_heigt);
+	if(top>topheight){
+		//$('#default-p_30345810').css("top","0");
+		$("#jsxw_layer").css("position","fixed");
+		$("#jsxw_layer").css("top","44px");	
+	}
+
+	if(pw_heigth >= right_heigt+topheight-top && pw_heigth<left_heigt+topheight-top){
+		//alert(pw_heigth);
+		var cc=top+pw_heigth-right_heigt-topheight;
+		//alert(cc);
+		$("#sticky_right2").css("height",cc);
+
+	//if(right_heigt>=pw_heigth){
+		$("#sticky_right").removeClass('sticky');
+		$("#sticky_right").removeClass('sticky1');
+	    $("#sticky_right").addClass('sticky0');
+	//	}
+		//else{
+			//$("#sticky_right").removeClass('sticky');
+		   // $("#sticky_right").removeClass('sticky1');
+		   // $("#sticky_right").addClass('sticky0');
+		   // $(".sticky0").css('bottom',gaodu+'px');
+
+			//}
+
+		}
+
+		/*判断滚动条是否到底*/
+	// if(top + pw_heigth==scrollHeight){
+		//	alert(00);
+		//$("#sticky_right").removeClass('sticky0');
+		//$("#sticky_right").removeClass('sticky1');
+		//$("#sticky_right").addClass('sticky');
+
+		//}
+	if	(pw_heigth < right_heigt-top){
+		$("#sticky_right2").css("height",0);
+
+	}
+	//var top=$("body").scrollTop() 
+
+	//alert(top);
+
+};
+
+</script>
+
+<body  class="yui3-skin-sam ua-ff ua-win ua-6.1 ua-ff19  bkt900 fixed-enabled" dir="ltr" style="" id="inter_top">
+
+<!--[4,175,38] published at 2016-09-26 13:57:45 from #10 by 郑振海-->
+<div class="ewm_box">
+    <a class="closebt" id="closebt"></a>
+    <div class="ewm_boxp">
+    <div class="beijing"><img src="http://i8.chinanews.com/2014/hwbz/images/ewm.jpg"/></div>
+    <p>中新网客户端</br>
+    点击或扫描下载</p>
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+	 $('#closebt').click(function(){
+			$("div.ewm_box").hide();								  
+		 });
+
+})
+</script>
+
+<div class="index_layer_back ie6fixedBR" id="newsbacktop">
+ <ul class="index_layerul">
+
+     <li class="back" style="height:50px;"><div class="back-to-top" title="返回顶部">
+            <a id="backtop" href="http://world.chinanews.com/#inter_top" target="_self"></a> 
+         </div></li>
+
+      </ul>
+      </div>
+ <Script>
+(function() {
+
+	var backToTopTxt = $(".index_layer_back").html(),
+	 backToTopEle = backToTopTxt, backToTopFun = function() {
+        var stback1 = $(document).scrollTop(), winh = $(window).height();
+        (stback1>0)? $(".index_layer_back").show(): $(".index_layer_back").hide();    
+        //IE6下的定位
+        if (!window.XMLHttpRequest) {
+            $(".index_layer_back").css("top", stback1 + winh - 550);    
+        }
+    };
+	$(window).bind("scroll", backToTopFun);
+    backToTopFun(); 
+
+})();	
+var screenwidth=$(window).width(); //浏览器当前窗口可视区域宽度 
+//$("#layer").css("right",((screenwidth -1004) /2)-100);
+
+ Box1=document.getElementById("newsbacktop");
+
+ Box1.style.right = ((screenwidth -1004) /2)-80 + "px";
+if(screenwidth <= 1024){
+	Box.style.right =0+"px";
+	Box1.style.right =0+"px";
+} 
+
+		$(window).resize(function() {
+		var screenwidth=$(window).width(); //浏览器当前窗口可视区域宽度 
+//$("#layer").css("right",((screenwidth -1004) /2)-100);
+
+ Box1=document.getElementById("newsbacktop");
+
+ Box1.style.right = ((screenwidth -1004) /2)-80 + "px";
+if(screenwidth <= 1024){
+	Box.style.right =0+"px";
+	Box1.style.right =0+"px";
+} 
+    });
+
+</Script>
+<!--div id="masthead" s  #include virtual="/part/290/gj/37.html-->
+
+<style>
+.index_icon14 {
+    background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F978DT20150907155559.png) no-repeat ;
+    display: block;
+    height: 13px;
+    width: 18px;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon14 {
+    background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F979DT20150907155559.png) no-repeat ;
+}
+.index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_mo.png) no-repeat;display:block;width:24px;height:19px;}
+ul.c-fl-ul .topnav_sel .index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_sel.png) no-repeat;}
+.index-nav-select-wide .index-nav-select-title-gzh{padding:0px 10px 0px 43px}
+
+</style>
+
+<div id="js_N_nav" class="index-nav" style="height:46px;">
+    <div class="index-nav-main clearfix">
+        <div id="stepflow01" class="c-fl">
+        	<ul class="c-fl-ul">
+            	<li class="division"><div class="index-nav-select    left">
+              	     <a href="http://www.chinanews.com" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon1"></em>中新网首页</a></div>
+                </li>
+
+                <li id="jrzmdiv" class="division"> <div class="index-nav-select    left">
+               		 <a href="http://www.chinanews.com/common/footer/sitemap.shtml" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon14"></em>网站地图</a> </div>
+                </li>
+
+               <li class="division"><div class="index-nav-select    left">
+                	<a href="http://mail.chinanews.com.cn/" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon12"></em>企业邮箱</a></div>
+               </li>
+
+               <li class="division"><div class="index-nav-select    left">
+               		 <a class="index-nav-select-title index-nav-entry-bgblack" href="http://www.chinaso.com/"><em class="index-nav-select-arr index_icon11"></em>中国搜索</a></div>
+               </li>
+             </ul>
+        </div>
+        <div class="c-fr">
+            <ul class="c-fl-ul">
+            	<li id="jrzmdiv1" class="division"> <div class="index-nav-select    left">
+                    <a class="index-nav-select-title index-nav-entry-bgblack" href="http://m.chinanews.com/home/"><em class="index-nav-select-arr index_icon4"></em>移动版</a></div>
+                 </li>
+                 <li id="jrzmdiv1" class="division"> <div class="index-nav-select    left">
+                     <a href="http://www.chinanews.com/app/chinanews/index.shtml" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon13"></em>客户端</a></div>
+                 </li>
+                  <li id="jrzmdiv1" class="division"> 
+				 <div class="index-nav-select left">
+                <div class="newpic"></div>
+                <a class="index-nav-select-title index-nav-entry-bgblack" href="http://www.chinanews.com/cns2012.shtml"><em class="index-nav-select-arr index_icon_gzh"></em>微信</a>
+
+             </div>
+             </li>
+                 <li id="jrzmdiv2" class="division"> <div class="index-nav-select  index-nav-app left ">
+                      <div style="_width:90px;" class="dii81" id="id8" onmouseover="weibo(0)" onmouseout="weibo(1)">
+                           <div id="navshow_div" class="index-nav-select-pop">
+                                <ul class="index-nav-select-list clearfix">
+                                    <!-- <li><a href="http://t.chinanews.com/"><span>中新职务微博</span></a></li>-->
+                                    <li><a href="http://weibo.com/chinanewsv"><span>中新网<em>新浪</em>法人微博</span></a></li>
+                                    <li><a href="http://t.qq.com/chinanews"><span>中新网<em>腾讯</em>法人微博</span></a></li>
+                                     <li><a href="http://weibo.com/u/3604378011"><span>中新社<em>新浪</em>法人微博</span></a></li>
+                                     <li><a href="http://t.qq.com/cns"><span>中新社<em>腾讯</em>法人微博</span></a></li>
+
+                                     <!--
+                                     <li><a href="http://1.t.qq.com/cns"><span>中新社<em >腾讯</em>法人微博</span></a></li>
+                                    <li><a href="http://chinanewsv.t.sohu.com/"><span>中新网<em >搜狐</em>法人微博</span></a></li>
+                                    <li><a href="http://t.163.com/chinanews"><span>中新网<em >网易</em>法人微博</span></a></li>-->
+
+                                </ul>
+                            </div>
+                        <a class=" p_relative index-nav-select-title1  index-nav-entry-bgblack " ><em class="index-nav-select-arr1"></em>
+                        <em class="index-nav-select-arr index_icon5"></em>微博
+                         </a>
+                        </div>
+                    </div>
+                 </li>
+                <li class="division"> <a href="http://www.ecns.cn/" class="index-nav-entry-wide index-nav-select-title left">English</a></li>
+               <!-- <li class="division">  <a href="http://big5.chinanews.com:80/" class="index-nav-entry-wide index-nav-select-title left">繁体</a></li>-->
+				<li class="division"><fjtignoreurl><a id="yx_style_nav" class="index-nav-entry-wide left" href="http://wza.chinanews.com/" style="color:#b21112">无障碍</a></fjtignoreurl></li>
+            </ul>
+
+        </div>  
+
+        <div class="clear"></div>  
+    </div>
+</div>
+<style>
+.c-fl{width:auto;}
+.c-fr{width:auto;}
+.index-nav-select-title1 {
+    float: left;
+    height: 44px;
+    line-height: 44px;
+    outline: medium none;
+    padding: 0 20px 0 40px;
+    text-decoration: none;
+}
+.index-nav-entry, .index-nav-select-title {
+    float: left;
+    height: 44px;
+    line-height: 44px;
+    outline: medium none;
+    padding: 0 10px 0 40px;
+    text-decoration: none;
+}
+.index-nav-entry-wide {
+    padding: 0 10px;
+}
+
+</style>
+<!--div id="masthead" e-->
+
+<script>
+//var isIE = !!window.ActiveXObject;  
+//var isIE7 = isIE && !window.XMLHttpRequest;
+//if(isIE7){
+
+	//}
+//$(document).ready(function(){
+
+	//var news_top_advert=$("#news_top_advert").height()+45; 
+	//document.getElementById("masthead").style.height = news_top_advert+"px";
+
+//if($("#masthead").height()==45){
+
+	//document.getElementById("masthead").style.top = 0+"px";
+	//document.getElementById("_logo_divnews").style.marginTop = 50+"px";
+	//}
+//else{
+	//document.getElementById("masthead").style.top = 0+"px";
+    //document.getElementById("_logo_divnews").style.marginTop = 160+"px";
+
+	//}
+
+//});
+</script>
+<div class="clear"></div>
+
+<div id="top">
+
+<!--[4,319,36] published at 2016-07-29 13:13:41 from #10 by 赵谦-->  
+<style>
+
+#top{width:1000px;}
+
+</style>
+
+        <a href="http://www.chinanews.com/scroll-news/news1.html" target="_blank">滚动</a>|
+        <a href="http://www.chinanews.com/china/" target="_blank">时政</a>|
+        <a href="http://world.chinanews.com/" target="_blank">国际</a>|
+        <a href="http://www.chinanews.com/mil/news.shtml" target="_blank">军事</a>|
+        <a href="http://www.chinanews.com/society/" target="_blank">社会</a>| <a href="http://www.chinanews.com/gangao/" target="_blank">港澳</a>|
+        <a href="http://www.chinanews.com/taiwan/" target="_blank">台湾</a>|
+        <a href="http://www.chinaqw.com/" target="_blank">侨网</a>|
+        <a href="http://www.chinanews.com/huaren/" target="_blank">华人</a>| <a href="http://finance.chinanews.com/" target="_blank">财经</a>|
+        <a href="http://business.chinanews.com/" target="_blank">产经</a>|
+        <a target="_blank" href="http://fortune.chinanews.com/">金融</a>|
+        <!--<a href="http://stock.chinanews.com/" target="_blank">证券</a>|
+        <a href="http://house.chinanews.com/" target="_blank">房产</a>|
+        <a href="http://energy.chinanews.com/" target="_blank">能源</a>|
+        <a href="http://it.chinanews.com/" target="_blank">IT</a>|-->
+        <a href="http://auto.chinanews.com/" target="_blank">汽车</a>|<!--<a href="http://game.chinanews.com/" target="_blank">游戏</a>|-->
+        <a href="http://ent.chinanews.com/">娱乐</a>|
+        <a href="http://sports.chinanews.com/" target="_blank">体育</a>|
+        <a href="http://cul.chinanews.com/" target="_blank">文化</a>|
+       <!-- <a href="http://health.chinanews.com/" target="_blank">健康</a>|-->
+       <a href="http://www.chinanews.com/theory/">理论</a>|
+        <a href="http://life.chinanews.com/" target="_blank">生活</a>|
+        <a href="http://photo.chinanews.com/" target="_blank">图片</a>|
+        <a href="http://www.chinanews.com/shipin/" target="_blank">视频</a>|
+        <a href="http://interview.chinanews.com/">访谈</a>
+
+
+       </div> 
+
+<div id="nav-col" class="main-row cf" >
+  <div  class="main-col-wrapper">
+    <!-- SIDE RAIL WITH NAVIGATION -->        
+    <div id="ad-north-base">            
+    	<div id="ad-north"></div>
+     </div>       
+         <div id="page-col" class="main-row cf" >
+            <div id="index_topa" name="index_topa" class="main-col-wrapper">
+
+              <!---->
+              <div class="clear"></div>
+<div>
+
+<div class="w1000 mt15"  id="_logo_divnews">
+  <div style="width:1000px;margin:0 auto; margin-top:10px;" id="news_top_advert" >
+   <div>
+<!-- 广告位Id：2332 广告位名称：2016国际频道 顶通 类型：固定广告位 尺寸：1000x90 -->
+<iframe id="ac_im86_2332" name="ac_im86_2332" src="http://me.afp.chinanews.com/a.htm?pv=1&sp=2332,1,90,1000,0,0,1,9" width="1000" height="90" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" ></iframe>
+
+</div>
+
+<!--[4,175,37] published at 2016-09-26 13:59:12 from #10 by 郑振海-->
+<!--[4,175,295] published at 2015-09-01 15:45:58 from #10 by 郑振海-->
+     </div>
+
+      <div class="gn_banner">
+            <div class="gn_logo"><a><img src="http://www.chinanews.com/fileftp/2016/05/2016-05-06/U435P4T47D34935F971DT20160511163549.jpg"/></a></div>
+            <div class="searchnav">
+                 <div class="gn_text"> 
+                        <div class="strip"><!--[4,248,1] published at 2016-12-26 13:01:01 from #202 by system-->
+2016年12月26日   星期一</div>
+                         <div class="strip"><!--[4,319,22] published at 2015-05-22 15:26:53 from #10 by 赵谦 --> 
+<style>
+#info img{ vertical-align:middle;padding:0 5px;}
+#info a{color:#333; text-decoration:none;font-size:12px;padding:0;}
+#info a:hover{color:#333; text-decoration:underline;}
+</style>
+
+<script type="text/javascript">
+function returndata(data) {
+    var parseData = "";
+    with(data.weatherinfo) {
+		parseData+="<a href='http://www.weather.com.cn/weather/101010100.shtml'>"+city+"</a> ";
+		//parseData+="<img width='20' src='http://www.weather.com.cn/m/i/weatherpic/29x20/" + img1 + "' title='中国天气网今日天气指数:" + weather+"' />",
+		parseData+="<a href='http://www.weather.com.cn/weather/101010100.shtml'>"+temp1+"-"+temp2+"</a>";
+		// parseData+="<a href='http://www.weather.com.cn/weather/101010100.shtml'>"+wind1+"</a>";
+
+    }
+    return parseData;
+}
+
+function getData(){
+	var htmlobj=$.ajax({
+        	type:'get',	
+        	async:false,
+			url:'/iframe/static/weather_json.html',
+			dataType: "json",
+			success:function(data){
+				//20150522注释
+				//$("#info").html(returndata(data));
+			}
+
+		});
+
+}
+
+$(document).ready(function(){
+	getData();
+
+});
+</script>
+
+<div id='info'></div>
+</div>           
+              </div>
+                    <div class="searchinput right">
+					<input type="text" value="请输入关键字" onclick="this.value='',this.style.color='#000'" name="q" id="q"  class="search_input" onkeydown="checksubmit()">
+
+                    <div class="search_listbox"> 
+
+                  					<!---->
+                     <script type="text/javascript"> 
+
+function checksubmit(){
+    var code = event.keyCode;
+    if(code == 13) submitFun();
+  }
+
+function submitFun() {
+
+var hotword=document.getElementsByName('q')[0].value;
+
+if (hotword==''){
+
+alert('请输入关键字!');
+
+return false;
+
+}
+else
+{
+
+$.ajax({
+  type: "GET",
+  url: "http://lc.chinanews.com:8090/rpc/pa.jsp?pid=1&paid=50&u=sousuo&aj="+encodeURI(Math.random()+ (new Date())),
+  dataType: "jsonp"
+});
+
+if(document.getElementsByName('s0')[0].value=='cns')
+{
+
+ window.open("http://sou.chinanews.com/search.do?q="+encodeURIComponent(hotword));
+ }
+ else if(document.getElementsByName('s0')[0].value=='baidu')
+ {
+ window.open("http://www.baidu.com/s?ie=utf-8&bs=%E4%B8+%9B%BD&sr=&z=&cl=3&f=8&wd="+encodeURIComponent(hotword)+"&ct=0");
+ }
+
+}
+
+}
+
+</script>  
+
+                <div style="_position:relative;padding:0px;margin:0px;" onmouseout="search_select(1)" onmouseover="search_select(0)" class="dii7" id="id7">
+                     <div  class="select_border">
+
+<div class="select_container">
+                     <select id="s0" name="s0"  class="selectnews"> 
+<option value="cns">中 新</option> 
+<option value="baidu">百 度</option> 
+
+</select> 
+</div>
+</div></div>      
+
+                    </div>
+                    <a  class="search_a" onclick="submitFun()">搜 索</a>
+					<div class="clear"></div>
+				 </div>
+                    <div class="clear"></div>
+        </div>
+           <div class="clear"></div>
+        </div>
+   </div>
+
+    	<div class="inter_nav mt5" >
+        <div class="w1000">
+        	<ul class="inter_nav_ul">
+
+             <li><a href="http://www.chinanews.com/world.shtml">即时新闻</a><em></em></li>
+
+             <li><a href="http://channel.chinanews.com/cns/cl/gj-zxsjg.shtml">中新世界观</a><em></em></li>
+
+             <li><a href="http://channel.chinanews.com/u/gj-rw.shtml">国际人物</a><em></em></li>
+             <li><a href="http://channel.chinanews.com/cns/cl/gj-dqsj.shtml">奇趣八卦</a><em></em></li>
+
+             <li><a href="http://channel.chinanews.com/cns/cl/gj-sjkj.shtml">科技自然</a><em></em></li>
+
+             <li><a href="http://www.chinanews.com/gj/zlk/index.shtml">资料库</a><em></em></li>
+
+<li><a href="http://www.chinanews.com/shipin/m/gj/views.shtml">视频播报</a><em></em></li>
+            </ul>
+
+            </div>
+        </div>
+         <div class="w1000">
+
+        </div>
+
+        </div>
+
+ <!--导航-->
+
+    <!---->
+    <div class="w1000 m_center" id="daodu" >
+ 	<div class="mt10">
+    <div class="gn_left">
+
+<div class="xwzxdd-dbt"><h1><a href="http://www.chinanews.com/kong/2016/12-26/8104513.shtml"><a href="http://www.chinanews.com/gj/2016/12-26/8104509.shtml">奥巴马圣诞讲话回顾过往</a> <a href="http://www.chinanews.com/gj/2016/12-26/8104510.shtml">特朗普提前“插手”外交</a></a> </h1></div>
+
+<div class="life_left_ul ">
+                <ul>
+ <li><a href="http://www.chinanews.com/kong/2016/12-26/8104647.shtml"><a href="http://www.chinanews.com/gj/2016/12-26/8104662.shtml">北海道暴雪50年一遇</a> <a href="http://www.chinanews.com/shipin/2016/12-26/news685274.shtml" target="_blank">中国驻札幌领馆展开救助</a></a></li><li><a href="http://www.chinanews.com/kong/2016/12-26/8104643.shtml"><a class=ptv href="http://www.chinanews.com/shipin/2016/12-26/news685281.shtml">联合国：2016年地中海偷渡死亡人数创历史最高</a></a></li><li><a href="http://www.chinanews.com/kong/2016/12-26/8104625.shtml"><a href="http://www.chinanews.com/gj/2016/12-26/8104524.shtml" target=_blank>联合国裁定以色列定居点违法</a> <a href="http://www.chinanews.com/gj/2016/12-26/8104424.shtml" target="_blank">吃败仗以总理危机公关</a></a></li><li><a href="http://www.chinanews.com/kong/2016/12-26/8104599.shtml"><a class="ptv" href="http://www.chinanews.com/shipin/2016/12-26/news685270.shtml" target="_blank">利比亚客机遭劫持 两名劫机嫌疑人出庭受审</a></a></li>
+
+                </ul>
+            </div>
+
+<div class="xwzxdd-dbt" style="margin-top:10px;"><h1><a href="http://www.chinanews.com/kong/2016/12-26/8104499.shtml"><a href="http://www.chinanews.com/gj/2016/12-26/8104497.shtml">韩检方将搜总统办公室</a> <a href="http://www.chinanews.com/gj/2016/12-26/8104623.shtml">前青瓦台秘书室长住宅被查</a></a> </h1></div>
+<div class="life_left_ul ">
+                <ul>
+            <li><a href="http://www.chinanews.com/gj/2016/12-26/8104532.shtml">穷游世界不是梦 丹麦男子坐货船3年游逾百国家(图) </a></li><li><a href="http://www.chinanews.com/gj/2016/12-26/8104526.shtml">美最老大猩猩过60岁生日 花甲年“五世同堂”</a></li><li><a href="http://www.chinanews.com/gj/2016/12-26/8104518.shtml">防范再发生 日本将对汽车燃效作弊处以巨额罚款 </a></li><li><a href="http://www.chinanews.com/gj/2016/12-26/8104502.shtml">韩媒称潘基文任外长时曾受贿 联合国发言人否认</a></li>
+                     </ul>
+            </div>
+
+    </div>
+    <div class="gn_right">
+    	<!-- sliderimg start -->
+                    <div class="banner" id="kakaFocus"> 
+                        <a class="btn_prev" id="lrbt_show1"  title="上一个" href="#">Previous</a> 
+                        <a class="btn_next" id="lrbt_show2"  title="下一个" href="#">Next</a> 
+                        <div class="banner_pic" id="gdt"> 
+                            <ul>
+
+ <!--[4,506,1] published at 2016-07-12 10:39:51 from #10 by 李欢--> 
+ <!--[4,290,52] published at 2016-12-26 09:09:30 from #10 by 孟湘君,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+<li><a href="http://www.chinanews.com/gj/2016/12-26/8104409.shtml"><img width="584" height="320" src="http://www.chinanews.com/part/290/gj/U255P4T290D52F8775DT20161226090930.jpg" alt="残缺的“和解”：安倍首访珍珠港 但不道歉" /></a></li>
+			<li><a href="http://www.chinanews.com/gj/2016/12-26/8104407.shtml"><img width="584" height="320" src="http://www.chinanews.com/part/290/gj/U255P4T290D52F8778DT20161226090930.jpg" alt="载逾90人俄军机坠海 重创俄国宝级歌舞团" /></a></li>
+			<li><a href="http://www.chinanews.com/gj/2016/12-26/8104523.shtml"><img width="584" height="320" src="http://www.chinanews.com/part/290/gj/U255P4T290D52F8781DT20161226090015.jpg" alt="墨西哥瓦哈卡举行萝卜雕刻大赛 别出心裁栩栩如生" /></a></li>
+			<li><a href="http://www.chinanews.com/gj/2016/12-26/8104520.shtml"><img width="584" height="320" src="http://www.chinanews.com/part/290/gj/U255P4T290D52F8784DT20161226090015.jpg" alt="60万LED灯泡装点 斯里兰卡57米高圣诞树创纪录" /></a></li>
+
+		</ul> 
+	</div>
+	<div class="banner_info">
+		<ul>
+			<li><a href="http://www.chinanews.com/gj/2016/12-26/8104409.shtml">残缺的“和解”：安倍首访珍珠港 但不道歉</a></li>
+			<li><a href="http://www.chinanews.com/gj/2016/12-26/8104407.shtml">载逾90人俄军机坠海 重创俄国宝级歌舞团</a></li>
+			<li><a href="http://www.chinanews.com/gj/2016/12-26/8104523.shtml">墨西哥瓦哈卡举行萝卜雕刻大赛 别出心裁栩栩如生</a></li>
+			<li><a href="http://www.chinanews.com/gj/2016/12-26/8104520.shtml">60万LED灯泡装点 斯里兰卡57米高圣诞树创纪录</a></li>
+
+			
+ </ul>
+</div>
+<div class="banner_info_bg"></div>
+
+              <!-- sliderimg end -->
+    </div>
+
+    <div class="clear"></div>
+    </div>
+ </div>
+
+  <!--导读结束-->
+  <div class="clear"></div>
+  </div>
+ <!--要闻-->
+<div class="mt10">
+  <div class="w1000 m_center" id="yaowen" >
+ 	<div class="mt20" name="index_topa">
+   		<div class="gn_left" style="width:324px;">
+        	<div class="life_title_chihe ">
+            <div class="left">中新世界观</div>
+              <div class="life_title_chihe_more"><a href="http://channel.chinanews.com/cns/cl/gj-zxsjg.shtml">+更多</a></div>
+            </div>
+            <div class="module_right_paihang  " style="">
+					<!--[4,414,23] published at 2016-07-05 14:54:08 from #10 by 唐云云,designer:liuxin  maker:gongyi zhaoqian -->
+                    <!--[4,290,53] published at 2016-12-23 14:50:49 from #10 by 李夏君,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+<div class="leftimg">
+<a href="http://www.chinanews.com/gj/2016/12-23/8102539.shtml"><img width="156" height="99" src="http://www.chinanews.com/part/290/gj/U477P4T290D53F8775DT20161223145049.jpg"></a>
+</div>
+<div class="righttext" style="width:212px;">
+<p><a href="http://www.chinanews.com/gj/2016/12-23/8102539.shtml">日本防卫预算再创新高</a></p>
+<span>日本政府近年努力抑制财政支出，但防卫费连续5年保持增长……</span><a href="http://www.chinanews.com/gj/2016/12-23/8102539.shtml"><span style="color:#06F">[详细]</span></a>
+</div>
+
+                      <div class="clear"></div>
+            </div>
+            <div class="" style="">
+             <div class="life_left_ul ">
+                <ul>
+                  <li><a href="http://www.chinanews.com/gj/2016/12-24/8103517.shtml">战火磨灭不了对和平的向往，愿每晚都是平安夜(图)</a></li><li><a href="http://www.chinanews.com/gj/2016/12-24/8103509.shtml">德国再度掀起内政安全讨论 政界承诺加强安全保护</a></li><li><a href="http://www.chinanews.com/gj/2016/12-21/8100130.shtml">日媒：美态度强硬复飞“鱼鹰” 日美同盟蒙阴影</a></li><li><a href="http://www.chinanews.com/gj/2016/12-21/8099959.shtml">恐袭“三连击”让欧洲紧绷神经 德国袭击者身份成谜</a></li>
+                </ul>
+            </div>
+
+          </div>
+        </div>
+        <div class="gn_right" style="width:648px;">
+        	<div class="gn_right_l" style="width:324px;">
+                   <div class="life_title_chihe ">
+            <div class="left">国际人物</div>
+                   <div class="life_title_chihe_more"><a href="http://channel.chinanews.com/u/gj-rw.shtml">+更多</a></div>
+                </div>
+
+<!--[4,506,2] published at 2016-07-06 14:26:35 from #10 by 陈明--> 
+
+<div >
+             <div class="life_left_ul " style="margin-top:8px;">
+                <ul>
+
+                  <li><a href="http://www.chinanews.com/gj/2016/12-26/8104624.shtml">英国流行乐歌手乔治·迈克尔去世 </a></li><li><a href="http://www.chinanews.com/gj/2016/12-26/8104618.shtml">法航海家创单人帆船环球航行最快记录</a></li><li><a href="http://www.chinanews.com/gj/2016/12-24/8103650.shtml">联合国候任秘书长获颁葡议会人权奖 </a></li><li><a href="http://www.chinanews.com/gj/2016/12-24/8103494.shtml">普京向特朗普贺圣诞 望塑合作框架</a></li><li><a href="http://www.chinanews.com/gj/2016/12-23/8102430.shtml">安倍访珍珠港将再表“不战誓言”</a></li><li><a href="http://www.chinanews.com/gj/2016/12-22/8101980.shtml">赢民心？希拉里普选票超特朗普290万张</a></li><li><a href="http://www.chinanews.com/gj/2016/12-22/8101813.shtml">杜特尔特就脏话道歉：父母管教不够</a></li>
+                </ul>
+            </div>
+
+          </div>
+
+          </div>
+            <div class="gn_right_r">
+            	<div class="life_title_chihe ">
+            <div class="left">奇趣八卦</div>
+                   <div class="life_title_chihe_more"><a href="http://channel.chinanews.com/cns/cl/gj-dqsj.shtml">+更多</a></div>
+                </div>
+
+                <div class="module_right_paihang  " style="">
+					<!--[4,414,23] published at 2016-07-05 14:54:08 from #10 by 唐云云,designer:liuxin  maker:gongyi zhaoqian --> <!--[4,290,54] published at 2016-12-23 10:01:39 from #10 by 吴倩,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+<div class="leftimg">
+<a href="http://www.chinanews.com/gj/2016/12-23/8102394.shtml"><img width="156" height="99" src="http://www.chinanews.com/part/290/gj/U577P4T290D54F8775DT20161223100139.jpg"></a>
+</div>
+<div class="righttext" style="width:202px;">
+<p><a href="http://www.chinanews.com/gj/2016/12-23/8102394.shtml">萌：大熊猫嬉戏玩雪人</a></p>
+<span>在这段录像中，“大毛”和它的雪人小伙伴玩得十分愉快……</span><a href="http://www.chinanews.com/gj/2016/12-23/8102394.shtml"><span style="color:#06F">[详细]</span></a>
+</div>
+
+                      <div class="clear"></div>
+            </div>
+
+             <div class="life_left_ul ">
+                <li><a href="http://www.chinanews.com/gj/2016/12-26/8104532.shtml">穷游世界不是梦 丹麦男子坐货船3年游逾百国家(图) </a></li><li><a href="http://www.chinanews.com/gj/2016/12-26/8104526.shtml">美最老大猩猩过60岁生日 花甲年“五世同堂”</a></li><li><a href="http://www.chinanews.com/gj/2016/12-26/8104523.shtml">墨西哥瓦哈卡举行萝卜雕刻大赛 别出心裁栩栩如生</a></li><li><a href="http://www.chinanews.com/gj/2016/12-26/8104520.shtml">60万LED灯泡装点 斯里兰卡57米高圣诞树创纪录(图)</a></li>
+            </div>
+
+            </div>
+
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+
+    </div>
+</div></div></div>
+ <!--要闻结束-->
+
+    </div><div style="margin-top:5px;"></div>
+              <!---->
+            <div style="clear:both;width:1000px;margin:0 auto;">
+                <div class="news_con_left" id="sticky_left">
+     <div  id="jsxw_layer" >
+           <div style="width:658px;height:38px;border-bottom:#268fff 1px solid;background:#f7f7f7;color:#333;">
+
+         <div style=" font-family:微软雅黑; font-size:18px; color:#0084ff; padding:10px; width:36px; height:16px; border-bottom:solid 4px #0084ff; ">
+           最新
+            </div>
+          </div>
+       </div>
+     <!---->
+     <div class="news_list_ulbox">
+       		              <!--全部-->
+                 <div id="jsxw_sp_Con0" style="display:block;">
+                <div >
+                    <div  >
+                     <ul class="news_list_ul" id="ent0">
+                    	 <!--滚动新闻-->
+
+						<!--滚动新闻-->
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/gj/2016/12-26/8104874.shtml">圣诞节德国5万民众大撤退 二战未爆弹被顺利拆除</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/gj/2016/12-26/8104874.shtml" class="gray5">
+中新网12月26日电 据外媒报道，一枚第二次世界大战的未爆弹，迫使54000德国民众在圣诞节离开家园。这是德国自柏林墙倒塌以来，最大规模的撤离行动。
+
+当地时间25日在德国南部城镇奥格斯堡(Augsburg)的拆除行动，进行了11个小时，总共动员900名警察...</a><a href="http://www.chinanews.com/gj/2016/12-26/8104874.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:28 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/gj/2016/12-26/8104862.shtml">俄失事飞机搜寻行动中共发现11具遗体和154块碎片</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/gj/2016/12-26/8104862.shtml" class="gray5">
+
+中新网12月26日电 据俄罗斯卫星网26日报道，俄国防部发布消息称，对图-154飞机失事地区的第一昼夜搜寻行动共发现了11具遗体和154块碎片。
+
+当地时间12月25日，莫斯科民众点燃蜡烛献上鲜花，悼念图-154飞机遇难者。俄国防部确认，飞机在起飞...</a><a href="http://www.chinanews.com/gj/2016/12-26/8104862.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:17 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/gj/2016/12-26/8104857.shtml">韩国书院和西南海岸滩涂将于2018年申遗</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/gj/2016/12-26/8104857.shtml" class="gray5">
+
+中新网12月26日电 据韩媒报道，“韩国书院”和“西南海岸滩涂”被选为2018年联合国教科文组织申遗对象。
+
+据报道，韩国文化财厅表示，22日举行的文化财(文物)委员会世界遗产小组会议决定向联合国教科文组织申请将“韩国书院”和“西南海岸滩涂”...</a><a href="http://www.chinanews.com/gj/2016/12-26/8104857.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:13 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/gj/2016/12-26/8104832.shtml">日本决定维持对俄制裁 同时推进两国经济合作</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/gj/2016/12-26/8104832.shtml" class="gray5">
+
+中新网12月26日电 据日媒报道，日本政府本月25日基本决定，目前继续维持对俄罗斯实施的制裁。
+
+报道指出，虽然日方瞄准北方四岛(俄罗斯称南千岛群岛)领土谈判进展，致力于改善改善日俄关系，但也认为应与这些举措割裂开来，作为严厉对俄的七国集...</a><a href="http://www.chinanews.com/gj/2016/12-26/8104832.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 12:42 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/gj/2016/12-26/8104825.shtml">圣诞节五万人大撤离：德顺利拆除二战未爆炸弹</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/gj/2016/12-26/8104825.shtml" class="gray5">
+
+中新网12月26日电 据“中央社”报道，近日，一颗第二次世界大战中的未爆炸弹，迫使5.4万人在圣诞节离开家园。这是德国自柏林围墙倒塌以来、最大规模的撤离行动。
+
+据报道，当地时间本月25日在德国南部城镇奥格斯堡(Augsburg)的拆除行动共进行了...</a><a href="http://www.chinanews.com/gj/2016/12-26/8104825.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 12:13 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/gj/2016/12-26/8104802.shtml">外媒：英国明年拟加强对叙利亚境内恐怖分子空袭</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/gj/2016/12-26/8104802.shtml" class="gray5">
+
+中新网12月26日电 据俄罗斯卫星网26日援引英媒报道，英国空军准备增加在叙利亚境内打击恐怖组织“伊斯兰国”的空袭次数。
+
+据称，英国空军今年在叙利亚和伊拉克分别实施了60次和347次空袭。但据该报援引军队高级官员的消息称，该国在新的一年里...</a><a href="http://www.chinanews.com/gj/2016/12-26/8104802.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 11:27 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/gj/2016/12-26/8104777.shtml">阿富汗首位女机师因担心性命受威胁 寻求美庇护 </a></em></div>
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/gj/2016/12-26/8104777.shtml"><img src="http://www.chinanews.com/gj/2016/12-26/U595P4T8D8104777F107DT20161226111350.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_content"><a class="gray5" href="http://www.chinanews.com/gj/2016/12-26/8104777.shtml">
+中新网12月26日电 据外媒报道，阿富汗空军上尉兼国内首位定翼机女机师拉赫马尼早前于美国接受训练，但当为期18个月的训练结束、外界以为她会光荣回国之际，她却以担心性命受威胁为由，向美国申...</a><a class="red" href="http://www.chinanews.com/gj/2016/12-26/8104777.shtml">[详情]</a></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 11:13 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/gj/2016/12-26/8104772.shtml">日本首相安倍飞往珍珠港 以回应奥巴马访问广岛</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/gj/2016/12-26/8104772.shtml" class="gray5">
+
+中新网12月26日电 据俄罗斯卫星网报道，日本首相安倍晋三26日开始在夏威夷进行为期2天的访问，以纪念在1941年12月7日日本人在珍珠港瓦胡岛上袭击美国舰艇和飞机时的牺牲者。
+
+据报道，预计日本首相和美国总统奥巴马将证实两国军事同盟对彼此的重...</a><a href="http://www.chinanews.com/gj/2016/12-26/8104772.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 11:11 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/gj/2016/12-26/8104717.shtml">美国部分州议会或将立法 严加限制难民和移民</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/gj/2016/12-26/8104717.shtml" class="gray5">
+中新网12月26日电 据外媒报道，美国部分州议会准备明年初立法严加限制难民和移民。
+
+在今年前11个月仅仅接受了9家难民的蒙大拿州，同难民、移民和恐怖主义相关的十多项法案已经在下个月新立法会期之前提出。法案包括难民安置机构必须有保险，用于...</a><a href="http://www.chinanews.com/gj/2016/12-26/8104717.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 10:35 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+                         <input type="hidden" name="specialid" id="specialid0" value="gj"/>
+                         <input type="hidden" name="total_page_total" id="total_page_total0" value="300"/>
+
+                     </ul>
+                    <div class="news_lookmore">		<div id="page_bar0"></div>
+</div>
+                    </div>
+
+                </div>
+                 </div>	
+
+                       </div>
+     <!---->
+     </div>
+                <!--close main-col -->                
+
+                <div class="news_con_right" style="background-color:#fff;">
+                    <div class="pl-l pr-xs">
+                        <div style="" class="sticky-pholder" id="sticky_right2"></div>
+                        <div style="" class="sticky-rail-right-holder" id="sticky_right">
+       <div class="">
+      <div class="inter_right_title">
+            <div class="inter_right_title_text">科技自然</div>
+
+            <div class="inter_right_title_more" style="margin-top:13px;"><a href="http://channel.chinanews.com/cns/cl/gj-zr.shtml">+ 更多</a></div>
+            <div class="clear"></div>
+        </div>
+         <div class="new_right_content">
+             <ul class="module_leftblue_ul">
+                  <li><a href="http://www.chinanews.com/gj/2016/12-26/8104779.shtml">俄媒：俄航天局正研发太空清洁工清理太空垃圾</a></li><li><a href="http://www.chinanews.com/gj/2016/12-24/8103638.shtml">北极“热浪”破纪录 科学家称与人为气候变迁有关</a></li><li><a href="http://www.chinanews.com/gj/2016/12-23/8103076.shtml">世卫组织确认一种疫苗可高效预防埃博拉病毒感染</a></li><li><a href="http://www.chinanews.com/gj/2016/12-23/8102581.shtml">世卫组织：埃博拉原型疫苗或100%有效预防病毒</a></li><li><a href="http://www.chinanews.com/gj/2016/12-23/8102394.shtml">旅加大熊猫雪中嬉戏 对雪人“爱不释手”(图)</a></li><li><a href="http://www.chinanews.com/gj/2016/12-22/8101188.shtml">国际空间站“掠过”太阳 摄影师捕捉神奇剪影(图) </a></li>
+             </ul>
+        </div>
+       </div>
+
+       <div class="mt10">
+      <div class="inter_right_title">
+            <div class="inter_right_title_text">资料库</div>
+
+            <div class="clear"></div>
+        </div>
+         <div class="ziliaoku mt10">
+             <div class="ziliaoku_title">
+             <div class="ziliaoku_title_text" style="float: left; background:url(http://www.chinanews.com/fileftp/2016/06/2016-06-02/U664P4T47D35108F973DT20160713091649.jpg) no-repeat 1px 16px; margin-left:15px;"> 国际问题背景</div>
+             <div style="float:right"><a href="http://channel.chinanews.com/cns/cl/gj-gjrd.shtml" style="color:#a8a8a8;">+ 更多</a></div>
+            <div class="clear"></div>
+        </div>
+         <div class="new_right_content">
+             <ul class="ziliaoku_ul">
+                 <!--[4,290,45] published at 2016-07-09 10:25:26 from #10 by 何路曼,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+<!--[4,290,45] published at 2016-12-21 10:08:20 from #10 by 何路曼,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+<li><a href="http://www.chinanews.com/gj/2016/12-21/8099958.shtml" target="_blank">俄土“恩仇录”跌宕起伏 俄大使遇刺再考验两国关系 </a></li>
+
+<li><a href="http://www.chinanews.com/gj/2016/12-20/8098880.shtml">俄大使遭枪杀震惊全球 盘点5年来外交官遇袭事件</a></li>
+
+<li><a href="http://www.chinanews.com/gj/2016/12-09/8089051.shtml">朴槿惠弹劾案获通过 “干政门”掀韩国政坛巨浪 </a></li>
+
+<li><a href="http://www.chinanews.com/gj/2016/12-06/8084444.shtml">意大利公投失败敲警钟 民粹主义拉扯欧罗巴右转？ </a></li>
+
+<li><a href="http://www.chinanews.com/gj/2016/12-05/8083410.shtml" target="_blank">意修宪公投搅动欧洲情绪 总理承认公投失败宣布辞职 </a></li>
+
+<li><a href="http://www.chinanews.com/gj/2016/12-05/8083399.shtml">英最高法院开审“脱欧案” 脱欧究竟谁说了算？</a></li>
+
+<li><a href="http://www.chinanews.com/gj/2016/11-30/8078501.shtml" target="_blank">哥国空难致70余人丧生 巴西体坛遭遇天空之殇 </a></li>
+
+
+
+             </ul>
+        </div>
+
+        </div>
+
+         <div class="ziliaoku_title mt10">
+             <div class="ziliaoku_title_text" style="background:url(http://www.chinanews.com/fileftp/2016/06/2016-06-02/U664P4T47D35108F973DT20160713091649.jpg) no-repeat 1px 16px; margin-left:15px;"> 国家/地区概况</div>
+        </div>
+         <div class="new_right_content">
+           <ul class="chufa_ul mt10">
+ 				<li><a href="http://www.chinanews.com/gj/zlk/index.shtml#yazhou">亚  洲</a></li>
+                 <li><a href="http://www.chinanews.com/gj/zlk/index.shtml#feizhou">非  洲</a></li>
+                  <li><a href="http://www.chinanews.com/gj/zlk/index.shtml#ouzhou">欧  洲</a></li>
+                 <li><a href="http://www.chinanews.com/gj/zlk/index.shtml#beimeizhou">北美洲</a></li>
+                  <li><a href="http://www.chinanews.com/gj/zlk/index.shtml#nanmeizhou">南美洲</a></li>
+                   <li><a href="http://www.chinanews.com/gj/zlk/index.shtml#dayangzhou">大洋洲</a></li>
+             </ul>
+        </div>
+
+       </div>
+<!--排行开始-->
+<div class=" mt10_ie7">
+
+    	<div class="inter_right_title">
+            <div class="inter_right_title_text">热点排行</div>
+
+            <div class="inter_right_title_more"></div>
+            <div class="clear"></div>
+        </div>
+         <div class="new_right_content">
+        <div class="">
+
+          <ul class="rank_right_ul">
+    					<li><a href="http://www.chinanews.com/gj/2016/12-23/8103274.shtml" target="_blank" title="载有上百人利比亚客机疑遭劫持 已经降落在马耳他">载有上百人利比亚客机疑遭劫持 已经降落在...</a></li><li><a href="http://www.chinanews.com/gj/2016/12-24/8103445.shtml" target="_blank" title="“核去核从”？ 俄美核博弈恩怨多 特朗普煽风点火">“核去核从”？ 俄美核博弈恩怨多 特朗普...</a></li><li><a href="http://www.chinanews.com/gj/2016/12-24/8103446.shtml" target="_blank" title="普京记者会送上4小时“新闻大餐” 犀利回应敏感话题">普京记者会送上4小时“新闻大餐” 犀利回...</a></li><li><a href="http://www.chinanews.com/gj/2016/12-23/8103436.shtml" target="_blank" title="利比亚客机劫机者已投降 机上所有人员获释">利比亚客机劫机者已投降 机上所有人员获释</a></li><li><a href="http://www.chinanews.com/gj/2016/12-23/8103387.shtml" target="_blank" title="利客机劫机者释放111名乘客 7名机组人员仍被扣留">利客机劫机者释放111名乘客 7名机组人...</a></li><li><a href="http://www.chinanews.com/gj/2016/12-24/8103462.shtml" target="_blank" title="普京：俄被迫应对美反导挑战 乐见欧洲成强有力伙伴">普京：俄被迫应对美反导挑战 乐见欧洲成强...</a></li><li><a href="http://www.chinanews.com/gj/2016/12-23/8103410.shtml" target="_blank" title="普京近4小时记者会答67个问题 称早就看好特朗普">普京近4小时记者会答67个问题 称早就看...</a></li><li><a href="http://www.chinanews.com/gj/2016/12-23/8103428.shtml" target="_blank" title="泛非遭劫持客机109名乘客获释 劫机者寻求政治庇护">泛非遭劫持客机109名乘客获释 劫机者寻...</a></li><li><a href="http://www.chinanews.com/gj/2016/12-24/8103477.shtml" target="_blank" title="中美贸易战“一触即发”？ 特朗普顾问：宜速战速决">中美贸易战“一触即发”？ 特朗普顾问：宜...</a></li><li><a href="http://www.chinanews.com/gj/2016/12-23/8103402.shtml" target="_blank" title="收复阿勒颇的“强心针”与“未知数”">收复阿勒颇的“强心针”与“未知数”</a></li>
+                 </ul>
+    </div>
+    </div>
+       </div>
+
+<!--排行结束-->
+       <div class="mt10">
+      <div class="inter_right_title">
+            <div class="inter_right_title_text">视频播报</div>
+
+            <div class="inter_right_title_more" style="margin-top:13px;"><a href="http://www.chinanews.com/shipin/m/gj/views.shtml">+ 更多</a></div>
+            <div class="clear"></div>
+        </div>
+         <div class="mt10">
+             <ul class="module_left_picul ">
+				  <!--[4,290,34] published at 2016-07-11 13:41:19 from #10 by 张艾京,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+ <!--[4,290,34] published at 2016-12-23 14:26:31 from #10 by 张艾京,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+ <li><div class="conlist_img"><a href="http://www.chinanews.com/gj/shipin/2016/12-23/news684821.shtml"><img src="http://www.chinanews.com/part/290/gj/U473P4T290D34F8775DT20161223142118.jpg"></a><div class="small_video"></div></div>
+<p><a href="http://www.chinanews.com/gj/shipin/2016/12-23/news684821.shtml">日本防卫预算五连涨</a></p></li>
+ <li><div class="conlist_img"><a href="http://www.chinanews.com/gj/shipin/2016/12-23/news684811.shtml"><img src="http://www.chinanews.com/part/290/gj/U473P4T290D34F8778DT20161223142356.jpg"></a><div class="small_video"></div></div>
+<p><a href="http://www.chinanews.com/gj/shipin/2016/12-23/news684811.shtml">日本新潟县重大火灾</a></p></li>
+ <li><div class="conlist_img"><a href="http://www.chinanews.com/gj/shipin/2016/12-23/news684825.shtml"><img src="http://www.chinanews.com/part/290/gj/U473P4T290D34F8781DT20161223142501.jpg"></a><div class="small_video"></div></div>
+<p><a href="http://www.chinanews.com/gj/shipin/2016/12-23/news684825.shtml">韩宪法法院预审弹劾案</a></p></li>
+ <li><div class="conlist_img"><a href="http://www.chinanews.com/gj/shipin/2016/12-23/news684806.shtml"><img src="http://www.chinanews.com/part/290/gj/U473P4T290D34F8784DT20161223142631.jpg"></a><div class="small_video"></div></div>
+<p><a href="http://www.chinanews.com/gj/shipin/2016/12-23/news684806.shtml">阿勒颇“全面解放”</a></p></li>
+
+				   <div class="clear"></div>
+			    </ul>
+                  <div class="clear"></div>
+        </div>
+       </div>
+       <!---->
+
+  <div class=" mt5" >
+
+                 <!--底部s-->
+<!--[4,290,14] published at 2016-06-13 15:06:21 from #10 by 张晶,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+<!--[4,290,14] published at 2016-06-13 15:06:21 from #10 by 张晶,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+<div class="pagebottom">
+		<div class="pagebottom_nav pagebottom_nav1">
+
+         <a href="/common/footer/intro.shtml">关于我们</a><span>|</span> <a href="http://ad.chinanews.com.cn/">广告服务</a><span>|</span> <a href="/common/footer/sitemap.shtml">网站地图</a><div style="display:none;"><span>|</span> <a href="/common/footer/feedback.shtml">留言反馈</a> </div></div>
+
+        <div class="pagebottom_nr pagebottom_nr1">
+
+		<p>本网所刊载信息，不代表中新社和中新网观点</p>
+		<p>刊用本网稿件，务经书面授权<br/>违者将追究法律责任。</p>
+		<p>[<a href="/news/xuke.html">网上传播视听节目许可证（0106168）</a>] </p>
+        <p>[<a href="http://www.miibeian.gov.cn/">京ICP证040655号</a>] [<a href="http://www.miitbeian.gov.cn/">京ICP备05004340号-1</a>]</p>
+        <p>[京公网安备：110102003042]</p>
+<p style="font-family:arial;">Copyright &copy;1999-2016 chinanews.com. </p>
+<p style="font-family:arial;">All Rights Reserved</p>
+        
+        </div>
+  </div>
+<!--底部e-->
+                <!---->
+        </div>
+        <!---->
+
+          <!---->
+                    <div style="padding-left: 10px; color: #bfbebe; background:#e4e4e4; height:20px; line-height:20px;">页面设计：刘鑫   前端制作：闫兆玉</div>    
+
+                      </div>
+                         <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+               </div>
+               </div>
+           </div> <!--close main-col-wrapper -->
+        </div> <!--close page-col -->
+    </div><!-- close main-*-wrapper -->
+</div><!-- close nav-* -->    
+
+<!-- bottom -->
+<style>
+
+.ewm_box{width:103px;  display:block; height:150px;padding:0; margin:0 auto; border:#dbdbdb 1px solid; position:fixed; background:#fff; top:300px; right:50%; margin-right:-616px;}
+.ewm_box .closebt{ display:block;width:19px;height:19px; position:absolute;right:-1px;top:-1px;background:url(http://i8.chinanews.com/2014/hwbz/images/close.jpg) no-repeat;}
+.ewm_boxp{width:84px;margin:0 auto;padding-top:24px;}
+.ewm_box img{width:83px;height:83px;}
+.ewm_box .beijing{width:83px;height:88px;background:#fff;}
+.ewm_box p{ text-align:center;color:#848484;padding-top:2px;line-height:15px;}
+
+</style>
+
+</body>
+</html>
+
+      	<script type="text/javascript" src="http://i8.chinanews.com/gj/js/jquery-1.3.2.js"></script>
+
+<script type="text/javascript" src="http://i4.chinanews.com/gj/js1/jquery.galleriffic_1.js"></script>
+		<script type="text/javascript" src="http://i8.chinanews.com/gj/js1/jquery.opacityrollover.js"></script>
+		<!-- We only want the thunbnails to display when javascript is disabled -->
+		<script type="text/javascript">
+			document.write('<style>.noscript { display: none; }</style>');
+		</script>
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				// We only want these styles applied when javascript is enabled
+				$('div.content_add').css('display', 'block');
+
+				// Initially set opacity on thumbs and add
+				// additional styling for hover effect on thumbs
+				var onMouseOutOpacity = 0.67;
+				$('#thumbs_add ul.thumbs li, div.navigation a.pageLink').opacityrollover({
+					mouseOutOpacity:   onMouseOutOpacity,
+					mouseOverOpacity:  1.0,
+					fadeSpeed:         'fast',
+					exemptionSelector: '.selected'
+				});
+
+				// Initialize Advanced Galleriffic Gallery
+				var gallery = $('#thumbs_add').galleriffic({
+					delay:                     2500,
+
+					numThumbs:                 5,
+					preloadAhead:              10,
+					enableTopPager:            false,
+					enableBottomPager:         false,
+					imageContainerSel:         '#slideshow',
+					controlsContainerSel:      '#controls',
+					captionContainerSel:       '#caption',
+					loadingContainerSel:       '#loading',
+					renderSSControls:          true,
+					renderNavControls:         true,
+					playLinkText:              'Play Slideshow',
+					pauseLinkText:             'Pause Slideshow',
+					prevLinkText:              '&lsaquo; Previous Photo',
+					nextLinkText:              'Next Photo &rsaquo;',
+					nextPageLinkText:          'Next &rsaquo;',
+					prevPageLinkText:          '&lsaquo; Prev',
+					enableHistory:             true,
+					autoStart:                 false,
+					syncTransitions:           true,
+					defaultTransitionDuration: 900,
+					onSlideChange:             function(prevIndex, nextIndex) {
+						// 'this' refers to the gallery, which is an extension of $('#thumbs')
+						this.find('ul.thumbs').children()
+							.eq(prevIndex).fadeTo('fast', onMouseOutOpacity).end()
+							.eq(nextIndex).fadeTo('fast', 1.0);
+
+						// Update the photo index display
+						this.$captionContainer.find('div.photo-index')
+							.html('Photo '+ (nextIndex+1) +' of '+ this.data.length);
+					},
+					onPageTransitionOut:       function(callback) {
+						this.fadeTo('fast', 0.0, callback);
+					},
+					onPageTransitionIn:        function() {
+						var prevPageLink = this.find('a.prev').css('visibility', 'hidden');
+						var nextPageLink = this.find('a.next').css('visibility', 'hidden');
+
+						// Show appropriate next / prev page links
+						if (this.displayedPage > 0)
+							prevPageLink.css('visibility', 'visible');
+
+						var lastPage = this.getNumPages() - 1;
+						if (this.displayedPage < lastPage)
+							nextPageLink.css('visibility', 'visible');
+
+						this.fadeTo('fast', 1.0);
+					}
+				});
+
+				/**************** Event handlers for custom next / prev page links **********************/
+
+				gallery.find('a.prev').click(function(e) {
+					gallery.previousPage();
+					e.preventDefault();
+				});
+
+				gallery.find('a.next').click(function(e) {
+					gallery.nextPage();
+					e.preventDefault();
+				});
+
+				/****************************************************************************************/
+
+				/**** Functions to support integration of galleriffic with the jquery.history plugin ****/
+
+				// PageLoad function
+				// This function is called when:
+				// 1. after calling $.historyInit();
+				// 2. after calling $.historyLoad();
+				// 3. after pushing "Go Back" button of a browser
+				function pageload(hash) {
+					// alert("pageload: " + hash);
+					// hash doesn't contain the first # character.
+					if(hash) {
+						$.galleriffic.gotoImage(hash);
+					} else {
+						gallery.gotoIndex(0);
+					}
+				}
+
+				// Initialize history plugin.
+				// The callback is called at once by present location.hash. 
+				$.historyInit(pageload, "advanced.html");
+
+				// set onlick event for buttons using the jQuery 1.3 live method
+				$("a[rel='history']").live('click', function(e) {
+					if (e.button != 0) return true;
+
+					var hash = this.href;
+					hash = hash.replace(/^.*#/, '');
+
+					// moves to a new page. 
+					// pageload is called at once. 
+					// hash don't contain "#", "?"
+					$.historyLoad(hash);
+
+					return false;
+				});
+
+				/****************************************************************************************/
+			});
+		</script>

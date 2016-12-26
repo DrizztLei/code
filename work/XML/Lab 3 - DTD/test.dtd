@@ -1,0 +1,14 @@
+<!ELEMENT test ( description, testQuestions ) >
+<!ELEMENT description ( #PCDATA )>
+<!ELEMENT testQuestions ( question+ )>
+<!ELEMENT question ( questionText, choices )>
+<!ELEMENT questionText ( #PCDATA )>
+<!ELEMENT choices ( choice+ )>
+<!ELEMENT choice ( (choiceText,correct) | (correct,choiceText) )>
+<!ELEMENT choiceText ( #PCDATA )>
+<!ELEMENT correct ( #PCDATA )>
+  
+<!ATTLIST test     id CDATA #REQUIRED>
+<!ATTLIST question id CDATA #REQUIRED>
+<!ATTLIST choices  allowMultiple (Yes|No) "No" >
+<!ATTLIST choice   id CDATA #REQUIRED>

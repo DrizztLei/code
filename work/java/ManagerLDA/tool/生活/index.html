@@ -1,0 +1,2065 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base target="_blank" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="生活,消费,美食,养生,健康、乳品,维权,质量,出行,旅游,玩乐,攻略,潮流,时尚,瘦身,减肥,护肤,职场,八卦,情感,星座,两性"> 
+<meta name="description" content="中新网生活频道，是专业、权威的中央新闻生活门户，24小时滚动报道生活、消费、健康领域各类新闻资讯，为您提供最新最全的衣食住行、吃喝玩乐、健康养生等领域里的新闻事件、趣闻乐事、热点话题、争议争论。中新网生活频道，掌握衣食住行玩资讯。">
+
+<title>中新网_生活频道</title>
+<!--[51,63,1] published at 2016-12-26 11:39:03 from #10 by 唐云云,designer:chenguanghua  maker:yanzhaoyu zhangjing --> 
+<script src="http://www.chinanews.com/js/jquery1.4.js"></script>
+<script type="text/javascript">
+
+ function focusBox(o){
+	if(!o) return;
+	var w=655, $o=$('#'+o),i=0,l=0;arr= [],t= null,
+		$infoLi = $o.find('.banner_info li'), len= $infoLi.length*2,
+		$ul=$o.find('.banner_pic>ul');
+	$ul.append($ul.html()).css({'width':len*w, 'left': -len*w/2});
+	$infoLi.eq(0).addClass('current');
+	//add banner_pages element
+	arr.push('<div class="banner_pages"><ul>');
+	$infoLi.each(function(i){
+		if(i==0){
+			arr.push('<li class="current"><span>'+ (i+1) +'</span></li>');
+		}else{
+			arr.push('<li><span>'+ (i+1) +'</span></li>');
+		}
+	});
+	arr.push('</ul></div>');
+	$o.append(arr.join(''));
+	var $pagesLi = $o.find('.banner_pages li');
+	//mouse
+	$pagesLi.children('span').click(function(){
+		var p = $pagesLi.index($o.find('.banner_pages li.current'));
+		i = $pagesLi.children('span').index($(this));
+		if(i==p) return;
+		l = parseInt($ul.css('left')) + w*(p-i);
+		addCurrent(i,l);
+		return false;
+	})
+	$o.children('a.btn_prev').click(function(){
+		i = $pagesLi.index($o.find('.banner_pages li.current'));
+		(i==0)? i=(len/2-1):i--;
+		l = parseInt($ul.css('left')) + w;
+		addCurrent(i,l);
+		return false;
+	})
+	$o.children('a.btn_next').click(function(){
+		i = ($pagesLi.index($o.find('.banner_pages li.current'))+1)%(len/2);
+		l = parseInt($ul.css('left')) - w;
+		addCurrent(i,l);
+		return false;
+	})
+	//auto focus
+	t = setInterval(init,8000);
+	$o.hover(function(){
+		clearInterval(t);
+	}, function(){
+		t = setInterval(init,8000);
+	});
+	function init(){
+		$o.children('a.btn_next').trigger('click');
+	}
+	//add focus
+	function addCurrent(i,l){
+		if($ul.is(':animated')) return;
+		$ul.animate({'left':l},500,function(){
+			$o.children('.banner_count').text(i+1);
+			$infoLi.not($infoLi.eq(i).addClass('current')).removeClass('current');
+			$pagesLi.not($pagesLi.eq(i).addClass('current')).removeClass('current');
+			if(l== (1-len)*w){
+				$ul.css({'left': (1-len/2)*w});
+			}else if(l== 0){
+				$ul.css({'left': -len*w/2});
+			}
+		});
+	}
+}
+
+$(function(){
+	focusBox('kakaFocus');
+})
+
+$(document).ready(function(){
+	$("#kakaFocus").mouseover(function(){
+		$("#lrbt_show1").show();
+	    $("#lrbt_show2").show();
+		});
+	$("#kakaFocus2").mouseout(function(){
+	  	$("#lrbt_show1").hide();
+		$("#lrbt_show2").hide();
+		});
+	});
+
+function focusBox1(o1){
+	if(!o1) return;
+
+	var w1=$("#kakaFocus1 .banner1_pic").width(), $o1=$('#'+o1),i=0,l=0;arr1= [],t1= null,
+
+		$infoLi1 = $o1.find('.banner1_info li'), len1= $infoLi1.length*2,
+		$ul1=$o1.find('.banner1_pic>ul');
+	$ul1.append($ul1.html()).css({'width':len1*w1, 'left': -len1*w1/2});
+	$infoLi1.eq(0).addClass('current');
+	//add banner1_pages element
+	arr1.push('<div class="banner1_pages"><ul>');
+	$infoLi1.each(function(i){
+		if(i==0){
+			arr1.push('<li class="current"><span>'+ (i+1) +'</span></li>');
+		}else{
+			arr1.push('<li><span>'+ (i+1) +'</span></li>');
+		}
+	});
+	arr1.push('</ul></div>');
+	$o1.append(arr1.join(''));
+	var $pagesLi1 = $o1.find('.banner1_pages li');
+	//mouse
+	$pagesLi1.children('span').click(function(){
+		var p1 = $pagesLi1.index($o1.find('.banner1_pages li.current'));
+		i1 = $pagesLi1.children('span').index($(this));
+		if(i1==p1) return;
+		l1 = parseInt($ul1.css('left')) + w1*(p1-i1);
+		addCurrent1(i1,l1);
+		return false;
+	})
+	$o1.children('a.btn_prev').click(function(){
+		i1 = $pagesLi1.index($o1.find('.banner1_pages li.current'));
+		(i1==0)? i1=(len1/2-1):i1--;
+		l1 = parseInt($ul1.css('left')) + w1;
+		addCurrent1(i1,l1);
+		return false;
+	})
+	$o1.children('a.btn_next').click(function(){
+		i1 = ($pagesLi1.index($o1.find('.banner1_pages li.current'))+1)%(len1/2);
+		l1 = parseInt($ul1.css('left')) - w1;
+		addCurrent1(i1,l1);
+		return false;
+	})
+	//auto focus
+	t1 = setInterval(init1,8000);
+	$o1.hover(function(){
+		clearInterval(t1);
+	}, function(){
+		t1 = setInterval(init1,8000);
+	});
+	function init1(){
+		$o1.children('a.btn_next').trigger('click');
+	}
+	//add focus
+	function addCurrent1(i,l){
+		if($ul1.is(':animated')) return;
+		$ul1.animate({'left':l},500,function(){
+			$o1.children('.banner1_count').text(i+1);
+			$infoLi1.not($infoLi1.eq(i).addClass('current')).removeClass('current');
+			$pagesLi1.not($pagesLi1.eq(i).addClass('current')).removeClass('current');
+			if(l== (1-len1)*w1){
+				$ul1.css({'left': (1-len1/2)*w1});
+			}else if(l== 0){
+				$ul1.css({'left': -len1*w1/2});
+			}
+		});
+	}
+}
+
+$(function(){
+	focusBox1('kakaFocus1');
+})
+
+$(document).ready(function(){
+	$("#kakaFocus1").mouseover(function(){
+		$("#lrbt_show11").show();
+	    $("#lrbt_show21").show();
+		});
+	$("#kakaFocus1").mouseout(function(){
+	  	$("#lrbt_show11").show();
+		$("#lrbt_show21").show();
+		});
+	});
+
+<!--回顾-->
+
+    					<!---->
+
+function checksubmit(){
+    var code = event.keyCode;
+
+    if(code == 13) submitFun();
+  }
+
+function submitFun() {
+
+var hotword=document.getElementsByName('q')[0].value;
+
+if (hotword==''){
+
+alert('请输入关键字!');
+
+return false;
+
+}
+else
+{
+
+$.ajax({
+  type: "GET",
+  url: "http://lc.chinanews.com:8090/rpc/pa.jsp?pid=1&paid=50&u=sousuo&aj="+encodeURI(Math.random()+ (new Date())),
+  dataType: "jsonp"
+});
+
+if(document.getElementsByName('s0')[0].value=='cns')
+{
+
+ window.open("http://sou.chinanews.com/search.do?q="+encodeURIComponent(hotword));
+ }
+ else if(document.getElementsByName('s0')[0].value=='baidu')
+ {
+ window.open("http://www.baidu.com/s?ie=utf-8&bs=%E4%B8+%9B%BD&sr=&z=&cl=3&f=8&wd="+encodeURIComponent(hotword)+"&ct=0");
+ }
+
+}
+
+}
+
+</script>
+<script type="text/javascript">
+// JavaScript Document
+
+/*daohang huaguo*/
+$(document).ready(function(){
+
+	  function topnav1(){
+	var _show = null;
+	  var _hideTimer = null;
+	  var planItems = $('ul.c-fl-ul li.division');
+		planItems.each(function(index) {
+	    var li = $(this);
+		var div = li.find('div.navshow_div');
+			div.css("display","none");
+			li.bind('mouseenter',function() {
+				if (_show != null) {
+					clearTimeout(_show);
+				}
+				_show = setTimeout(function() {
+					$('ul.nav_navcon li').addClass('');
+
+					li.addClass('topnav_sel');
+				}, 0);
+				});
+			  li.bind('mouseleave', function() {
+					if (_show != null) {
+					clearTimeout(_show);
+				}
+				_hideTimer = setTimeout(function() {
+					li.removeClass('topnav_sel');
+
+				}, 0);
+				});
+			});
+	  };
+	topnav1();
+
+});
+   function search_select(id) {
+     document.getElementById("id7").className="dii7"+id;
+  }
+     function weibo(id) {
+     document.getElementById("id8").className="dii8"+id;
+  }
+
+ /*list滑过*/
+ $(document).ready(function(){
+	 var _show = null;
+	  var _hideTimer = null;
+	  var planItems = $('.news_list_ulbox ul li');
+	  var _tupian_li = $('.news_list_ulbox ul li._tupian_li');
+	 planItems.each(function(index) {
+	var li = $(this);
+		    var news_xgxw = li.find('div.news_xgxw .news_xgxw_a');
+			var sharenews=li.find('div.video_con1_title_right');
+			var news_xgxw_con=li.find('div.news_xgxw_con');
+			var planItems_tp = li.find('div.tupian_conul ul li');
+		    planItems_tp.each(function() {
+				  var tpli = $(this); 
+				  var tp_blackbg = tpli.find('div.tp_blackbg');
+
+				 tpli.bind('mouseenter',function() {
+					 tp_blackbg.hide();
+				  });
+
+				  tpli.bind('mouseleave',function() {
+					  tp_blackbg.show();
+				  });
+			 });
+
+	/*topnav*/
+
+		/**/
+		li.bind('mouseenter',function() {
+				if (_show != null) {
+					clearTimeout(_show);
+				}
+				_show = setTimeout(function() {
+					$('ul._commuity_nav li div.conbox').hide();
+					li.css('background','#eeeeee');
+					$(".module_advert_ul li").css('background','none');
+					_tupian_li.css('background','none');
+					sharenews.show('');
+				/**/
+
+				}, 0);
+				});
+			  li.bind('mouseleave', function() {
+					if (_show != null) {
+					clearTimeout(_show);
+				}
+				_hideTimer = setTimeout(function() {
+
+					li.css('background','none');
+					sharenews.hide('');
+
+				/**/
+
+				}, 0);
+				});
+		});
+
+});
+
+$(function(){ 
+				 var total_value =  $("#total_page_total0").val();
+	 			//alert (total_value);
+				 if(total_value!=null && total_value!=''){
+				var page_html =  '<div style="width:100%;height:30px;border:1px solid #ebebeb;clear:both; line-height:30px; color:#979798; cursor:pointer; font-size:14px;text-align:center; background:#F0F0F0;" onclick="ongetpage(2,300,0)">>>显示更多新闻</div>';
+				$("#page_bar0").html(page_html);
+		//ongetpage(1,total_value);
+					 }
+			});
+
+//jsxw_sp
+	function js_jsxwssp(thisObj,Numa)
+	{
+		//alert(thisObj);
+		//alert(Numa);
+		var top=$(document).scrollTop();
+		var left_heigt1=$("#enter_top").height();
+		var left_heigt2=$("#daodu").height();
+		var left_heigt3=$("#yaowen").height();
+		var left_heigt4=$("#shipin").height();
+		var left_heigt5=$("#shipin1").height();
+		var left_heigt6=left_heigt1+left_heigt2+left_heigt3+left_heigt4+left_heigt5;
+		var pw_heigth=$(window).height();
+
+		if(thisObj.className == "active")return;
+		var tabObj = thisObj.parentNode.id;
+		var tabList = document.getElementById(tabObj).getElementsByTagName("li");
+		for(i=0; i <tabList.length; i++)
+		{
+		if (i == Numa)
+		  {
+			  document.getElementById(tabObj+"_Con"+Numa).style.display = "block";
+			   document.getElementById("jsxw_sp_Con"+Numa).style.display = "block";
+			 // alert(Num);
+			  thisObj.className = "filter-selected"; 
+		     var scrollHeight= document.body.scrollHeight || document.documentElement.scrollHeight;
+
+			  $("#jsxwredbox_biglist2").hide();
+			  $("#jsxw_all_Con0").hide();
+			  createPageHtml(1,300,Numa);
+
+var tChannel = ''; 
+
+			 }else{
+		   document.getElementById(tabObj+"_Con"+i).style.display = "none";
+		   tabList[i].className = "normal"; 
+		  }
+		} 
+}
+
+function createPageHtml(page,total,Numa){
+    var page_html = '';
+
+	if(page!=1){
+		page_html = '';
+	}
+	var startPoint = 1;
+	var endPoint = 10;
+
+	if(page>=1 && page<=total/20){
+		page_html = page_html + '<div style="width:100%;height:30px;border:1px solid #ebebeb;clear:both; line-height:30px; color:#979798; cursor:pointer; font-size:14px;text-align:center; background:#F0F0F0;" onclick="ongetpage('+(page+1)+','+total+','+Numa+')">>>显示更多新闻</div>';
+	}
+
+	$("#page_bar"+Numa).html(page_html);
+}
+function ongetpage(num,total,Numa){
+	//alert(num);
+  				var specialid= $("#specialid"+Numa).val();
+  				//alert (specialid);
+  				if(num==1){
+    				window.location.href=window.location.href;
+   					 return;
+ 				 }else if(num>1){
+					 if (Numa==0 || Numa==1){
+						 //全部滚动新闻
+						 //http://channel.chinanews.com/cns/s/yl-mxnd.shtml?pager=0&pagenum=20
+						 //pager=0是第一页，显示更多新闻是从pager=1开始 
+						  $.getScript("http://channel.chinanews.com/cns/s/channel:"+specialid+".shtml?pager="+(num-1)+"&pagenum=10", function(){
+				 var html = "";
+		 		var data = specialcnsdata;
+				if(data.docs.length==0)
+				{
+					alert('全部加载完！');
+				}
+		 for(var i=0;i<data.docs.length;i++){ 
+			var pubtime = specialcnsdata.docs[i].pubtime;
+			var title = specialcnsdata.docs[i].title;
+			var url = specialcnsdata.docs[i].url;
+			var pic = specialcnsdata.docs[i].img_cns;
+			var content = specialcnsdata.docs[i].content;
+			//var content = '';
+
+			if (pic !=''){
+
+			html = html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
+
++'<div class="intermoren_box"><div class="intermoren_left"><a href="'+url+'" target="_blank"><img src="'+pic+'"></a></div>'
++'<div class="intermoren_right"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" target="_blank" class="blue">[详情]</a></div> '
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div></div></div></div></li>';
+			}else{
+				html =html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
++'<div class="intermoren_box">'
++'<div class="intermoren_right intermoren_right1"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" class="blue" target="_blank">[详情]</a></div>'
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div> </div></div></div> </li>';
+				}
+
+		  }
+		//alert(html);
+                  $("#ent"+Numa).append(html);
+	});
+					 }
+					 else{
+
+   				 $.getScript("http://channel.chinanews.com/cns/s/"+specialid+".shtml?pager="+(num-1)+"&pagenum=10", function(){
+				 var html = "";
+		 		var data = specialcnsdata;
+				if(data.docs.length==0)
+				{
+					alert('全部加载完！');
+				}
+		 for(var i=0;i<data.docs.length;i++){ 
+			var pubtime = specialcnsdata.docs[i].pubtime;
+			var title = specialcnsdata.docs[i].title;
+			var url = specialcnsdata.docs[i].url;
+			var pic = specialcnsdata.docs[i].img_cns;
+			var content = specialcnsdata.docs[i].content;
+			//var content = '';
+
+			if (pic !=''){
+
+			html = html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
+
++'<div class="intermoren_box"><div class="intermoren_left"><a href="'+url+'" target="_blank"><img src="'+pic+'"></a></div>'
++'<div class="intermoren_right"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" target="_blank" class="blue">[详情]</a></div> '
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div></div></div></div></li>';
+
+			}else{
+				html =html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
++'<div class="intermoren_box">'
++'<div class="intermoren_right intermoren_right1"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" class="blue" target="_blank">[详情]</a></div>'
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div> </div></div></div> </li>';
+				}
+
+		  }
+		//alert(html);
+                  $("#ent"+Numa).append(html);
+	});
+					 }
+	createPageHtml(num,total,Numa);
+
+  }
+  //alert(document.documentElement.scrollTop);
+ // $(document).scrollTop(0);
+//$(document).scrollTop()=0;
+}
+window.onscroll=function()
+{
+	var top=$(document).scrollTop();
+
+	var scrollHeight= document.body.scrollHeight || document.documentElement.scrollHeight;
+	var availHeight= document.body.availHeight || document.documentElement.availHeight;
+
+	var pw_heigth=$(window).height();
+	var right_heigt=$("#sticky_right").height();
+	var left_heigt=$("#sticky_left").height();
+
+	var index_topa=$("#index_topa").height();
+	var gg=$("#news_top_advert").height();
+
+	var topheight=index_topa+gg;
+
+if(scrollHeight>top+topheight){
+		$("#sticky_right").removeClass('sticky');
+		$("#sticky_right").removeClass('sticky0');
+		$("#sticky_right").addClass('sticky1');
+		}
+
+	if(top<=gg){
+		$("#js_N_nav").css("position","relative");
+		$("#jsxw_layer").css("position","relative");
+		$("#jsxw_layer").css("top","0");
+		$("#sticky_right2").css("height",0);
+		$("#sticky_right").removeClass('sticky');
+	    $("#sticky_right").removeClass('sticky0');
+		$("#sticky_right").addClass('sticky1');
+
+	}
+	if(top>gg){
+		$("#js_N_nav").css("position","fixed");
+		$("#js_N_nav").css("top","0");
+		$("#js_N_nav").css("z-index","9");
+	}
+	if (top<topheight){
+		$("#jsxw_layer").css("position","relative");
+		$("#jsxw_layer").css("top","0");
+
+		$("#sticky_right").removeClass('sticky');
+		$("#sticky_right").removeClass('sticky0');
+		$("#sticky_right").addClass('sticky1');
+	}
+	//alert(top);
+	//alert(pw_heigth);
+	//alert(left_heigt);
+	if(top>topheight){
+		//$('#default-p_30345810').css("top","0");
+		$("#jsxw_layer").css("position","fixed");
+		$("#jsxw_layer").css("top","44px");	
+	}
+
+	if(pw_heigth >= right_heigt+topheight-top && pw_heigth<left_heigt+topheight-top){
+		//alert(pw_heigth);
+		var cc=top+pw_heigth-right_heigt-topheight;
+		//alert(cc);
+		$("#sticky_right2").css("height",cc);
+
+	//if(right_heigt>=pw_heigth){
+		$("#sticky_right").removeClass('sticky');
+		$("#sticky_right").removeClass('sticky1');
+	    $("#sticky_right").addClass('sticky0');
+	//	}
+		//else{
+			//$("#sticky_right").removeClass('sticky');
+		   // $("#sticky_right").removeClass('sticky1');
+		   // $("#sticky_right").addClass('sticky0');
+		   // $(".sticky0").css('bottom',gaodu+'px');
+
+			//}
+
+		}
+
+		/*判断滚动条是否到底*/
+	// if(top + pw_heigth==scrollHeight){
+		//	alert(00);
+		//$("#sticky_right").removeClass('sticky0');
+		//$("#sticky_right").removeClass('sticky1');
+		//$("#sticky_right").addClass('sticky');
+
+		//}
+	if	(pw_heigth < right_heigt-top){
+		$("#sticky_right2").css("height",0);
+
+	}
+	//var top=$("body").scrollTop() 
+
+	//alert(top);
+
+};
+
+// JavaScript Document
+
+</script>
+
+<style>
+
+/* CSS Document */
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td {margin:0;padding:0;}
+input,select{font-size:12px;margin:0;padding:0;}
+body {font-family:Arial,Tahoma,Verdana,'宋体',STHeiTi,sans-serif,Helvetica,SimSun;font-size:12px;color:#434343;}
+body > div {text-align:left;margin-right:auto;margin-left:auto;}
+body{width:100%;margin:0 auto;}
+
+form,img,ul,ol,li,dl,dd,dt,p {margin: 0;padding: 0;border: 0;}
+h1,h2,h3,h4,h5,h6 {margin:0;padding:0;font-size:12px;font-weight:normal;}
+ol,ul,li,dd,dt {list-style: none;margin:0px;padding:0px;}
+fieldset,a img{border:0;} 
+input,select,textarea{font-size:12px;}
+input{vertical-align:middle;}
+table {border:none;margin:0px;padding:0px;}
+
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix {display:inline-table;}
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+/* border-collapse: collapse;border-spacing: 0;*/
+em,u{font-style:normal;text-decoration:none;}
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;} 
+a{cursor:pointer;outline:none;}
+
+.clear{clear:both;}
+.left{float:left;display:inline;}
+.right{float:right;display:inline;}
+
+a{color:#434343;text-decoration:none;}
+a:hover{color:#434343;}
+.m_center{margin:0 auto;}
+.w1000{width:1000px;margin:0 auto;}
+.blank10{height:10px;line-height:10px;width:inherit;overflow:hidden;}
+.blank15{height:15px;line-height:15px;width:inherit;overflow:hidden;}
+.m20{margin-bottom:20px;}
+.m10{margin-bottom:10px;}
+
+.c-fl{float:left;}
+.c-fr{float:right;}
+.cj_banner{ width:1000px; margin-top:8px; margin:0 auto;}
+.cj_logo{width:160px;height:55px;float:left;padding:0px 0 0 3px;}
+.searchnav{float:right;width:810px;padding-top:12px;}
+.searchnav .left .strip{color:#000;}
+.advert_top{float:right;width:750px;height:89px;}
+.advert_top img{width:750px;height:89px;}
+
+.gn_text{float:left;width:294px;}
+.index-nav {
+    background: none repeat scroll 0 0 #d7d7d7;
+    color: #fff;
+
+    line-height: 43px;
+
+    width: 100%;
+}
+
+.index-nav-main {
+    background: none repeat scroll 0 0 #d7d7d7;
+    width: 980px;
+    margin: 0 auto;
+}
+
+.index-nav a {
+    color: #3b5a88;
+	font-size:12px;
+	font-family:"宋体";
+}
+.index-nav a:hover {
+    color: #b21112;
+	text-decoration:none;
+}
+
+.index-nav-select-arr {
+    left: 15px;
+    position: absolute;
+    top: 13px;
+    z-index: 10;
+}
+
+.index-nav-select-title1 {
+	padding:0 20px 0 40px;
+	height:44px;
+	float:left;
+	height:44px;
+	outline:none;
+
+	line-height:44px;
+	text-decoration:none;
+
+}
+.index-nav-select-title {
+	float:left;
+	height:44px;
+	outline:none;
+	padding:1px 15px 0;
+	line-height:44px;
+	text-decoration:none;
+	padding:0 10px 0 40px;
+}
+
+.index-nav-select-pop {
+    background: #fff;
+    border: 1px solid #cdcdcd;
+
+	-webkit-box-shadow:0 0 8px #cdcdcd;
+	-moz-box-shadow:0 0 8px #cdcdcd;
+	box-shadow:0 0 8px #cdcdcd;
+    top: 44px;
+    width: 135px;
+	left: 0;
+    position: absolute;
+    z-index: 9;
+	padding-bottom:5px;
+}
+.index-nav-select-pop em {
+    color: #f00;
+}
+
+.dii8 .index-nav-select-pop {
+    display: none;
+}
+.dii80 .index-nav-select-pop {
+    display: block;
+}
+.dii81 .index-nav-select-pop {
+    display: none;
+}
+
+.index-nav-select-list {
+	width:135px;
+	padding:6px 0;
+}
+.index-nav-select-list a:hover {
+	text-decoration:none;
+}
+.index-nav-select-list li {
+	float:left;
+	position:static;
+	border:0;
+}
+.index-nav-select-list li a {
+	display:block;
+	padding:0 10px;
+	position:relative;
+	z-index:1;
+	_zoom:1;
+}
+.index-nav-select-list li a span {
+	display:block;
+	cursor:pointer;
+	width:115px;
+	height:31px;
+	line-height:31px;
+	border-bottom:1px dashed #dcdddd;
+}
+.index-nav-select-list li a:hover span {
+	border-bottom:none;
+	padding-bottom:1px;
+}
+.index-nav-select-list li.last a span {
+	border-bottom:none;
+}
+.index-nav-select-list li.last a:hover span {
+	padding-bottom:0;
+}
+
+.index-nav-select-list li a,.index-nav-select-list li a:visited {
+	color:#585858;
+}
+.index-nav-select-list li a:hover {
+	color:#252525;
+	background:#f2f2f2;
+	padding-top:1px;
+	margin-top:-1px;
+}
+.index-nav-select-list li a:hover span {
+	background:none;
+}
+
+.index-nav-select-title{_padding:0 5px 0 40px}
+.index-nav-select {
+	cursor:pointer;
+	position:relative;
+	outline:none;
+	z-index:4;
+
+}
+
+.index-nav-entry-wide {
+	padding:0 10px;
+}
+
+.c-fl .index-nav-select{_width:106px;}
+.c-fr .index-nav-select{_width:85px;}
+
+.dii7 .pt2 {
+    display: none;
+}
+.dii70 .pt2 {
+    background: none repeat scroll 0 0 #fff;
+    display: block;
+}
+.dii71 .pt2 {
+    display: none;
+}
+.dii8 .ntes-nav-select-pop {
+    display: none;
+}
+.dii80 .ntes-nav-select-pop {
+    display: block;
+}
+.dii81 .ntes-nav-select-pop {
+    display: none;
+}
+.index_icon1, .index_icon2, .index_icon3, .index_icon4, .index_icon5 {
+    background: url("http://i8.chinanews.com/finance2015/201510/images/icon_img_blue.jpg") no-repeat ;
+    display: block;
+}
+.index_icon1 {
+    background-position: 0 0;
+    height: 18px;
+    width: 20px;
+}
+.index_icon2 {
+    background-position: 0 -23px;
+    height: 18px;
+    width: 20px;
+}
+.index_icon3 {
+    background-position: 0 -46px;
+    height: 14px;
+    width: 22px;
+}
+.index_icon4 {
+    background-position: 0 -66px;
+    height: 19px;
+    width: 14px;
+}
+.index_icon5 {
+    background-position: 0 -91px;
+    height: 19px;
+    width: 21px;
+}
+.c-fl-ul li {
+    float: left;
+}
+
+.topnav_sel {
+    background: none repeat scroll 0 0 #f5f7f7;
+}
+.topnav_sel a {
+    color: #b21112;
+}
+ul.c-fl-ul .topnav_sel .index_icon1 {
+    background:url("http://i8.chinanews.com/finance2015/201510/images/syh.jpg") no-repeat ;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon4 {
+    background:url("http://i8.chinanews.com/finance2015/201510/images/sjh.jpg") no-repeat ;
+}
+ul.c-fl-ul .topnav_sel .index_icon5 {
+    background:url("http://i8.chinanews.com/finance2015/201510/images/wbh.jpg") no-repeat ;
+}
+.index_icon13 {
+    background:url("http://i8.chinanews.com/finance2015/201510/images/icon_13.png") no-repeat ;
+    display: block;
+    height: 19px;
+    width: 19px;
+}
+.index_icon11 {
+    background:url("http://i8.chinanews.com/finance2015/201510/images/icon_09.png") no-repeat ;
+    display: block;
+    height: 20px;
+
+    width: 20px;
+}
+.index_icon12 {
+    background:url("http://i8.chinanews.com/finance2015/201510/images/icon_07.png") no-repeat ;
+    display: block;
+    height: 15px;
+    width: 15px;
+}
+ul.c-fl-ul .topnav_sel .index_icon11 {
+    background:url("http://i8.chinanews.com/finance2015/201510/images/selh.jpg") no-repeat ;
+}
+ul.c-fl-ul .topnav_sel .index_icon12 {
+    background:url("http://i8.chinanews.com/finance2015/201510/images/qyyxh.jpg") no-repeat ;
+}
+ul.c-fl-ul .topnav_sel .index_icon13 {
+    background:url("http://i8.chinanews.com/finance2015/201510/images/apph.jpg") no-repeat ;
+}
+.index_icon14 {
+    background:url("http://i8.chinanews.com/finance2015/201510/images/icon_05.png") no-repeat ;
+    display: block;
+    height: 13px;
+    width: 18px;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon14 {
+    background:url("http://i8.chinanews.com/finance2015/201510/images/dth.jpg") no-repeat ;
+}
+.index_icon14 {
+    background:url("http://i8.chinanews.com/finance2015/201510/images/icon_05.png") no-repeat ;
+    display: block;
+    height: 13px;
+    width: 18px;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon14 {
+    background:url("http://i8.chinanews.com/finance2015/201510/images/dth.jpg") no-repeat ;
+}
+.index_icon_gzh{background:url("http://i8.chinanews.com/finance2015/201510/images/icon_15.png") no-repeat;display:block;width:24px;height:19px;}
+ul.c-fl-ul .topnav_sel .index_icon_gzh{background:url("http://i8.chinanews.com/finance2015/201510/images/wxh.png") no-repeat;}
+.index-nav-select-wide .index-nav-select-title-gzh{padding:0px 10px 0px 43px}
+
+.index_icon_gzh{background:url("http://i8.chinanews.com/finance2015/201510/images/icon_15.png") no-repeat;display:block;width:24px;height:19px;}
+ul.c-fl-ul .topnav_sel .index_icon_gzh{background:url("http://i8.chinanews.com/finance2015/201510/images/wxh.png") no-repeat;}
+.index-nav-select-wide .index-nav-select-title-gzh{padding:0px 10px 0px 43px}
+ul.c-fl-ul .topnav_sel .index-nav-select-arr1 {
+    border-color: #c20000 transparent transparent;
+}
+.index-nav-select-arr1 {
+    border-color: #3c5a88 transparent transparent;
+    border-style: solid dashed dashed;
+    border-width: 4px 4px 0;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    position: absolute;
+
+    right: 5px;
+    top: 20px;
+    width: 0;
+    z-index: 10;
+}
+
+.index_layer {
+	position:fixed;
+	_position:absolute;
+	width:110px;
+	height:150px;
+	right:310px;
+	top:225px;
+	top:225px;
+	_height:255px;
+	z-index:100;
+	background:#fff;
+}
+
+.gn_top{width:100%; }
+
+/**/
+
+.gn_left{width:400px;float:left;}
+.gn_right{width:584px;float:right;}
+.m_center{margin:0 auto;}
+/*正文*/
+.mt10{margin-top:10px;}
+.gn_main_left{float:left;width:660px;_width:650px;}
+.gn_main_right{float:right;width:340px;}
+#jsxw_layer{width:645px;}
+.main_title_r{height:32px;border-top:#1574bd 5px solid; }
+.main_title_r .life_title_text{float:left;color:#1574bd;font-size:20px;line-height:32px;padding-left:10px;font-family:microsoft yahei;width:95px;margin-top:5px;}
+.main_title_r .life_title_more{line-height:32px;float:right;padding-right:5px;margin-top:5px;}
+.main_title_r .life_title_more span{font-size:20px; padding:0 3px 0 0 ; vertical-align:middle;}
+.main_title_r .life_title_more a{color:#888;ine-height:30px;}
+.main_title_r .life_title_more a:hover{color:#888; text-decoration:none;}
+
+.gn_main_rightc{width:318px;margin:0 auto;}
+.tab-list {height:38px;line-height:38px; background:#f5f6f5; border-top:4px solid #e03c3c;}
+.tab-list li{float:left;color:000;font-size:16px;font-family:microsoft yahei; border-bottom:#e5e5e5 solid 1px;}
+
+.tab-list li a{padding:0 32px;color:#000;_width:32px;}
+.tab-list  .filter-selected{color:#000;line-height:38px;height:38px; display:block;font-family:microsoft yahei; border-bottom:none;border-right:#e5e5e5 solid 1px;}
+.tab-list  .filter-selected a{color:#000;background:#fff;height:38px; display:block;text-align:center;}
+
+.news_list_ul{width:645px;}
+.news_list_ul li{border-bottom:#6f7074 1px  dotted; cursor:pointer;padding:20px 0;*padding:18px 0}
+.news_list_ul li .moren_list{padding:10px;}
+.news_list_ul li .biaoti_list{padding:10px;}
+.news_list_ul li .bigpic_list{padding:0px;margin:0px;overflow:hidden;}
+.news_list_ul li:hover{background:#f9f9f9;}
+.news_list_ul li .biaoti_list  .moren_right{margin-top:0px;}
+.news_list_ul li .biaoti_list  .moren_left .news_content_tupian{font-family:microsoft yahei;font-size:13px;color:#c5c3c4;}
+
+.news_list_ul li .bigpic_list  .moren_left{float:left;width:300px;height:190px;}
+.news_list_ul li .bigpic_list  .moren_right{float:right;width:312px;margin-top:10px;height:auto;_margin-top:5px;}
+.news_list_ul li .bigpic_list  .moren_right_nopic{width:635px;height:auto;}
+.news_list_ul li .news_title{font-size:20px;font-family:microsoft yahei,"黑体";color:#333}
+.news_list_ul li .news_title em{ font-style:normal;}
+.news_list_ul li .news_title .news_title_img{float:left; padding-top:3px;}
+.news_list_ul li .news_title .news_title_img img{ vertical-align:middle; }
+.news_list_ul li .news_title .news_title_text{float:left;padding-left:10px;}
+
+.news_list_ul li .news_title a{color:#333; text-decoration:none;}
+.news_list_ul li .news_title a:hover{color:#fff;background:#1574bd; text-decoration:none;}
+.news_list_ul li .news_source{font-size:12px;color:#8e8e8e;padding:7px 0 0;height:24px;line-height:24px;}
+.news_list_ul li .news_content{font-size:12px;color:#666666;line-height:28px;}
+.news_list_ul li .news_content a{color:#666666;}
+.news_list_ul li .news_content span:hover{color:#12619c;}
+
+.news_list_ul li  .moren_left{float:left;width:486px;}
+.news_list_ul li  .moren_right{float:right;width:130px;height:95px;margin-top:36px;}
+.news_list_ul li  .moren_right img{width:130px;height:95px}
+
+.news_list_ul li  .intermoren_box{padding-top:7px;}
+.news_list_ul li  .intermoren_left{float:left;width:180px;margin-top:5px;}
+.news_list_ul li  .intermoren_left img{width:180px;height:120px;}
+.news_list_ul li  .intermoren_right{float:right;width:440px;}
+.news_list_ul li  .intermoren_right1{float:left;width:635px;}
+
+.searchnav .left .strip{color:#000;}
+.advert_top{float:right;width:750px;height:89px;}
+.advert_top img{width:750px;height:89px;}
+
+.enter_text{float:left;width:294px;}
+.strip{float:left;line-height:25px;color:#333;padding-left:26px;}
+
+.strip span{float:left;}
+.strip .sunshine{margin:3px 1px 0 ;}
+
+.searchinput{width:335px;float:right;}
+.searchinput .search_input{border:#dedede 1px solid;width:180px;height:22px;padding:0 5px;background:#fff;color:#000;line-height:22px;float:left;}
+.searchinput .search_a{line-height:24px;text-align:center;color:#fff;margin-left:10px;background:#b21112;float:left;display:block;width:70px;height:24px;}
+.searchinput .search_a:hover{color:#fff;background:#b21112; text-decoration:none;}
+
+.search_listbox{float:left;position:relative;z-index:2;width:60px;}
+.searchinput .search_listinput{border:none;width:30px;height:22px;padding:0 5px;background:#fff;color:#a0a0a0;line-height:22px;float:left;}
+
+.search_listinput a{color:#fff;}
+.search_listinput a:hover{color:#fff; text-decoration:none;}
+.searchinput .search_list{float:left;background:url("http://i8.chinanews.com/2014/sp/serach_b.jpg") no-repeat;display:block;width:19px;height:19px;margin:1px 1px 0 0}
+
+.inter_navbox{width:100%;background:url("http://i8.chinanews.com/2014/sp/top_x.jpg") repeat-x left bottom;}
+.inter_nav{height:43px;background:#49a81a;width:1000px; margin:0 auto;}
+.inter_nav_ul{padding-left:11px;}
+.inter_nav_ul li{float:left;line-height:43px;margin:0 14px;font-size:18px;font-family:microsoft yahei;position:relative;}
+.inter_nav_ul li a{color:#fff;}
+.inter_nav_ul li a:Hover{ text-decoration:none;color:#fff;}
+
+.inter_nav_ul li em{background:Url() no-repeat;width:13px;height:5px; position:absolute;left:35%;bottom:0;display:none;}
+.inter_nav_ul .nav_sel em{display:block;}
+#top{line-height:26px;width:1000px;height:26px;color:#959595;font-size:14px;letter-spacing:2px;margin:5px auto;text-align:center;}
+#top a{color:#777;font-size:14px;}
+#top a:hover{color:#777;font-size:14px;}
+
+.fd{ float:left}
+.fdr{ float:right}
+
+#nav{height:43px; line-height:43px; width:1000px; background:#e03c3c; margin:0 auto; margin-top:4px;font-size:18px; font-family:"微软雅黑"; color:#fff; text-align:center;}
+#nav a{float:left;  display:block; width:124px; border-right:1px solid #d5393a; color:#fff; font-family:"微软雅黑"}
+#nav a:hover{color:#fff;}
+
+/*右侧导航*/
+#menu{width:55px;/*overflow: hidden;*/position: fixed;right:50%;margin-right:-600px;z-index: 999;_position:absolute;_bottom:auto;padding:0px;;}
+#menu ul{background:#0388df;}
+.menuTop{bottom: 167px;}
+.menuBtm{top:0px;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));_margin-top:0px;}
+
+#menu li{height:28px;background:#0388df;border-top:1px solid #0075c2;width:74px;line-height:28px;text-align:left;font-family:宋体;font-size:12px;zoom:1;vertical-align: bottom;cursor: pointer;overflow: hidden;padding-left:10px;}
+#menu li.lianghang{height:45px;line-height:28px;}
+#menu li.lianghang a{padding-top:5px;}
+#menu li a{color:#fff;width:74px;display:block;display:inline-block;cursor: pointer;text-decoration:none;font-size:12px;}
+#menu li a:Hover{color:#fff;background: #0388df;text-decoration:none;font-size:12px;}
+#menu li.current{width:74px;background: #0388df;border:none;}
+#menu li.current a{color:#fff;font-size:12px;}
+
+.backToTop {width:55px;height:53px; cursor: pointer;opacity:0.6;filter: Alpha(opacity=60);}
+.backtop{width:55px;height:53px;margin:0 auto;}
+a.fhtop_a{background:url(http://i8.chinanews.com/finance2015/201510/images/top.jpg) no-repeat center top;width:55px;height:53px;display:block;overflow:HIdden;margin:0 auto;}
+
+#top2{margin-top:10px;}
+#navigation{
+	width:1000px;
+	height:auto;
+	margin:0 auto;
+	overflow: hidden;
+	margin-bottom:1px;
+}
+.nav03{
+	float:left;
+	width:333px;
+
+}
+.nav03-bt{width:inherit; height:26px; line-height:26px; padding:9px 0; font-size:18px; color:#000; font-family:"微软雅黑";}
+.nav03-bt .left{padding-right:5px; font-weight:bold;}
+.nav03-bt .left span{color:#da0010;}
+.nav03-bt .right{font-size:12px; color:#434343; font-family:"宋体";}
+.nav03-bt .right a{font-size:12px; color:#434343; font-family:"宋体";}
+.nav03-bt .right a:hover{font-size:12px; color:#434343; font-family:"宋体";}
+.nav03-img{float:left;overflow:hidden; }
+.nav03-img img{width:128px; height:88px;}
+.nav03-1{
+	float:left;
+	height:84px;
+	padding-left:10px;
+	overflow:hidden;
+	background:#fff; 
+	width:177px;
+
+}
+.nav03-title{
+	width:169px;
+	height:24px;
+	line-height:28px;
+	color:#070707;
+	font-weight:bold;
+	font-size:16px;
+	font-family:"微软雅黑";
+	overflow:hidden;
+}
+.nav03-title a{color:#070707 }
+.nav03-title a:hover{color:#e67878 }
+
+.nav03-1 span{line-height:21px; color:#868686 } 
+.nav03-1 span a{color:#868686; font-size:13px;  }
+.nav03-1 span a:hover{color:#868686 }
+.nav03 li{line-height:24px; height:24px; width:300px; padding-left:5px; display:block; overflow:hidden; background:url("http://i2.chinanews.com/finance/house/2015/dot.jpg") no-repeat left 9px; font-size:14px;}
+
+#search{width:320px;margin-top:15px;height:20px;line-height:20px;}
+#search b{font-family:"微软雅黑";font-size:16px;}
+#search .fd input{width:198px;_width:210px;border:0px;margin:0px;padding:0px;border:1px solid #dedede;height:22px;line-height:19px;outline:none;}
+
+.yw_left{float:left;width:658px;}
+.yw_right{float:right;width:330px;}
+
+.ywdiv{float:left;width:650px;height:184px;padding-top:10px;padding-left:8px;background:url("http://i4.chinanews.com/fortune/2014/1_11.jpg") no-repeat left top;border-bottom:0px dotted #c6c6c7;margin-bottom:15px;}
+.ywdiv .title{width:20px;height:148px;line-height:20px;font-size:20px;color:#000;font-family:"微软雅黑";float:left;margin-right:6px;}
+.ywdiv .title a{color:#000;}
+.ywdiv .title a:hover{color:#000;}
+.ywdiv .title img{width:20px}
+.ywdiv .left{float:left;width:220px;height:147px;position:relative;}
+.ywdiv .left img{width:220px;height:147px;}
+.ywdiv .left .bg{position:absolute;width:220px;height:35px;left:0px;bottom:0px;background: #000;filter: Alpha(Opacity=50);opacity: 0.5;}
+.ywdiv .left .txt{position:absolute;width:220px;height:35px;line-height:35px;text-align:center;left:0px;bottom:0px;font-size:14px;color:#e5e5e5;}
+
+.ywdiv .left .txt a{color:#e5e5e5;}
+.ywdiv .left .txt a:hover{color:#e5e5e5;}
+.ywdiv .right{float:right;width:380px;}
+.ywdiv .right h1{font-size:22px;font-family:"微软雅黑";line-height:28px;color:#000;margin-bottom:15px;height: 28px;overflow: hidden;}
+.ywdiv .right h2{font-size:22px;font-family:"微软雅黑";line-height:28px;color:#000;margin-bottom:15px;height: 28px;overflow: hidden;}
+.ywdiv .right h1 a,.ywdiv .right h2 a{color:#000;}
+.ywdiv .right h1 a:hover,.ywdiv .right h2 a:hover{color:#000;}
+.ywdiv .right li{font-size:16px;line-height:36px;height:36px;width:400px;font-family:"微软雅黑";}
+.more{width:54px;height:18px;background:#f3f3f3;text-align:center;line-height:18px;float:right;margin-top:11px;*margin-top:6px;}
+
+.ftj{width:658px;float:left}
+.ftj_titile{width:658px;height:30px;line-height:30px;margin-bottom:10px;font-size:20px;color:#000;font-family:"微软雅黑";}
+.ftj_titile a {color:#000;}
+.ftj_pic{width:658px;height:149px;position:relative}
+#LeftArr2, #LeftArr3, #LeftArr4{float:left;width:20px;height:20px;display:block;cursor:pointer;text-align:center;line-height:130px;font-size:16px;color:#b59460;position:absolute;right:50px;top: -30px;}
+#RightArr2, #RightArr3, #RightArr4{width:20px;height:20px;text-align:right;float:right;cursor:pointer;text-align:center;line-height:130px;font-size:16px;color:#b59460;position:absolute;right: 18px;top: -30px;}
+#ISL_Cont_2, #ISL_Cont_3, #ISL_Cont_4{width:670px;float:left;overflow:hidden;text-align:center;height:149px;}
+.img-kuang3{width:147px;height:149px;text-align:left;float:left;margin-right:20px;display:block;}
+.img2-img{width:147px;height:105px; position:relative;}
+.img2-img img{width:147px;height:105px;}
+.img-kuang3 span{color:#ff0000;}
+.img-kuang3 span a{color:#ff0000;}
+.img-kuang3 span a:hover{color:#ff0000;}
+
+.img-kuang3 .bg{position:absolute; width:147px; height:27px; left:0px; bottom:0px;background: #0288df;filter: Alpha(Opacity=50);opacity: 0.5;}
+.img-kuang3 .txt{position:absolute; width:147px; height:27px; line-height:27px; text-align:center; left:0px; bottom:0px; font-size:12px; color:#fff;}
+.img-kuang3 .txt a{color:#fff;}
+.img-kuang3 .txt a:hover{color:#fff;}
+
+.text{width:147px;height:24px;text-align:center;line-height:24px;font-family:"微软雅黑", "宋体", "Arial Unicode MS"; font-size:12px}
+
+.rdtj{width:658px;height:39px;line-height:39px;background:#f3f3f3;font-size:14px;float:left;padding-left:10px;display:inline;margin-bottom:30px; border-bottom:1px solid #dcdcdd;}
+.rdtj a{font-size:12px; margin-right:5px}
+.rdtj span{color:#c70102;font-size:12px;}
+.rdtj span a{color:#c70102;font-size:12px;}
+.rdtj span a:hover{color:#c70102;font-size:12px;}
+
+/*焦点图*/
+.banner{position:relative;width:655px;height:290px;overflow:hidden;margin:0 auto;}
+.banner_pic{position:absolute;width:655px;height:290px;overflow:hidden; left:0; top:0;}
+.banner_pic ul{position:absolute;top:0;left:0;width:99999px;height:290px}
+.banner_pic ul li{float:left;width:655px}
+.banner_pic ul li img{width:655px;height:290px;}
+.banner a.btn_prev,.banner a.btn_next{display:none;width:47px;height:48px;overflow:hidden;margin-top:0;text-indent:-9999px;outline:0;hide-focus:expression(this.hideFocus=true);position:absolute;top:35%;z-index:9}
+.banner a.btn_prev{left:0;background-image:url(http://i6.chinanews.com/2013/home/images/l_bt.png)}
+.banner a.btn_next{right:0;background-image:url(http://i6.chinanews.com/2013/home/images/r_bt.png)}
+.banner_info_bg{position:absolute;bottom:0px;left:0;width:655px;height:45px;overflow:hidden; opacity:0.7; filter:alpha(opacity=70); background:#000;}
+.banner_info{position:absolute;bottom:0px;left:10px;width:635px;height:45px;overflow:hidden;z-index:2;text-align:left}
+.banner_info li{display:none;padding:0 10px;line-height:45px;height:45px;overflow:hidden; color:#fff; font-size:14px;}
+.banner_info li.current{display:block}
+.banner_info li a{color:#fff;font-size:20px;text-decoration:none; font-family:"微软雅黑"; line-height:45px;}
+.banner_info li a:hover{color:#fff;font-size:20px;text-decoration:none; font-family:"微软雅黑"; line-height:45px;}
+.banner_pages{position:absolute;right:20px;bottom:20px;overflow:hidden;height:9px; z-index:10;}
+.banner_pages ul{float:left;}
+.banner_pages li{float:left;margin-left:10px;display:block;width:23px;height:9px;overflow:hidden;}
+.banner_pages li span{display:block;width:23px;height:9px;overflow:hidden;background:#cccccc;text-indent:-9999px;cursor:pointer}
+.banner_pages li span:hover{background:#f16417;display:block;width:23px;height:9px;overflow:hidden;}
+.banner_pages li.current span,.banner_pages li.current span:hover{background:#f16417;display:block;width:23px;height:9px;overflow:hidden;}
+
+.top_yw h1{text-align:left; font-family:"黑体"; font-size:18px; width:320px;  height:35px; line-height:35px; color:#000; overflow:hidden; font-weight:bold;}
+.top_yw h1 a{color:#000;}
+.top_yw h1 a:hover{color:#000;}
+.top_yw span{text-align:left; width:320px; margin:0 auto; height:24px; line-height:24px;font-size:14px;}
+
+.right_ul{width:320px;margin:10px 0px;}
+.right_ul li{width:295px;height:28px;line-height:28px;background-image:url(http://i4.chinanews.com/fortune/2014/1_20.jpg);background-position:left 9px;background-repeat:no-repeat;overflow:hidden;padding-left:20px;font-size:14px;}
+.right_ul strong{font-size:14px;line-height:30px;height:30px;width:290px;overflow:hidden;padding-left:10px;}
+
+.right_lm{width:320px; background:#ebebeb; height:26px;margin-top:30px; margin-bottom:10px; }
+.right_lm1{width:320px; background:#fff; height:24px;}
+.right_lm .left{height:24px; text-align:center; font-size:20px; font-family:"微软雅黑"; color:#de1f2d; line-height:24px; border-bottom:2px solid #e03c3c;letter-spacing:2px;}
+.right_lm .left span{color:#2f2f2f;}
+.right_lm .right{width:45px; color:#666; line-height:24px;}
+.right_lm .right a{color:#666;}
+.right_lm .right a:hover{color:#666;}
+
+.xwphb_ul{width:320px;margin:0;}
+.xwphb_ul ul{background:url(2_03.jpg) no-repeat left 23px;padding-left:25px;line-height:28px;padding-top:15px;}
+
+.ad{width:1000px;/*height:90px;*/margin:30px 0px;}
+
+.xwytd{line-height:30px; font-size:14px; font-family:"微软雅黑"; padding-top:10px;}
+.xwytd p{height:30px; overflow:hidden;}
+
+.yw_right .top_yw h1 a:hover{color:#ba2636;text-decoration:underline;}
+.yw_right .right_ul ul li a:hover{color:#ba2636;}
+
+#top{width:1000px;}
+#top a {
+	letter-spacing:3px;
+}
+
+#info img{ vertical-align:middle;padding:0 5px;}
+#info a{color:#333; text-decoration:none;font-size:12px;padding:0;}
+#info a:hover{color:#333; text-decoration:underline;}
+.toy_yw a:hover{color:ba2636;}
+
+.index_icon14 {
+    background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F978DT20150907155559.png) no-repeat ;
+    display: block;
+    height: 13px;
+    width: 18px;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon14 {
+    background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F979DT20150907155559.png) no-repeat ;
+}
+.index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_mo.png) no-repeat;display:block;width:24px;height:19px;}
+ul.c-fl-ul .topnav_sel .index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_sel.png) no-repeat;}
+.index-nav-select-wide .index-nav-select-title-gzh{padding:0px 10px 0px 43px}
+.select_border {
+  background: #fff;
+  border: 1px solid #dedede;
+  width: 58px;
+  border-left: none;
+  height: 22px;
+  overflow: HIdden;
+  display: block;
+}
+
+.selectnews {
+  line-height: 22px;
+  color: #666;
+  margin: -1px;
+  font-size: 13px;
+  width: 60px;
+  padding: 3px 2px 3px 0;
+}
+
+.news_list_ul li .news_content a.blue{color:#12619c;}
+.news_list_ul li .news_content a.blue:hover{color:#12619c;}
+
+.hzzq{width:1000px; margin:24px auto; height:30px;}
+
+.new_right_title {height:35px;padding:0px;font-size:14px;background:#f9f9f9;;}
+.new_right_titleul {font-size:14px;font-weight:normal;}
+.new_right_titleul li {cursor:pointer;height:35px;line-height:35px;text-align:center;float:left;width:126px; background:#e0e0e0; margin-right:10px;}
+.new_right_titleul li  a{font-size:20px;font-family:microsoft yahei;color:#636363;height:35px;display:block;width:126px;}
+.new_right_titleul li  a:Hover{text-decoration:none;}
+.new_right_titleul li.normal {text-align:center;color:#636363}
+.new_right_titleul li.normal a {height:35px;color:#636363}
+
+.new_right_titleul li.active {background:#e03c3c;}
+.new_right_titleul li.active a {color:#fff;height:35px;}
+.life_topr_advert{width:236px;height:84px;}
+.life_topr_advert img{width:300px;height:84px;}
+
+.life_topr1_advert{width:310px;height:62px;}
+.life_left_advert{width:308px;height:62px;}
+.life_topr1_advert img{width:310px;height:62px;}
+.life_left_advert img{width:308px;height:62px;}
+
+.life_topr2_advert{width:309px;height:62px;}
+.life_topr2_advert img{width:309px;height:62px;}
+#myTabhd_Content1{display:none;}
+
+#myTabhd_Content0,#myTabhd_Content1{padding:10px; padding-top:20px; background:url(http://i8.chinanews.com/finance2015/201510/images/1_01.jpg) no-repeat left top #f9f9f9;}
+#myTabhd_Content1{background:url(http://i8.chinanews.com/finance2015/201510/images/1_03.jpg) no-repeat left top #f9f9f9;}
+.life_left_ul_zc{}
+.life_left_ul_zc li{height:24px;line-height:24px;font-size:12px;background:url(http://i8.chinanews.com/2014/life/dot_hei.jpg) no-repeat left 13px;padding-left:10px;}
+
+#banner_index {position:relative; width:320px;height:167px;overflow:hidden;}
+#banner_list img {border:0px;width:320px; height:167px;}
+#banner_bg {width:100%;position:absolute; bottom:0px;left:0px;height:30px; background:#000;filter: Alpha(Opacity=70);opacity:0.7;display:block; text-align:center; line-height:30px;z-index:1;}
+#banner_info{font-weight:normal; font-size:20px;position:absolute;width:100%; font-family:microsoft yahei;bottom:0; left:0px;height:30px; display:block; line-height:30px;z-index:2;cursor:pointer}
+#banner_info a{ color:#fff; font-size:14px;font-weight:normal;padding-left:10px;}
+#banner_info a:hover{ color:#fff; text-decoration:underline}
+
+#banner_text {position:absolute;width:120px;z-index:1002; right:3px; bottom:3px;}
+#banner_index ul {position:absolute;z-index:2;bottom:11px; right:10px;}
+#banner_index ul li { float:left;display:block;background:url(http://i8.chinanews.com/2014/life/whitedot.png) no-repeat;margin:0px 8px 0 0 ;float:left;color:#000;cursor:pointer;width:8px;height:8px;line-height:8px;text-align:center;}
+
+#banner_index ul .on { background:url(http://i8.chinanews.com/2014/life/fendot.png) no-repeat;display:block;width:10px;height:9px;}
+#banner_index ul li span{display:none;background:#00}
+
+.cooperation{padding:30px 0 14px 0;}
+
+.ch_tuijian_p{padding:15px 0px;}
+
+#info img{ vertical-align:middle;padding:0 5px;}
+#info a{color:#333; text-decoration:none;font-size:12px;padding:0;}
+#info a:hover{color:#333; text-decoration:underline;}
+#navigation span p{font-size:13px;}
+
+</style>
+
+<style>
+#top a {
+  letter-spacing: 2px;
+}
+
+.scroll {
+  height: 20px;
+  margin: 0px 20px 15px 0px;
+  line-height: 20px;
+  float: left;
+}
+
+</style>
+
+<!--new css-->
+<style>
+.top_yw li{text-align:left; width:320px; margin:0 auto; height:28px; line-height:28px;font-size:14px; color:#666;}
+
+.life_left_ul li{height:28px;line-height:28px;font-size:14px;background:url(http://i8.chinanews.com/2014/ent/dot_gray.jpg) no-repeat 13px 13px;padding-left:28px; overflow:hidden;}
+
+.main_title_r{height:32px;border-top:#e53a18  2px solid; padding-top: 8px; margin-top:20px; }
+.main_title_r .life_title_text{float:left;color:#e53a18;font-size:20px;line-height:24px;padding-left:16px;font-family:microsoft yahei;width:100px;}
+.main_title_r .life_title_more{line-height:32px;float:right;padding-right:5px;}
+.main_title_r .life_title_more span{font-size:20px; padding:0 3px 0 0 ; vertical-align:middle;}
+.main_title_r .life_title_more a{color:#888;ine-height:30px;}
+.main_title_r .life_title_more a:hover{color:#888; text-decoration:none;}
+
+.right_ul{width:320px;margin:10px 0px;}
+.right_ul li{width:295px;height:28px;line-height:28px;background-image:url(http://i4.chinanews.com/fortune/2014/1_20.jpg);background-position:left 9px;background-repeat:no-repeat;overflow:hidden;padding-left:20px;font-size:14px;}
+
+.chwl{width:320px; height:154px; position:relative; margin-left:5px;}
+.chwl img{width:320px; height:154px;}
+.chwl .bg{position:absolute;width:320px;height:37px;background:#000; filter: Alpha(Opacity=60);opacity:0.6;left:0;bottom:0;}
+	.chwl .info{
+		position:absolute;
+		font-weight:normal;
+
+	font-size:14px;
+	font-family:microsoft yahei;
+	color:#fff;
+		width:290px;
+		 bottom:0px; left:10px;height:37px;line-height:37px;color:#fff;z-index:2;cursor:pointer
+	}
+	.chwl .info a{color:#fff;}
+	.chwl .info a:hover{ text-decoration:none;color:#fff;}
+
+/**/
+.pagebottom {
+    color: #3b5a88;
+    margin: 0 auto;
+    padding:  0;
+    width: 100%;
+}
+.pagebottom a {
+    color: #3b5a88;
+}
+.pagebottom_nav {
+	background:url(http://i6.chinanews.com/2013/news/images/bottom_bg.jpg) repeat-x;
+	height:39px;
+     line-height: 39px;
+
+    text-align: center;
+}
+.pagebottom_nav span {padding: 0 10px;}
+.pagebottom_nav1 span {padding: 0 2px;}
+.pagebottom_nr{padding:20px 0px 20px 10px;background:#d7d7d7;color:#545972;}
+.pagebottom_nr1{padding-left:10px;padding-right:0px;}
+.pagebottom_nr a{color:#545972; text-decoration:none;}
+.pagebottom_nr a:hover{color:#545972; text-decoration:underline;}
+
+.pagebottom p {
+    line-height: 24px;
+
+}
+
+.ewm_box{width:103px;  display:block; height:150px;padding:0; margin:0 auto; border:#dbdbdb 1px solid; position:fixed; background:#fff; top:300px; right:50%; margin-right:-616px;}
+.ewm_box .closebt{ display:block;width:19px;height:19px; position:absolute;right:-1px;top:-1px;background:url(http://i8.chinanews.com/2014/hwbz/images/close.jpg) no-repeat;}
+.ewm_boxp{width:84px;margin:0 auto;padding-top:24px;}
+.ewm_box img{width:83px;height:83px;}
+.ewm_box .beijing{width:83px;height:88px;background:#fff;}
+.ewm_box p{ text-align:center;color:#848484;padding-top:2px;line-height:15px;}
+
+</style>
+
+<!--[4,396,385] published at 2015-11-27 17:21:25 from #10 by 郑振海--> 
+
+
+</head>
+
+<body>
+
+<div class="ewm_box">
+    <a class="closebt" id="closebt"></a>
+    <div class="ewm_boxp">
+    <div class="beijing"><img src="http://i8.chinanews.com/2014/hwbz/images/ewm.jpg"/></div>
+    <p>中新网客户端</br>
+    点击或扫描下载</p>
+    </div>
+
+    <script>
+
+		$(document).ready(function(){
+	 $('#closebt').click(function(){
+			$("div.ewm_box").hide();								  
+		 });
+		 })
+	</script>
+
+</div>
+<div id="index_topa">
+<a name="visit_top"></a>
+<div style="width:100%; margin:0 auto;">
+
+<!--div id="js_N_nav" class="index-nav" s-->
+<div id="js_N_nav" class="index-nav">
+<style>
+.index_icon14 {
+    background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F978DT20150907155559.png) no-repeat ;
+    display: block;
+    height: 13px;
+    width: 18px;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon14 {
+    background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F979DT20150907155559.png) no-repeat ;
+}
+.index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_mo.png) no-repeat;display:block;width:24px;height:19px;}
+ul.c-fl-ul .topnav_sel .index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_sel.png) no-repeat;}
+.index-nav-select-wide .index-nav-select-title-gzh{padding:0px 10px 0px 43px}
+
+</style>
+
+<div id="js_N_nav" class="index-nav" style="height:46px;">
+    <div class="index-nav-main clearfix">
+        <div id="stepflow01" class="c-fl">
+        	<ul class="c-fl-ul">
+            	<li class="division"><div class="index-nav-select    left">
+              	     <a href="http://www.chinanews.com" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon1"></em>中新网首页</a></div>
+                </li>
+
+                <li id="jrzmdiv" class="division"> <div class="index-nav-select    left">
+               		 <a href="http://www.chinanews.com/common/footer/sitemap.shtml" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon14"></em>网站地图</a> </div>
+                </li>
+
+               <li class="division"><div class="index-nav-select    left">
+                	<a href="http://mail.chinanews.com.cn/" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon12"></em>企业邮箱</a></div>
+               </li>
+
+               <li class="division"><div class="index-nav-select    left">
+               		 <a class="index-nav-select-title index-nav-entry-bgblack" href="http://www.chinaso.com/"><em class="index-nav-select-arr index_icon11"></em>中国搜索</a></div>
+               </li>
+             </ul>
+        </div>
+        <div class="c-fr">
+            <ul class="c-fl-ul">
+            	<li id="jrzmdiv1" class="division"> <div class="index-nav-select    left">
+                    <a class="index-nav-select-title index-nav-entry-bgblack" href="http://m.chinanews.com/home/"><em class="index-nav-select-arr index_icon4"></em>移动版</a></div>
+                 </li>
+                 <li id="jrzmdiv1" class="division"> <div class="index-nav-select    left">
+                     <a href="http://www.chinanews.com/app/chinanews/index.shtml" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon13"></em>客户端</a></div>
+                 </li>
+                  <li id="jrzmdiv1" class="division"> 
+				 <div class="index-nav-select left">
+                <div class="newpic"></div>
+                <a class="index-nav-select-title index-nav-entry-bgblack" href="http://www.chinanews.com/cns2012.shtml"><em class="index-nav-select-arr index_icon_gzh"></em>微信</a>
+
+             </div>
+             </li>
+                 <li id="jrzmdiv2" class="division"> <div class="index-nav-select  index-nav-app left ">
+                      <div style="_width:90px;" class="dii81" id="id8" onmouseover="weibo(0)" onmouseout="weibo(1)">
+                           <div id="navshow_div" class="index-nav-select-pop">
+                                <ul class="index-nav-select-list clearfix">
+                                    <!-- <li><a href="http://t.chinanews.com/"><span>中新职务微博</span></a></li>-->
+                                    <li><a href="http://weibo.com/chinanewsv"><span>中新网<em>新浪</em>法人微博</span></a></li>
+                                    <li><a href="http://t.qq.com/chinanews"><span>中新网<em>腾讯</em>法人微博</span></a></li>
+                                     <li><a href="http://weibo.com/u/3604378011"><span>中新社<em>新浪</em>法人微博</span></a></li>
+                                     <li><a href="http://t.qq.com/cns"><span>中新社<em>腾讯</em>法人微博</span></a></li>
+
+                                     <!--
+                                     <li><a href="http://1.t.qq.com/cns"><span>中新社<em >腾讯</em>法人微博</span></a></li>
+                                    <li><a href="http://chinanewsv.t.sohu.com/"><span>中新网<em >搜狐</em>法人微博</span></a></li>
+                                    <li><a href="http://t.163.com/chinanews"><span>中新网<em >网易</em>法人微博</span></a></li>-->
+
+                                </ul>
+                            </div>
+                        <a class=" p_relative index-nav-select-title1  index-nav-entry-bgblack " ><em class="index-nav-select-arr1"></em>
+                        <em class="index-nav-select-arr index_icon5"></em>微博
+                         </a>
+                        </div>
+                    </div>
+                 </li>
+                <li class="division"> <a href="http://www.ecns.cn/" class="index-nav-entry-wide index-nav-select-title left">English</a></li>
+               <!-- <li class="division">  <a href="http://big5.chinanews.com:80/" class="index-nav-entry-wide index-nav-select-title left">繁体</a></li>-->
+				<li class="division"><fjtignoreurl><a id="yx_style_nav" class="index-nav-entry-wide left" href="http://wza.chinanews.com/" style="color:#b21112">无障碍</a></fjtignoreurl></li>
+            </ul>
+
+        </div>  
+
+        <div class="clear"></div>  
+    </div>
+</div>
+</div>
+
+<div class="gn_top" id="gn_top">
+
+      <div class=" w1000 m_center">
+            <div id="top">
+              <!--[4,319,36] published at 2016-07-29 13:13:41 from #10 by 赵谦-->  
+<style>
+
+#top{width:1000px;}
+
+</style>
+
+        <a href="http://www.chinanews.com/scroll-news/news1.html" target="_blank">滚动</a>|
+        <a href="http://www.chinanews.com/china/" target="_blank">时政</a>|
+        <a href="http://world.chinanews.com/" target="_blank">国际</a>|
+        <a href="http://www.chinanews.com/mil/news.shtml" target="_blank">军事</a>|
+        <a href="http://www.chinanews.com/society/" target="_blank">社会</a>| <a href="http://www.chinanews.com/gangao/" target="_blank">港澳</a>|
+        <a href="http://www.chinanews.com/taiwan/" target="_blank">台湾</a>|
+        <a href="http://www.chinaqw.com/" target="_blank">侨网</a>|
+        <a href="http://www.chinanews.com/huaren/" target="_blank">华人</a>| <a href="http://finance.chinanews.com/" target="_blank">财经</a>|
+        <a href="http://business.chinanews.com/" target="_blank">产经</a>|
+        <a target="_blank" href="http://fortune.chinanews.com/">金融</a>|
+        <!--<a href="http://stock.chinanews.com/" target="_blank">证券</a>|
+        <a href="http://house.chinanews.com/" target="_blank">房产</a>|
+        <a href="http://energy.chinanews.com/" target="_blank">能源</a>|
+        <a href="http://it.chinanews.com/" target="_blank">IT</a>|-->
+        <a href="http://auto.chinanews.com/" target="_blank">汽车</a>|<!--<a href="http://game.chinanews.com/" target="_blank">游戏</a>|-->
+        <a href="http://ent.chinanews.com/">娱乐</a>|
+        <a href="http://sports.chinanews.com/" target="_blank">体育</a>|
+        <a href="http://cul.chinanews.com/" target="_blank">文化</a>|
+       <!-- <a href="http://health.chinanews.com/" target="_blank">健康</a>|-->
+       <a href="http://www.chinanews.com/theory/">理论</a>|
+        <a href="http://life.chinanews.com/" target="_blank">生活</a>|
+        <a href="http://photo.chinanews.com/" target="_blank">图片</a>|
+        <a href="http://www.chinanews.com/shipin/" target="_blank">视频</a>|
+        <a href="http://interview.chinanews.com/">访谈</a>
+
+        </div>
+
+     <div style="width:1000px;margin:0 auto; margin-top:10px;" id="">
+
+        <div style="width:750px;float:left;height:90px;">
+
+        <!--[4,396,383] published at 2015-12-10 16:19:24 from #10 by 郑振海--> 
+<!-- 广告位Id：2299 广告位名称：2015 生活频道 旗帜 类型：固定广告位 尺寸：750x90 -->
+<iframe id="ac_im86_2299" name="ac_im86_2299" src="http://me.afp.chinanews.com/a.htm?pv=1&sp=2299,1,90,750,0,0,1,9" width="750" height="90" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" ></iframe>
+
+        </div>
+
+        <div style="width:230px;float:right;height:90px;">
+
+        <!--[4,396,384] published at 2015-11-27 10:19:57 from #10 by 郑振海--> 
+<a href="http://www.icbc.com.cn/icbc/" target="_blank"><img src="http://www.chinanews.com/fileftp/2015/09/2015-09-01/U194P4T47D33299F967DT20150901150723.jpg" width="230" height="90" /></a>
+
+        </div>
+
+                 <div class="clear"></div>
+     </div>
+      <div class="cj_banner" style="margin-top:10px;border-bottom:5px solid #e53a18;padding-bottom:10px;">
+            <div class="cj_logo"><a><img src="http://www.chinanews.com/fileftp/2016/07/2016-07-13/U435P4T47D35777F973DT20160720141028.jpg"/></a></div>
+            <div class="searchnav">
+                 <div class="gn_text"> 
+                         <div class="strip"><!--[4,248,1] published at 2016-12-26 13:01:01 from #202 by system-->
+2016年12月26日   星期一</div>
+                         <div class="strip"> 
+
+<div id='info'></div>
+</div>           
+              </div>
+                    <div class="searchinput right">
+					<input type="text" value="请输入关键字" onclick="this.value='',this.style.color='#000'" name="q" id="q"  class="search_input" onkeydown="checksubmit()">
+
+                    <div class="search_listbox"> 
+
+                  					<!---->
+                     <script type="text/javascript"> 
+
+function checksubmit(){
+    var code = event.keyCode;
+    if(code == 13) submitFun();
+  }
+
+function submitFun() {
+
+var hotword=document.getElementsByName('q')[0].value;
+
+if (hotword==''){
+
+alert('请输入关键字!');
+
+return false;
+
+}
+else
+{
+
+$.ajax({
+  type: "GET",
+  url: "http://lc.chinanews.com:8090/rpc/pa.jsp?pid=1&paid=50&u=sousuo&aj="+encodeURI(Math.random()+ (new Date())),
+  dataType: "jsonp"
+});
+
+if(document.getElementsByName('s0')[0].value=='cns')
+{
+
+ window.open("http://sou.chinanews.com/search.do?q="+encodeURIComponent(hotword));
+ }
+ else if(document.getElementsByName('s0')[0].value=='baidu')
+ {
+ window.open("http://www.baidu.com/s?ie=utf-8&bs=%E4%B8+%9B%BD&sr=&z=&cl=3&f=8&wd="+encodeURIComponent(hotword)+"&ct=0");
+ }
+
+}
+
+}
+
+</script>  
+
+                <div style="_position:relative;padding:0px;margin:0px;" onmouseout="search_select(1)" onmouseover="search_select(0)" class="dii7" id="id7">
+                     <div  class="select_border">
+
+<div class="select_container">
+                     <select id="s0" name="s0"  class="selectnews"> 
+<option value="cns">中 新</option> 
+<option value="baidu">百 度</option> 
+
+</select> 
+</div>
+</div></div>      
+
+                    </div>
+                    <a  class="search_a" onclick="submitFun()">搜 索</a>
+					<div class="clear"></div>
+				 </div>
+                    <div class="clear"></div>
+        </div>
+           <div class="clear"></div>
+        </div>
+
+  </div>
+
+  </div>
+  </div>
+  <div class="clear"></div>
+  <!--头部结束-->
+<!--右侧导航-->
+
+<div class="menuTop"  id="menu">
+
+      <div style="width:55px;height:53px;display:block; margin:0 auto; padding:0px;border:none; margin-top:10px; "  id="newsbacktop"><div class="backtop" id="full"><a href='#visit_top' class='fhtop_a' target='_self'></a></div></div>
+
+</div>
+
+<script>
+(function() {
+
+	var backToTopTxt = $(".backtop").html(),
+	 backToTopEle = backToTopTxt, backToTopFun = function() {
+        var stback1 = $(document).scrollTop(), winh = $(window).height();
+        (stback1>0)? $(".backtop").show(): $(".backtop").hide();    
+        //IE6下的定位
+        if (!window.XMLHttpRequest) {
+            $(".backtop").css("top", stback1 + winh - 550);    
+        }
+    };
+	$(window).bind("scroll", backToTopFun);
+    backToTopFun(); 
+
+})();	
+var screenwidth=$(window).width(); //浏览器当前窗口可视区域宽度 
+//$("#layer").css("right",((screenwidth -1004) /2)-100);
+
+ Box1=document.getElementById("newsbacktop");
+
+ Box1.style.right = ((screenwidth -1004) /2)-80 + "px";
+if(screenwidth <= 1024){
+	Box.style.right =0+"px";
+	Box1.style.right =0+"px";
+} 
+
+		$(window).resize(function() {
+		var screenwidth=$(window).width(); //浏览器当前窗口可视区域宽度 
+//$("#layer").css("right",((screenwidth -1004) /2)-100);
+
+ Box1=document.getElementById("newsbacktop");
+
+ Box1.style.right = ((screenwidth -1004) /2)-80 + "px";
+if(screenwidth <= 1024){
+	Box.style.right =0+"px";
+	Box1.style.right =0+"px";
+} 
+    });
+
+</script>
+
+<div class="w1000" id="top2">  
+
+<div class="clear"></div>
+</div>
+
+<div class="w1000">
+
+<div class="yw_left">
+
+<div class="banner" id="kakaFocus"> 
+	<a class="btn_prev" id="lrbt_show1" style="display:none" title="上一个" href="#">Previous</a> 
+	<a class="btn_next" id="lrbt_show2" style="display:none" title="下一个" href="#">Next</a> 
+
+<div class="banner_pic" id="gdt"> 
+		<ul>
+			<li><a href="http://www.chinanews.com/life/2016/12-07/8086225.shtml"><img width="654" height="290" src="http://www.chinanews.com/life2013sd_homepage/U559P51T26D111F813DT20161207140103.jpg" alt="机器人当服务员是营销噱头，还是行业升级 " /></a></li>
+			<li><a href="http://www.chinanews.com/life/2016/12-07/8086138.shtml"><img width="654" height="290" src="http://www.chinanews.com/life2013sd_homepage/U559P51T26D111F817DT20161207140103.jpg" alt="丹麦跨界艺术家山城首秀 维京文化夜袭两江交汇处 " /></a></li>
+
+		</ul> 
+	</div>
+	<div class="banner_info">
+		<ul>
+			<li><a href="http://www.chinanews.com/life/2016/12-07/8086225.shtml">机器人当服务员是营销噱头，还是行业升级 </a></li>
+			<li><a href="http://www.chinanews.com/life/2016/12-07/8086138.shtml">丹麦跨界艺术家山城首秀 维京文化夜袭两江交汇处 </a></li>
+
+		</ul>
+	</div>
+
+<div class="banner_info_bg"></div>
+
+</div>
+</div>
+<!--焦点图右边-->
+
+<div class="yw_right">
+<div class="top_yw">
+<div class="m10">
+<h1>
+<a href="http://www.chinanews.com/jk/2016/12-25/8104043.shtml">雾霾天，你会正确戴口罩吗？</a>
+</h1>
+<ul class="life_left_ul">
+<li><a href="http://www.chinanews.com/sh/2016/12-25/8104120.shtml">春运来临 铁警提醒：注意防范四种网络购票诈骗</a></li><li><a href="http://www.chinanews.com/it/2016/12-23/8102382.shtml">边充电边玩手机并没有那么可怕，这些年你被骗了吗</a></li><li><a href="http://www.chinanews.com/fortune/2016/12-22/8101140.shtml">人民币贬值不改出境旅游热 国人春节出境消费将达千亿</a></li><li><a href="http://www.chinanews.com/ny/2016/12-21/8100470.shtml">北京拟将霾列为气象灾害引热议 蓝天何时才能不再等风来？</a></li>
+</ul>
+</div>
+
+<div class="m10">
+<h1>
+<a href="http://www.chinanews.com/sh/2016/12-23/8102881.shtml">保健品四大“洗脑术”专诈空巢老人</a>
+</h1>
+<ul class="life_left_ul">
+<li><a href="http://www.chinanews.com/life/2016/12-25/8104181.shtml">防霾不光靠口罩 该吃什么也重要</a></li><li><a href="http://www.chinanews.com/sh/2016/12-16/8095953.shtml">中国迎第四次“单身潮” 单身现象成全球性话题</a></li><li><a href="http://www.chinanews.com/jk/2016/12-16/8095888.shtml">山西省食药监公布八案例 血站使用假冒生化分析仪</a></li><li><a href="http://www.chinanews.com/sh/2016/12-16/8095805.shtml">媒体：将雾霾纳入气象灾害违法</a></li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<div class="clear"></div>
+
+</div>
+</div>
+
+<!--正文开始-->
+<div class="w1000 m_center">
+
+<div class="">
+<!--正文左边-->
+     <div class="gn_main_left" id="sticky_left">
+     <div  id="jsxw_layer" style="position:relative; top:0px;" >
+
+                   <div id="jsxwredbox_Con1" style="display:block;">
+           <ul class="tab-list" id="jsxw_sp" >                
+                    <li class="filter-selected" onClick="js_jsxwssp(this,0);">    
+                        <a class="filter-name"  >最新</a></li>
+
+            </ul>
+                  <div class="clear"></div>
+
+       </div>
+       </div>
+
+     <!---->
+     <div class="news_list_ulbox">
+              <div id="jsxw_sp_Con0" style="display:block;">
+
+                     <ul class="news_list_ul" id="ent0">
+                    	 <!--滚动新闻-->
+
+						<!--滚动新闻-->
+
+                             <!--滚动新闻-->
+
+						<!--滚动新闻-->
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/life/2016/12-26/8104751.shtml">民众相聚民俗古村 体味中国味的圣诞平安夜</a></em></div>
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/life/2016/12-26/8104751.shtml"><img src="http://i2.chinanews.com/simg/2016/161226//62629990.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_content"><a class="gray5" href="http://www.chinanews.com/life/2016/12-26/8104751.shtml">
+中新网南京12月26日电 (李欣容)西方传统节日圣诞节越来越受到中国民众的追捧。25日，在江苏句容宝华山脚下的“千华古村”，仿明清建筑的街区内融入了丰富多彩的“圣诞”元素，吸引了来自城市中...</a><a class="red" href="http://www.chinanews.com/life/2016/12-26/8104751.shtml">[详情]</a></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 11:38 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/life/2016/12-26/8104765.shtml">成都街头的共享单车注意 地铁口30米内禁停</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/life/2016/12-26/8104765.shtml" class="gray5">
+
+乱停放，成都街头的共享单车占用盲道。
+
+刷码取车、停车就走，成都街头颜色各异的共享单车似乎成为许多市民打通自己出行“最后一公里”的最佳选择。但随之而来的是，乱停车、乱扔车等问题层出不穷，共享单车在带来便利的同时，也带了“麻烦...</a><a href="http://www.chinanews.com/life/2016/12-26/8104765.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 11:08 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/life/2016/12-26/8104753.shtml">沃尔玛(四川)又有3批次食品登四川省食药监局黑榜</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/life/2016/12-26/8104753.shtml" class="gray5">
+
+时隔49天，沃尔玛（四川）又有3批次食品登上四川省食药监局黑榜。
+
+日前，四川省食药监局公布近期最新食品安全监督抽检结果。在614批次样品中，有22批次不合格。成都商报记者查阅发现，沃尔玛（四川）百货有限公司攀枝花炳草岗分店所售泸州奇奇...</a><a href="http://www.chinanews.com/life/2016/12-26/8104753.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 11:00 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/life/2016/12-26/8104684.shtml">本周“抢票”进入白热化 热门城市车票“秒光”</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/life/2016/12-26/8104684.shtml" class="gray5">
+
+本报讯(记者  王薇) 北京青年报记者昨天从铁路部门获悉，明年春运火车票销售进入最后冲刺阶段，本周前三天将进入抢票最高峰。据悉，目前，互联网渠道购票已经超过总售票量的七成，手机APP销售渠道增长迅猛，占到了互联网售票的六成。
+
+北青报记...</a><a href="http://www.chinanews.com/life/2016/12-26/8104684.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 10:20 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/life/2016/12-26/8104668.shtml">焦虑的孩子是父母“设计”出来的</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/life/2016/12-26/8104668.shtml" class="gray5">
+
+当大家都在讨论今天的家长应该怎么做时，南京大学社会学院院长周晓虹却认为，我们教育最大的失败“就是长辈花了太多的力气去设计下一代应该是什么样子”。
+
+不少“过来人”说，自己在成人的过程中似乎没怎么感到来自父母的压力，而现在的孩子则...</a><a href="http://www.chinanews.com/life/2016/12-26/8104668.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 10:07 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/life/2016/12-26/8104636.shtml">“BEST TASTE 2016风格大赏”发布年度风格榜单</a></em></div>
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/life/2016/12-26/8104636.shtml"><img src="http://www.chinanews.com/life/2016/12-26/U322P4T8D8104636F107DT20161226094503.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_content"><a class="gray5" href="http://www.chinanews.com/life/2016/12-26/8104636.shtml">
+中新网12月26日电 由新浪网时尚生活中心主办的“BEST TASTE 2016风格大赏”颁奖晚宴于22日在北京三里屯通盈中心洲际酒店璀璨落幕。活动当天群星闪耀、来自媒体和自媒体的意见领袖、行业协会的...</a><a class="red" href="http://www.chinanews.com/life/2016/12-26/8104636.shtml">[详情]</a></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 09:49 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+					<input type="hidden" name="specialid" id="specialid0" value="life" />
+                    <input type="hidden" name="total_page_total" id="total_page_total0" value="300" />	
+					</ul>
+                    <div class="news_lookmore">
+                         <div id="page_bar0">
+
+                    </div>
+     </div></div>
+
+		</div>
+</div>				
+
+<!--正文右部分-->
+
+<div class="yw_right">
+
+ <div class="pl-l pr-xs">
+       <div style="" class="sticky-pholder" id="sticky_right2"></div>
+                        <div style="" class="sticky-rail-right-holder" id="sticky_right">
+
+<div style="border:1px solid #e5e5e5;">
+             <div class="new_right_title" style="position:relative;">
+            <!-- <a href="http://www.frisobaby.com/pc/friso/about/news-friso/?utm_source=360&utm_medium=ppc&utm_term=P00043&utm_campaign=3P-360-PC-品牌词&utm_content=品牌公司词
+" style="position:absolute; right:1px; top:1px; width:150px; height:30px; display:block;"><img src="http://www.chinanews.com/fileftp/2016/10/2016-10-11/U194P4T47D37090F967DT20161011141012.gif" /></a>-->
+
+                <ul id="myTabhd" class="new_right_titleul">
+                    <li id="tbtj" class="active" onMouseOver="nTabs(this,0);"><a class="" href="http://www.chinanews.com/finance/special/index.shtml" target="_blank">特别推荐</a></li>
+
+                  </ul>
+                  <div class="clear"></div>
+
+            </div>
+            <div class="p10">
+            <div id="myTabhd_Content0">
+            	<div class="life_topr_advert"><!--[4,396,386] published at 2016-11-22 10:16:28 from #10 by 郑振海--> 
+<a href="http://www.chinanews.com/life/z/beautifulchina/index.shtml" target="_blank"><img src="http://www.chinanews.com/fileftp/2016/06/2016-06-08/U194P4T47D35152F967DT20160608154501.jpg" width="300" height="85"  /></a> </div> 
+ <div class="life_left_ul_zc mt10 clear_div">
+                    	<ul>
+                        	<li><a href="http://www.chinanews.com/life/2016/12-08/8087030.shtml">美素佳儿姊妹品牌“子母”奶粉上市 瞄准三四线城市</a></li>
+                        <li><a href="http://www.chinanews.com/life/2016/10-11/8027338.shtml">如何选对好牛奶：认清配料表 关注营养成分</a></li>
+                        <li><a href="http://www.chinanews.com/life/2016/10-11/8027341.shtml">牛奶越白越好？真相：不同牛奶的颜色不一样</a></li>
+                        <li><a href="http://www.chinanews.com/life/2016/10-11/8027343.shtml">蛋白质不能随便补 完全蛋白质对人体最有好处</a></li>
+
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+
+            </div>
+
+            </div>
+            </div>
+             <div class="clear"></div>
+
+<div class="blank15"></div>
+
+<div class="main_title_r ">
+                   <div class="life_title_text">健康之路</div>
+                   <div class="life_title_more"><a href="http://www.chinanews.com/jiankang.shtml"><span>+</span>更多</a></div>
+
+       </div>
+
+<div class="clear"></div>
+		<ul class="life_left_ul">
+<li><a href="http://www.chinanews.com/jk/2016/12-26/8104694.shtml">抗癌药原料等食药关税明年将降低</a></li><li><a href="http://www.chinanews.com/jk/2016/12-26/8104562.shtml">身体越补越差到底哪里出错了？</a></li><li><a href="http://www.chinanews.com/jk/2016/12-26/8104536.shtml">东莞老百姓用手机APP就能挂号缴费</a></li><li><a href="http://www.chinanews.com/jk/2016/12-25/8104375.shtml">中国家庭健康论坛发布全国首个全科健康服务标准</a></li><li><a href="http://www.chinanews.com/jk/2016/12-25/8104317.shtml">官方：中医药法解决民间从业者准入难题</a></li><li><a href="http://www.chinanews.com/jk/2016/12-25/8104262.shtml">百岁老人手术 哈尔滨医生“抱式麻醉”走红网络</a></li><li><a href="http://www.chinanews.com/jk/2016/12-25/8104043.shtml">雾霾天，你会正确戴口罩吗？</a></li>
+</ul>
+
+        <div class="clear"></div>
+
+<div class="main_title_r ">
+                   <div class="life_title_text">吃喝玩乐</div>
+                   <div class="life_title_more"><a href="http://channel.chinanews.com/cns/cl/life-mstj.shtml"><span>+</span>更多</a></div>
+
+       </div>
+
+        <div class="clear"></div>
+             <div class="chwl">
+<a href="http://www.chinanews.com/life/2016/07-14/7938747.shtml"><img src="http://www.chinanews.com/fileftp/2016/07/2016-07-20/U390P4T47D35940F971DT20160720170443.jpg" alt="减肥市场乱象调查" /></a>
+<span class="info">减肥市场乱象调查</span>
+<span class="bg"></span>
+
+</div>
+
+<ul class="right_ul">
+<li><a href="http://www.chinanews.com/life/2016/12-23/8103301.shtml">越南来晋邀客 越柬两国联游抢占山西旅游市场</a></li><li><a href="http://www.chinanews.com/life/2016/12-22/8102162.shtml">中国首批海江联运进口生鲜农产品抵达重庆(图)</a></li><li><a href="http://www.chinanews.com/life/2016/12-22/8101995.shtml">布局旅行美食领域 携程发布独立餐饮品牌“携程美食林”</a></li><li><a href="http://www.chinanews.com/life/2016/12-21/8101058.shtml">沪昆高铁助贵州再掀“快旅”热潮</a></li>
+
+</ul>
+
+          <div class="clear"></div>
+
+         <div class="mt10">
+
+ </div> 
+
+  <!--[4,290,14] published at 2016-06-13 15:06:21 from #10 by 张晶,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+<div class="pagebottom">
+		<div class="pagebottom_nav pagebottom_nav1">
+
+         <a href="/common/footer/intro.shtml">关于我们</a><span>|</span> <a href="http://ad.chinanews.com.cn/">广告服务</a><span>|</span> <a href="/common/footer/sitemap.shtml">网站地图</a><div style="display:none;"><span>|</span> <a href="/common/footer/feedback.shtml">留言反馈</a> </div></div>
+
+        <div class="pagebottom_nr pagebottom_nr1">
+
+		<p>本网所刊载信息，不代表中新社和中新网观点</p>
+		<p>刊用本网稿件，务经书面授权<br/>违者将追究法律责任。</p>
+		<p>[<a href="/news/xuke.html">网上传播视听节目许可证（0106168）</a>] </p>
+        <p>[<a href="http://www.miibeian.gov.cn/">京ICP证040655号</a>] [<a href="http://www.miitbeian.gov.cn/">京ICP备05004340号-1</a>]</p>
+        <p>[京公网安备：110102003042]</p>
+<p style="font-family:arial;">Copyright &copy;1999-2016 chinanews.com. </p>
+<p style="font-family:arial;">All Rights Reserved</p>
+        
+        </div>
+  </div>   
+       <div style="padding-left: 10px; color: #bfbebe; background:#e4e4e4; height:20px; line-height:20px;">页面设计：刘鑫   前端制作：张晶</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!--正文结束-->
+<div class="clear"></div>
+
+</div>
+
+</body>
+</html>

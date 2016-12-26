@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/stanford-corenlp.jar"/>
-	<classpathentry kind="lib" path="/home/elvis/environment/computational-journalism/CoreNLP/en/stanford-english-corenlp-2016-10-31-models.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/icedtea-bin-3.2.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="lib" path="/home/elvis/environment/computational-journalism/CoreNLP/en/stanford-english-corenlp-2016-10-31-models.jar"/>
+	<classpathentry kind="lib" path="/home/elvis/environment/computational-journalism/CoreNLP/cn/stanford-chinese-corenlp-2016-10-31-models.jar"/>
+	<classpathentry kind="lib" path="/home/elvis/work/java/cluster/lib/stanford-corenlp.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

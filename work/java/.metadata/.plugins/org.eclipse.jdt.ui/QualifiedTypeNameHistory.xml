@@ -10,7 +10,6 @@
 <fullyQualifiedTypeName name="javax.print.DocFlavor.CHAR_ARRAY"/>
 <fullyQualifiedTypeName name="com.philips.lighting.model.PHLight"/>
 <fullyQualifiedTypeName name="javax.print.attribute.standard.Sides"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="color.ChangeColor"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.process.Tokenizer"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.pipeline.demo.StanfordCoreNlpDemo"/>
@@ -46,4 +45,18 @@
 <fullyQualifiedTypeName name="edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation"/>
 <fullyQualifiedTypeName name="java.lang.SecurityException"/>
 <fullyQualifiedTypeName name="edu.stanford.nlp.simple.Sentence"/>
+<fullyQualifiedTypeName name="sun.reflect.generics.repository.ConstructorRepository"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="sun.awt.image.ImageWatched.Link"/>
+<fullyQualifiedTypeName name="java.security.cert.CertPathValidatorException.Reason"/>
+<fullyQualifiedTypeName name="lda.Corpus"/>
+<fullyQualifiedTypeName name="java.io.FileReader"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.sun.net.httpserver.HttpServer"/>
+<fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+<fullyQualifiedTypeName name="backstage.Manager"/>
+<fullyQualifiedTypeName name="lda.Main"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
 </qualifiedTypeNameHistroy>

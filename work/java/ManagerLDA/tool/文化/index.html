@@ -1,0 +1,1216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--[4,530,1] published at 2016-12-26 13:11:02 from #10 by 张曦-->
+<link href="http://www.chinanews.com/part/cul201607.css" rel="stylesheet" type="text/css" />
+<style>
+.enter_top{height:246px;}
+body{background:#fff;}
+.selectnews {
+    line-height: 22px;
+    color: #666;
+    border: 1px solid #DEDEDE;
+    margin-left: -1px;
+    font-size: 13px;
+    width: 60px;
+    padding: 2px 2px 2px 0px;
+}
+</style>
+
+<title>文化频道-中国新闻网</title><base target="_blank" />
+<!--[4,493,1] published at 2016-03-31 13:23:20 from #10 by system,designer:liuxin  maker:liweiwei zhangliqun-->
+<script src="http://www.chinanews.com/js/jquery1.4.js"></script>
+<script language="JavaScript">
+<!--
+document.domain = "chinanews.com"; 
+-->
+</script>
+
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        bp.src = '//push.zhanzhang.baidu.com/push.js';
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+<script type="text/javascript" src='http://www.chinanews.com/pv/js/pvnoju.js'></script>
+
+<script>
+function change1(){
+
+focusBox1('kakaFocus1');
+function focusBox1(o1){
+	if(!o1) return;
+
+	var w1=$("#kakaFocus1 .banner_pic").width(), $o1=$('#'+o1),i=0,l=0;arr1= [],t1= null,
+
+		$infoLi1 = $o1.find('.banner_info li'), len1= $infoLi1.length*2,
+		$ul1=$o1.find('.banner_pic>ul');
+	$ul1.append($ul1.html()).css({'width':len1*w1, 'left': -len1*w1/2});
+	$infoLi1.eq(0).addClass('current');
+	//add banner_pages element
+	arr1.push('<div class="banner_pages"><ul>');
+	$infoLi1.each(function(i){
+		if(i==0){
+			arr1.push('<li class="current"><span>'+ (i+1) +'</span></li>');
+		}else{
+			arr1.push('<li><span>'+ (i+1) +'</span></li>');
+		}
+	});
+	arr1.push('</ul></div>');
+	$o1.append(arr1.join(''));
+	var $pagesLi1 = $o1.find('.banner_pages li');
+	//mouse
+	$pagesLi1.children('span').click(function(){
+		var p1 = $pagesLi1.index($o1.find('.banner_pages li.current'));
+		i1 = $pagesLi1.children('span').index($(this));
+		if(i1==p1) return;
+		l1 = parseInt($ul1.css('left')) + w1*(p1-i1);
+		addCurrent1(i1,l1);
+		return false;
+	})
+	$o1.children('a.btn_prev').click(function(){
+		i1 = $pagesLi1.index($o1.find('.banner_pages li.current'));
+		(i1==0)? i1=(len1/2-1):i1--;
+		l1 = parseInt($ul1.css('left')) + w1;
+		addCurrent1(i1,l1);
+		return false;
+	})
+	$o1.children('a.btn_next').click(function(){
+		i1 = ($pagesLi1.index($o1.find('.banner_pages li.current'))+1)%(len1/2);
+		l1 = parseInt($ul1.css('left')) - w1;
+		addCurrent1(i1,l1);
+		return false;
+	})
+	//auto focus
+	t1 = setInterval(init1,8000);
+	$o1.hover(function(){
+		clearInterval(t1);
+	}, function(){
+		t1 = setInterval(init1,8000);
+	});
+	function init1(){
+		$o1.children('a.btn_next').trigger('click');
+	}
+	//add focus
+	function addCurrent1(i,l){
+		if($ul1.is(':animated')) return;
+		$ul1.animate({'left':l},500,function(){
+			$o1.children('.banner_count').text(i+1);
+			$infoLi1.not($infoLi1.eq(i).addClass('current')).removeClass('current');
+			$pagesLi1.not($pagesLi1.eq(i).addClass('current')).removeClass('current');
+			if(l== (1-len1)*w1){
+				$ul1.css({'left': (1-len1/2)*w1});
+			}else if(l== 0){
+				$ul1.css({'left': -len1*w1/2});
+			}
+		});
+	}
+}
+}
+
+$(document).ready(function(){
+	change1();
+
+})
+
+$(document).ready(function(){
+	     $('#closebt').click(function(){
+			$("div.ewm_box").hide();								  
+		 });
+
+		 $("#kakaFocus1").mouseover(function(){
+
+	  	   $("#lrbt_show1").show();
+		   $("#lrbt_show2").show();
+		});
+		$("#kakaFocus1").mouseout(function(){
+	  	   $("#lrbt_show1").hide();
+		   $("#lrbt_show2").hide();
+		});
+
+	});
+/*daohang huaguo*/
+$(document).ready(function(){
+
+	  function topnav1(){
+	var _show = null;
+	  var _hideTimer = null;
+	  var planItems = $('ul.c-fl-ul li.division');
+		planItems.each(function(index) {
+	    var li = $(this);
+		var div = li.find('div.navshow_div');
+			div.css("display","none");
+			li.bind('mouseenter',function() {
+				if (_show != null) {
+					clearTimeout(_show);
+				}
+				_show = setTimeout(function() {
+					$('ul.nav_navcon li').addClass('');
+
+					li.addClass('topnav_sel');
+				}, 0);
+				});
+			  li.bind('mouseleave', function() {
+					if (_show != null) {
+					clearTimeout(_show);
+				}
+				_hideTimer = setTimeout(function() {
+					li.removeClass('topnav_sel');
+
+				}, 0);
+				});
+			});
+	  };
+	topnav1();
+
+});
+   function search_select(id) {
+     document.getElementById("id7").className="dii7"+id;
+  }
+     function weibo(id) {
+     document.getElementById("id8").className="dii8"+id;
+  }
+
+ /*list滑过*/
+ $(document).ready(function(){
+	 var _show = null;
+	  var _hideTimer = null;
+	  var planItems = $('.news_list_ulbox ul li');
+	  var _tupian_li = $('.news_list_ulbox ul li._tupian_li');
+	 planItems.each(function(index) {
+	var li = $(this);
+		    var news_xgxw = li.find('div.news_xgxw .news_xgxw_a');
+			var sharenews=li.find('div.video_con1_title_right');
+			var news_xgxw_con=li.find('div.news_xgxw_con');
+			var planItems_tp = li.find('div.tupian_conul ul li');
+		    planItems_tp.each(function() {
+				  var tpli = $(this); 
+				  var tp_blackbg = tpli.find('div.tp_blackbg');
+
+				 tpli.bind('mouseenter',function() {
+					 tp_blackbg.hide();
+				  });
+
+				  tpli.bind('mouseleave',function() {
+					  tp_blackbg.show();
+				  });
+			 });
+
+	/*topnav*/
+
+		/**/
+		li.bind('mouseenter',function() {
+				if (_show != null) {
+					clearTimeout(_show);
+				}
+				_show = setTimeout(function() {
+					$('ul._commuity_nav li div.conbox').hide();
+					li.css('background','#eeeeee');
+					$(".module_advert_ul li").css('background','none');
+					_tupian_li.css('background','none');
+					sharenews.show('');
+				/**/
+
+				}, 0);
+				});
+			  li.bind('mouseleave', function() {
+					if (_show != null) {
+					clearTimeout(_show);
+				}
+				_hideTimer = setTimeout(function() {
+
+					li.css('background','none');
+					sharenews.hide('');
+
+				/**/
+
+				}, 0);
+				});
+		});
+
+});
+
+ $(function(){ 
+				 var total_value =  $("#total_page_total0").val();
+	 			//alert (total_value);
+				 if(total_value!=null && total_value!=''){
+				var page_html =  '<div style="width:100%;height:30px;border:1px solid #ebebeb;clear:both; line-height:30px; color:#979798; cursor:pointer; font-size:14px;text-align:center" onclick="ongetpage(2,300,0)">>>显示更多新闻　</div>';
+				$("#page_bar0").html(page_html);
+		//ongetpage(1,total_value);
+					 }
+			});
+
+//jsxw_sp
+
+function createPageHtml(page,total,Numa){
+    var page_html = '';
+
+	if(page!=1){
+		page_html = '';
+	}
+	var startPoint = 1;
+	var endPoint = 10;
+
+	if(page>=1 && page<=total/12){
+		page_html = page_html + '<div style="width:100%;height:30px;border:1px solid #ebebeb;clear:both; line-height:30px; color:#979798; cursor:pointer; font-size:14px;text-align:center" onclick="ongetpage('+(page+1)+','+total+','+Numa+')">>>显示更多新闻　</div>';
+	}
+
+	$("#page_bar"+Numa).html(page_html);
+}
+function ongetpage(num,total,Numa){
+	//alert(num);
+  				var specialid= $("#specialid"+Numa).val();
+  				//alert (specialid);
+  				if(num==1){
+    				window.location.href=window.location.href;
+   					 return;
+ 				 }else if(num>1){
+					 if (Numa==0){
+						 //全部滚动新闻
+						 //http://channel.chinanews.com/cns/s/yl-mxnd.shtml?pager=0&pagenum=20
+						 //pager=0是第一页，显示更多新闻是从pager=1开始 
+						  $.getScript("http://channel.chinanews.com/cns/s/channel:"+specialid+".shtml?pager="+(num-1)+"&pagenum=12", function(){
+				 var html = "";
+		 		var data = specialcnsdata;
+				if(data.docs.length==0)
+				{
+					alert('全部加载完！');
+				}
+		 for(var i=0;i<data.docs.length;i++){ 
+			var pubtime = specialcnsdata.docs[i].pubtime;
+			var title = specialcnsdata.docs[i].title;
+			var url = specialcnsdata.docs[i].url;
+			var pic = specialcnsdata.docs[i].img_cns;
+			var content = specialcnsdata.docs[i].content;
+			//var content = '';
+
+			if (pic !=''){
+
+			html = html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
+
++'<div class="intermoren_box"><div class="intermoren_left"><a href="'+url+'" target="_blank"><img src="'+pic+'"></a></div>'
++'<div class="intermoren_right"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" target="_blank" class="blue">[详情]</a></div> '
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div></div></div></div></li>';
+			}else{
+				html =html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
++'<div class="intermoren_box">'
++'<div class="intermoren_right intermoren_right1"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" class="blue" target="_blank">[详情]</a></div>'
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div> </div></div></div> </li>';
+				}
+
+		  }
+		//alert(html);
+                  $("#ent"+Numa).append(html);
+	});
+					 }
+					 else{
+
+   				 $.getScript("http://channel.chinanews.com/cns/s/"+specialid+".shtml?pager="+(num-1)+"&pagenum=12", function(){
+				 var html = "";
+		 		var data = specialcnsdata;
+				if(data.docs.length==0)
+				{
+					alert('全部加载完！');
+				}
+		 for(var i=0;i<data.docs.length;i++){ 
+			var pubtime = specialcnsdata.docs[i].pubtime;
+			var title = specialcnsdata.docs[i].title;
+			var url = specialcnsdata.docs[i].url;
+			var pic = specialcnsdata.docs[i].img_cns;
+			var content = specialcnsdata.docs[i].content;
+			//var content = '';
+
+			if (pic !=''){
+
+			html = html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
+
++'<div class="intermoren_box"><div class="intermoren_left"><a href="'+url+'" target="_blank"><img src="'+pic+'"></a></div>'
++'<div class="intermoren_right"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" target="_blank" class="blue">[详情]</a></div> '
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div></div></div></div></li>';
+			}else{
+				html =html+'<li><div class="bigpic_list"><div class="moren_right_nopic"><div class="news_title"><em><a href="'+url+'" target="_blank">'+title+'</a></em></div>'
++'<div class="intermoren_box">'
++'<div class="intermoren_right intermoren_right1"><div class="news_content"><a href="'+url+'" class="gray5" target="_blank">'+content+'</a><a href="'+url+'" class="blue" target="_blank">[详情]</a></div>'
++'<div class="news_source"><div class="left">'+pubtime+'</div></div></div> </div></div></div> </li>';
+				}
+
+		  }
+		//alert(html);
+                  $("#ent"+Numa).append(html);
+	});
+					 }
+	createPageHtml(num,total,Numa);
+
+  }
+  //alert(document.documentElement.scrollTop);
+ // $(document).scrollTop(0);
+//$(document).scrollTop()=0;
+}
+</script>
+
+<script>
+
+window.onscroll=function()
+{
+	var top=$(document).scrollTop();
+
+	var scrollHeight= document.body.scrollHeight || document.documentElement.scrollHeight;
+	var availHeight= document.body.availHeight || document.documentElement.availHeight;
+
+	var pw_heigth=$(window).height();
+	var right_heigt=$("#sticky_right").height();
+	var left_heigt=$("#sticky_left").height();
+
+	var index_topa=$("#index_topa").height();
+	var gg=$("#news_top_advert").height();
+
+	var topheight=index_topa+gg;
+	/*topheight=index_topa;*/
+
+if(scrollHeight>top+topheight){
+		$("#sticky_right").removeClass('sticky');
+		$("#sticky_right").removeClass('sticky0');
+		$("#sticky_right").addClass('sticky1');
+		}
+
+	if(top<=gg){
+		$("#js_N_nav").css("position","relative");
+		$("#jsxw_layer").css("position","relative");
+		$("#jsxw_layer").css("top","0");
+		$("#sticky_right2").css("height",0);
+		$("#sticky_right").removeClass('sticky');
+	    $("#sticky_right").removeClass('sticky0');
+		$("#sticky_right").addClass('sticky1');
+
+	}
+	if(top>gg){
+		$("#js_N_nav").css("position","fixed");
+		$("#js_N_nav").css("top","0");
+		$("#js_N_nav").css("z-index","9");
+	}
+	if (top<topheight){
+		$("#jsxw_layer").css("position","relative");
+		$("#jsxw_layer").css("top","0");
+
+		$("#sticky_right").removeClass('sticky');
+		$("#sticky_right").removeClass('sticky0');
+		$("#sticky_right").addClass('sticky1');
+	}
+	//alert(top);
+	//alert(pw_heigth);
+	//alert(left_heigt);
+	if(top>topheight){
+		//$('#default-p_30345810').css("top","0");
+		$("#jsxw_layer").css("position","fixed");
+		$("#jsxw_layer").css("top","44px");	
+	}
+
+	if(pw_heigth >= right_heigt+topheight-top && pw_heigth<left_heigt+topheight-top){
+		//alert(pw_heigth);
+		var cc=top+pw_heigth-right_heigt-topheight;
+		//alert(cc);
+		$("#sticky_right2").css("height",cc);
+
+	//if(right_heigt>=pw_heigth){
+		$("#sticky_right").removeClass('sticky');
+		$("#sticky_right").removeClass('sticky1');
+	    $("#sticky_right").addClass('sticky0');
+	//	}
+		//else{
+			//$("#sticky_right").removeClass('sticky');
+		   // $("#sticky_right").removeClass('sticky1');
+		   // $("#sticky_right").addClass('sticky0');
+		   // $(".sticky0").css('bottom',gaodu+'px');
+
+			//}
+
+		}
+
+		/*判断滚动条是否到底*/
+	// if(top + pw_heigth==scrollHeight){
+		//	alert(00);
+		//$("#sticky_right").removeClass('sticky0');
+		//$("#sticky_right").removeClass('sticky1');
+		//$("#sticky_right").addClass('sticky');
+
+		//}
+	if	(pw_heigth < right_heigt-top){
+		$("#sticky_right2").css("height",0);
+
+	}
+	//var top=$("body").scrollTop() 
+
+	//alert(top);
+
+};
+
+</script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+</head>
+
+<body>
+
+<style>
+
+</style>
+<div id="index_topa">
+<div class="ewm_box">
+    <a class="closebt" id="closebt"></a>
+    <div class="ewm_boxp">
+    <div class="beijing"><img src="http://i8.chinanews.com/2014/hwbz/images/ewm.jpg"></div>
+    <p>中新网客户端<br>
+    点击或扫描下载</p>
+    </div>
+</div>
+<style>
+.index_icon14 {
+    background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F978DT20150907155559.png) no-repeat ;
+    display: block;
+    height: 13px;
+    width: 18px;
+}
+
+ul.c-fl-ul .topnav_sel .index_icon14 {
+    background: url(http://www.chinanews.com/fileftp/2015/09/2015-09-06/U435P4T47D33340F979DT20150907155559.png) no-repeat ;
+}
+.index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_mo.png) no-repeat;display:block;width:24px;height:19px;}
+ul.c-fl-ul .topnav_sel .index_icon_gzh{background:url(http://i2.chinanews.com/2013/news/newnc/images/wx_sel.png) no-repeat;}
+.index-nav-select-wide .index-nav-select-title-gzh{padding:0px 10px 0px 43px}
+
+</style>
+
+<div id="js_N_nav" class="index-nav" style="height:46px;">
+    <div class="index-nav-main clearfix">
+        <div id="stepflow01" class="c-fl">
+        	<ul class="c-fl-ul">
+            	<li class="division"><div class="index-nav-select    left">
+              	     <a href="http://www.chinanews.com" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon1"></em>中新网首页</a></div>
+                </li>
+
+                <li id="jrzmdiv" class="division"> <div class="index-nav-select    left">
+               		 <a href="http://www.chinanews.com/common/footer/sitemap.shtml" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon14"></em>网站地图</a> </div>
+                </li>
+
+               <li class="division"><div class="index-nav-select    left">
+                	<a href="http://mail.chinanews.com.cn/" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon12"></em>企业邮箱</a></div>
+               </li>
+
+               <li class="division"><div class="index-nav-select    left">
+               		 <a class="index-nav-select-title index-nav-entry-bgblack" href="http://www.chinaso.com/"><em class="index-nav-select-arr index_icon11"></em>中国搜索</a></div>
+               </li>
+             </ul>
+        </div>
+        <div class="c-fr">
+            <ul class="c-fl-ul">
+            	<li id="jrzmdiv1" class="division"> <div class="index-nav-select    left">
+                    <a class="index-nav-select-title index-nav-entry-bgblack" href="http://m.chinanews.com/home/"><em class="index-nav-select-arr index_icon4"></em>移动版</a></div>
+                 </li>
+                 <li id="jrzmdiv1" class="division"> <div class="index-nav-select    left">
+                     <a href="http://www.chinanews.com/app/chinanews/index.shtml" class="index-nav-select-title index-nav-entry-bgblack"><em class="index-nav-select-arr index_icon13"></em>客户端</a></div>
+                 </li>
+                  <li id="jrzmdiv1" class="division"> 
+				 <div class="index-nav-select left">
+                <div class="newpic"></div>
+                <a class="index-nav-select-title index-nav-entry-bgblack" href="http://www.chinanews.com/cns2012.shtml"><em class="index-nav-select-arr index_icon_gzh"></em>微信</a>
+
+             </div>
+             </li>
+                 <li id="jrzmdiv2" class="division"> <div class="index-nav-select  index-nav-app left ">
+                      <div style="_width:90px;" class="dii81" id="id8" onmouseover="weibo(0)" onmouseout="weibo(1)">
+                           <div id="navshow_div" class="index-nav-select-pop">
+                                <ul class="index-nav-select-list clearfix">
+                                    <!-- <li><a href="http://t.chinanews.com/"><span>中新职务微博</span></a></li>-->
+                                    <li><a href="http://weibo.com/chinanewsv"><span>中新网<em>新浪</em>法人微博</span></a></li>
+                                    <li><a href="http://t.qq.com/chinanews"><span>中新网<em>腾讯</em>法人微博</span></a></li>
+                                     <li><a href="http://weibo.com/u/3604378011"><span>中新社<em>新浪</em>法人微博</span></a></li>
+                                     <li><a href="http://t.qq.com/cns"><span>中新社<em>腾讯</em>法人微博</span></a></li>
+
+                                     <!--
+                                     <li><a href="http://1.t.qq.com/cns"><span>中新社<em >腾讯</em>法人微博</span></a></li>
+                                    <li><a href="http://chinanewsv.t.sohu.com/"><span>中新网<em >搜狐</em>法人微博</span></a></li>
+                                    <li><a href="http://t.163.com/chinanews"><span>中新网<em >网易</em>法人微博</span></a></li>-->
+
+                                </ul>
+                            </div>
+                        <a class=" p_relative index-nav-select-title1  index-nav-entry-bgblack " ><em class="index-nav-select-arr1"></em>
+                        <em class="index-nav-select-arr index_icon5"></em>微博
+                         </a>
+                        </div>
+                    </div>
+                 </li>
+                <li class="division"> <a href="http://www.ecns.cn/" class="index-nav-entry-wide index-nav-select-title left">English</a></li>
+               <!-- <li class="division">  <a href="http://big5.chinanews.com:80/" class="index-nav-entry-wide index-nav-select-title left">繁体</a></li>-->
+				<li class="division"><fjtignoreurl><a id="yx_style_nav" class="index-nav-entry-wide left" href="http://wza.chinanews.com/" style="color:#b21112">无障碍</a></fjtignoreurl></li>
+            </ul>
+
+        </div>  
+
+        <div class="clear"></div>  
+    </div>
+</div>
+<div class="enter_top" id="enter_top">
+       <div class=" w1000 m_center">
+            <div id="top">
+        <!--[4,319,36] published at 2016-01-13 16:04:43 from #10 by 张晶-->  
+<!--[4,319,36] published at 2016-07-29 13:13:41 from #10 by 赵谦-->  
+<style>
+
+#top{width:1000px;}
+
+</style>
+
+        <a href="http://www.chinanews.com/scroll-news/news1.html" target="_blank">滚动</a>|
+        <a href="http://www.chinanews.com/china/" target="_blank">时政</a>|
+        <a href="http://world.chinanews.com/" target="_blank">国际</a>|
+        <a href="http://www.chinanews.com/mil/news.shtml" target="_blank">军事</a>|
+        <a href="http://www.chinanews.com/society/" target="_blank">社会</a>| <a href="http://www.chinanews.com/gangao/" target="_blank">港澳</a>|
+        <a href="http://www.chinanews.com/taiwan/" target="_blank">台湾</a>|
+        <a href="http://www.chinaqw.com/" target="_blank">侨网</a>|
+        <a href="http://www.chinanews.com/huaren/" target="_blank">华人</a>| <a href="http://finance.chinanews.com/" target="_blank">财经</a>|
+        <a href="http://business.chinanews.com/" target="_blank">产经</a>|
+        <a target="_blank" href="http://fortune.chinanews.com/">金融</a>|
+        <!--<a href="http://stock.chinanews.com/" target="_blank">证券</a>|
+        <a href="http://house.chinanews.com/" target="_blank">房产</a>|
+        <a href="http://energy.chinanews.com/" target="_blank">能源</a>|
+        <a href="http://it.chinanews.com/" target="_blank">IT</a>|-->
+        <a href="http://auto.chinanews.com/" target="_blank">汽车</a>|<!--<a href="http://game.chinanews.com/" target="_blank">游戏</a>|-->
+        <a href="http://ent.chinanews.com/">娱乐</a>|
+        <a href="http://sports.chinanews.com/" target="_blank">体育</a>|
+        <a href="http://cul.chinanews.com/" target="_blank">文化</a>|
+       <!-- <a href="http://health.chinanews.com/" target="_blank">健康</a>|-->
+       <a href="http://www.chinanews.com/theory/">理论</a>|
+        <a href="http://life.chinanews.com/" target="_blank">生活</a>|
+        <a href="http://photo.chinanews.com/" target="_blank">图片</a>|
+        <a href="http://www.chinanews.com/shipin/" target="_blank">视频</a>|
+        <a href="http://interview.chinanews.com/">访谈</a>
+
+
+</div>
+
+     <div style="width:1000px;margin:0 auto; margin-top:10px;" id="news_top_advert">
+            <!-- 广告位Id：2250 广告位名称：2014 文化频道 顶通 类型：固定广告位 尺寸：1000x90 -->
+<!-- 广告位Id：2250 广告位名称：2014 文化频道 顶通 类型：固定广告位 尺寸：1000x90 -->
+<iframe id="ac_im86_2250" name="ac_im86_2250" src="http://me.afp.chinanews.com/a.htm?pv=1&sp=2250,1,90,1000,0,0,1,9" width="1000" height="90" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" ></iframe>
+<!--[4,175,384] published at 2016-11-16 15:57:37 from #10 by 郑振海-->
+
+    </div>
+      <div class="enter_banner">
+            <div class="enter_logo"><a><img src="http://www.chinanews.com/fileftp/2016/07/2016-07-21/U435P4T47D35959F969DT20160721101521.jpg"/></a></div>
+            <div class="searchnav">
+                 <div class="enter_text"> 
+                         <div class="strip"> <!--[4,248,1] published at 2016-12-26 13:01:01 from #202 by system-->
+2016年12月26日   星期一</div>
+                         <div class="strip"><!--[4,319,22] published at 2015-05-22 15:26:53 from #10 by 赵谦 --> 
+<style>
+#info img{ vertical-align:middle;padding:0 5px;}
+#info a{color:#333; text-decoration:none;font-size:12px;padding:0;}
+#info a:hover{color:#333; text-decoration:underline;}
+</style>
+
+<script type="text/javascript">
+function returndata(data) {
+    var parseData = "";
+    with(data.weatherinfo) {
+		parseData+="<a href='http://www.weather.com.cn/weather/101010100.shtml'>"+city+"</a> ";
+		//parseData+="<img width='20' src='http://www.weather.com.cn/m/i/weatherpic/29x20/" + img1 + "' title='中国天气网今日天气指数:" + weather+"' />",
+		parseData+="<a href='http://www.weather.com.cn/weather/101010100.shtml'>"+temp1+"-"+temp2+"</a>";
+		// parseData+="<a href='http://www.weather.com.cn/weather/101010100.shtml'>"+wind1+"</a>";
+
+    }
+    return parseData;
+}
+
+function getData(){
+	var htmlobj=$.ajax({
+        	type:'get',	
+        	async:false,
+			url:'/iframe/static/weather_json.html',
+			dataType: "json",
+			success:function(data){
+				//20150522注释
+				//$("#info").html(returndata(data));
+			}
+
+		});
+
+}
+
+$(document).ready(function(){
+	getData();
+
+});
+</script>
+
+<div id='info'></div></div>           
+                    </div>
+                    <div class="searchinput right">
+                        <input type="text" value="请输入关键字" onclick="this.value='',this.style.color='#000'" name="q" id="q"  class="search_input" onkeydown="checksubmit()">
+
+                    <div class="search_listbox"> 
+
+                  					<!---->
+                     <script type="text/javascript"> 
+
+function checksubmit(){
+    var code = event.keyCode;
+    if(code == 13) submitFun();
+  }
+
+function submitFun() {
+
+var hotword=document.getElementsByName('q')[0].value;
+
+if (hotword==''){
+
+alert('请输入关键字!');
+
+return false;
+
+}
+else
+{
+
+$.ajax({
+  type: "GET",
+  url: "http://lc.chinanews.com:8090/rpc/pa.jsp?pid=1&paid=50&u=sousuo&aj="+encodeURI(Math.random()+ (new Date())),
+  dataType: "jsonp"
+});
+
+if(document.getElementsByName('s0')[0].value=='cns')
+{
+
+ window.open("http://sou.chinanews.com/search.do?q="+encodeURIComponent(hotword));
+ }
+ else if(document.getElementsByName('s0')[0].value=='baidu')
+ {
+ window.open("http://www.baidu.com/s?ie=utf-8&bs=%E4%B8+%9B%BD&sr=&z=&cl=3&f=8&wd="+encodeURIComponent(hotword)+"&ct=0");
+ }
+
+}
+
+}
+
+</script>  
+
+                <div style="_position:relative;padding:0px;margin:0px;" onmouseout="search_select(1)" onmouseover="search_select(0)" class="dii7" id="id7">
+                     <div  class="select_border">
+
+<div class="select_container">
+                     <select id="s0" name="s0"  class="selectnews"> 
+<option value="cns">中 新</option> 
+<option value="baidu">百 度</option> 
+
+</select> 
+</div>
+</div></div>      
+
+                    </div>
+                    <a  class="search_a" onclick="submitFun()">搜 索</a>
+					<div class="clear"></div>
+
+                        <div class="clear"></div></div>
+                     </div>
+                    <div class="clear"></div>
+               </div>
+           <div class="clear"></div>
+        </div>
+        <style>.inter_nav_ul li{margin-left:46px;}</style>
+ <div class="inter_navbox mt15" >
+             <div class="inter_nav" >
+                    <ul class="inter_nav_ul">                                                                                                                                                           
+                         <li class="nav_sel"><a href="http://www.chinanews.com/wenhua.shtml">即时新闻</a><em></em></li>
+                          <li><a href="http://channel.chinanews.com/cns/cl/cul-jd.shtml">独家观察</a><em></em></li>
+                          <!-- <li><a href="http://channel.chinanews.com/cns/cl/cul-wtjs.shtml">专访</a><em></em></li>-->
+
+                         <li><a href="http://channel.chinanews.com/cns/cl/cul-xjgw.shtml">戏剧歌舞</a><em></em></li>
+                         <li><a href="http://channel.chinanews.com/cns/cl/cul-gjqt.shtml">文史博览</a><em></em></li>
+                         <li><a href="http://channel.chinanews.com/cns/cl/cul-rwzf.shtml">人物对话</a><em></em></li>
+
+                         <li><a href="http://channel.chinanews.com/cns/cl/cul-sckgd.shtml
+">收藏考古</a><em></em></li>
+                         <li><a href="http://www.chinanews.com/shipin/m/wy/wy-cul/views.shtml">视频播报</a><em></em></li>
+                         <!--<li><a href="#">电视剧</a><em></em></li>
+                         <li><a href="#">综艺</a><em></em></li>
+                         <li><a href="#">音乐</a><em></em></li>-->
+                       </ul>
+                </div>
+         </div>
+        </div>
+
+ <!--头部结束-->
+  <!--导读-->
+  <style>
+  .xwzxdd-dbt{text-align:left;}
+
+  .life_left_ul1{padding-top:10px; line-height:30px;}
+
+  .life_left_ul1 ul li a{font-size:14px; color:#666666; font-family:"宋体";}
+
+ .enter_leftt{width:362px;float:left;}
+
+   </style>
+ <div class="w1000 m_center" id="daodu">
+ 	<div class="mt10">
+    <div class="enter_leftt">
+
+<div class="xwzxdd-dbt"><h1><a href="http://www.chinanews.com/cul/2016/12-26/8104589.shtml">过了保护期 老舍傅雷作品就能想出就出？</a></h1></div>
+
+<div class="life_left_ul1 ">
+                <ul>
+  <li><a href="http://www.chinanews.com/cul/2016/12-26/8104774.shtml">中国网络小说海外走红 首次进欧美百姓日常生活 </a></li><li><a href="http://www.chinanews.com/cul/2016/12-26/8104734.shtml">梁冬向粉丝发公开信：要在喜马拉雅上重读庄子</a></li><li><a href="http://www.chinanews.com/cul/2016/12-26/8104475.shtml">河南百余汉墓遭破坏 开发商称“考古跟迁坟一个样”</a></li><li><a href="http://www.chinanews.com/cul/2016/12-24/8103602.shtml">《长城》中的饕餮到底是什么？ 饕餮形象有何内涵？</a></li>
+
+                </ul>
+            </div>
+
+<div class="xwzxdd-dbt" style="margin-top:10px;"><h1><a href="http://www.chinanews.com/cul/2016/12-26/8104533.shtml">粤剧名家忆红线女 弟子心声：是严师慈母</a></h1></div>
+<div class="life_left_ul1 ">
+                <ul>
+            <li><a href="http://www.chinanews.com/cul/2016/12-26/8104787.shtml">毛泽东诞辰123周年：走进电影海报上的毛泽东</a></li><li><a href="http://www.chinanews.com/cul/2016/12-22/8101681.shtml">话剧2016：沉淀，为了更好地前行 </a></li><li><a href="http://www.chinanews.com/cul/2016/12-22/8101424.shtml">版权保护到期 明年老舍作品或将出现多版本</a></li><li><a href="http://www.chinanews.com/cul/2016/12-22/8101373.shtml">台媒：大陆名人故居现状堪忧 沦为大杂院或遭强拆</a></li>
+                     </ul>
+            </div>
+
+    </div>
+
+    <div class="enter_rightt">
+    	<!-- sliderimg start -->
+                    <div class="banner" id="kakaFocus1"> 
+                        <a class="btn_prev" id="lrbt_show1"  title="上一个" href="#">Previous</a> 
+                        <a class="btn_next" id="lrbt_show2"  title="下一个" href="#">Next</a> 
+                        <!--[4,451,5] published at 2014-03-18 13:48:02 from #202 by 334-->
+                      <!--[4,414,20] published at 2016-12-24 00:52:46 from #10 by 罗攀,designer:liuxin  maker:gongyi zhaoqian --><div class="banner_pic" id="gdt"> 
+		<ul>
+			<li><a href="http://www.chinanews.com/cul/2016/12-22/8101088.shtml"><img width="612" height="328" src="http://www.chinanews.com/part/cul/414/U560P4T414D20F16244DT20161222160952.jpg" alt="故宫证实“19999元手机”确有其事 文创产品如何跨界？" /></a></li>
+			<li><a href="http://www.chinanews.com/cul/2016/12-22/8101859.shtml"><img width="612" height="328" src="http://www.chinanews.com/part/cul/414/U560P4T414D20F16248DT20161222160952.JPG" alt="《丁酉年》陶瓷衍生邮品推出 王鲁湘解读" /></a></li>
+
+		</ul> 
+	</div>
+	<div class="banner_info">
+		<ul>
+			<li><a href="http://www.chinanews.com/cul/2016/12-22/8101088.shtml">故宫证实“19999元手机”确有其事 文创产品如何跨界？</a></li>
+			<li><a href="http://www.chinanews.com/cul/2016/12-22/8101859.shtml">《丁酉年》陶瓷衍生邮品推出 王鲁湘解读</a></li>
+
+		</ul>
+	</div>
+    <div class="banner_info_bg"></div>
+                        <div class="banner_info_bg"></div>
+                    </div>
+              <!-- sliderimg end -->
+    </div>
+
+    <div class="clear"></div>
+    </div>
+ </div>
+  <!--导读结束-->
+ <!--要闻-->
+
+  <div class="w1000 m_center" id="yaowen">
+ 	<div class="mt10">
+   		<div class="enter_left">
+        	<div class="life_title_chihe ">
+                <div class="life_title_chihe_left" style="line-height:36px;">独家观察</div>
+               <div class="life_title_chihe_more"><a href="http://channel.chinanews.com/cns/cl/cul-jd.shtml">+更多</a></div>
+            </div>
+            <div class="mt10">
+            <div class="module_right_paihang  ">
+					<!--[4,414,23] published at 2016-07-05 14:54:08 from #10 by 唐云云,designer:liuxin  maker:gongyi zhaoqian -->
+  <!--[4,414,34] published at 2016-12-22 16:12:36 from #10 by 唐云云,designer:liuxin  maker:gongyi zhaoqian --><div class="leftimg">
+<a href="http://www.chinanews.com/cul/2016/12-21/8100910.shtml"><img width="156" height="99" src="http://www.chinanews.com/part/cul/414/U560P4T414D34F16244DT20161222161236.jpg"></a>
+</div>
+<div class="righttext">
+<p><a href="http://www.chinanews.com/cul/2016/12-21/8100910.shtml">老人痴迷做船 细节精美堪比微雕</a></p>
+<span>打算做一艘微型航母</span><a href="http://www.chinanews.com/cul/2016/12-21/8100910.shtml"><span style="color:#06F">[详细]</span></a>
+</div>
+                      <div class="clear"></div>
+            </div>
+             <div class="life_left_ul  mt10">
+
+                <ul>
+
+                          <li><a href="http://www.chinanews.com/cul/2016/12-25/8104270.shtml">红线女旧居对外开放</a></li><li><a href="http://www.chinanews.com/cul/2016/12-21/8099956.shtml">冬至大如年：北方地区吃饺子 填九九消寒图作戏</a></li><li><a href="http://www.chinanews.com/cul/2016/12-20/8099936.shtml">冬行西藏:一尊佛像卖1.5万 藏族手工艺品如何助力致富</a></li><li><a href="http://www.chinanews.com/cul/2016/12-17/8096586.shtml">亚马逊2016阅读报告：纸电同步图书总量同比增长逾60%</a></li><li><a href="http://www.chinanews.com/cul/2016/12-16/8095459.shtml">北京区级图书馆成备考族热衷之地 自习室常爆满</a></li>
+                </ul>
+            </div>
+
+            </div>
+        </div>
+        <div class="enter_right">
+        	<div class="enter_right_l">
+
+                <div class="life_title_chihe ">
+                    <div class="life_title_chihe_left" style="line-height:36px;">戏剧歌舞</div>
+                   <div class="life_title_chihe_more"><a href="http://channel.chinanews.com/cns/cl/cul-xjgw.shtml">+更多</a></div>
+                </div>
+
+                <div class="mt10">
+
+            <div class="life_left_ulr ">
+
+                        <ul>
+
+                           <li><a href="http://www.chinanews.com/cul/2016/12-22/8102190.shtml">国家大剧院九周年纪念日汇集近万观众 </a></li><li><a href="http://www.chinanews.com/cul/2016/12-22/8101459.shtml">雾霾天警车护送《图兰朵》道具救场</a></li><li><a href="http://www.chinanews.com/cul/2016/12-21/8100973.shtml">中国戏曲传播需要“播种式”营销</a></li><li><a href="http://www.chinanews.com/cul/2016/12-21/8100853.shtml">国家大剧院重磅打造著名戏剧导演作品展</a></li><li><a href="http://www.chinanews.com/cul/2016/12-20/8099881.shtml">欧洲皇家交响管乐团山西演绎“中国风”</a></li><li><a href="http://www.chinanews.com/cul/2016/12-20/8099878.shtml">丝绸之路国际剧院联盟首部巡演舞剧《兰花花》西北启航</a></li><li><a href="http://www.chinanews.com/cul/2016/12-19/8098464.shtml">导演李六乙：大剧院版《李尔王》将试图将莎翁带回人间</a></li><li><a href="http://www.chinanews.com/cul/2016/12-19/8098448.shtml"> 2016在粤外国留学生交流活动在暨南大学举行(图)</a></li> 
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="enter_right_r">
+           	  <div class="life_title_chihe ">
+                <div class="life_title_chihe_left" style="line-height:36px;">文史博览</div>
+               <div class="life_title_chihe_more"><a href="http://channel.chinanews.com/cns/cl/cul-gjqt.shtml">+更多</a></div>
+            </div>
+            <div class="mt10">
+            <div class="module_right_paihang  ">
+					<!--[4,414,23] published at 2016-07-05 14:54:08 from #10 by 唐云云,designer:liuxin  maker:gongyi zhaoqian -->
+  <!--[4,414,35] published at 2016-12-22 16:15:41 from #10 by 唐云云,designer:liuxin  maker:gongyi zhaoqian --><div class="leftimg">
+<a href="http://www.chinanews.com/cul/2016/11-14/8062424.shtml"><img width="156" height="99" src="http://www.chinanews.com/part/cul/414/U560P4T414D35F16244DT20161222161541.jpg"></a>
+</div>
+<div class="righttext">
+<p><a href="http://www.chinanews.com/cul/2016/11-14/8062424.shtml">胡适自嘲“王小二过年”</a></p>
+<span>间接说明时局的纷乱与危险</span><a href="http://www.chinanews.com/cul/2016/11-14/8062424.shtml"><span style="color:#06F">[详细]</span></a>
+</div>
+                      <div class="clear"></div>
+            </div>
+             <div class="life_left_ul  mt10">
+
+                <ul>
+
+                         <li><a href="http://www.chinanews.com/cul/2016/12-26/8104849.shtml">诗人灰娃：总想从文字中找点让自己成长的东西</a></li><li><a href="http://www.chinanews.com/cul/2016/12-26/8104787.shtml">毛泽东诞辰123周年：走进电影海报上的毛泽东</a></li><li><a href="http://www.chinanews.com/cul/2016/12-23/8103304.shtml">中俄两国“接力”举办摄影展促亚欧文化互融(图)</a></li><li><a href="http://www.chinanews.com/cul/2016/12-23/8103253.shtml">纪念福建船政创办150周年 《一个法国人的中国梦》展览开幕  </a></li><li><a href="http://www.chinanews.com/cul/2016/12-22/8102208.shtml">2016年上海艺术展览热潮涌动、水准提高</a></li>
+
+                </ul>
+            </div>
+
+            </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+
+    </div>
+    </div>
+ <!--要闻结束-->
+  <!--新书推荐开始-->
+    <div style="width:1000px;margin:0 auto; margin-top:10px;" id="news_top_advert">
+            <!-- 2251：2014文化频道 第一通栏 类型：固定广告位 尺寸：1000x90 -->
+<script type="text/javascript">//<![CDATA[
+ac_as_id = 2251;
+ac_format = 0;
+ac_mode = 1;
+ac_group_id = 1;
+ac_server_base_url = "me.afp.chinanews.com/";
+//]]></script>
+<script type="text/javascript" src="http://i8.chinanews.com/gg/yichuanmei/k.js"></script>
+
+    </div>
+    </div>
+
+<!--新书推荐结束-->
+ <!--正文开始-->
+  <div class="w1000 m_center" >
+  <div class="clear"></div>
+ 	<div class="mt10">
+     <div class="enter_main_left" id="sticky_left">
+     <div id="jsxw_layer" style="border-top-color: #e65930; border-top-width: 5px; border-top-style: solid; position: relative; top: 0px;">
+          <div class="main_title_r " style="border:1px solid #dbdbdb; border-top:none;background:#fafafa; width:638px;">
+                   <div class="life_title_text" style="background: url(http://www.chinanews.com/fileftp/2016/06/2016-06-02/U664P4T47D35108F969DT20160707141655.jpg) no-repeat 0px 5px;">最新</div>
+
+       </div>
+       </div>
+     <!---->
+
+                <!--视频新闻分类end-->
+              <!--全部-->
+               <div id="jsxw_sp_Con0" style="display:block;">
+                <div >
+                    <div  >
+                     <ul class="news_list_ul" id="ent0">
+                    	 <!--滚动新闻-->
+
+						<!--滚动新闻-->
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/cul/2016/12-26/8104847.shtml">第六届“光影纪年——中国纪录片学院奖”颁发</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/cul/2016/12-26/8104847.shtml" class="gray5">
+
+颁奖典礼现场合影。主办方供图。
+
+  中新网北京12月26日电(上官云)近日，由中国传媒大学主办、中国纪录片研究中心承办的第六届“光影纪年——中国纪录片学院奖”颁奖典礼在北京举行。知名主持人王宁、媒体人杨澜及知名纪录片导演陈晓卿共同...</a><a href="http://www.chinanews.com/cul/2016/12-26/8104847.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:10 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/cul/2016/12-26/8104849.shtml">诗人灰娃：总想从文字中找点让自己成长的东西</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/cul/2016/12-26/8104849.shtml" class="gray5">
+
+新书分享会嘉宾合影。主办方供图。
+
+中新网北京12月26日电(上官云)“我七八岁时就喜欢音乐、唱歌，那时候想着长大后要当一名作曲家。”近日，年近九旬的诗人灰娃在北京携新书《灰娃七章》举办分享会。提到为何开始写诗，她笑着说，这是个自...</a><a href="http://www.chinanews.com/cul/2016/12-26/8104849.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 13:10 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/cul/2016/12-26/8104787.shtml">毛泽东诞辰123周年：走进电影海报上的毛泽东</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/cul/2016/12-26/8104787.shtml" class="gray5">
+
+我国众多的电影制片厂拍摄过许多反映领袖毛泽东的历史影片，也印制发行过许多毛泽东题材的电影海报，这些电影海报很受收藏家的喜爱，我就收藏有一百多张有关毛泽东题材的电影海报。
+
+小时候，我就喜欢看电影，长大后，到厂里工会工作，专门负责...</a><a href="http://www.chinanews.com/cul/2016/12-26/8104787.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 11:18 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/cul/2016/12-26/8104774.shtml">中国网络小说海外走红 首次进欧美百姓日常生活 </a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/cul/2016/12-26/8104774.shtml" class="gray5">
+
+本报记者  路艳霞
+
+知名中国网络文学英译站Wuxiaworld(武侠世界)近日对外宣布，已与阅文集团旗下的起点中文网签下翻译和电子出版合作协议，武侠世界将拥有20部作品的授权。据称双方合作具体事项还在商议阶段 。
+
+事实上，中国网络文学已在多个...</a><a href="http://www.chinanews.com/cul/2016/12-26/8104774.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 11:12 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/cul/2016/12-26/8104734.shtml">梁冬向粉丝发公开信：要在喜马拉雅上重读庄子</a></em></div>
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/cul/2016/12-26/8104734.shtml"><img src="http://www.chinanews.com/cul/2016/12-26/U398P4T8D8104734F107DT20161226104959.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_content"><a class="gray5" href="http://www.chinanews.com/cul/2016/12-26/8104734.shtml">
+阔别媒体多年，那个悟性极强的“梁某人”带着自己的新作回来了。
+
+日前，梁冬向粉丝发表公开信称，经过多年的等待、约半年时间的筹备，他开设了一门全新课程《梁冬私房笔记：庄子的心灵自由...</a><a class="red" href="http://www.chinanews.com/cul/2016/12-26/8104734.shtml">[详情]</a></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 10:49 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/cul/2016/12-26/8104682.shtml">“书香童年”走进崇文小学 用读书为童年记忆增色</a></em></div>
+                            <div class="intermoren_box">
+                           <div class="intermoren_left"><a href="http://www.chinanews.com/cul/2016/12-26/8104682.shtml"><img src="http://www.chinanews.com/cul/2016/12-26/U398P4T8D8104682F107DT20161226101826.jpg" ></a></div>
+                            <div class="intermoren_right">
+                            <div class="news_content"><a class="gray5" href="http://www.chinanews.com/cul/2016/12-26/8104682.shtml">
+12月22日，书香中国·北京阅读季·书香童年校园行走进崇文小学，开展名家进校园活动，特邀一米阳光童书馆编辑部主任、科学同盟网特约主讲教师张汉平老师，进行了一场“探秘恐龙世界——认识科...</a><a class="red" href="http://www.chinanews.com/cul/2016/12-26/8104682.shtml">[详情]</a></div>
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 10:18 </div>                            
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+						<li>
+                      <div class="bigpic_list">
+
+               	    <div class="moren_right_nopic">
+                        	<div class="news_title"><em><a href="http://www.chinanews.com/cul/2016/12-26/8104589.shtml">过了保护期 老舍傅雷作品就能想出就出？</a></em></div>
+                            <div class="intermoren_box">
+
+                            <div class="intermoren_right intermoren_right1">
+                            <div class="news_content"><a href="http://www.chinanews.com/cul/2016/12-26/8104589.shtml" class="gray5">
+
+2016年即将过去，一批逝世于1966年的国内作家的作品将进入公共版权范畴，其中比较著名的包括老舍、傅雷、邓拓等。
+
+1992年，中国成为《保护文学和艺术作品伯尔尼公约》(简称《伯尔尼公约》)的缔约国。按照公约规定，文学或艺术作品的版权在著作...</a><a href="http://www.chinanews.com/cul/2016/12-26/8104589.shtml" class="blue">[详情]</a></div>                         
+
+                         <div class="news_source">
+                            <div class="left">2016年12月26日 09:22 </div>
+
+                            </div>
+</div> </div>
+                        </div>
+                        </div>
+
+                    </li>
+
+                       <input type="hidden" name="specialid" id="specialid0" value="cul"/>
+                         <input type="hidden" name="total_page_total" id="total_page_total0" value="300"/>
+                     </ul>
+                    <div class="news_lookmore">		<div id="page_bar0"></div>
+</div>
+                    </div>
+
+                </div>
+                 </div>
+     </div>
+
+     <!---->
+
+     <div class="enter_main_right">
+     <div style="" class="sticky-pholder" id="sticky_right2"></div>
+             <div style="" class="sticky-rail-right-holder" id="sticky_right">
+     	  <div class="main_title_r ">
+                   <div class="life_title_text">人物对话</div>
+                   <div class="life_title_more"><a href="http://channel.chinanews.com/cns/cl/cul-rwzf.shtml"><span>+</span>更多</a></div>
+
+              </div>
+               <div class="enter_main_rightc">
+
+                <div class="life_left_ul_r  mt10">
+
+                <ul>
+
+                          <li><a href="http://www.chinanews.com/cul/2016/12-22/8102204.shtml">专家：《中华传统文化经典百篇》解析部分挖掘新意</a></li><li><a href="http://www.chinanews.com/cul/2016/12-22/8102167.shtml">王蒙：市场对文艺作品的过大影响值得警惕</a></li><li><a href="http://www.chinanews.com/cul/2016/12-22/8102147.shtml">专家：二十四节气在生活中“活着”用着才是真正保护</a></li><li><a href="http://www.chinanews.com/cul/2016/12-22/8101278.shtml">王蒙：有些流行词让我特别反感，比如“小鲜肉”</a></li><li><a href="http://www.chinanews.com/cul/2016/12-21/8101014.shtml">《新三峡》导演杨书华：把三峡故事讲给世界(图)</a></li><li><a href="http://www.chinanews.com/cul/2016/12-21/8100910.shtml">山西一老人痴迷做船 细节精美堪比微雕(图)</a></li><li><a href="http://www.chinanews.com/cul/2016/12-21/8100872.shtml">导演李六乙：中国戏剧艺术需要更多认真的学术研讨</a></li>
+
+                </ul>
+            </div>
+
+            </div>
+
+            <div class="mt10">
+         	<div class="main_title_r ">
+                   <div class="life_title_text">收藏考古</div>
+                    <div class="life_title_more"><a href="http://channel.chinanews.com/cns/cl/cul-sckgd.shtml"><span>+</span>更多</a></div>
+
+              </div>
+              <div class="enter_main_rightc">
+
+            <div class="life_left_ul_r  mt10">
+
+                <ul>
+
+                         <li><a href="http://www.chinanews.com/cul/2016/12-26/8104475.shtml">河南百余汉墓遭破坏 开发商称“考古跟迁坟一个样”</a></li><li><a href="http://www.chinanews.com/cul/2016/12-23/8102997.shtml">中蒙联合考古队在蒙古国境内发现多处“匈奴”遗迹</a></li><li><a href="http://www.chinanews.com/cul/2016/12-23/8102641.shtml">南京一考古工地发现谢安墓？文物部门：非墓地</a></li><li><a href="http://www.chinanews.com/cul/2016/12-22/8102223.shtml">浙江宁波出土大批宋代越窑青瓷 千年翠色再重现</a></li><li><a href="http://www.chinanews.com/cul/2016/12-22/8102065.shtml">内蒙古再发现多处万里茶道相关遗址 助中蒙俄联合申遗</a></li><li><a href="http://www.chinanews.com/cul/2016/12-22/8101315.shtml">莫言书法拍卖价断崖式“下跌”的惯常与异常</a></li><li><a href="http://www.chinanews.com/cul/2016/12-22/8101309.shtml">韩美林八十大展开幕 展现多样化创作面貌 </a></li>
+              </ul>
+            </div>
+
+            </div>
+         </div>
+         <div class="mt10">
+         	<div class="main_title_r ">
+                   <div class="life_title_text">热点排行</div>
+
+              </div>
+              <div class="enter_main_rightc">
+
+            <ul class="rank_right_ul">
+    				<li><a href="http://www.chinanews.com/cul/2016/12-25/8104354.shtml" target="_blank" title="“中老年旅游春晚”举行华南区决赛">“中老年旅游春晚”举行华南区决赛</a></li><li><a href="http://www.chinanews.com/cul/2016/12-25/8104376.shtml" target="_blank" title="天津滨海举办“海上国门”研讨会 以史为鉴促开发开放">天津滨海举办“海上国门”研讨会 以史为鉴促开发开放</a></li><li><a href="http://www.chinanews.com/cul/2016/12-25/8104378.shtml" target="_blank" title="第四届洛杉矶中国摄影节颁奖仪式在内蒙古举办">第四届洛杉矶中国摄影节颁奖仪式在内蒙古举办</a></li><li><a href="http://www.chinanews.com/cul/2016/12-25/8104155.shtml" target="_blank" title="河南百余座汉墓遭破坏 开发商称“考古跟迁坟一个样”">河南百余座汉墓遭破坏 开发商称“考古跟迁坟一个样”</a></li><li><a href="http://www.chinanews.com/cul/2016/12-25/8104323.shtml" target="_blank" title="洛杉矶中国摄影节走进“元上都”颁奖">洛杉矶中国摄影节走进“元上都”颁奖</a></li><li><a href="http://www.chinanews.com/cul/2016/12-25/8104310.shtml" target="_blank" title="浙江佛学院总部落户奉化 雪窦山名山建设开启新篇">浙江佛学院总部落户奉化 雪窦山名山建设开启新篇</a></li><li><a href="http://www.chinanews.com/cul/2016/12-25/8104255.shtml" target="_blank" title="西藏唐卡“等级画师”期末考 74幅作品全部合格">西藏唐卡“等级画师”期末考 74幅作品全部合格</a></li><li><a href="http://www.chinanews.com/cul/2016/12-25/8104265.shtml" target="_blank" title="探访陕西起良村“熊猫纸”：千年老技艺的“新突围”">探访陕西起良村“熊猫纸”：千年老技艺的“新突围”</a></li><li><a href="http://www.chinanews.com/cul/2016/12-25/8104270.shtml" target="_blank" title="红线女旧居对外开放">红线女旧居对外开放</a></li><li><a href="http://www.chinanews.com/cul/2016/12-25/8104121.shtml" target="_blank" title="西藏草原上的“95”后画师：学唐卡不急谈未来">西藏草原上的“95”后画师：学唐卡不急谈未来</a></li>
+                 </ul> 
+
+            </div>
+
+         </div>
+         <div class="clear"></div>
+         <div class="mt10">
+         	<div class="main_title_r " >
+                   <div class="life_title_text">视频播报</div>
+<div class="life_title_more"><a href="http://www.chinanews.com/shipin/m/wy/wy-cul/views.shtml"><span>+</span>更多</a></div>
+              </div>
+              <div class="mt10" >
+             <ul class="module_left_picul " style="margin-left:5px; width:335px;">
+
+ <li><div class="conlist_img"><a href="http://www.chinanews.com/cul/shipin/cns/2016/12-25/news685244.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-25/73988_sm.jpg"></a><div class="small_video"></div></div>
+<p><a href="http://www.chinanews.com/cul/shipin/cns/2016/12-25/news685244.shtml">创新跨界国宝艺术大家钞版纪念券上海面世</a></p></li><li><div class="conlist_img"><a href="http://www.chinanews.com/cul/shipin/2016/12-23/news684864.shtml"><img src="/cul/shipin/2016/12-23/U655P883T4D684864F113DT20161223111718.jpg"></a><div class="small_video"></div></div>
+<p><a href="http://www.chinanews.com/cul/shipin/2016/12-23/news684864.shtml">爱情喜剧《爱情失格》首演 引导青年人正确爱情观</a></p></li><li><div class="conlist_img"><a href="http://www.chinanews.com/cul/shipin/cns/2016/12-22/news684675.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-22/73870_sm.jpg"></a><div class="small_video"></div></div>
+<p><a href="http://www.chinanews.com/cul/shipin/cns/2016/12-22/news684675.shtml">百余名非遗传人百天打造万灯齐放</a></p></li><li><div class="conlist_img"><a href="http://www.chinanews.com/cul/shipin/cns/2016/12-22/news684601.shtml"><img src="http://i2.chinanews.com/simg/reportmanuscript/2016/12-22/73849_sm.jpg"></a><div class="small_video"></div></div>
+<p><a href="http://www.chinanews.com/cul/shipin/cns/2016/12-22/news684601.shtml">甘肃山丹万人共享免费冬至饭：百米灶台 千斤面 </a></p></li>
+				   <div class="clear"></div>
+				 </ul>
+                  <div class="clear"></div>
+        </div>
+         </div>
+<div class="clear"></div>
+       <!--[4,290,14] published at 2016-06-13 15:06:21 from #10 by 张晶,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+<!--[4,290,14] published at 2016-06-13 15:06:21 from #10 by 张晶,designer:fangxinkuo  maker:liweiwei zhaoqian -->
+<div class="pagebottom">
+		<div class="pagebottom_nav pagebottom_nav1">
+
+         <a href="/common/footer/intro.shtml">关于我们</a><span>|</span> <a href="http://ad.chinanews.com.cn/">广告服务</a><span>|</span> <a href="/common/footer/sitemap.shtml">网站地图</a><div style="display:none;"><span>|</span> <a href="/common/footer/feedback.shtml">留言反馈</a> </div></div>
+
+        <div class="pagebottom_nr pagebottom_nr1">
+
+		<p>本网所刊载信息，不代表中新社和中新网观点</p>
+		<p>刊用本网稿件，务经书面授权<br/>违者将追究法律责任。</p>
+		<p>[<a href="/news/xuke.html">网上传播视听节目许可证（0106168）</a>] </p>
+        <p>[<a href="http://www.miibeian.gov.cn/">京ICP证040655号</a>] [<a href="http://www.miitbeian.gov.cn/">京ICP备05004340号-1</a>]</p>
+        <p>[京公网安备：110102003042]</p>
+<p style="font-family:arial;">Copyright &copy;1999-2016 chinanews.com. </p>
+<p style="font-family:arial;">All Rights Reserved</p>
+        
+        </div>
+  </div>  
+  <p style="position: absolute;margin-top: -17px;padding-left: 10px;   color: #bfbebe;">页面设计：刘鑫   前端制作：闫兆玉</p>
+    </div>
+    </div>
+    </div>
+         <div class="clear"></div>
+ <!--正文结束-->
+</div>
+
+</body>
+
+</html>

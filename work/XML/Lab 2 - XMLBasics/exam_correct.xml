@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+XML Basics Exercise
+
+Create a "well-formed" XML file using the element and attribute names
+listed below. Any atributes for an element are shown in square brackets.
+
+test [ id ]          (Root Element)
+  description
+  testQuestions
+    question [ id ]
+      questionText
+      choices [ allowMultiple ]
+        choice [ id ]
+          choiceText
+          correct
+
+The text data from the sample has been pre-populated below. Create the
+open and close element tags. Make sure all elements are properly nested.
+-->
+<test id="XML30">
+   <description>Intro to XML</description>
+   <testQuestions>
+      <question id="Q1">
+         <questionText>Basic XML consists of</questionText>
+         <choices allowMultiple="No">
+            <choice id="A">
+               <correct>Yes</correct>
+               <choiceText>
+                  Hierarchical structure of tagged elements,
+                  attributes and text
+               </choiceText>
+            </choice>
+            <choice id="B">
+               <correct>No</correct>
+               <choiceText>
+                  All the HTML tags plus a set of new XML only tags
+               </choiceText>
+            </choice>
+            <choice id="C">
+               <correct>No</correct>
+               <choiceText>
+                  Object oriented structure of rows and columns
+               </choiceText>
+            </choice>
+            <choice id="D">
+               <correct>No</correct>
+               <choiceText>
+                  Processing instructions (PI's) for text data
+               </choiceText>
+            </choice>
+            <choice id="E">
+               <correct>No</correct>
+               <choiceText>
+                  Textual data with tags for visual presentation
+               </choiceText>
+            </choice>
+         </choices>
+      </question>
+   </testQuestions>
+</test>

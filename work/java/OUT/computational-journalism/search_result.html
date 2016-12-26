@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/demo.css"/>
+    <link rel="stylesheet" type="text/css" href="css/component.css"/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" ;></script>
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <title>NSS-Result</title>
+    <script>
+        var rowcounter = 0;
+        var tbl;
+        var a = [];
+        //			function keydownEvent() {
+        //		         var e = window.event || arguments.callee.caller.arguments[0];
+        //		         if (e && e.keyCode == 13 ) {
+        //		             //alert("您按回车键了");
+        //		             window.location.href='search_result.html';
+        //		         }
+        //          }
+        //
+        function keydownEvent() {
+            //alert("1");
+            var e = window.event || arguments.callee.caller.arguments[0];
+            //alert("2");
+            if (e && e.keyCode == 13) {
+                //alert("您按回车键了");
+                //window.location.href='search_result.html';
+                //alert("gggg");
+                var v = document.getElementById("input-10").value;
+                //alert(v);
+                permission_judge(v);
+                //		            insert();
+            }
+        }
+
+
+        function permission_judge(str) {
+
+            var aimurl = "http://localhost:8080/ComputeNews/NewsServlet?keyword=" + str;
+            //alert(str);
+            $.ajax({
+                url: aimurl,
+                type: "post",
+                dataType: 'jsonp',
+                jsonp: "callback",
+                jsonpCallback: "success_jsonpCallback",
+                success: function (data) {
+
+
+                    var arr = eval(data);
+                    for (var i = 0; i < arr.length; i++) {
+                        alert(arr[i].summarys);
+                        //insert(arr[i].summarys);
+
+                        //art(arr[i].text);
+
+                    }
+                    a = arr;
+
+                    //alert(data[0].result);
+                    //alert(data[0].Name);
+                    if (data.result != 0) {
+                        alert("登陆成功");
+                        JSON.stringify(data); //使用这种方式可以将对象data 序列化成JSON字符串.
+
+
+                    } else {
+                        alert("登录失败");
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+
+            });
+        }
+
+
+        //			function insert(var s){
+        //				alert("insert");
+        //			    tbl=document.getElementById('select-result');
+        //			 	var row = tbl.insertRow();
+        //
+        //			 	row.id=rowcounter;
+        //			 	//row.className=linestyle;
+        //
+        //			 	cell = row.insertCell();
+        //			 	cell.align = 'center';
+        //
+        //			 	//cell.className=linestyle;
+        //			 	cell.innerHTML="summary";
+        //
+        //			 	rowcounter++;
+        //
+        //			}
+        // document.getElementById('select-box').onkeydown=keyDownSearch;
+
+        // 		function keyDownSearch(e) {
+        //         // 兼容FF和IE和Opera
+        //         var theEvent = e || window.event;
+        //         var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+        //         if (code == 13) {
+        //         	document.getElementById('select-box').style.margin="30px auto";
+        //             jsonpCallback(data);
+        //             return false;
+        //         }
+        //         return true;
+        //     }
+
+        // 			function jsonpCallback(data) //回调函数
+        // 			{
+
+        // 			    alert(data.message); //
+        // 			}
+
+    </script>
+</head>
+
+<body class="bgcolor-5">
+
+<section class="content " id="select-box">
+	  <span class="input input--jiro">
+		<input class="input__field input__field--jiro" type="text" id="input-10"
+               style="background: #c5564a;color: white" onkeydown="keyDownSearch();"/>
+		<label class="input__label input__label--jiro" for="input-10">
+		  <span class="input__label-content input__label-content--jiro" style="color: #521e18;">What do you want?</span>
+		</label>
+	  </span>
+
+</section>
+
+
+<div style="background-color: white;width: 100%;">
+    <div style="width: 30%;float: left;margin-left: 30px;margin-right: 30px;">
+
+        <table class="gridtable" style="visibility:hidden" id="select-result">
+            <tr>
+                <th>搜索结果</th>
+            </tr>
+
+        </table>
+    </div>
+
+    <div style=" float: left;width: 60%;">
+        <div id="detail" style="visibility: hidden;">
+
+            <p id="detail_title">文章标题</p><br/>
+
+            <p id="detail_keyword">关键词 </p> <br/>
+
+            <p id="detail_summary">摘要</p> <br/>
+
+            <p id="detail_text">正文</p> <br/>
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    //document.getElementById('input-10').onkeydown=keyDownSearch;
+
+    var searchTime = 0;
+
+    function keyDownSearch(e) {
+        // 兼容FF和IE和Opera
+        var theEvent = e || window.event;
+        var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+        if (code == 13) {
+            document.getElementById('select-box').style.margin = "-60px auto";
+            document.getElementById('select-result').style.visibility = "visible";
+            //alert("bbb");
+            //jsonpCallback();
+            if (searchTime != 0) {
+                remove();
+            }
+            keydownEvent();
+            i++;
+            return false;
+        }
+        return true;
+    }
+
+
+    function keydownEvent() {
+        var e = window.event || arguments.callee.caller.arguments[0];
+        if (e && e.keyCode == 13) {
+            //alert("您按回车键了");
+            //window.location.href='search_result.html';
+
+            var v = document.getElementById("input-10").value;
+            permission_judge(v);
+            //		        insert();
+        }
+    }
+
+
+    function highlight(key) {
+        var key = key.split(',');
+        for (var i = 0; i < key.length; i++) {
+            var rng = document.body.createTextRange();
+            while (rng.findText(key[i]))
+                    //rng.pasteHTML(rng.text.fontcolor('red'));
+                rng.pasteHTML('<div style="border:1 solid red;display:inline"><a href="#" title="+ rng.text +">' + rng.text + '</a></div>');
+        }
+    }
+
+    var quanjuArr;
+
+    function permission_judge(str) {
+
+        var aimurl = "http://localhost:8080/ComputeNews/NewsServlet?keyword=" + str;
+        //alert(str);
+        $.ajax({
+            url: aimurl,
+            type: "post",
+            dataType: 'jsonp',
+            jsonp: "callback",
+            jsonpCallback: "success_jsonpCallback",
+            success: function (data) {
+
+
+                var arr = eval(data);
+                //alert(arr.length)
+                quanjuArr = arr;
+
+                for (var i = 0; i < arr.length; i++) {
+
+                    //alert(arr[i].summarys);
+                    insert(arr[i]);
+
+                    //art(arr[i].text);
+
+                }
+
+            },
+            error: function () {
+                alert("error");
+            }
+
+        });
+    }
+    var tbl = document.getElementById('select-result');
+    var rowcounter = 0;
+
+    var det_title = document.getElementById('detail_title');
+    var det_keyword = document.getElementById('detail_keyword');
+    var det_summary = document.getElementById('detail_summary');
+    var det_text = document.getElementById('detail_text');
+
+    function insert(s) {
+        var title = s.title;
+        var searchKey = s.searchKey;
+        var text0 = s.text;
+        var summarys = s.summarys;
+        var keywords = s.keywords;
+
+
+        var row = tbl.insertRow();
+        row.id = "row" + rowcounter;
+
+        //alert(row.id);
+        //row.className=linestyle;
+        cell1 = row.insertCell();//增加一個表格單元
+        cell1.align = 'center';
+        cell1.id = rowcounter;
+
+        //cell.className=linestyle;
+        cell1.innerHTML = "<p >" + title + "</p> <br /> ";
+        rowcounter++;
+        //alert("insert===")
+    }
+
+
+    document.onclick = mouseClick;
+    function mouseClick(evt) {
+
+        //alert("mouseClick");
+        var currentID = evt.target.id;
+        //alert(currentID);
+        det_title.innerHTML = quanjuArr[currentID].title;
+        //quanjuArr[currentID].SearchKey
+        det_keyword.innerHTML = quanjuArr[currentID].keywords;
+
+        det_summary.innerHTML = quanjuArr[currentID].summarys;
+        det_text.innerHTML = quanjuArr[currentID].text;
+
+        var c = document.getElementById('detail');
+
+        if (c.style.visibility == "hidden") {
+            c.style.visibility = "visible";
+        }
+        //				highlight("child");
+        //				var ym=det_text.innerHTML;
+        //				det_text.innerHTML=ym.replace(/child/g, "<span class=&quot;keyword&quot;>child</span>");
+        //				//
+
+
+    }
+
+    function remove() {
+        var table = document.getElementById("select-result"),
+                trs = tb.getElementsByTagName("tr");
+
+        for (var i = trs.length - 1; i > 0; i--) {
+            table.deleteRow(i);
+        }
+    }
+
+    function jsonpCallback(data) //回调函数
+    {
+        alert("aaa");
+        //获取文本框输入的内容
+        var dataWant = document.getElementById("input-10").value;
+
+        alert(data.message); //
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,43 +1,8 @@
-/*
- * (C) Copyright 2005, Gregor Heinrich (gregor :: arbylon : net) (This file is
- * part of the org.knowceans experimental software packages.)
- */
-/*
- * LdaGibbsSampler is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the Free
- * Software Foundation; either version 2 of the License, or (at your option) any
- * later version.
- */
-/*
- * LdaGibbsSampler is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- */
-/*
- * You should have received a copy of the GNU General Public License along with
- * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
- * Place, Suite 330, Boston, MA 02111-1307 USA
- */
-
-/*
- * Created on Mar 6, 2005
- */
-
 package lda;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-/**
- * Gibbs sampler for estimating the best assignments of topics for words and
- * documents in a corpus. The algorithm is introduced in Tom Griffiths' paper
- * "Gibbs sampling in the generative model of Latent Dirichlet Allocation"
- * (2002).<br>
- * Gibbs sampler采样算法的实现
- *
- * @author heinrich
- */
 public class LdaGibbsSampler
 {
 
@@ -170,7 +135,6 @@ public class LdaGibbsSampler
     public void initialState(int K)
     {
         int M = documents.length;
-
         // initialise count variables. 初始化计数器
         nw = new int[V][K];
         nd = new int[M][K];
@@ -213,8 +177,8 @@ public class LdaGibbsSampler
      * 采样
      *
      * @param K     number of topics 主题数
-     * @param alpha symmetric prior parameter on document--topic associations 对称文档——主题先验概率？
-     * @param beta  symmetric prior parameter on topic--term associations 对称主题——词语先验概率？
+     * @param alpha symmetric prior parameter on document--topic associations 对称文档——主题先验概率
+     * @param beta  symmetric prior parameter on topic--term associations 对称主题——词语先验概率
      */
     public void gibbs(int K, double alpha, double beta)
     {

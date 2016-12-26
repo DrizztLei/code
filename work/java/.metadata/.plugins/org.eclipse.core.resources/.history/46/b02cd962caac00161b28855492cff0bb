@@ -1,0 +1,206 @@
+package nachos.threads;
+
+import nachos.machine.Lib;
+
+/**
+ * A <i>communicator</i> allows threads to synchronously exchange 32-bit
+ * messages. Multiple threads can be waiting to <i>speak</i>, and multiple
+ * threads can be waiting to <i>listen</i>. But there should never be a time
+ * when both a speaker and a listener are waiting, because the two threads can
+ * be paired off at this point.
+ */
+public class Communicator
+{
+
+	private Lock lock;
+	private Condition speaker;
+	private Condition listener;
+
+	private int sharedWord = 0;
+	private Boolean sharedWordInUse = false;
+	private int waitingListeners = 0;
+
+	/**
+	 * Allocate a new communicator.
+	 */
+	public Communicator()
+	{
+		lock = new Lock();
+		speaker = new Condition(lock);
+		listener = new Condition(lock);
+	}
+
+	public void speak(int word)
+	{
+		lock.acquire();
+
+		while (waitingListeners == 0 || sharedWordInUse)
+			speaker.sleep();
+
+		sharedWordInUse = true;
+		sharedWord = word;
+
+		listener.wake();
+		lock.release();
+	}
+
+	/**
+	 * Wait for a thread to speak through this communicator, and then return the
+	 * <i>word</i> that thread passed to <tt>speak()</tt>.
+	 * 
+	 * @return the integer transferred.
+	 */
+	public int listen()
+	{
+		lock.acquire();
+
+		waitingListeners++;
+		speaker.wake();
+		listener.sleep();
+
+		int word = sharedWord;
+		sharedWordInUse = false;
+		waitingListeners--;
+
+		speaker.wake();
+		lock.release();
+
+		return word;
+	}
+
+	private static final char dbgCommunicator = 'c';
+
+	/**
+	 * Tests whether this module is working.
+	 */
+	public static void selfTest()
+	{
+		KThread speak, listen;
+
+		Lib.debug(dbgCommunicator, "Communicator Self Test");
+
+		speak = new KThread(new TestSpeakerThread(23));
+		listen = new KThread(new TestListenerThread());
+
+		speak.fork();
+		listen.fork();
+		speak.join();
+		listen.join();
+		
+		// Test that speaker blocks until listener available
+		speak = new KThread(new TestSpeakerThread(0));
+		listen = new KThread(new TestListenerThread());
+
+		speak.fork();
+		listen.fork();
+		speak.join();
+		listen.join();
+		
+		listen = new KThread(new TestListenerThread());
+		speak = new KThread(new TestSpeakerThread(0));
+
+		listen.fork();
+		speak.fork();
+		listen.join();
+		speak.join();
+		TestChattyThread.reset();
+		new KThread(new TestSpeakerThread(3)).fork();
+		new KThread(new TestSpeakerThread(7)).fork();
+
+		new KThread(new TestListenerThread()).fork();
+		listen = new KThread(new TestListenerThread());
+		listen.fork();
+		listen.join();
+
+		for (int i = 0; i < 10; i++)
+		{
+			new KThread(new TestListenerThread()).fork();
+		}
+		for (int i = 0; i < 10; i++)
+		{
+			speak = new KThread(new TestSpeakerThread(3));
+			speak.fork();
+			speak.join();
+		}
+
+	}
+
+	/**
+	 * General Communicator test class Allows subclasses to set the current
+	 * state of a test and to update a running tally of all received words,
+	 * which are used by selfTest to verify that communication occurred
+	 * properly.
+	 */
+	private abstract static class TestChattyThread implements Runnable
+	{
+		static Communicator comm = new Communicator();
+
+		static Lock lock = new Lock();
+
+		static enum TESTSTATE
+		{
+			NONE, SPEAKING, LISTENING
+		};
+
+		static TESTSTATE state = TESTSTATE.NONE;
+
+		static int received = 0;
+
+		public static void reset()
+		{
+			lock.acquire();
+			state = TESTSTATE.NONE;
+			received = 0;
+			lock.release();
+		}
+
+		static void setState(TESTSTATE s)
+		{
+			lock.acquire();
+			state = s;
+			lock.release();
+		}
+
+		public static void checkState(TESTSTATE s, String msg)
+		{
+			lock.acquire();
+			Lib.debug(dbgCommunicator, (state == s ? "[PASS]: " : "[FAIL]: ") + msg);
+			lock.release();
+		}
+
+		static void updateReceived(int word)
+		{
+			received += word;
+		}
+
+		public static int getReceived()
+		{
+			return received;
+		}
+	}
+
+	private static class TestSpeakerThread extends TestChattyThread
+	{
+		int word;
+
+		TestSpeakerThread(int word)
+		{
+			this.word = word;
+		}
+
+		public void run()
+		{
+			setState(TESTSTATE.SPEAKING);
+			comm.speak(word);
+		}
+	}
+
+	private static class TestListenerThread extends TestChattyThread
+	{
+		public void run()
+		{
+			setState(TESTSTATE.LISTENING);
+			updateReceived(comm.listen());
+		}
+	}
+}

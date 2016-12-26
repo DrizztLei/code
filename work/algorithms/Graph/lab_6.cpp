@@ -18,6 +18,12 @@ struct node
     bool isVisit;
 };
 
+struct flow
+{
+    int now = 0;
+    int limits = 0;
+};
+
 template<class T , class E>
 class graph
 {
@@ -45,6 +51,7 @@ public:
     bool FindEuler(int index = 0);
     bool FindEuler(int index, int father);
     void FindDijkstra(int index = 0);
+    bool FindBFS(int source, int end);
     void FindMaxFlow();
     virtual ~graph();
     friend bool sort_by_value(const int& obj1, const int& obj2);
@@ -54,6 +61,7 @@ private:
     vector<vector<int> > ring;
     vector<int> tsp;
     int ** matrix = NULL;
+    flow ** augmentation = NULL;
     int ** weight = NULL;
     int ** copy = NULL;
     int ** euler = NULL;
@@ -532,35 +540,32 @@ bool graph<T , E>::invalid(int i , int l , vector<T> iterator)
 template<class T , class E>
 void graph<T ,E>::init()
 {
-    int length = 6;
+    int length = 4;
     this -> length = length;
-    matrix = new E * [length];
+    matrix = new int * [length];
     weight = new int * [length];
+    augmentation = new flow*[length];
 
     for(int i = 0 ; i < length ; i++ )
     {
         matrix[i] = new int[length]();
         weight[i] = new int[length]();
+        augmentation[i] = new flow[length]();
     }
+
     Graph = new node<T>[length];
 
     matrix[0][1] = 1;
-    matrix[0][5] = 1;
+    matrix[0][2] = 1;
     matrix[1][2] = 1;
-    matrix[1][5] = 1;
+    matrix[1][3] = 1;
     matrix[2][3] = 1;
-    matrix[2][4] = 1;
-    matrix[4][1] = 1;
-    matrix[5][2] = 1;
 
-    matrix[1][0] = 1;
-    matrix[5][0] = 1;
-    matrix[2][1] = 1;
-    matrix[5][1] = 1;
-    matrix[3][2] = 1;
-    matrix[4][2] = 1;
-    matrix[1][4] = 1;
-    matrix[2][5] = 1;
+    augmentation[0][1].limits = 2;
+    augmentation[0][2].limits = 1;
+    augmentation[1][2].limits = 1;
+    augmentation[1][3].limits = 1;
+    augmentation[2][3].limits = 2;
 
     for(int i = 0 ; i < length ; i++)
     {
@@ -578,12 +583,10 @@ void graph<T ,E>::init()
         }
     }
 
-    Graph[0].info = 0;
-    Graph[1].info = 1;
-    Graph[2].info = 2;
-    Graph[3].info = 3;
-    Graph[4].info = 4;
-    Graph[5].info = 5;
+    for(int i = 0; i < length; i++)
+    {
+        Graph[i].info = i;
+    }
     copy = new int * [length];
 }
 
@@ -606,11 +609,13 @@ graph<T , E >::~graph()
             delete[] matrix[i];
             delete[] weight[i];
             delete[] copy[i];
+            delete[] augmentation[i];
         }
         delete[] matrix;
         delete[] weight;
         delete[] copy;
         delete[] Graph;
+        delete[] augmentation;
     }
 
     if(dijkstra != NULL)
@@ -916,16 +921,148 @@ void graph<T, E>::FindDijkstra(int index)
 }
 
 template<class T, class E>
+bool graph<T, E>::FindBFS(int source, int end)
+{
+    vector<int> explore;
+    vector<int> sequence;
+
+    explore.push_back(source);
+    sequence.push_back(source);
+    Graph[source].isVisit = true;
+
+    while(explore.size() > 0)
+    {
+        int select = explore[explore.size()-1];
+        int last = -1;
+        bool FLAG = true;
+        for(int i = 0 ; i < length && FLAG ; i++)
+        {
+            if(Graph[i].isVisit == false && (augmentation[select][i].now < augmentation[select][i].limits))
+            {
+                if(i == end)
+                {
+                    sequence.push_back(i);
+                    explore.push_back(i);
+                    flow temp =  augmentation[sequence[0]][sequence[1]];
+                    int min = temp.limits - temp.now;
+                    int position = 0, element = 0;
+                    cout << "min for " << min << endl;
+                    for(int j = sequence.size()-1 ; j > 0 ;j--)
+                    {
+                        temp = augmentation[sequence[j-1]][sequence[j]];
+                        int result = temp.limits - temp.now;
+                        cout << "visit the " << sequence[j] << endl;
+                        cout << "result for " << result << endl;
+                        if(min >= result)
+                        {
+                            min = result;
+                            position = j;
+                            element = sequence[j];
+                        }
+                    }
+                    for(int j = 0; j < sequence.size() - 1 ; j++)
+                    {
+                        int from = sequence[j];
+                        int to = sequence[j+1];
+                        if(matrix[from][to] == 1)
+                        {
+                            augmentation[from][to].now += min;
+                            augmentation[to][from].limits += min;
+                            cout << from << "->";
+                        }
+                        else
+                        {
+                            int from = sequence[j];
+                            int to = sequence[j+1];
+                            augmentation[from][to].now += min;
+                            cout << from << "->";
+                        }
+                    }
+
+                    cout << sequence[sequence.size()-1] << " for : " << min << endl;
+                    cout << "erase position : " << position << endl;
+                    cout << "erase element : " << element << endl;
+
+                    while(sequence.size() > position)
+                    {
+                        erase(sequence, position);
+                    }
+
+                    while(explore[explore.size()-1] != element)
+                    {
+                        int index = explore.size()-1;
+                        Graph[explore[index]].isVisit = false;
+                        erase(explore, index);
+                    }
+
+                    Graph[element].isVisit = false;
+                    erase(explore, explore.size()-1);
+                    last = explore[explore.size()-1];
+
+                    if(last != sequence[sequence.size() - 1])
+                    {
+                        sequence.push_back(last);
+                    }
+                    FLAG = false;
+
+                    cout << "explore" << endl;
+                    for(int i = 0; i < explore.size() ; i++)
+                    {
+                        cout << explore[i] << endl;
+                    }
+
+                    cout << "sequence" << endl;
+                    for(int i = 0 ; i < sequence.size(); i++)
+                    {
+                        cout << sequence[i] << endl;
+                    }
+                }
+                else
+                {
+                    Graph[i].isVisit = true;
+                    explore.push_back(i);
+                    last = i;
+                }
+            }
+            else
+            {
+
+            }
+        }
+        if(last == -1)
+        {
+            int element = sequence[sequence.size()-1];
+            sequence.pop_back();
+            while(explore[explore.size()-1] != element)
+            {
+                explore.pop_back();
+            }
+            explore.pop_back();
+        }
+        else if(FLAG)
+        {
+            sequence.push_back(last);
+        }
+        else
+        {
+
+        }
+    }
+    return false;
+}
+
+template<class T, class E>
 void graph<T, E>::FindMaxFlow()
 {
-
+    FindBFS(0, length-1);
+    reset();
 }
 
 
 template<class T, class E>
 void graph<T, E>::DealInput()
 {
-    string info;
+    string info, value_limit;
     cout << "Input the length : ";
     getline(cin, info);
     length = std::atoi(info.c_str());
@@ -949,7 +1086,14 @@ void graph<T, E>::DealInput()
         }
 
         Graph = new node<T>[length]();
-        vector<string> tokens;
+        vector<string> tokens, vector_limit;
+
+        augmentation = new flow *[length]();
+
+        for (int i = 0 ; i < length; i++)
+        {
+            augmentation[i] = new flow[length]();
+        }
 
         for(int i = 0 ; i < length; i++)
         {
@@ -962,7 +1106,23 @@ void graph<T, E>::DealInput()
             for(int j = 0 ; j < tokens.size() ; j++)
             {
                 int aim = atoi(tokens[j].c_str());
+                if(aim >= length)
+                {
+                    continue;
+                }
                 matrix[i][aim] = 1;
+            }
+
+            cout << "Input limit flow : ";
+            getline(cin , value_limit);
+            vector_limit.clear();
+            value_limit = trim_copy(value_limit);
+            split(vector_limit, value_limit, is_any_of(" "));
+            for(int j = 0 ; j < tokens.size() ; j++)
+            {
+                int aim = atoi(vector_limit[j].c_str());
+                int aim_j = atoi(tokens[j].c_str());
+                augmentation[i][aim_j].limits = aim;
             }
         }
     }
@@ -990,6 +1150,6 @@ void test(int i , int size , int * array)
 int main(int argc , char ** argv)
 {
     graph<int , int> TEMP;
-    TEMP.FindDijkstra(1);
+    TEMP.FindMaxFlow();
     return 0;
 }
