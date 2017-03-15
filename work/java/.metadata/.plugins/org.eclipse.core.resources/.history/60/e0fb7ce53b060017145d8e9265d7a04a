@@ -1,0 +1,353 @@
+package scagnostics;
+
+import java.io.File;
+import java.util.StringTokenizer;
+
+public class Main
+{// D:/InfoVis/Scag_Data_Builder/Modified_Data/ScgaDistSupp/NEW_MEASURE/Clumpy//Stripe_Rays/rays_100_47_/png/rays_100_47__picture_0_rate_0.01.png
+	public static String fileName = "/mnt/gentoo/Users/Elvis Lei/Documents/scagnostics_data/issue/scaling/Binormal/bino_100_15/csv/bino_100_15_picture_18_ratio_5.csv";
+	public static double asp;
+	// "D:/demo.csv";
+	// "D:/bino_100_15_picture_0_angle_180.csv";
+	// "D:/InfoVis/Scag_Data_Builder/Modified_Data/ScgaDistSupp/DELETE_NEW_MEASURE/"+"Skewed/"
+	// + "Funnel/funnel_500_8/csv/funnel_500_8_picture_21_rate_0.05.csv";
+	// file:///D:/InfoVis/Scag_Data_Builder/Modified_Data/ScgaDistSupp/DELETE_NEW_MEASURE/Skewed//Funnel/funnel_300_49/png/funnel_300_49_picture_12_rate_0.01.png
+	// file:///D:/InfoVis/Scag_Data_Builder/Modified_Data/ScgaDistSupp/DELETE_NEW_MEASURE/Convex//Funnel/funnel_500_8/png/funnel_500_8_picture_24_rate_0.05.png
+	public static String suffix = ".csv";
+
+	public static void main(String[] argv)
+	{
+		int numBins = 50; // user setting for number of bins
+		int maxBins = 1000; // user setting for maximum number of nonempty bins
+							// allowed (maxBins >= numBins*numBins)
+
+		String directory = "";
+		String input = "";
+		String output = "";
+
+		if (argv.length == 0)
+		{
+			argv = new String[1];
+			argv[0] = fileName;
+		} else
+		{
+			directory = argv[0];
+			input = argv[1];
+			output = argv[2];
+			fileName = directory + input + suffix;
+		}
+
+		System.out.println(fileName);
+
+		double[][] points = getData(new File(fileName));
+		double[][] scagnostics = computeScagnostics(points, numBins, maxBins);
+		boolean[] outliers = Scagnostics.computeScagnosticsOutliers(scagnostics);
+
+		// boolean[] exemplars =
+		// Scagnostics.computeScagnosticsExemplars(scagnostics);
+
+		for (int i = 0; i < scagnostics.length; i++)
+		{
+			for (int j = 0; j < scagnostics[i].length; j++)
+			{
+				System.out.println(Scagnostics.scagnosticsLabels[j]); //
+				System.out.print(scagnostics[i][j] + "\n");
+			}
+		}
+		// computeTests(scagnostics, outliers, exemplars);
+	}
+
+	private static double[][] getData(File fname)
+	{
+		java.io.BufferedReader fin;
+		try
+		{
+			fin = new java.io.BufferedReader(new java.io.FileReader(fname));
+		} catch (java.io.FileNotFoundException fe)
+		{
+			System.out.println("ERROR FOR FILE NOT FOUND.");
+			System.exit(-1);
+			return null;
+		}
+		try
+		{
+			String record;
+			record = fin.readLine();
+			// Get the scagnosticsLabels
+			record = replaceSeparatorsWithBlanks(record);
+			StringTokenizer st = new StringTokenizer(record, " ");
+			int col = 0;
+			int numVars = st.countTokens();
+			String[] variableLabels = new String[numVars];
+
+			while (st.hasMoreTokens())
+			{
+				variableLabels[col] = st.nextToken();
+				col++;
+			}
+			// Count the number of rows
+			int numRows = 0;
+			record = fin.readLine();
+			while (record != null)
+			{
+				record = fin.readLine();
+				numRows++;
+			}
+			fin.close();
+			// System.out.println("Number of rows, cols " + numRows + " " +
+			// numVars);
+
+			// Read in the data
+			fin = new java.io.BufferedReader(new java.io.FileReader(fname));
+			double[][] data = new double[numVars][numRows];
+			record = fin.readLine(); // ignore line with scagnosticsLabels
+			record = fin.readLine();
+			int j = 0;
+			// System.out.println(numVars);
+			while (record != null)
+			{
+				record = replaceSeparatorsWithBlanks(record);
+				st = new StringTokenizer(record, " ");
+				for (int i = 0; i < numVars; i++)
+				{
+					try
+					{
+						String tmp = st.nextToken();
+						data[i][j] = Double.parseDouble(tmp);
+					} catch (Exception ie)
+					{
+						javax.swing.JOptionPane.showMessageDialog(null, "Error reading from the file", "Alert",
+								javax.swing.JOptionPane.ERROR_MESSAGE);
+						return null;
+					}
+				}
+				record = fin.readLine();
+				j++;
+			}
+			fin.close();
+			/*
+			 * double rx, ry; double max_x, min_x, max_y, min_y; max_x =
+			 * data[0][0]; min_x = data[0][0];
+			 * 
+			 * max_y = data[1][0]; min_y = data[1][0]; for(int i = 0; i <
+			 * data[0].length; i++) { double value_x = data[0][i]; double
+			 * value_y = data[1][i];
+			 * 
+			 * if(max_x < value_x) { max_x = value_x; } if(min_x > value_x) {
+			 * min_x = value_x; }
+			 * 
+			 * if(max_y < value_y) { max_y = value_y; } if(min_y > value_y) {
+			 * min_y = value_y; } }
+			 * 
+			 * rx = max_x - min_x; ry = max_y - min_y;
+			 * 
+			 * for(int i = 0; i < data[1].length; i++) { data[1][i] *= (rx/ry);
+			 * }
+			 */
+			return data;
+
+		} catch (java.io.IOException ie)
+		{
+			javax.swing.JOptionPane.showMessageDialog(null, "Error reading from the file", "Alert",
+					javax.swing.JOptionPane.ERROR_MESSAGE);
+			return null;
+		}
+	}
+
+	private static String replaceSeparatorsWithBlanks(String record)
+	{
+		record = replaceAll(record, ",,", ",~,");
+		record = replaceAll(record, "\t\t", "\t~\t");
+		record = replaceAll(record, ",", " ");
+		record = replaceAll(record, "\t", " ");
+		return record;
+	}
+
+	private static String replaceAll(String source, String toReplace, String replacement)
+	{
+		int idx = source.lastIndexOf(toReplace);
+		if (idx != -1)
+		{
+			StringBuffer sb = new StringBuffer(source);
+			sb.replace(idx, idx + toReplace.length(), replacement);
+			while ((idx = source.lastIndexOf(toReplace, idx - 1)) != -1)
+			{
+				sb.replace(idx, idx + toReplace.length(), replacement);
+			}
+			source = sb.toString();
+		}
+
+		return source;
+	}
+
+	private static double[][] computeScagnostics(double[][] points, int numBins, int maxBins)
+	{
+
+		// System.out.println(points.length);
+
+		// int length = points[0].length;
+
+		double[] x = points[0];
+		double[] y = points[1];
+
+		double range_x = 0, range_y = 0;
+
+		double max_x = x[0], min_x = x[0], max_y = y[0], min_y = y[0];
+
+		for (int i = 0; i < x.length; i++)
+		{
+			double value_x = x[i];
+			double value_y = y[i];
+
+			if (value_x < min_x)
+			{
+				min_x = value_x;
+			}
+			if (value_x > max_x)
+			{
+				max_x = value_x;
+			}
+			if (value_y < min_y)
+			{
+				min_y = value_y;
+			}
+			if (value_y > max_y)
+			{
+				max_y = value_y;
+			}
+		}
+
+		range_x = max_x - min_x;
+		range_y = max_y - min_y;
+
+		// System.out.println(range_x + "\t" + range_y);
+
+		asp = range_y / range_x;
+		
+		asp = Math.round(asp * 10 ) / 10;
+		
+		System.out.println("ASP : " + asp);
+
+		normalizePoints(points);
+
+		int nDim = points.length;
+		int numCells = nDim * (nDim - 1) / 2;
+		double[][] scagnostics = new double[numCells][Scagnostics.getNumScagnostics()];
+		int k = 0;
+
+		// for (int i = 0; i < length; i++)
+		// {
+		// y[i] = y[i] * asp;
+		// }
+
+		for (int i = 1; i < nDim; i++)
+		{
+			for (int j = 0; j < i; j++)
+			{
+				// double[] rx, ry;
+
+				// rx = range(points[j]);
+				// ry = range(points[i]);
+				// System.out.println(
+				// "rx_min : " + rx[0] + "\t rx_max : " + rx[1] + "\t ry_min : "
+				// + ry[0] + "\t ry_max : " + ry[1]);
+
+				Scagnostics s = new Scagnostics(points[j], points[i], numBins, maxBins);
+
+				// rx = range(points[j]);
+				// ry = range(points[i]);
+				// System.out.println(
+				// "rx_min : " + rx[0] + "\t rx_max : " + rx[1] + "\t ry_min : "
+				// + ry[0] + "\t ry_max : " + ry[1]);
+
+				scagnostics[k] = s.compute();
+
+				k++;
+			}
+		}
+		return scagnostics;
+	}
+
+	private static double[] range(double[] data)
+	{
+		double min = data[0];
+		double max = data[0];
+		double[] range = new double[2];
+		for (int i = 0; i < data.length; i++)
+		{
+			double value = data[i];
+			if (value < min)
+			{
+				min = value;
+			}
+			if (value > max)
+			{
+				max = value;
+			}
+		}
+		range[0] = min;
+		range[1] = max;
+
+		return range;
+	}
+
+	private static void normalizePoints(double[][] points)
+	{
+		double[] min = new double[points.length];
+		double[] max = new double[points.length];
+		for (int i = 0; i < points.length; i++)
+			for (int j = 0; j < points[0].length; j++)
+			{
+				if (j == 0)
+					max[i] = min[i] = points[i][0];
+				else if (min[i] > points[i][j])
+					min[i] = points[i][j];
+				else if (max[i] < points[i][j])
+					max[i] = points[i][j];
+			}
+
+		for (int i = 0; i < points.length; i++)
+			for (int j = 0; j < points[0].length; j++)
+				points[i][j] = (points[i][j] - min[i]) / (max[i] - min[i]);
+	}
+
+	private static void computeTests(double[][] scagnostics, boolean[] outliers, boolean[] exemplars)
+	{
+		double[][] test = getData(new File(fileName));
+
+		for (int i = 0; i < test.length; i++)
+		{
+			for (int j = 0; j < test[0].length; j++)
+			{
+				if (scagnostics[j][i] != test[i][j])
+					System.out.println("error " + i + " " + j);
+			}
+		}
+
+		for (int i = 0; i < outliers.length; i++)
+		{
+			if (i == 1 || i == 2 || i == 34 || i == 90)
+			{
+				if (!outliers[i])
+					System.out.println("error " + i);
+			} else
+			{
+				if (outliers[i])
+					System.out.println("error " + i);
+			}
+		}
+
+		for (int i = 0; i < exemplars.length; i++)
+		{
+			if (i == 13 || i == 95 || i == 118)
+			{
+				if (!exemplars[i])
+					System.out.println("error " + i);
+			} else
+			{
+				if (exemplars[i])
+					System.out.println("error " + i);
+			}
+		}
+	}
+}

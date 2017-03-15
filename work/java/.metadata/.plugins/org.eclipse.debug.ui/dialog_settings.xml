@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<section name="org.eclipse.debug.ui.STRING_VARIABLE_SELECTION_DIALOG_SECTION">
-		<item value="382" key="DIALOG_WIDTH"/>
-		<item value="1|Noto Sans|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="673" key="DIALOG_HEIGHT"/>
-		<item value="209" key="DIALOG_X_ORIGIN"/>
-		<item value="-71" key="DIALOG_Y_ORIGIN"/>
-	</section>
 	<section name="org.eclipse.debug.ui.SCOPED_SAVE_SELECTION_DIALOG">
-		<item value="445" key="DIALOG_WIDTH"/>
-		<item value="1|Sans|14.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="396" key="DIALOG_HEIGHT"/>
+		<item value="419" key="DIALOG_WIDTH"/>
+		<item value="1|Noto Sans|14.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="430" key="DIALOG_HEIGHT"/>
 	</section>
-	<section name="org.eclipse.debug.ui.LAUNCH_CONFIGURATIONS_DIALOG_SECTION">
-		<item value="1221" key="DIALOG_WIDTH"/>
-		<item value="1|Sans|14.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value=", org.eclipse.jdt.launching.localJavaApplication, org.eclipse.jst.server.tomcat.core.launchConfigurationType, " key="org.eclipse.debug.ui.EXPANDED_NODES"/>
-		<item value="762" key="org.eclipse.debug.ui.DIALOG_SASH_WEIGHTS_2"/>
-		<item value="999" key="DIALOG_HEIGHT"/>
-		<item value="237" key="org.eclipse.debug.ui.DIALOG_SASH_WEIGHTS_1"/>
-	</section>
-	<section name="org.eclipse.debug.ui.SELECT_LAUNCH_SHORTCUT_DIALOG">
-		<item value="408" key="DIALOG_WIDTH"/>
-		<item value="1|Sans|14.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="443" key="DIALOG_HEIGHT"/>
+	<section name="org.eclipse.debug.ui.SINGLE_LAUNCH_CONFIGURATION_DIALOG_SECTION">
+		<item value="886" key="DIALOG_WIDTH"/>
+		<item value="1|Noto Sans|14.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="702" key="DIALOG_HEIGHT"/>
 	</section>
 </section>

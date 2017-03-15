@@ -23,6 +23,5 @@ with tf.Session() as persisted_sess:
 	print("load data")
 	saver.restore(persisted_sess, MODEL)  # now OK
 
-
 	print(persisted_result.eval())
 	print("DONE")

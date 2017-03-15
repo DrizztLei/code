@@ -1,0 +1,23 @@
+package org.geotools.tutorial;
+
+import com.vividsolutions.jts.geom.Coordinate;
+import org.geotools.graph.structure.Edge;
+import org.geotools.graph.structure.Graph;
+import org.geotools.graph.structure.basic.BasicGraph;
+import org.geotools.graph.util.delaunay.DelaunayEdge;
+import org.geotools.graph.util.delaunay.DelaunayNode;
+import org.geotools.graph.util.delaunay.DelaunayTriangulator;
+import org.geotools.graph.util.delaunay.GraphViewer;
+
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+    }
+}

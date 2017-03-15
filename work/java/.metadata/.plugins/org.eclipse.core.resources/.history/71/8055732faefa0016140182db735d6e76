@@ -1,0 +1,176 @@
+package scagnostics;
+
+import java.util.*;
+
+
+public class Edge
+{
+	protected Node p1, p2; // start and end point of the edge
+	protected Edge invE = null; // inverse edge (p2->p1)
+	protected Edge nextE = null; // next edge in the triangle in
+									// counterclockwise
+	protected Edge nextH = null; // convex hull link
+	protected Triangle inT = null; // triangle containing this edge
+	protected double a, b, c; // line equation parameters. aX+bY+c=0
+	protected double weight;
+
+	protected boolean onHull = false; // on the convex
+	protected boolean onMST = false;
+	protected boolean onShape = false; // on the alpha
+	protected boolean onOutlier = false;
+
+	protected Edge(Node p1, Node p2)
+	{
+		update(p1, p2);
+	}
+
+	protected void update(Node p1, Node p2)
+	{
+		this.p1 = p1;
+		this.p2 = p2;
+		a = p2.y - p1.y;
+		b = p1.x - p2.x;
+		c = p2.x * p1.y - p1.x * p2.y;
+		weight = Math.sqrt(a * a + b * b);
+		asIndex();
+	}
+
+	protected Edge makeSymm()
+	{
+		Edge e = new Edge(p2, p1);
+		linkSymm(e);
+		return e;
+	}
+
+	protected void linkSymm(Edge e)
+	{
+		this.invE = e;
+		if (e != null)
+			e.invE = this;
+	}
+
+	protected int onSide(Node nd)
+	{
+		double s = a * nd.x + b * nd.y + c;
+		if (s > 0.0)
+			return 1;
+		if (s < 0.0)
+			return -1;
+		return 0;
+	}
+
+	protected void asIndex()
+	{
+		p1.anEdge = this;
+	}
+
+	protected Edge mostLeft()
+	{
+		Edge ee, e = this;
+		while ((ee = e.nextE.nextE.invE) != null && ee != this)
+			e = ee;
+		return e.nextE.nextE;
+	}
+
+	protected Edge mostRight()
+	{
+		Edge ee, e = this;
+		while (e.invE != null && (ee = e.invE.nextE) != this)
+			e = ee;
+		return e;
+	}
+
+	protected void deleteSimplex()
+	{
+		onShape = false;
+		inT.onComplex = false;
+		if (invE != null)
+		{
+			invE.onShape = false;
+			invE.inT.onComplex = false;
+		}
+	}
+
+	protected boolean isEqual(Edge e)
+	{
+		return (e.p1.x == this.p1.x) && (e.p2.x == this.p2.x) && (e.p1.y == this.p1.y) && (e.p2.y == this.p2.y);
+	}
+
+	protected boolean isEquivalent(Edge e)
+	{
+		return ((e.p1.x == this.p1.x) && (e.p2.x == this.p2.x) && (e.p1.y == this.p1.y) && (e.p2.y == this.p2.y))
+				|| ((e.p1.x == this.p2.x) && (e.p1.y == this.p2.y) && (e.p2.x == this.p1.x) && (e.p2.y == this.p1.y));
+	}
+
+	protected Node otherNode(Node n)
+	{
+		if (n.equals(p1))
+			return p2;
+		else
+			return p1;
+	}
+
+	protected boolean isNewEdge(Node n)
+	{
+		Iterator<Edge> it = n.getNeighborIterator();
+		while (it.hasNext())
+		{
+			Edge e2 = (Edge) it.next();
+			if (e2.isEquivalent(this))
+			{
+				return false;				
+			}
+				
+		}
+		return true;
+	}
+
+	protected int getRunts(double[] maxLength)
+	{
+		double cutoff = weight;
+
+		double[] maxLength1 = new double[1];
+		double[] maxLength2 = new double[1];
+
+		// Edge left = new Edge();
+		// Edge right = new Edge();
+
+		int count1 = p1.getMSTChildren(cutoff, maxLength1);
+		int count2 = p2.getMSTChildren(cutoff, maxLength2);
+		if (count1 < count2)
+		{
+			maxLength[0] = maxLength1[0];
+
+			Scagnostics.maxEdge.weight = left.weight;
+			Scagnostics.maxEdge.p1 = left.p1;
+			Scagnostics.maxEdge.p2 = left.p2;
+
+			return count1;
+		} else if (count1 == count2)
+		{
+			// take more tightly clustered child
+			if (maxLength1[0] < maxLength2[0])
+			{
+				maxLength[0] = maxLength1[0];
+				Scagnostics.maxEdge.weight = left.weight;
+				Scagnostics.maxEdge.p1 = left.p1;
+				Scagnostics.maxEdge.p2 = left.p2;
+			} else
+			{
+				maxLength[0] = maxLength2[0];
+				Scagnostics.maxEdge.weight = right.weight;
+				Scagnostics.maxEdge.p1 = right.p1;
+				Scagnostics.maxEdge.p2 = right.p2;
+			}
+
+			return count1;
+		} else
+		{
+			maxLength[0] = maxLength2[0];
+			Scagnostics.maxEdge.weight = right.weight;
+			Scagnostics.maxEdge.p1 = right.p1;
+			Scagnostics.maxEdge.p2 = right.p2;
+			return count2;
+		}
+	}
+}

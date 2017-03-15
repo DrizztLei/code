@@ -1,2 +1,3 @@
-model_checkpoint_path: "model-eval-acc-0.16796875-loss--2.42813640571.model"
-all_model_checkpoint_paths: "model-eval-acc-0.16796875-loss--2.42813640571.model"
+model_checkpoint_path: "alexnet-train-acc-0.998046875-loss-0.00772435776889.ckpt"
+all_model_checkpoint_paths: "alexnet-train-acc-0.97705078125-loss-0.0903524067253.ckpt"
+all_model_checkpoint_paths: "alexnet-train-acc-0.998046875-loss-0.00772435776889.ckpt"

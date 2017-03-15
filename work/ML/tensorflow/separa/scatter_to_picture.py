@@ -28,6 +28,10 @@ point_label = np.reshape(point_label, [-1])
 x = info[..., 1:2]
 y = info[..., 2:3]
 
+print (x)
+print (y)
+raw_input()
+
 if 0 in point_label:
     index = np.argmax(point_label)
     NUMBER = point_label[index]
@@ -38,25 +42,10 @@ else:
 
 NUMBER = int(NUMBER)
 
-index_max_x = np.argmax(x)
-index_min_x = np.argmin(x)
-index_max_y = np.argmax(y)
-index_min_y = np.argmin(y)
-
-arg_max_x = x[index_max_x]
-arg_min_x = x[index_min_x]
-arg_max_y = y[index_max_y]
-arg_min_y = y[index_min_y]
-
-if arg_min_x < 0:
-    x += np.abs(arg_min_x)
-if arg_min_y < 0:
-    y += np.abs(arg_min_y)
-
 for control_color in range(1, NUMBER + 1):
     if control_color != output_label:
         continue
-    figure = plt.figure("SPARSE IMAGE", figsize=[7.2, 7.2])
+    # figure = plt.figure("SPARSE IMAGE", figsize=[7.2, 7.2])
     size = point_label.shape[0]
 
     for index in range(size):
@@ -84,9 +73,16 @@ for control_color in range(1, NUMBER + 1):
         print ("score : %d" % score)
     else:
         score = int(raw_input("score not found, show me your score : \n"))
-    # plt.show()
+
+    plt.show()
     output_path = filename
     output_path = output_path.replace(".csv", "_CLS_" + str(output_label) + ".png")
-    figure.savefig(output_path)
+    output_csv_path = output_path.replace(".png", ".csv")
+
+    print ("save the csv : %s " % output_csv_path)
+    raw_input()
+
+    # figure.savefig(output_path)
+
     print ("save the %s " % output_path)
-    os.system("python summary.py " + output_path + " " + str(score))
+    # os.system("python summary.py " + output_path + " " + str(score))

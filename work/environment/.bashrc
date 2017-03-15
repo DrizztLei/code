@@ -16,12 +16,18 @@ fi
 
 
 # Put your fun stuff here.
+
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 
-export NVM_DIR="~/.nvm"
+export NVM_DIR="/home/elvis/.nvm"
+
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 source ~/.bash_profile
+source ~/.xprofile
+
 #source /opt/poky-edison/1.6/environment-setup-core2-32-poky-linux
+
 export WINEDLLOVERRIDES='winemenubuilder.exe=d'

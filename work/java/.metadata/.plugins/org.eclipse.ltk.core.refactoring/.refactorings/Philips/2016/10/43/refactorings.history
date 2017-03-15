@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;Main.java&apos; to &apos;ChoseLightColor/src/color&apos;&#x0A;- Original project: &apos;Philips&apos;&#x0A;- Destination element: &apos;ChoseLightColor/src/color&apos;&#x0A;- Original element: &apos;Experiment.Main.java&apos;" description="Copy compilation unit" destination="=ChoseLightColor/src&lt;color" element1="/src&lt;Experiment{Main.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1477144644358" units="1" version="1.0"/>
-</session>

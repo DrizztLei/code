@@ -1,5 +1,2 @@
 eclipse.preferences.version=1
-org.eclipse.jdt.launching.PREF_CONNECT_TIMEOUT=20000
-org.eclipse.jdt.launching.PREF_DEFAULT_ENVIRONMENTS_XML=
-org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1480257357112" defaultVMConnector\="">\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\n<vm id\="1480257357112" name\="icedtea-bin-3.2.0" path\="/opt/icedtea-bin-3.2.0"/>\n</vmType>\n</vmSettings>\n
-org.eclipse.jdt.launching.only_include_exported_classpath_entries=false
+org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1489224510232" defaultVMConnector\="">\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\n<vm id\="1489224510232" name\="icedtea-bin-3.3.0" path\="/opt/icedtea-bin-3.3.0"/>\n</vmType>\n</vmSettings>\n

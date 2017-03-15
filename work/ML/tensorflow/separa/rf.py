@@ -98,5 +98,4 @@ for x in range(data_length):
 			info.append(segmentation)
 	info.append("\n")
 	f.writelines(info)
-
 f.close()

@@ -1,0 +1,13 @@
+package scagnostics;
+
+public class Test
+{
+	public static void change(Test x, Test y)
+	{
+		
+	}
+	public static void main(String[] args)
+	{
+		
+	}
+}

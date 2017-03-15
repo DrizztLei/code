@@ -1,2 +1,3 @@
+browsers=<?xml version\="1.0" encoding\="UTF-8"?>\n<web-browsers current\="0">\n<system/>\n<external location\="/usr/bin/firefox" name\="Firefox"/>\n</web-browsers>
 eclipse.preferences.version=1
-internalWebBrowserHistory=http\://localhost\:8080/ManagerLDA/findTopic|*|http\://localhost\:8080/Topic/findTopic|*|http\://eva\:8080/Topic/findTopic|*|http\://EVA\:8080/Topic/findTopic|*|http\://localhost\:8080/Topic/ChoseLightColor|*|http\://localhost\:8080/Topic/Topic|*|http\://localhost\:8080/Topic/WEB-INF/classes/lda/Main.java|*|http\://localhost\:8080/ChoseLightColor/topic|*|http\://localhost\:9995/ChoseLightColor/change_color|*|http\://localhost\:9995/ChoseLightColor/|*|
+internalWebBrowserHistory=https\://www.baidu.com/|*|www.baidu.com|*|http\://localhost\:8080/ManagerLDA/findTopic|*|

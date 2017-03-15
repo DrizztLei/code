@@ -1,22 +1,23 @@
 import joblib
-
 from test import *
-import tensorflow as tf
+
 
 ABS_PATH = "/home/elvis/work/ML/tensorflow/separa/"
 
 SIZE = 4743
+# SIZE = 828
 # SIZE = 3312
 
-MODEL = "pca-svm-100.model"
-FEATURE = 100
+MODEL = "pca-svm-1000.model"
+FEATURE = 1000
 
 LABEL = 5
+# LABEL = 6
 TRAIN_SIZE = 8120
 ACCELERATION_FACTOR = 2048
 BASE_DIVIDE = 256
 # TRAIN_SIZE = 3200
-BATCH_SIZE = 1024
+BATCH_SIZE = 128
 GLOBAL_STEP = 200000000
 
 DECAY_STEPS = 500
@@ -28,7 +29,7 @@ NUM_CHANNEL = 1
 REPORT_CONTROL = 500
 TRAIN_SLICE = (int(SIZE / LABEL * round((float(TRAIN_SIZE) / SIZE), 1)))
 
-LEARNING_RATE = 0.015
+LEARNING_RATE = 0.01
 # REGULAR = 3e-3
 REGULAR = 3e-3
 DROP_OUT = 8.0e-1
@@ -47,6 +48,7 @@ def main(argv=None):
 	global SIZE, IMAGE_SIZE, NUM_CHANNEL, LABEL, BASE_DIVIDE
 
 	# data, label, fileset = parse_new_data(SIZE, IMAGE_SIZE, NUM_CHANNEL, LABEL, BASE_DIVIDE)
+
 	data, label, fileset = parse_new_data(SIZE, IMAGE_SIZE, NUM_CHANNEL, LABEL, BASE_DIVIDE)
 
 	data, label = alignment_data(data, label, LABEL, BASE_DIVIDE)
@@ -55,7 +57,11 @@ def main(argv=None):
 
 	data = np.reshape(data, [SIZE, -1])
 
+	data = data.T
+
 	data = approximate_normalization(data)
+
+	data = data.T
 
 	print ("pca ing .")
 
@@ -93,18 +99,19 @@ def main(argv=None):
 	feed_train_data = tf.placeholder(dtype=tf.float32, shape=[None, FEATURE], name="feed_train_data")
 	feed_train_label = tf.placeholder(dtype=tf.int64, shape=[None, LABEL], name="feed_train_label")
 
-	fc1_weights = tf.Variable(initial_value=tf.truncated_normal(shape=[FEATURE, 13], stddev=0.1, dtype=tf.float32))
+	fc1_weights = tf.Variable(initial_value=tf.truncated_normal(shape=[FEATURE, 40], stddev=0.1, dtype=tf.float32), name="fc1")
 
-	fc1_biases = tf.Variable(initial_value=tf.zeros(shape=[13], dtype=tf.float32))
+	fc1_biases = tf.Variable(initial_value=tf.zeros(shape=[40], dtype=tf.float32), name="fc1_bias")
 
 	fc2_weights = tf.Variable(
-		initial_value=tf.truncated_normal(shape=[13, 8], stddev=0.1, seed=SEED, dtype=tf.float32))
+		initial_value=tf.truncated_normal(shape=[40, 10], stddev=0.1, seed=SEED, dtype=tf.float32), name="fc2")
 
-	fc2_biases = tf.Variable(initial_value=tf.zeros(shape=[8], dtype=tf.float32))
+	fc2_biases = tf.Variable(initial_value=tf.zeros(shape=[10], dtype=tf.float32), name="fc2_bias")
 
-	fc3_weights = tf.Variable(initial_value=tf.truncated_normal(shape=[8, LABEL], stddev=0.1, seed=SEED, dtype=tf.float32))
+	fc3_weights = tf.Variable(
+		initial_value=tf.truncated_normal(shape=[10, LABEL], stddev=0.1, seed=SEED, dtype=tf.float32), name="fc3")
 
-	fc3_biases = tf.Variable(initial_value=tf.zeros(shape=[LABEL], dtype=tf.float32))
+	fc3_biases = tf.Variable(initial_value=tf.zeros(shape=[LABEL], dtype=tf.float32), name="fc3_bias")
 
 	def forward(info=None, flag=False):
 		info = tf.reshape(info, [-1, FEATURE])
@@ -115,7 +122,9 @@ def main(argv=None):
 
 		# hidden_bn = batch_normalization(x=hidden, depth=hidden.get_shape()[-1], phase_train=flag)
 
-		hidden_relu = tf.nn.relu(hidden)
+		hidden_bn = batch_norm(hidden, flag)
+
+		hidden_relu = tf.nn.relu(hidden_bn)
 
 		if flag:
 			hidden_relu = tf.nn.dropout(hidden_relu, keep_prob=DROP_OUT)
@@ -127,7 +136,10 @@ def main(argv=None):
 		if flag:
 			hidden_3 = tf.nn.dropout(hidden_2_relu, keep_prob=DROP_OUT)
 
-		hidden_3 = tf.matmul(a=hidden_2_relu, b=fc3_weights) + fc3_biases
+			hidden_3 = tf.matmul(a=hidden_2_relu, b=fc3_weights) + fc3_biases
+
+		else:
+			hidden_3 = tf.matmul(a=hidden_2_relu, b=fc3_weights) + fc3_biases
 
 		network = hidden_3
 
@@ -154,13 +166,14 @@ def main(argv=None):
 	learning_rate = tf.train.exponential_decay(
 		LEARNING_RATE,  # Base learning rate.
 		TENSOR_GLOBAL_STEP,  # Current index into the dataset.
-		DECAY_STEPS,   # Decay step.
+		DECAY_STEPS,  # Decay step.
 		DECAY_RATE,  # Decay rate.
 		staircase=True)
 
 	# optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate).minimize(loss=loss)
 	# optimizer = tf.train.RMSPropOptimizer(learning_rate=learning_rate, decay=DECAY_RATE).minimize(loss)
-	optimizer = tf.train.MomentumOptimizer(learning_rate=learning_rate, momentum=MOMENTUM).minimize(loss=loss, global_step=TENSOR_GLOBAL_STEP)
+	optimizer = tf.train.MomentumOptimizer(learning_rate=learning_rate, momentum=MOMENTUM).minimize(loss=loss,
+	                                                                                                global_step=TENSOR_GLOBAL_STEP)
 	# optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss)
 	# optimizer = tf.train.AdagradOptimizer(learning_rate=learning_rate).minimize(loss=loss)
 	# optimizer = tf.train.FtrlOptimizer(learning_rate=learning_rate).minimize(loss)
@@ -177,7 +190,10 @@ def main(argv=None):
 
 		summary_writer = tf.summary.FileWriter("./log", sess.graph)
 
+		saver = tf.train.Saver()
+
 		init = tf.global_variables_initializer()
+
 		sess.run(init)
 
 		limit = TRAIN_SIZE // BATCH_SIZE + 1
@@ -224,6 +240,8 @@ def main(argv=None):
 						print ("loss %s " % str(_eval_loss))
 						print ("regularizers %s " % str(_regularizers))
 
+						# save_path = saver.save(sess, "/tmp/model.ckpt")
+
 					# _merge = sess.run([merge], feed_dict=feed_dict)
 					# summary_writer.add_summary(_merge)
 
@@ -264,7 +282,6 @@ def main(argv=None):
 						print ("regular %s" % str(_adjust_regular))
 						print ("accurate %s " % str(accurate))
 						print ("learn_rate %s " % str(_learn_rate))
-
 	return
 
 

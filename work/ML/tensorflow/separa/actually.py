@@ -36,4 +36,4 @@ for i in xrange(0, nrows):
     print label
     length = len(label)
     for index in range(1, length+1):
-        os.system("python scatter_to_picture.py " + str(path) + " " + str(index) + " " + str(label[index - 1]))
+        os.system("python to_single_csv.py " + str(path) + " " + str(index) + " " + str(label[index - 1]))

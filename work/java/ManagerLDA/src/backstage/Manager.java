@@ -2,6 +2,7 @@ package backstage;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -45,15 +46,8 @@ public class Manager extends HttpServlet
 	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.
 	 * HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
-	@Override
-
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-	{
-		doPost(req, resp);
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	
+	protected void backup(HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
 		request.setCharacterEncoding(charset);
 		response.setCharacterEncoding(charset);
@@ -99,6 +93,34 @@ public class Manager extends HttpServlet
 				html += sendAll();
 			}
 		}
+
+		System.out.println("HTML : ");
+		System.out.println(html);
+
+		pw.println(html);
+
+		pw.flush();
+		pw.close();		
+	}
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	{
+		doPost(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		request.setCharacterEncoding(charset);
+		response.setCharacterEncoding(charset);
+
+		PrintWriter pw = response.getWriter();
+		response.setContentType(HEADCONTENT);
+		// Map<String, String[]> params = request.getParameterMap();
+
+		String html = "";
+
+		html += sendAll();
 
 		System.out.println("HTML : ");
 		System.out.println(html);

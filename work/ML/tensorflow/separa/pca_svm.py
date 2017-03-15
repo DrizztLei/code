@@ -6,7 +6,7 @@ import sys
 
 ABS_PATH = "/home/elvis/work/ML/tensorflow/separa/"
 
-SIZE = 4746
+SIZE = 4743
 # SIZE = 3312
 
 LABEL = 5
@@ -62,13 +62,14 @@ eval_data, eval_label = tool.random_shuffle(eval_data, eval_label)
 
 print ("pca ready")
 
-feature = int(sys.argv[1])
+feature = 1000
 
 FEATURE =feature
 
-pca = PCA(n_components=feature)
+pca = PCA(n_components=feature, whiten=True)
 
 pca.fit(train_data)
+
 filename = "pca-svm-" + str(feature) + ".model"
 
 joblib.dump(pca, filename)
@@ -79,15 +80,12 @@ print (np.sum(pca.explained_variance_ratio_))
 
 print ("pca done")
 
-raw_input()
-
 train_matrix = np.ndarray([TRAIN_SIZE, FEATURE])
 
 for i in range(TRAIN_SIZE):
 	data_T = np.reshape(train_data[i], [1, -1])
 	train_matrix[i] = pca.transform(data_T)
 
-# train_matrix = approximate_normalization(train_matrix)
 data_length = TRAIN_SIZE
 
 f = file(name=TRAIN_FILENAME, mode="w+")
@@ -110,8 +108,6 @@ eval_matrix = np.ndarray([EVAL_SIZE, feature])
 for i in range(EVAL_SIZE):
 	data_T = np.reshape(eval_data[i], [1, -1])
 	eval_matrix[i] = pca.transform(data_T)
-
-# eval_matrix = approximate_normalization(eval_matrix)
 
 data_length = EVAL_SIZE
 

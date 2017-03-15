@@ -1,0 +1,34 @@
+package scagnostics;
+
+import java.util.ArrayList;
+
+public class Test
+{
+	public ArrayList<String> array = new ArrayList<>();
+	public int a = 'a';
+	public int b = 'b';
+	public static void change(Test x, Test y)
+	{
+		Test temp = new Test();
+		temp.a = 213456;
+		x = temp;
+	}
+	
+	public static void addThat(ArrayList<String> array)
+	{
+		array.set(0, "out");
+	}
+	
+	public static void main(String[] args)
+	{
+		Test x = new Test();
+		x.a = 1;
+		x.b = 1;
+		Test y = new Test();
+
+		change(x, y);
+		System.out.println(x.a);
+		x.array.add("temp");
+		addThat(x.array);
+	}
+}

@@ -1,7 +1,6 @@
 import numpy as np
 import sys
 import matplotlib.pyplot as plt
-import os
 
 color = {0: 'b', 1: 'g', 2: 'r', 3: 'c', 4: 'm', 5: 'y', 6: 'k', 7: 'w'}
 
@@ -85,7 +84,10 @@ for control_color in range(1, NUMBER + 1):
     else:
         score = int(raw_input("score not found, show me your score : \n"))
     # plt.show()
-    output_path  = filename
+    output_path = filename
     output_path = output_path.replace(".csv", "_CLS_" + str(output_label) + ".png")
+    print (output_path)
+
+    raw_input()
     figure.savefig(output_path)
     print ("save the %s " % output_path)

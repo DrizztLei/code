@@ -3,15 +3,17 @@ import tensorflow as tf
 
 ABS_PATH = "/home/elvis/work/ML/tensorflow/separa/"
 
-SIZE = 828
-# SIZE = 3312
+SIZE = 4746
+# SIZE = 828
 
-LABEL = 6
+LABEL = 5
+# LABEL = 6
 TRAIN_SIZE = 768
-ACCELERATION_FACTOR = 256
-BASE_DIVIDE = 256
+# ACCELERATION_FACTOR = 256
+ACCELERATION_FACTOR = 2048
+BASE_DIVIDE = 2048
 # TRAIN_SIZE = 3200
-BATCH_SIZE = 32
+BATCH_SIZE = 128
 GLOBAL_STEP = 200000000
 DECAY_STEPS = 100
 EVAL_SIZE = SIZE - TRAIN_SIZE
@@ -21,12 +23,12 @@ NUM_CHANNEL = 3
 REPORT_CONTROL = 10
 TRAIN_SLICE = (int(SIZE / LABEL * round((float(TRAIN_SIZE) / SIZE), 1)))
 
-LEARNING_RATE = 7e-4
+LEARNING_RATE = 0.001
 # REGULAR = 3e-3
-REGULAR = 2e-3
-DROP_OUT = 50e-2
+REGULAR = 3e-4
+DROP_OUT = 80e-2
 DECAY_RATE = 0.9995
-MOMENTUM = 50e-2
+MOMENTUM = 99e-2
 SEED = int(random.random() * 1000)
 BATCH_NORMALIZATION = 1e-3
 
@@ -36,440 +38,454 @@ BATCH_NORMALIZATION = 1e-3
 # SEED = 149.555544719
 # SEED = 266.751015428 pretty good for this data .
 
-def batch_normalization(x, depth, phase_train):
-	shape = x.get_shape()
-	beta = tf.Variable(tf.constant(0.0, shape=[depth]),
-	                   name='beta', trainable=True)
-	gamma = tf.Variable(tf.constant(1.0, shape=[depth]),
-	                    name='gamma', trainable=True)
-	if len(shape) == 4:
-		batch_mean, batch_var = tf.nn.moments(x, [0, 1, 2], name='moments')
-	else:
-		batch_mean, batch_var = tf.nn.moments(x, [0], name='moments')
-	ema = tf.train.ExponentialMovingAverage(decay=0.5)
+out_file = "./cleaned_data_1.csv"
 
-	def mean_var_with_update():
-		ema_apply_op = ema.apply([batch_mean, batch_var])
-		with tf.control_dependencies([ema_apply_op]):
-			return tf.identity(batch_mean), tf.identity(batch_var)
 
-	flag = tf.Variable(initial_value=phase_train, dtype=tf.bool)
-	mean, var = tf.cond(flag, mean_var_with_update, lambda: (ema.average(batch_mean), ema.average(batch_var)))
-	normed = tf.nn.batch_normalization(x, mean, var, beta, gamma, BATCH_NORMALIZATION)
-	return normed
+def data_clean(img, filename, label):
+    window_name = "IMG"
+    label = np.argmax(label)
+    print (filename)
+    print (label)
+    cv.namedWindow(window_name)
+    while True:
+        cv.imshow(window_name, img)
+        character = cv.waitKey(100)
+        if int(character) == 97:
+            f = file(out_file, 'a+')
+            f.writelines(str(filename) + "," + str(label) + "\n")
+            f.close()
+            break
+        elif int(character) == 98:
+            f = file(out_file, 'a+')
+            label = raw_input("input the label you wanna.")
+            f.writelines(str(filename) + "," + str(label) + "\n")
+            f.close()
+            break
+        else:
+            continue
 
 
 def main(argv=None):
-	if argv is None:
-		print ("ERROR FOR ARGV IS NONE")
-	else:
-		print (argv)
-	global SIZE
+    if argv is None:
+        print ("ERROR FOR ARGV IS NONE")
+    else:
+        print (argv)
+    global SIZE
 
-	data, label, fileset = parse_data(SIZE=SIZE, IMAGE_SIZE=IMAGE_SIZE, NUM_CHANNEL=NUM_CHANNEL, LABEL=LABEL,
-	                                  BASE_DIVIDE=BASE_DIVIDE)
+    data, label, fileset = parse_new_data(SIZE=SIZE, IMAGE_SIZE=IMAGE_SIZE, NUM_CHANNEL=NUM_CHANNEL, LABEL=LABEL,
+                                          BASE_DIVIDE=BASE_DIVIDE)
 
-	print (data.shape)
-	print (data.dtype)
+    for x in range(SIZE):
+        data_clean(data[x], fileset[x], label[x])
 
-	print (fileset[0])
-	print (label[0])
-	mat_show(data[0])
+    print (data.shape)
+    print (data.dtype)
 
-	print (fileset[1])
-	print (label[1])
-	mat_show(data[1])
+    print (fileset[0])
+    print (label[0])
 
-	print (fileset[-1])
-	print (label[-1])
-	mat_show(data[-1])
+    print (fileset[1])
+    print (label[1])
 
-	SIZE = label.shape[0]
+    print (fileset[-1])
+    print (label[-1])
 
-	data, label = alignment_data(data=data, label=label, LABEL=LABEL, BASE_DIVIDE=BASE_DIVIDE)
+    SIZE = label.shape[0]
 
-	data = approximate_normalization(data)
+    data, label = alignment_data(data=data, label=label, LABEL=LABEL, BASE_DIVIDE=BASE_DIVIDE)
 
-	train_data, train_label, eval_data, eval_label = random_sample(data, label, ACCELERATION_FACTOR, LABEL)
+    data = approximate_normalization(data)
 
-	TRAIN_SIZE = train_label.shape[0]
-	EVAL_SIZE = eval_label.shape[0]
+    train_data, train_label, eval_data, eval_label = random_sample(data, label, ACCELERATION_FACTOR, LABEL)
 
-	train_data, train_label = random_shuffle(train_data, train_label)
-	eval_data, eval_label = random_shuffle(eval_data, eval_label)
+    TRAIN_SIZE = train_label.shape[0]
+    EVAL_SIZE = eval_label.shape[0]
 
-	train_data = train_data.astype(np.float32)
-	eval_data = eval_data.astype(np.float32)
+    train_data, train_label = random_shuffle(train_data, train_label)
+    eval_data, eval_label = random_shuffle(eval_data, eval_label)
 
-	train_label = train_label.astype(np.int64)
-	eval_label = eval_label.astype(np.int64)
+    train_data = train_data.astype(np.float32)
+    eval_data = eval_data.astype(np.float32)
 
-	print ("ALL SIZE FOR %d " % SIZE)
-	print ("TRAIN SIZE FOR %d " % TRAIN_SIZE)
+    train_label = train_label.astype(np.int64)
+    eval_label = eval_label.astype(np.int64)
 
-	feed_eval_data = tf.placeholder(dtype=tf.float32, shape=[None, IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNEL],
-	                                name="feed_eval_data")
-	feed_eval_label = tf.placeholder(dtype=tf.int64, shape=[None, LABEL], name="feed_eval_label")
+    print ("ALL SIZE FOR %d " % SIZE)
+    print ("TRAIN SIZE FOR %d " % TRAIN_SIZE)
 
-	feed_train_data = tf.placeholder(dtype=tf.float32, shape=[None, IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNEL],
-	                                 name="feed_train_data")
+    feed_eval_data = tf.placeholder(dtype=tf.float32, shape=[None, IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNEL],
+                                    name="feed_eval_data")
+    feed_eval_label = tf.placeholder(dtype=tf.int64, shape=[None, LABEL], name="feed_eval_label")
 
-	feed_train_label = tf.placeholder(dtype=tf.int64, shape=[None, LABEL], name="feed_train_label")
+    feed_train_data = tf.placeholder(dtype=tf.float32, shape=[None, IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNEL],
+                                     name="feed_train_data")
 
-	convolution_weights_1 = tf.Variable(initial_value=tf.truncated_normal(shape=[11, 11, NUM_CHANNEL, 96], seed=SEED,
-	                                                                      stddev=0.01, dtype=tf.float32))
+    feed_train_label = tf.placeholder(dtype=tf.int64, shape=[None, LABEL], name="feed_train_label")
 
-	convolution_biases_1 = tf.Variable(initial_value=tf.zeros(shape=[96], dtype=tf.float32))
+    convolution_weights_1 = tf.Variable(initial_value=tf.truncated_normal(shape=[11, 11, NUM_CHANNEL, 96], seed=SEED,
+                                                                          stddev=0.01, dtype=tf.float32), name="conv1")
 
-	convolution_weights2 = tf.Variable(initial_value=tf.truncated_normal(shape=[5, 5, 96, 256], seed=SEED,
-	                                                                     stddev=0.01, dtype=tf.float32))
+    convolution_biases_1 = tf.Variable(initial_value=tf.zeros(shape=[96], dtype=tf.float32), name="conv1_bias")
 
-	convolution_biases2 = tf.Variable(initial_value=tf.zeros(shape=[256], dtype=tf.float32))
+    convolution_weights2 = tf.Variable(initial_value=tf.truncated_normal(shape=[5, 5, 96, 256], seed=SEED,
+                                                                         stddev=0.01, dtype=tf.float32), name="conv2")
 
-	convolution_weights3 = tf.Variable(initial_value=tf.truncated_normal(shape=[3, 3, 256, 384], seed=SEED,
-	                                                                     stddev=0.01, dtype=tf.float32))
+    convolution_biases2 = tf.Variable(initial_value=tf.zeros(shape=[256], dtype=tf.float32), name="conv2_bias")
 
-	convolution_biases3 = tf.Variable(initial_value=tf.zeros(shape=[384], dtype=tf.float32))
+    convolution_weights3 = tf.Variable(initial_value=tf.truncated_normal(shape=[3, 3, 256, 384], seed=SEED,
+                                                                         stddev=0.01, dtype=tf.float32), name="conv3")
 
-	convolution_weights4 = tf.Variable(initial_value=tf.truncated_normal(shape=[3, 3, 384, 384], seed=SEED,
-	                                                                     stddev=0.01, dtype=tf.float32))
+    convolution_biases3 = tf.Variable(initial_value=tf.zeros(shape=[384], dtype=tf.float32), name="conv3_bias")
 
-	convolution_biases4 = tf.Variable(initial_value=tf.zeros(shape=[384], dtype=tf.float32))
+    convolution_weights4 = tf.Variable(initial_value=tf.truncated_normal(shape=[3, 3, 384, 384], seed=SEED,
+                                                                         stddev=0.01, dtype=tf.float32), name="conv4")
 
-	convolution_weights5 = tf.Variable(initial_value=tf.truncated_normal(shape=[3, 3, 384, 256], seed=SEED,
-	                                                                     stddev=0.01, dtype=tf.float32))
+    convolution_biases4 = tf.Variable(initial_value=tf.zeros(shape=[384], dtype=tf.float32), name="conv4_bias")
 
-	convolution_biases5 = tf.Variable(initial_value=tf.zeros(shape=[256], dtype=tf.float32))
+    convolution_weights5 = tf.Variable(initial_value=tf.truncated_normal(shape=[3, 3, 384, 256], seed=SEED,
+                                                                         stddev=0.01, dtype=tf.float32), name="conv5")
 
-	fc1_weights = tf.Variable(
-		initial_value=tf.truncated_normal(shape=[9216, 4096], stddev=0.01, seed=SEED, dtype=tf.float32))
+    convolution_biases5 = tf.Variable(initial_value=tf.zeros(shape=[256], dtype=tf.float32), name="conv5_bias")
 
-	fc1_biases = tf.Variable(initial_value=tf.zeros(shape=[4096], dtype=tf.float32))
+    fc1_weights = tf.Variable(
+        initial_value=tf.truncated_normal(shape=[9216, 4096], stddev=0.01, seed=SEED, dtype=tf.float32), name="fc1")
 
-	fc2_weights = tf.Variable(
-		initial_value=tf.truncated_normal(shape=[4096, 4096], stddev=0.01, seed=SEED, dtype=tf.float32))
+    fc1_biases = tf.Variable(initial_value=tf.zeros(shape=[4096], dtype=tf.float32), name="fc1_bias")
 
-	fc2_biases = tf.Variable(initial_value=tf.zeros(shape=[4096], dtype=tf.float32))
+    fc2_weights = tf.Variable(
+        initial_value=tf.truncated_normal(shape=[4096, 4096], stddev=0.01, seed=SEED, dtype=tf.float32), name="fc2")
 
-	fc3_weights = tf.Variable(
-		initial_value=tf.truncated_normal(shape=[4096, LABEL], stddev=0.01, seed=SEED, dtype=tf.float32))
+    fc2_biases = tf.Variable(initial_value=tf.zeros(shape=[4096], dtype=tf.float32), name="fc2_bias")
 
-	# fc3_biases = tf.Variable(initial_value=tf.zeros(shape=[5], dtype=tf.float32))
+    fc3_weights = tf.Variable(
+        initial_value=tf.truncated_normal(shape=[4096, LABEL], stddev=0.01, seed=SEED, dtype=tf.float32), name="fc3")
 
-	def forward(info=None, flag=False):
-		info = tf.reshape(info, [-1, IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNEL])
+    # fc3_biases = tf.Variable(initial_value=tf.zeros(shape=[5], dtype=tf.float32))
 
-		print (info.get_shape())
+    def forward(info=None, flag=False):
 
-		conv1 = tf.nn.conv2d(input=info,
-		                     filter=convolution_weights_1,
-		                     padding="VALID",
-		                     strides=[1, 4, 4, 1])
+        info = tf.reshape(info, [-1, IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNEL])
 
-		print (conv1.get_shape())
+        print (info.get_shape())
 
-		# conv1_bn = batch_normalization(x=conv1, depth=conv1.get_shape()[-1], phase_train=flag)
+        conv1 = tf.nn.conv2d(input=info,
+                             filter=convolution_weights_1,
+                             padding="VALID",
+                             strides=[1, 4, 4, 1])
 
-		relu1 = tf.nn.relu(tf.nn.bias_add(conv1, convolution_biases_1))
+        print (conv1.get_shape())
 
-		print (relu1.get_shape())
+        # conv1_bn = batch_normalization(x=conv1, depth=conv1.get_shape()[-1], phase_train=flag)
 
-		pool1 = tf.nn.max_pool(value=relu1,
-		                       ksize=[1, 3, 3, 1],
-		                       strides=[1, 2, 2, 1],
-		                       padding="VALID")
+        relu1 = tf.nn.relu(tf.nn.bias_add(conv1, convolution_biases_1))
 
-		print (pool1.get_shape())
+        print (relu1.get_shape())
 
-		norm1 = tf.nn.local_response_normalization(pool1)
+        pool1 = tf.nn.avg_pool(value=relu1,
+                               ksize=[1, 3, 3, 1],
+                               strides=[1, 2, 2, 1],
+                               padding="VALID")
 
-		print (norm1.get_shape())
+        print (pool1.get_shape())
 
-		conv2 = tf.nn.conv2d(input=norm1,
-		                     strides=[1, 1, 1, 1],
-		                     padding="SAME",
-		                     filter=convolution_weights2)
+        norm1 = tf.nn.local_response_normalization(pool1)
 
-		# tf.nn.batch_normalization()
-		# conv2_bn = batch_normalization(x=conv2, depth=conv2.get_shape()[-1], phase_train=flag)
+        # norm1 = batch_norm(pool1, flag)
 
-		print (conv2.get_shape())
+        print (norm1.get_shape())
 
-		relu2 = tf.nn.relu(tf.nn.bias_add(conv2, convolution_biases2))
+        conv2 = tf.nn.conv2d(input=norm1,
+                             strides=[1, 1, 1, 1],
+                             padding="SAME",
+                             filter=convolution_weights2)
 
-		print (relu2.get_shape())
+        # tf.nn.batch_normalization()
 
-		pool2 = tf.nn.avg_pool(value=relu2,
-		                       ksize=[1, 3, 3, 1],
-		                       strides=[1, 2, 2, 1],
-		                       padding="VALID")
+        # conv2_bn = batch_normalization(x=conv2, depth=conv2.get_shape()[-1], phase_train=flag)
 
-		print (pool2.get_shape())
+        print (conv2.get_shape())
 
-		norm2 = tf.nn.local_response_normalization(pool2)
+        relu2 = tf.nn.relu(tf.nn.bias_add(conv2, convolution_biases2))
 
-		print (norm2.get_shape())
+        print (relu2.get_shape())
 
-		conv3 = tf.nn.conv2d(input=norm2,
-		                     strides=[1, 1, 1, 1],
-		                     padding="SAME",
-		                     filter=convolution_weights3)
+        pool2 = tf.nn.max_pool(value=relu2,
+                               ksize=[1, 3, 3, 1],
+                               strides=[1, 2, 2, 1],
+                               padding="VALID")
 
-		print (conv3.get_shape())
+        print (pool2.get_shape())
 
-		relu3 = tf.nn.relu(tf.nn.bias_add(conv3, convolution_biases3))
+        norm2 = tf.nn.local_response_normalization(pool2)
 
-		print (relu3.get_shape())
+        # norm2 = batch_norm(pool2, flag)
 
-		conv4 = tf.nn.conv2d(input=relu3,
-		                     strides=[1, 1, 1, 1],
-		                     padding="SAME",
-		                     filter=convolution_weights4)
+        print (norm2.get_shape())
 
-		print (conv4.get_shape())
+        conv3 = tf.nn.conv2d(input=norm2,
+                             strides=[1, 1, 1, 1],
+                             padding="SAME",
+                             filter=convolution_weights3)
 
-		relu4 = tf.nn.relu(tf.nn.bias_add(conv4, convolution_biases4))
+        print (conv3.get_shape())
 
-		print (relu4.get_shape())
+        relu3 = tf.nn.relu(tf.nn.bias_add(conv3, convolution_biases3))
 
-		conv5 = tf.nn.conv2d(input=relu4,
-		                     strides=[1, 1, 1, 1],
-		                     padding="SAME",
-		                     filter=convolution_weights5)
+        print (relu3.get_shape())
 
-		print (conv5.get_shape())
+        conv4 = tf.nn.conv2d(input=relu3,
+                             strides=[1, 1, 1, 1],
+                             padding="SAME",
+                             filter=convolution_weights4)
 
-		relu5 = tf.nn.relu(tf.nn.bias_add(conv5, convolution_biases5))
+        print (conv4.get_shape())
 
-		print (relu5.get_shape())
+        relu4 = tf.nn.relu(tf.nn.bias_add(conv4, convolution_biases4))
 
-		pool5 = tf.nn.max_pool(value=relu5,
-		                       ksize=[1, 3, 3, 1],
-		                       strides=[1, 2, 2, 1],
-		                       padding="VALID")
+        print (relu4.get_shape())
 
-		fc = tf.reshape(pool5, [-1, fc1_weights.get_shape().as_list()[0]])
+        conv5 = tf.nn.conv2d(input=relu4,
+                             strides=[1, 1, 1, 1],
+                             padding="SAME",
+                             filter=convolution_weights5)
 
-		# fc = batch_normalization(fc, depth=fc.get_shape()[-1], phase_train=flag)
+        print (conv5.get_shape())
 
-		hidden_1 = tf.matmul(fc, fc1_weights) + fc1_biases
+        relu5 = tf.nn.relu(tf.nn.bias_add(conv5, convolution_biases5))
 
-		hidden_1_relu = tf.nn.relu(hidden_1)
+        print (relu5.get_shape())
 
-		if flag:
-			hidden_1_relu = tf.nn.dropout(hidden_1_relu, keep_prob=DROP_OUT)
+        pool5 = tf.nn.max_pool(value=relu5,
+                               ksize=[1, 3, 3, 1],
+                               strides=[1, 2, 2, 1],
+                               padding="VALID")
 
-		hidden_2 = tf.matmul(a=hidden_1_relu, b=fc2_weights) + fc2_biases
+        fc = tf.reshape(pool5, [-1, fc1_weights.get_shape().as_list()[0]])
 
-		hidden_2_relu = tf.nn.relu(hidden_2)
+        # fc = batch_normalization(fc, depth=fc.get_shape()[-1], phase_train=flag)
 
-		if flag:
-			hidden_2_relu = tf.nn.dropout(hidden_2_relu, keep_prob=DROP_OUT)
+        hidden_1 = tf.matmul(fc, fc1_weights) + fc1_biases
 
-		hidden_3 = tf.matmul(hidden_2_relu, fc3_weights)
+        hidden_1_relu = tf.nn.relu(hidden_1)
 
-		network = hidden_3
+        # hidden_1_relu_bn = batch_norm(hidden_1_relu, flag)
 
-		return network
+        if flag:
+            hidden_1_relu = tf.nn.dropout(hidden_1_relu, keep_prob=DROP_OUT)
 
-	logits = forward(feed_train_data, True)
+        hidden_2 = tf.matmul(a=hidden_1_relu, b=fc2_weights) + fc2_biases
 
-	loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits, feed_train_label))
+        hidden_2_relu = tf.nn.relu(hidden_2)
 
-	regularizers = (tf.nn.l2_loss(fc1_weights) + tf.nn.l2_loss(fc1_biases) +
-	                tf.nn.l2_loss(fc2_weights) + tf.nn.l2_loss(fc2_biases) +
-	                tf.nn.l2_loss(fc3_weights))
+        hidden_2_relu_bn = batch_norm(hidden_2_relu, flag)
 
-	loss += REGULAR * regularizers
+        if flag:
+            hidden_2_relu_bn = tf.nn.dropout(hidden_2_relu_bn, keep_prob=DROP_OUT)
 
-	train_predict = tf.nn.softmax(logits)
+        hidden_3 = tf.matmul(hidden_2_relu_bn, fc3_weights)
 
-	eval_logits = forward(feed_eval_data, False)
+        network = hidden_3
 
-	eval_loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(eval_logits, feed_eval_label))
+        return network
 
-	eval_predict = tf.nn.softmax(eval_logits)
+    logits = forward(feed_train_data, True)
 
-	TENSOR_GLOBAL_STEP = tf.Variable(0, dtype=tf.int64)
-	learning_rate = tf.train.exponential_decay(
-		LEARNING_RATE,  # Base learning rate.
-		TENSOR_GLOBAL_STEP,  # Current index into the dataset.
-		DECAY_STEPS,  # Decay step.
-		DECAY_RATE,  # Decay rate.
-		staircase=True)
+    loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits, feed_train_label))
 
-	# optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate).minimize(loss=loss)
-	# optimizer = tf.train.RMSPropOptimizer(learning_rate=learning_rate, decay=DECAY_RATE).minimize(loss)
+    regularizers = (tf.nn.l2_loss(fc1_weights) + tf.nn.l2_loss(fc1_biases) +
+                    tf.nn.l2_loss(fc2_weights) + tf.nn.l2_loss(fc2_biases) +
+                    tf.nn.l2_loss(fc3_weights))
 
-	optimizer = tf.train.MomentumOptimizer(learning_rate=learning_rate,
-	                                       momentum=MOMENTUM).minimize(loss=loss,
-	                                                                   global_step=TENSOR_GLOBAL_STEP)
+    loss += REGULAR * regularizers
 
-	# optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss)
-	# optimizer = tf.train.AdagradOptimizer(learning_rate=learning_rate).minimize(loss=eval_loss)
-	# optimizer = tf.train.FtrlOptimizer(learning_rate=learning_rate).minimize(loss)
-	# optimizer = tf.train.ProximalGradientDescentOptimizer(learning_rate).minimize(loss)
+    train_predict = tf.nn.softmax(logits)
 
-	with tf.Session() as sess:
-		print ("INIT.")
-		print (SEED)
-		init = tf.global_variables_initializer()
+    eval_logits = forward(feed_eval_data, False)
 
-		sess.run(init)
+    eval_loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(eval_logits, feed_eval_label))
 
-		tf.summary.scalar(name="learning", tensor=learning_rate)
-		tf.summary.histogram(name="learning", values=learning_rate)
+    eval_predict = tf.nn.softmax(eval_logits)
 
-		tf.summary.scalar(name="regularizers", tensor=regularizers * REGULAR)
-		tf.summary.histogram(name="regularizers", values=regularizers * REGULAR)
+    TENSOR_GLOBAL_STEP = tf.Variable(0, dtype=tf.int64)
+    learning_rate = tf.train.exponential_decay(
+        LEARNING_RATE,  # Base learning rate.
+        TENSOR_GLOBAL_STEP,  # Current index into the dataset.
+        DECAY_STEPS,  # Decay step.
+        DECAY_RATE,  # Decay rate.
+        staircase=True)
 
-		tf.summary.scalar(name="loss", tensor=loss - REGULAR * regularizers)
-		tf.summary.histogram(name="loss", values=loss - REGULAR * regularizers)
+    # optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate).minimize(loss=loss)
+    # optimizer = tf.train.RMSPropOptimizer(learning_rate=learning_rate, decay=DECAY_RATE).minimize(loss)
 
-		tf.summary.scalar(name="eval_loss", tensor=eval_loss)
-		tf.summary.histogram(name="eval_loss", values=eval_loss)
+    optimizer = tf.train.MomentumOptimizer(learning_rate=learning_rate,
+                                           momentum=MOMENTUM).minimize(loss=loss,
+                                                                       global_step=TENSOR_GLOBAL_STEP)
 
-		merge_op = tf.summary.merge_all()
+    # optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss)
+    # optimizer = tf.train.AdagradOptimizer(learning_rate=learning_rate).minimize(loss=eval_loss)
+    # optimizer = tf.train.FtrlOptimizer(learning_rate=learning_rate).minimize(loss)
+    # optimizer = tf.train.ProximalGradientDescentOptimizer(learning_rate).minimize(loss)
 
-		train_writer = tf.summary.FileWriter(logdir="./log/train/", graph=sess.graph)
-		valid_writer = tf.summary.FileWriter(logdir="./log/valid")
+    with tf.Session() as sess:
+        print ("INIT.")
+        print (SEED)
 
-		limit = TRAIN_SIZE // BATCH_SIZE + 1
-		limit_eval = EVAL_SIZE // BATCH_SIZE + 1
+        init = tf.global_variables_initializer()
 
-		acc_loss = 1000
+        sess.run(init)
 
-		while acc_loss > 0.2:
-			for step in range(GLOBAL_STEP):
+        tf.summary.scalar(name="learning", tensor=learning_rate)
+        tf.summary.histogram(name="learning", values=learning_rate)
 
-				if step % REPORT_CONTROL == 0:
+        tf.summary.scalar(name="regularizers", tensor=regularizers * REGULAR)
+        tf.summary.histogram(name="regularizers", values=regularizers * REGULAR)
 
-					ave_eval_loss = 0.0
-					ave_eval_acc = 0.0
+        tf.summary.scalar(name="loss", tensor=loss - REGULAR * regularizers)
+        tf.summary.histogram(name="loss", values=loss - REGULAR * regularizers)
 
-					print ("STEP %d " % step)
-					print ("------------------------------------>")
-					for batch in range(limit_eval):
-						print ("EVAL BATCH SIZE FOR %d " % batch)
-						if batch == limit_eval - 1:
-							start = batch * BATCH_SIZE
-							end = EVAL_SIZE
-							if end - start == 0:
-								continue
-						else:
-							start = batch * BATCH_SIZE
-							end = start + BATCH_SIZE
+        tf.summary.scalar(name="eval_loss", tensor=eval_loss)
+        tf.summary.histogram(name="eval_loss", values=eval_loss)
 
-						input = eval_data[start:end]
-						input_label = eval_label[start:end]
+        merge_op = tf.summary.merge_all()
 
-						feed_dict = {feed_eval_data: input,
-						             feed_eval_label: input_label}
+        train_writer = tf.summary.FileWriter(logdir="./log/train/", graph=sess.graph)
+        valid_writer = tf.summary.FileWriter(logdir="./log/valid")
 
-						_eval_predict, _eval_loss, _regularizers = sess.run(
-							[eval_predict, eval_loss, regularizers],
-							feed_dict=feed_dict)
+        limit = TRAIN_SIZE // BATCH_SIZE + 1
+        limit_eval = EVAL_SIZE // BATCH_SIZE + 1
 
-						media = np.argmax(_eval_predict, 1)
-						array = np.argmax(input_label, 1)
+        acc_loss = 1000
 
-						acc_sum = np.sum(media == array)
-						accurate = (acc_sum / float(end - start))
+        saver = tf.train.Saver()
 
-						acc_loss = _eval_loss
-						_regularizers *= REGULAR
+        while acc_loss > 0.2:
+            for step in range(GLOBAL_STEP):
 
-						print (media)
-						print (array)
+                if step % REPORT_CONTROL == 0:
 
-						ave_eval_loss += _eval_loss
-						ave_eval_acc += accurate
+                    ave_eval_loss = 0.0
+                    ave_eval_acc = 0.0
 
-						print ("accurate %f " % accurate)
-						print ("loss %s " % str(_eval_loss))
-						print ("regularizers %f " % _regularizers)
-						print ("------------------------------------>")
+                    print ("STEP %d " % step)
+                    print ("------------------------------------>")
+                    for batch in range(limit_eval):
+                        print ("EVAL BATCH SIZE FOR %d " % batch)
+                        if batch == limit_eval - 1:
+                            start = batch * BATCH_SIZE
+                            end = EVAL_SIZE
+                            if end - start == 0:
+                                continue
+                        else:
+                            start = batch * BATCH_SIZE
+                            end = start + BATCH_SIZE
 
-					if end == EVAL_SIZE:
+                        input = eval_data[start:end]
+                        input_label = eval_label[start:end]
 
-						ave_eval_loss = ave_eval_loss / (batch + 1)
-						ave_eval_acc = ave_eval_acc / (batch + 1)
+                        feed_dict = {feed_eval_data: input,
+                                     feed_eval_label: input_label}
 
-						print ("average eval acc %f " % ave_eval_acc)
-						print ("average eval loss %f " % ave_eval_loss)
+                        _eval_predict, _eval_loss, _regularizers = sess.run(
+                            [eval_predict, eval_loss, regularizers],
+                            feed_dict=feed_dict)
 
-						if ave_eval_acc >= 0.95 or ave_eval_loss <= 0.15:
-							saver = tf.train.Saver(tf.global_variables())
-							model = "alexnet-eval-acc-" + str(ave_eval_acc) + "-loss-" + str(ave_eval_loss) + ".model"
-							saver.save(sess, model)
-							print ("save model for %s " % model)
+                        media = np.argmax(_eval_predict, 1)
+                        array = np.argmax(input_label, 1)
 
-				ave_train_loss = 0.0
-				ave_train_acc = 0.0
+                        acc_sum = np.sum(media == array)
+                        accurate = (acc_sum / float(end - start))
 
-				for batch in xrange(limit):
+                        acc_loss = _eval_loss
+                        _regularizers *= REGULAR
 
-					if batch == limit - 1:
-						start = batch * BATCH_SIZE
-						end = TRAIN_SIZE
-						if end - start == 0:
-							continue
-					else:
-						start = batch * BATCH_SIZE
-						end = start + BATCH_SIZE
+                        print (media)
+                        print (array)
 
-					input = train_data[start:end]
-					input_label = train_label[start:end]
+                        ave_eval_loss += _eval_loss
+                        ave_eval_acc += accurate
 
-					feed_dict = {feed_train_data: input,
-					             feed_train_label: input_label}
+                        print ("accurate %f " % accurate)
+                        print ("loss %s " % str(_eval_loss))
+                        print ("regularizers %f " % _regularizers)
+                        print ("------------------------------------>")
 
-					_loss, _optimizer, _train_predict, _regular, _learn_rate = sess.run(
-						[loss, optimizer, train_predict, regularizers, learning_rate],
-						feed_dict=feed_dict)
+                    if end == EVAL_SIZE:
 
-					_adjust_regular = _regular * np.float16(REGULAR)
+                        ave_eval_loss = ave_eval_loss / (batch)
+                        ave_eval_acc = ave_eval_acc / (batch)
 
-					media = np.argmax(_train_predict, 1)
-					array = np.argmax(input_label, 1)
+                        print ("average eval acc %f " % ave_eval_acc)
+                        print ("average eval loss %f " % ave_eval_loss)
 
-					temp = np.sum(media == array)
+                        if ave_eval_loss > 0:
+                            if ave_eval_acc >= 0.95 or ave_eval_loss <= 0.15:
+                                model = "alexnet-eval-acc-" + str(ave_eval_acc) + "-loss-" + str(
+                                    ave_eval_loss) + ".model"
+                                path = saver.save(sess, model)
+                                print ("save model for %s " % path)
 
-					if step % REPORT_CONTROL == 0:
-						accurate = (temp / float(end - start))
-						print ("*************************>")
-						print ("batch for %d " % batch)
-						print ("loss %f" % _loss)
-						print ("regular %f" % _adjust_regular)
-						print ("accurate %f " % accurate)
-						print ("learn_rate %f " % _learn_rate)
-						print ("*************************<")
+                ave_train_loss = 0.0
+                ave_train_acc = 0.0
 
-						ave_train_loss += _loss - float(_adjust_regular)
-						ave_train_acc += accurate
+                for batch in xrange(limit):
 
-						if end == TRAIN_SIZE:
+                    if batch == limit - 1:
+                        start = batch * BATCH_SIZE
+                        end = TRAIN_SIZE
+                        if end - start == 0:
+                            continue
+                    else:
+                        start = batch * BATCH_SIZE
+                        end = start + BATCH_SIZE
 
-							ave_train_loss = ave_train_loss / (batch + 1)
-							ave_train_acc = ave_train_acc / (batch + 1)
+                    input = train_data[start:end]
+                    input_label = train_label[start:end]
 
-							print ("average train acc : %f " % ave_train_acc)
-							print ("average train loss : %f " % ave_train_loss)
+                    feed_dict = {feed_train_data: input,
+                                 feed_train_label: input_label}
 
-							if ave_train_acc >= 0.95 or ave_train_loss <= 0.15:
-								saver = tf.train.Saver(tf.global_variables())
-								model = "alexnet-train-acc-" + str(ave_train_acc) + "-loss-" + str(
-									ave_train_loss) + ".model"
-								saver.save(sess, model)
-								print ("save model for %s " % model)
+                    _loss, _optimizer, _train_predict, _regular, _learn_rate = sess.run(
+                        [loss, optimizer, train_predict, regularizers, learning_rate],
+                        feed_dict=feed_dict)
 
-							# meta = tf.RunMetadata()
-							# train_writer.add_run_metadata(meta, str(step) + "_" + str(batch))
-							# info = sess.run([merge_op], feed_dict=feed_dict)
-							# train_writer.add_summary(info, step)
-		print ("train over.")
-	return
+                    _adjust_regular = _regular * np.float16(REGULAR)
+
+                    media = np.argmax(_train_predict, 1)
+                    array = np.argmax(input_label, 1)
+
+                    temp = np.sum(media == array)
+
+                    if step % REPORT_CONTROL == 0:
+                        accurate = (temp / float(end - start))
+
+                        print ("*************************>")
+                        print ("batch for %d " % batch)
+                        print ("loss %f" % _loss)
+                        print ("regular %f" % _adjust_regular)
+                        print ("accurate %f " % accurate)
+                        print ("learn_rate %f " % _learn_rate)
+                        print ("*************************<")
+
+                        ave_train_loss += _loss - float(_adjust_regular)
+                        ave_train_acc += accurate
+
+                        if end == TRAIN_SIZE:
+
+                            ave_train_loss = ave_train_loss / (batch + 1)
+                            ave_train_acc = ave_train_acc / (batch + 1)
+
+                            print ("average train acc : %f " % ave_train_acc)
+                            print ("average train loss : %f " % ave_train_loss)
+
+                            if ave_train_loss > 0:
+                                if ave_train_acc >= 0.95 or ave_train_loss <= 0.15:
+                                    model = "alexnet-train-acc-" + str(ave_train_acc) + "-loss-" + str(
+                                        ave_train_loss) + ".ckpt"
+                                    path = saver.save(sess, model)
+                                    print ("save model for %s " % path)
+        print ("train over.")
+    return
 
 
 if '__main__' == __name__:
-	tf.app.run()
+    tf.app.run()

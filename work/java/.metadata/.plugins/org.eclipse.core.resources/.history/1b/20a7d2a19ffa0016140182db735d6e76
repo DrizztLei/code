@@ -1,0 +1,19 @@
+package scagnostics;
+
+public class Test
+{
+	public int a = 'a';
+	public int b = 'b';
+	public static void change(Test x, Test y)
+	{
+		Test temp;
+	}
+	
+	public static void main(String[] args)
+	{
+		Test x = new Test();
+		Test y = new Test();
+
+		change(x, y);
+	}
+}

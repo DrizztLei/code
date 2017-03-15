@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Mon Mar 06 23:31:29 CST 2017
+onejar.license.required=false
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=/home/elvis/work/java/tutorial/src/main/java/scagnostics/scagnostics.jar
+manifest.mergeall=true
+manifest.mainclass=
+manifest.file=<createnew>
+jarname.isextern=true
+onejar.expand=
+excludes=<po|tutorial>~org/;<po|tutorial>~META-INF/;<po|tutorial>~scagnostics/~DT.csv;<po|tutorial>~scagnostics/~update.sh;<po|tutorial>~scagnostics/~outlying.csv;<po|tutorial>~scagnostics/~striated.csv;<po|tutorial>~scagnostics/~scagnostics.manifest;<po|tutorial>~scagnostics/~diameter.csv;<po|tutorial>~scagnostics/~convexHull.csv;<po|tutorial>~scagnostics/~alphaHull.csv;<po|tutorial>~scagnostics/~clumpy.csv;<po|tutorial>~scagnostics/~skewed.csv;<po|tutorial>~scagnostics/~MST.csv;<po|tutorial>~Makefile
+includes=

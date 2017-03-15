@@ -6,6 +6,7 @@ import random
 from sklearn import preprocessing
 from sklearn.decomposition import PCA
 from sklearn.externals import joblib
+import tensorflow as tf
 
 DIR_PATH = "/home/elvis/work/ML/tensorflow/separa/"
 FIG_PATH = DIR_PATH + "EUROVIS_figures/"
@@ -370,7 +371,6 @@ def z_score_normalization(x):
 
 
 def approximate_normalization(data):
-
 	shape = data.shape
 	data = data.astype(np.float)
 
@@ -381,7 +381,7 @@ def approximate_normalization(data):
 			data = np.reshape(data, newshape=[data.shape[0], data.shape[1], data.shape[2]])
 			for x in range(data.shape[0]):
 				data[x] = z_score.fit_transform(data[x])
-			data = np.reshape(data, newshape=[data.shape[0], data.shape[1], data.shape[2], NUM_CHANNEL])
+			data = np.reshape(data, newshape=[data.shape[0], data.shape[1], data.shape[2], num_channel])
 		else:
 			for index in range(data.shape[0]):
 				img = data[index]
@@ -466,10 +466,11 @@ def parse_data(SIZE, IMAGE_SIZE, NUM_CHANNEL, LABEL, BASE_DIVIDE=128, pca=-1, LA
 		for x in range(SIZE):
 			if NUM_CHANNEL == 1:
 				img = cv.imread(filename[x], cv.IMREAD_GRAYSCALE)
+				cv.imwri
 			else:
 				img = cv.imread(filename[x])
 			img = img[65:645, 65:645]
-			img = 255 - img
+			# img = 255 - img
 			img = cv.resize(img, (IMAGE_SIZE, IMAGE_SIZE))
 			img = np.reshape(img, [IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNEL])
 			TRAIN_DATA[x] = img
@@ -599,8 +600,8 @@ def get_new_file_name(path, csv_file):
 
 
 def parse_new_data(SIZE, IMAGE_SIZE, NUM_CHANNEL, LABEL, BASE_DIVIDE=128):
-
-	filename, label = get_new_file_name("/home/elvis/DATASET/DATA/scatter_data/", '/home/elvis/DATASET/SCORE/fk/out.csv')
+	filename, label = get_new_file_name("/home/elvis/DATASET/DATA/scatter_data/",
+	                                    '/home/elvis/DATASET/SCORE/fk/out.csv')
 
 	global FILESET, TRAIN_DATA, TRAIN_LABEL
 	FILESET = filename
@@ -636,15 +637,158 @@ def parse_new_data(SIZE, IMAGE_SIZE, NUM_CHANNEL, LABEL, BASE_DIVIDE=128):
 			TRAIN_DATA[x] = img
 
 		TRAIN_DATA, TRAIN_LABEL, FILESET = random_shuffle(TRAIN_DATA, TRAIN_LABEL, FILESET)
-
 	return TRAIN_DATA, TRAIN_LABEL, FILESET
 
 
 def img_translation(img, left, right):
-
 	H = np.float32([[1, 0, left], [0, 1, right]])
 	rows, cols = img.shape[:2]
 	result = cv.warpAffine(img, H, (rows, cols), borderMode=cv.BORDER_WRAP)
 	result = cv.resize(result, (rows, cols))
 
 	return result
+
+
+def batch_norm(inputs, is_training, decay=0.999):
+	scale = tf.Variable(tf.ones([inputs.get_shape()[-1]]))
+	beta = tf.Variable(tf.zeros([inputs.get_shape()[-1]]))
+	pop_mean = tf.Variable(tf.zeros([inputs.get_shape()[-1]]), trainable=False)
+	pop_var = tf.Variable(tf.ones([inputs.get_shape()[-1]]), trainable=False)
+
+	if is_training:
+
+		axes = range(len(inputs.get_shape()) - 1)
+
+		batch_mean, batch_var = tf.nn.moments(inputs, axes)
+
+		train_mean = tf.assign(pop_mean, pop_mean * decay + batch_mean * (1 - decay))
+		train_var = tf.assign(pop_var, pop_var * decay + batch_var * (1 - decay))
+
+		with tf.control_dependencies([train_mean, train_var]):
+			return tf.nn.batch_normalization(inputs, batch_mean, batch_var, beta, scale, 0.001)
+	else:
+		return tf.nn.batch_normalization(inputs, pop_mean, pop_var, beta, scale, 0.001)
+
+
+def parse_cleaned_data(SIZE, IMAGE_SIZE, NUM_CHANNEL, LABEL, BASE_DIVIDE=128, pca=-1, LABEL_CONTROL=4, FILENAME=None):
+	global FILESET, TRAIN_DATA, TRAIN_LABEL
+
+	data_set = np.loadtxt(FILENAME, dtype=str, delimiter=',')
+
+	filename = data_set[::, 0:1]
+	filename = list(filename)
+	filename = np.array(filename, dtype=str)
+	filename = np.reshape(filename, newshape=[-1])
+
+	label = data_set[::, 1:2]
+	label = np.array(label, dtype=np.int8)
+
+	TRAIN_DATA = np.ndarray([SIZE, IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNEL], dtype=np.uint8)
+	TRAIN_LABEL = np.zeros([SIZE, LABEL])
+
+	FILESET = filename
+
+	if NUM_CHANNEL == 1:
+
+		for x in range(SIZE):
+			img = cv.imread(filename[x], cv.IMREAD_GRAYSCALE)
+			out = int(label[x])
+			TRAIN_LABEL[x, out] = 1
+
+			img = img[100:640, 100:640]
+			img = 255 - img
+
+			img = cv.resize(img, (IMAGE_SIZE, IMAGE_SIZE))
+			img = np.reshape(img, [IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNEL])
+			TRAIN_DATA[x] = img
+
+		TRAIN_DATA, TRAIN_LABEL, FILESET = random_shuffle(TRAIN_DATA, TRAIN_LABEL, FILESET)
+	else:
+		for x in range(SIZE):
+			img = cv.imread(filename[x])
+			out = int(label[x])
+			TRAIN_LABEL[x, out] = 1
+
+			img = 255 - img
+			img = img[100:640, 100:640]
+
+			img = cv.resize(img, (IMAGE_SIZE, IMAGE_SIZE))
+			img = np.reshape(img, [IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNEL])
+			TRAIN_DATA[x] = img
+
+		TRAIN_DATA, TRAIN_LABEL, FILESET = random_shuffle(TRAIN_DATA, TRAIN_LABEL, FILESET)
+
+	return TRAIN_DATA, TRAIN_LABEL, FILESET
+
+
+def roc_auc(LABEL_CONTROL):
+	filename = get_data(0)
+	filenum = get_data(3)
+
+	label = get_data(LABEL_CONTROL)
+	label_check = get_data(LABEL_CONTROL + 1)
+
+	file_set = []
+	file_label = []
+	for x in range(len(filename)):
+
+		check_sum = int(label[x]) + int(label_check[x])
+
+		if check_sum <= 1 or check_sum >= 9:
+			file_name = combine(filename[x], filenum[x])
+			if file_name != "":
+				file_set.append(PNG_PATH + file_name)
+				if check_sum <= 1:
+					file_label.append(0)
+				else:
+					file_label.append(5)
+	return file_set, file_label
+
+
+def parse_roc_auc(SIZE, IMAGE_SIZE, NUM_CHANNEL, LABEL, BASE_DIVIDE=128, pca=-1, LABEL_CONTROL=4):
+	filename, label = roc_auc(LABEL_CONTROL)
+
+	global FILESET, TRAIN_DATA, TRAIN_LABEL
+
+	FILESET = filename
+
+	TRAIN_DATA = np.ndarray([SIZE, IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNEL], dtype=np.uint8)
+	TRAIN_LABEL = np.zeros([SIZE, LABEL])
+
+	if pca == -1:
+		for x in range(SIZE):
+			if NUM_CHANNEL == 1:
+				img = cv.imread(filename[x], cv.IMREAD_GRAYSCALE)
+			else:
+				img = cv.imread(filename[x])
+			img = img[65:645, 65:645]
+			img = 255 - img
+			img = cv.resize(img, (IMAGE_SIZE, IMAGE_SIZE))
+			img = np.reshape(img, [IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNEL])
+			TRAIN_DATA[x] = img
+			out = int(label[x])
+			TRAIN_LABEL[x, out] = 1
+		TRAIN_DATA, TRAIN_LABEL, FILESET = random_shuffle(TRAIN_DATA, TRAIN_LABEL, FILESET)
+	else:
+		matrix = np.ndarray([SIZE, IMAGE_SIZE ** 2])
+		for x in range(SIZE):
+			img = cv.imread(filename[x], cv.IMREAD_GRAYSCALE)
+			img = img[65:645, 65:645]
+			img = 255 - img
+			img = cv.resize(img, (IMAGE_SIZE, IMAGE_SIZE))
+			img = np.reshape(img, [IMAGE_SIZE ** 2])
+			matrix[x] = img
+			TRAIN_LABEL[x, label[x]] = 1
+		matrix, TRAIN_LABEL, FILESET = random_shuffle(matrix, TRAIN_LABEL, FILESET)
+		print ("pca begin")
+		tool = PCA(n_components=pca, whiten=True)
+		tool.fit(matrix)
+		print ("pca done")
+		matrix, RETURN_TRAIN_LABEL = alignment_data(matrix, TRAIN_LABEL, LABEL, BASE_DIVIDE)
+		size = RETURN_TRAIN_LABEL.shape[0]
+		RETURN_TRAIN_DATA = np.ndarray([size, pca])
+		for x in range(size):
+			data_T = np.reshape(matrix[x], [1, -1])
+			RETURN_TRAIN_DATA[x] = tool.transform(data_T)
+		return RETURN_TRAIN_DATA, RETURN_TRAIN_LABEL
+	return TRAIN_DATA, TRAIN_LABEL, FILESET

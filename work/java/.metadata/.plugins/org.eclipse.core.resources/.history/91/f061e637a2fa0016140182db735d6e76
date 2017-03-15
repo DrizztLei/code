@@ -1,0 +1,24 @@
+package scagnostics;
+
+public class Test
+{
+	public int a = 'a';
+	public int b = 'b';
+	public static void change(Test x, Test y)
+	{
+		Test temp = new Test();
+		temp.a = 213456;
+		x = temp;
+	}
+	
+	public static void main(String[] args)
+	{
+		Test x = new Test();
+		x.a = 1;
+		x.b = 1;
+		Test y = new Test();
+
+		change(x, y);
+		System.out.println(x.a);
+	}
+}

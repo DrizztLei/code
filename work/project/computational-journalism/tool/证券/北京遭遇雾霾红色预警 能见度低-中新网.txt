@@ -1,0 +1,16 @@
+
+<!--
+var adMessage=[]
+ function closeBanner(){
+	  document.getElementById("Ad0").style.display="none";
+  };
+ function closeBanner1(){
+	  document.getElementById("Ad2").style.display="none";
+  };
+// -->
+
+
+
+document.write=temp;
+
+
